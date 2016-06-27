@@ -2,6 +2,8 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+// Das ist ein test
+
 
 cv::Mat colorThreshold(cv::Mat image) {
 	cv::Mat output;
@@ -9,6 +11,7 @@ cv::Mat colorThreshold(cv::Mat image) {
 	cv::inRange(image, cv::Scalar(100, 0, 0), cv::Scalar(255, 150, 150), output);
 	cv::inRange(image, cv::Scalar(0, 200, 200), cv::Scalar(30, 255, 255), outputYellow);
 	cv::bitwise_or(output, outputYellow, output);
+	
 	return output;
 }
 
