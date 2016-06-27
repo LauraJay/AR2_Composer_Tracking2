@@ -108,9 +108,15 @@ float getOrientation(cv::RotatedRect rect, cv::Mat rgbImage) {
 
 int main()
 {
-	std::string filename1 = "C:/Users/Vera/Dropbox/MP/Testaufnahmen/TestBild_03.jpg";
+	//Vera
+	//std::string filename1 = "C:/Users/Vera/Dropbox/MP/Testaufnahmen/TestBild_03.jpg";
+	//std::string filename2 = "C:/Users/Vera/Dropbox/MP/Testaufnahmen/TestBild_05.jpg";
+
+	//Laura
+	std::string filename1 = "C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/TestBild_02.jpg";
+	std::string filename2 = "C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/TestBild_03.jpg";
+	
 	cv::Mat image1 = cv::imread(filename1);
-	std::string filename2 = "C:/Users/Vera/Dropbox/MP/Testaufnahmen/TestBild_06.jpg";
 	cv::Mat image2 = cv::imread(filename2);
 	//cv::imshow( "Test Window1", image1 );
 	//cv::imshow("Test Window2", image2);
