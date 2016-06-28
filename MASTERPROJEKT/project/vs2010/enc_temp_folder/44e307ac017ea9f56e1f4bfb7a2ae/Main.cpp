@@ -11,7 +11,6 @@ cv::Mat colorThreshold(cv::Mat image) {
 	cv::inRange(image, cv::Scalar(100, 0, 0), cv::Scalar(255, 150, 150), output);
 	cv::inRange(image, cv::Scalar(0, 200, 200), cv::Scalar(30, 255, 255), outputYellow);
 	cv::bitwise_or(output, outputYellow, output);
-
 	return output;
 }
 
@@ -75,7 +74,6 @@ float getOrientation(cv::RotatedRect rect, cv::Mat rgbImage) {
 	cv::Point2f bottomRight;
 	cv::Point2f cornerPoints[4];
 	rect.points(cornerPoints);
-
 
 	//order of corners
 
