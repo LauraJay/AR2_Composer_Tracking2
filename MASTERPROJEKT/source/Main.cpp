@@ -2,17 +2,41 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
+
+
+
 // Das ist ein test
 
 
 cv::Mat colorThreshold(cv::Mat image) {
 	cv::Mat output;
 	cv::Mat outputYellow;
-	cv::inRange(image, cv::Scalar(100, 0, 0), cv::Scalar(255, 150, 150), output);
-	cv::inRange(image, cv::Scalar(0, 200, 200), cv::Scalar(30, 255, 255), outputYellow);
+	cv::Mat imageHSV;
+	//cv::Mat imageHSV=cv::Mat(1024,1280,CV_32FC3);
+	//imageHSV *= 1. / 255;
+	cv::cvtColor(image,imageHSV,cv::COLOR_BGR2HSV);
+	//cv::Mat floatImage;
+	//imageHSV.convertTo(floatImage,CV_32FC3);
+	//cv::Mat channels[3];
+	//cv::split(floatImage,channels);
+	//channels[0] *= 1./179;
+	//channels[1] *= 1. / 255;
+	//channels[2] *= 1. / 255;
+	//cv::merge(channels, 3, floatImage);
+	cv::inRange(imageHSV, cv::Scalar(75, 0, 0), cv::Scalar(130, 255, 255), output);
+	cv::inRange(imageHSV, cv::Scalar(38, 0,0), cv::Scalar(75, 255, 255), outputYellow);
 	cv::bitwise_or(output, outputYellow, output);
-	// Test Zeile
-	// Test Zeile VEra 2
+
+	int erosion_size =1;
+	cv::Mat element = getStructuringElement(cv::MORPH_RECT,
+		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+		cv::Point(erosion_size, erosion_size));
+
+	cv::morphologyEx(output, output, cv::MORPH_OPEN, element, cv::Point(-1, -1));
+	cv::morphologyEx(output, output, cv::MORPH_CLOSE, element,cv:: Point(-1, -1));
+	//erode(output, output, element);
+	
+
 	return output;
 }
 
@@ -20,6 +44,7 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	std::vector<cv::Point> points;
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
+	cv::Canny(image, image, 50, 150, 3);
 	cv::findContours(image, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 
 	/// Approximate contours to polygons + get bounding rects and circles
@@ -28,10 +53,13 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	std::vector<cv::Point2f>center(contours.size());
 	std::vector<float>radius(contours.size());
 
+	cv::Mat contourImage = cv::Mat::zeros(image.size(),CV_8UC3);
+
 	for (int i = 0; i < contours.size(); i++)
 	{
 		approxPolyDP(cv::Mat(contours[i]), contours_poly[i], 3, true);
 		boundRect[i] = cv::minAreaRect(cv::Mat(contours_poly[i]));
+		cv::drawContours(contourImage, contours, i, cv::Scalar(255, 255, 255), 2, 8, hierarchy, 0, cv::Point());
 
 	}
 
@@ -47,14 +75,14 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	// TODO Koordinaten der Box können negativ sein!!!!
 	//For Debugging
 
-	for (int i = 0; i < contours.size(); i++) {
+	for (int k = 0; k < sizeof(boundRect); k++) {
 
 		cv::Point2f vertices[4];
-		cv::RotatedRect box = boundRect[i];
+		cv::RotatedRect box = boundRect[k];
 		box.points(vertices);
 		cv::Mat image1 = image.clone();
 		image1.setTo(0);
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < sizeof(vertices); ++i) {
 			cv::line(rgb, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
 			cv::line(image, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 0, 0), 1, CV_AA);
 		}
