@@ -12,6 +12,7 @@ cv::Mat colorThreshold(cv::Mat image) {
 	cv::inRange(image, cv::Scalar(0, 200, 200), cv::Scalar(30, 255, 255), outputYellow);
 	cv::bitwise_or(output, outputYellow, output);
 	// Test Zeile
+	// Test Zeile VEra 2
 	return output;
 }
 
