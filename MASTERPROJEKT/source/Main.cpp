@@ -76,7 +76,8 @@ float getOrientation(cv::RotatedRect rect, cv::Mat rgbImage) {
 	cv::Point2f cornerPoints[4];
 	rect.points(cornerPoints);
 
-	//Testzeile Laura
+	//Testzeile Laura 1
+	//Testzeile Laura 2
 	//order of corners
 
 	//0=bottomLeft
