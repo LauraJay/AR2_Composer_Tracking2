@@ -45,7 +45,7 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
 	cv::Canny(image, image, 50, 150, 3);
-	cv::findContours(image, contours, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+	cv::findContours(image, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 
 	/// Approximate contours to polygons + get bounding rects and circles
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
@@ -59,7 +59,7 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	{
 		approxPolyDP(cv::Mat(contours[i]), contours_poly[i], 3, true);
 		boundRect[i] = cv::minAreaRect(cv::Mat(contours_poly[i]));
-		cv::drawContours(contourImage, contours, i, cv::Scalar(255, 255, 255), 2, 8, hierarchy, 0, cv::Point());
+		//cv::drawContours(contourImage, contours, i, cv::Scalar(255, 255, 255), 2, 8, hierarchy, 0, cv::Point());
 
 	}
 
@@ -75,14 +75,14 @@ std::vector<cv::RotatedRect>  getOBB(cv::Mat image, cv::Mat rgb) {
 	// TODO Koordinaten der Box können negativ sein!!!!
 	//For Debugging
 
-	for (int k = 0; k < sizeof(boundRect); k++) {
+	for (int k = 0; k < boundRect.size(); k++) {
 
 		cv::Point2f vertices[4];
 		cv::RotatedRect box = boundRect[k];
 		box.points(vertices);
 		cv::Mat image1 = image.clone();
 		image1.setTo(0);
-		for (int i = 0; i < sizeof(vertices); ++i) {
+		for (int i = 0; i < sizeof(vertices)/sizeof(cv::Point2f); ++i) {
 			cv::line(rgb, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
 			cv::line(image, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 0, 0), 1, CV_AA);
 		}
