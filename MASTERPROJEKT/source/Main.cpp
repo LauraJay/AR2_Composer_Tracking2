@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
@@ -8,13 +7,7 @@ using namespace cv;
 
 Mat colorThreshold(Mat imageHSV) {
 	Mat output;
-	Mat outputYellow;
-
-
-	inRange(imageHSV, Scalar(75, 0, 0), Scalar(130, 255, 255), output);
-	inRange(imageHSV, Scalar(38, 0, 0), Scalar(75, 255, 255), outputYellow);
-	bitwise_or(output, outputYellow, output);
-
+	inRange(imageHSV, Scalar(30, 0, 0), Scalar(110, 255, 255), output);
 	int erosion_size = 1;
 	Mat element = getStructuringElement(MORPH_RECT,
 		Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -22,7 +15,6 @@ Mat colorThreshold(Mat imageHSV) {
 
 	morphologyEx(output, output, MORPH_OPEN, element, Point(-1, -1));
 	morphologyEx(output, output, MORPH_CLOSE, element, Point(-1, -1));
-
 	return output;
 }
 
@@ -32,114 +24,126 @@ std::vector<RotatedRect>  getOBB(Mat image) {
 	std::vector<Vec4i> hierarchy;
 	Canny(image, image, 50, 150, 3);
 	findContours(image, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-	/// Approximate contours to polygons + get bounding rects and circles
 	std::vector<std::vector<Point> > contours_poly(contours.size());
 	std::vector<RotatedRect> boundRect(contours.size());
-	
 	for (int i = 0; i < contours.size(); i++)
 	{
 		approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
 		boundRect[i] = minAreaRect(Mat(contours_poly[i]));
-		}
-
-
-	
-	//waitKey(0);
+	}
 	return boundRect;
 }
 
 float getOrientation(RotatedRect rect, Mat hsvImage) {
-	Size2f tempSize = rect.size;
-	rect.size.height = rect.size.height*0.8f;
-	rect.size.width = rect.size.width*0.8f;
-	Point2f center = rect.center;
-	Size2f size = rect.size;
-	Point2f upperLeft;
-	Point2f upperRight;
-	Point2f bottomLeft;
-	Point2f bottomRight;
 	Point2f cornerPoints[4];
 	rect.points(cornerPoints);
+	Mat outputYellow;
+	inRange(hsvImage, Scalar(30, 0, 0), Scalar(55, 255, 255), outputYellow);
 
-	//order of corners
+	int erosion_size = 2;
+	Mat element = getStructuringElement(MORPH_RECT,
+		Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+		Point(erosion_size, erosion_size));
 
+	morphologyEx(outputYellow, outputYellow, MORPH_OPEN, element, Point(-1, -1));
+	morphologyEx(outputYellow, outputYellow, MORPH_CLOSE, element, Point(-1, -1));
+
+	//Correct order of corners
 	//0=bottomLeft
 	//1=upperLeft
 	//2=upperRight
 	//3=bottomRight
 
+	// Wie es aussieht sind sie immer in der Reihenfolge 0,1,2,3
+
 	float cornerAngle;
 	for (unsigned int i = 0; i < 4; i++)
 	{
-		bool isMarkedCorner = false;
-		Vec3b intensity = hsvImage.at<Vec3b>(cornerPoints[i].y, cornerPoints[i].x);
-		uchar h = intensity.val[0];
-		if (h >= 38 && h < 75)
-			isMarkedCorner = true;
-
-		if (isMarkedCorner) {
+		Mat circleimg(outputYellow.rows, outputYellow.cols, CV_8UC1, Scalar(0, 0, 0));
+		circle(circleimg, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), -1);
+		bitwise_and(circleimg, outputYellow, circleimg);
+		double min, max;
+		minMaxIdx(circleimg, &min, &max);
+		if (max == 255) {
 			cornerAngle = i*90.f;
 			break;
 		}
-	}
-	rect.size = tempSize;
-	return cornerAngle + std::abs(rect.angle);
 
+		//_______________________________________________________________________________________________________________________________//
+		// For Debug
+		// Print CornerPoints
+		std::ostringstream os;
+		os << i;
+		String s = os.str();
+		putText(hsvImage, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+		//Circle Green Edges
+		if (max == 255) {
+			circle(hsvImage, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), 1);
+			break;
+		}
+	}
+	return cornerAngle + std::abs(rect.angle);
 }
 
 int main()
 {
 
 	//Einbindung Video
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/014_Multi_35_21.88_45.625_G60.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 
-	
+
 	namedWindow("edges", 1);
+	int counter = 0;
 	while (true)
 	{
 		Mat frame;
 
-			cap >> frame; // get a new frame from camera
-			if (frame.empty()) {
-				break;
+		cap >> frame; // get a new frame from camera
+		if (frame.empty()) {
+			break;
+		}
+		Mat imageHSV2;
+		cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
+		Mat colorthre2 = colorThreshold(imageHSV2);
+		std::vector<RotatedRect>  box2 = getOBB(colorthre2);
+		std::vector<float> orientation;
+		Mat test(colorthre2.rows, colorthre2.cols, CV_8UC1, Scalar(0, 0, 0));
+		for (int i = 0; i < box2.size(); i++)
+		{
+			orientation.push_back(getOrientation(box2[i], imageHSV2));
+		}
+
+		//_____________________________________________________________________________________________________________________________________//
+		//For Debugging
+		Mat debug = imageHSV2.clone();
+		// Print Frame Number
+		counter++;
+		std::ostringstream os2;
+		os2 << counter;
+		String s2 = os2.str();
+		putText(debug, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+
+		for (int k = 0; k < box2.size(); k++) {
+			Point2f vertices[4];
+			RotatedRect box = box2[k];
+			box.points(vertices);
+			float f = orientation[k];
+			// Print Angle to BoxCenter
+			std::ostringstream os;
+			os << f;
+			String s = os.str();
+			putText(debug, s, box.center, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			// Draw Boxes
+			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
+				line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
 			}
-			Mat imageHSV2;
-			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
-			Mat colorthre2 = colorThreshold(imageHSV2);
-			////// image nur zum Debuggen
-
-			std::vector<RotatedRect>  box2 = getOBB(colorthre2);
-			std::vector<float> orientation;
-			for (int i = 0; i < box2.size(); i++)
-			{
-				// FEHLER !!!!!
-				orientation.push_back(getOrientation(box2[i], imageHSV2));
-			}
-			////For Debugging
-
-			//Mat debug = imageHSV2.clone();
-
-			//for (int k = 0; k < box2.size(); k++) {
-
-			//	Point2f vertices[4];
-			//	RotatedRect box = box2[k];
-			//	box.points(vertices);
-			//	float f = orientation[k];
-			//	std::ostringstream os;
-			//	os << f;
-			//	String s = os.str();
-			//	putText(debug, s,box.center,FONT_HERSHEY_SIMPLEX,1,Scalar(255,255,255),1,8,false);
-			//	for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
-			//		line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
-			//	}
-			//}
-			imshow("edges", imageHSV2);
-			if (waitKey(45.625) >= 0) break;
+		}
+		imshow("edges", debug);
+		if (waitKey(45.625) >= 0) break;
 	}
-	
-	
 	return EXIT_SUCCESS;
 }
+
+

@@ -6,6 +6,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\Main.h">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp">
       <Filter>source</Filter>
     </ClCompile>
