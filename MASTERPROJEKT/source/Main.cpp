@@ -47,16 +47,11 @@ float getOrientation(RotatedRect rect, Mat hsvImage) {
 
 	morphologyEx(outputYellow, outputYellow, MORPH_OPEN, element, Point(-1, -1));
 	morphologyEx(outputYellow, outputYellow, MORPH_CLOSE, element, Point(-1, -1));
-
-	//Correct order of corners
-	//0=bottomLeft
-	//1=upperLeft
-	//2=upperRight
-	//3=bottomRight
-
-	// Wie es aussieht sind sie immer in der Reihenfolge 0,1,2,3
-
-	float cornerAngle;
+	
+	float angleRad;
+	float angleGrad;
+	const double PI(3.14159265);
+	Point2f unitVector(100, 0);
 	for (unsigned int i = 0; i < 4; i++)
 	{
 		Mat circleimg(outputYellow.rows, outputYellow.cols, CV_8UC1, Scalar(0, 0, 0));
@@ -65,8 +60,28 @@ float getOrientation(RotatedRect rect, Mat hsvImage) {
 		double min, max;
 		minMaxIdx(circleimg, &min, &max);
 		if (max == 255) {
-			cornerAngle = i*90.f;
+			//Case 1: Green Corner lies above the center of the box
+			if(cornerPoints[i].y <= rect.center.y){
+			Point2f orientationVector = cornerPoints[i] -rect.center;
+			//Calculate the angle between the unit vector and the vector between the center and the green corner
+			float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
+			float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
+			float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
+			angleRad= acos(scalar / (distance1 * distance2));
+			angleGrad = angleRad * 180 / PI;
 			break;
+			}
+			//Case 1: Green Corner lies below the center of the box
+			if (cornerPoints[i].y > rect.center.y) {
+				Point2f orientationVector = cornerPoints[i] - rect.center;
+				//Calculate the angle between the unit vector and the vector between the center and the green corner
+				float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
+				float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
+				float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
+				angleRad = acos(scalar / (distance1 * distance2));
+				angleGrad =360 - ( angleRad * 180 / PI);
+				break;
+			}
 		}
 
 		//_______________________________________________________________________________________________________________________________//
@@ -82,14 +97,17 @@ float getOrientation(RotatedRect rect, Mat hsvImage) {
 			break;
 		}
 	}
-	return cornerAngle + std::abs(rect.angle);
+	return angleGrad;
 }
 
 int main()
 {
 
-	//Einbindung Video
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
+	//Einbindung Video Laura 
+	VideoCapture cap("C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/02_Videos/001_A_Ohne_Verdeckung.avi");
+
+	//Einbindung Video Vera 
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 
@@ -133,8 +151,9 @@ int main()
 			// Print Angle to BoxCenter
 			std::ostringstream os;
 			os << f;
-			String s = os.str();
-			putText(debug, s, box.center, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			String angle = os.str();
+			
+			putText(debug, angle, box.center, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 			// Draw Boxes
 			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
 				line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
