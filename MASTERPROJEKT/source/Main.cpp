@@ -87,15 +87,15 @@ float getOrientation(RotatedRect rect, Mat hsvImage) {
 		//_______________________________________________________________________________________________________________________________//
 		// For Debug
 		// Print CornerPoints
-		std::ostringstream os;
-		os << i;
-		String s = os.str();
-		putText(hsvImage, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
-		//Circle Green Edges
-		if (max == 255) {
-			circle(hsvImage, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), 1);
-			break;
-		}
+		//std::ostringstream os;
+		//os << i;
+		//String s = os.str();
+		//putText(hsvImage, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+		////Circle Green Edges
+		//if (max == 255) {
+		//	circle(hsvImage, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), 1);
+		//	break;
+		//}
 	}
 	return angleGrad;
 }
@@ -104,10 +104,21 @@ int main()
 {
 
 	//Einbindung Video Laura 
-	VideoCapture cap("C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/02_Videos/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/02_Videos/001_A_Ohne_Verdeckung.avi");
 
 	//Einbindung Video Vera 
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
+
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 
@@ -149,11 +160,11 @@ int main()
 			box.points(vertices);
 			float f = orientation[k];
 			// Print Angle to BoxCenter
-			std::ostringstream os;
+			/*std::ostringstream os;
 			os << f;
 			String angle = os.str();
 			
-			putText(debug, angle, box.center, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			putText(debug, angle, box.center, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);*/
 			// Draw Boxes
 			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
 				line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
