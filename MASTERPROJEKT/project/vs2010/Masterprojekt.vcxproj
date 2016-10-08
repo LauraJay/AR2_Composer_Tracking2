@@ -124,9 +124,15 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp" />
+    <ClCompile Include="Marker.cpp" />
+    <ClCompile Include="MarkerDetection.cpp" />
+    <ClCompile Include="MarkerManagement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Main.h" />
+    <ClInclude Include="MarkerManagement.h" />
+    <ClInclude Include="MarkerDetection.h" />
+    <ClInclude Include="Marker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
