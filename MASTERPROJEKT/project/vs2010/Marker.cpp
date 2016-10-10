@@ -40,17 +40,12 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	return 0.0f;
 }
 
-Marker::Marker(unsigned char id, cv::RotatedRect rect, unsigned char markCornerID)
+Marker::Marker(unsigned char id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)
 {
 	Marker::id = id;
-	cv::Point2f p[4];
-	rect.points(p);
-	for (int i = 0; i < 4; i++)
-	{
-		rectPoints.push_back(p[i]);
-	}
+	rectPoints = rect;
 	Marker::markCornerID = markCornerID;
-	center = rect.center;
+	Marker::center = center;
 	angle = computeAngle(markCornerID, rectPoints);
 }
 
@@ -83,15 +78,10 @@ float Marker::getAngle()
 	return angle;
 }
 
-void Marker::setPoints(cv::RotatedRect rect)
+void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center)
 {	
-	cv::Point2f p[4];
-	rect.points(p);
-	for (int i = 0; i < 4; i++)
-	{
-		rectPoints.push_back(p[i]);
-	}
-	center = rect.center;
+	rectPoints = rect;
+	center = center;
 
 }
 

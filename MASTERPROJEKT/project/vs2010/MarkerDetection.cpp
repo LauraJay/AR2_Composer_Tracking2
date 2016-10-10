@@ -112,7 +112,5 @@ unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &imageHS
 		//	break;
 		//}
 	}
-
-
 	return markedId;
 }

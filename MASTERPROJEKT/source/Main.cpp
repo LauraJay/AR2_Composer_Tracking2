@@ -59,7 +59,7 @@ float getOrientation(RotatedRect rect, unsigned char markedCorner) {
 int main()
 {
 
-	
+	MarkerManagement* mm = new MarkerManagement();
 	//Einbindung Video Laura 
 	//VideoCapture cap("C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/02_Videos/001_A_Ohne_Verdeckung.avi");
 
@@ -97,14 +97,18 @@ int main()
 		md->runMarkerDetection(imageHSV2);
 		std::vector<RotatedRect> rects = md->getDetectedRects();
 		std::vector<unsigned char> markedCorners = md->getMarkedCorners();
-
+		float angle;
 		//run MarkerManagement
-
-		MarkerManagement* mm = new MarkerManagement(rects, markedCorners);
-		delete mm;
+		for (int i = 0; i < rects.size(); i++)
+		{
+		mm->trackMarker(rects[i], markedCorners[i]);
+		getOrientation(rects[i], markedCorners[i]);
+		}
+	
+		delete md;
+		
 		Mat test(imageHSV2.rows, imageHSV2.cols, CV_8UC1, Scalar(0, 0, 0));
 		
-		delete md;
 
 		//_____________________________________________________________________________________________________________________________________//
 		//For Debugging
@@ -135,6 +139,8 @@ int main()
 		imshow("edges", debug);
 		if (waitKey(4) >= 0) break;
 	}
+
+	delete mm;
 	return EXIT_SUCCESS;
 }
 

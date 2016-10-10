@@ -21,7 +21,7 @@ private:
 		float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
 
 public:
-	Marker(unsigned char id, cv::RotatedRect rectPoints, unsigned char markCornerID);
+	Marker(unsigned char id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID);
 	~Marker();
 	//getter
 	unsigned char getId();
@@ -31,9 +31,11 @@ public:
 	float getAngle();
 
 	//setter
-	void setPoints(cv::RotatedRect points);
+	void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
 	void setMarkedCornerID(unsigned char id);
 	void setAngle(float angle);
+
+	
 
 };
 
