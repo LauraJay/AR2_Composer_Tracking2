@@ -10,8 +10,8 @@ private:
 	std::vector<RotatedRect> detectedRects;
 	std::vector<unsigned char> markedCorners;
 	std::vector<RotatedRect> getOBB(Mat &cTImg);
-	unsigned char detectMarkedCorner(RotatedRect rect, Mat &imageHSV);
-
+	unsigned char detectMarkedCorner(RotatedRect rect, Mat &imageHSV, Mat &CornerThresImage);
+	Mat getCornerThresholdImage(Mat &imageHSV);
 public:
 	MarkerDetection();
 	~MarkerDetection();

@@ -20,10 +20,11 @@ void MarkerDetection::runMarkerDetection(Mat &imageHSV)
 	markedCorners.clear();
 	cTImg = colorThreshold(imageHSV);
 	std::vector<RotatedRect>  box = getOBB(cTImg);
+	Mat cornerThresImg = getCornerThresholdImage(imageHSV);
 
 	for (int i = 0; i < box.size(); i++)
 	{
-		unsigned char corner = detectMarkedCorner(box[i], imageHSV);
+		unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
 		if (corner < 255)
 		{	markedCorners.push_back(corner);
 			detectedRects.push_back(box[i]);
@@ -70,47 +71,55 @@ std::vector<RotatedRect>  MarkerDetection::getOBB(Mat &cTImg) {
 	return boundRect;
 }
 
-unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &imageHSV)
-{
-	Point2f cornerPoints[4];
-	rect.points(cornerPoints);
-	Mat outputYellow;
-	inRange(imageHSV, Scalar(30, 0, 0), Scalar(55, 255, 255), outputYellow);
 
-	int erosion_size = 2;
+Mat MarkerDetection::getCornerThresholdImage(Mat &imageHSV) {
+	Mat CornerThresImage;
+	inRange(imageHSV, Scalar(30, 0,100), Scalar(55, 255, 255), CornerThresImage);
+
+	int erosion_size = 3;
 	Mat element = getStructuringElement(MORPH_RECT,
 		Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 		Point(erosion_size, erosion_size));
 
-	morphologyEx(outputYellow, outputYellow, MORPH_OPEN, element, Point(-1, -1));
-	morphologyEx(outputYellow, outputYellow, MORPH_CLOSE, element, Point(-1, -1));
-	unsigned char markedId = 255;
+	morphologyEx(CornerThresImage, CornerThresImage, MORPH_OPEN, element, Point(-1, -1));
+	morphologyEx(CornerThresImage, CornerThresImage, MORPH_CLOSE, element, Point(-1, -1));
+	return CornerThresImage;
+}
+
+unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &imageHSV, Mat &CornerThresImage)
+{
+	Point2f cornerPoints[4];
+	rect.points(cornerPoints);
+	unsigned char markedId=255;
+
+	double min, max;
 
 	for (unsigned int i = 0; i < 4; i++)
 	{
-		Mat circleimg(outputYellow.rows, outputYellow.cols, CV_8UC1, Scalar(0, 0, 0));
-		circle(circleimg, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), -1);
-		bitwise_and(circleimg, outputYellow, circleimg);
+		Mat circleimg(CornerThresImage.rows, CornerThresImage.cols, CV_8UC1, Scalar(0, 0, 0));
+		circle(circleimg, cornerPoints[i], rect.size.height /2, Scalar(255, 255, 255), -1);
+		bitwise_and(circleimg, CornerThresImage, circleimg);
 		double min, max;
 		minMaxIdx(circleimg, &min, &max);
 		if (max == 255) {
 			markedId = i;
-			break;
+			//break;
 		}
 
 
 		//_______________________________________________________________________________________________________________________________//
 		// For Debug
 		// Print CornerPoints
-		//std::ostringstream os;
-		//os << i;
-		//String s = os.str();
-		//putText(imageHSV, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
-		////Circle Green Edges
-		//if (max == 255) {
-		//	circle(imageHSV, cornerPoints[i], rect.size.height / 2, Scalar(255, 255, 255), 1);
-		//	break;
-		//}
+	/*	std::ostringstream os;
+		os << i;
+		String s = os.str();
+		putText(imageHSV, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);*/
+		//Circle Green Edges
+		if (max == 255) {
+			circle(imageHSV, cornerPoints[i], rect.size.height / 4, Scalar(255, 0, 255), 2);
+			break;
+		}
+	
 	}
 	return markedId;
 }
