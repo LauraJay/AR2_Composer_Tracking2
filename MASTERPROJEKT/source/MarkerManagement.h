@@ -1,5 +1,5 @@
 #pragma once
-#include <F:\Master\Masterprojekt\Git_Workspace\AR2_Composer_Tracking2\MASTERPROJEKT\project\vs2010\Marker.h>
+#include <Marker.h>
 class MarkerManagement
 {
 private:

@@ -9,13 +9,13 @@
     <ClInclude Include="..\..\source\Main.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="Marker.h">
+    <ClInclude Include="..\..\source\Marker.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="MarkerDetection.h">
+    <ClInclude Include="..\..\source\MarkerDetection.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="MarkerManagement.h">
+    <ClInclude Include="..\..\source\MarkerManagement.h">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -23,13 +23,13 @@
     <ClCompile Include="..\..\source\Main.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="Marker.cpp">
+    <ClCompile Include="..\..\source\Marker.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="MarkerDetection.cpp">
+    <ClCompile Include="..\..\source\MarkerDetection.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="MarkerManagement.cpp">
+    <ClCompile Include="..\..\source\MarkerManagement.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
