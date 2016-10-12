@@ -107,7 +107,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\debug"<
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies);ws2_32.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
@@ -127,12 +127,14 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\Marker.cpp" />
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
+    <ClCompile Include="..\..\source\Output.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Main.h" />
     <ClInclude Include="..\..\source\Marker.h" />
     <ClInclude Include="..\..\source\MarkerDetection.h" />
     <ClInclude Include="..\..\source\MarkerManagement.h" />
+    <ClInclude Include="..\..\source\Output.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

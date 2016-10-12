@@ -14,52 +14,14 @@ Main::Main() {
 }
 
 
-
-
-// alter Stand kann geloescht werden, wenn für LAURA ok
-//float getOrientation(RotatedRect rect, unsigned char markedCorner) {
-//	
-//	Point2f cornerPoints[4];
-//	rect.points(cornerPoints);
-//	
-//	float angleRad;
-//	float angleGrad;
-//	const double PI(3.14159265);
-//	Point2f unitVector(100, 0);
-//	
-//			//Case 1: Green Corner lies above the center of the box
-//			Point2f orientationVector = cornerPoints[markedCorner] -rect.center;
-//			//Calculate the angle between the unit vector and the vector between the center and the green corner
-//			float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
-//			float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
-//			float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
-//			angleRad= acos(scalar / (distance1 * distance2));
-//			if(cornerPoints[markedCorner].y <= rect.center.y){
-//			angleGrad = angleRad * 180 / PI;
-//			// TODO Void methode und angle nur in Markerobject
-//			}
-//			//Case 1: Green Corner lies below the center of the box
-//			if (cornerPoints[markedCorner].y > rect.center.y) {
-//				Point2f orientationVector = cornerPoints[markedCorner] - rect.center;
-//				//Calculate the angle between the unit vector and the vector between the center and the green corner
-//				float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
-//				//TODO sqrt wirklich notwendig? Könnten wir nicht auch die quardratischen Werte nehmen?
-//				float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
-//				float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
-//				angleRad = acos(scalar / (distance1 * distance2));
-//				angleGrad =360 - ( angleRad * 180 / PI);
-//			}
-//	return angleGrad;
-//		}
-
-
-
-
-
 int main()
 {
 
 	MarkerManagement* mm = new MarkerManagement();
+	//TCP starten
+	Output* out = new Output();
+	out->startTCPServer();
+
 	//Einbindung Video Laura 
 	VideoCapture cap("C:/Users/Laura/Documents/Master/Masterprojekt/Testbilder/02_Videos/001_A_Ohne_Verdeckung.avi");
 
