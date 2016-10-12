@@ -6,11 +6,11 @@ class Output {
 
 private:
 
-	int startWinsock();
+	//int startWinsock();
 
 public:
 
-	void startTCPServer();
+	int startTCPServer();
 	Output();
 	~Output();
 
