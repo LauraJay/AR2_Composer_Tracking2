@@ -38,7 +38,7 @@ int Output::startTCPServer()
 	//port festlegen
 	memset(&addr, 0, sizeof(SOCKADDR_IN));
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(66666);
+	addr.sin_port = htons(10000);
 	addr.sin_addr.s_addr = ADDR_ANY;
 	rc = bind(serverSocket, (SOCKADDR*)&addr, sizeof(SOCKADDR_IN));
 	if (rc == SOCKET_ERROR)
@@ -48,7 +48,7 @@ int Output::startTCPServer()
 	}
 	else
 	{
-		printf("Socket an port 66666 gebunden\n");
+		printf("Socket an port 10000 gebunden\n");
 	}
 	//server Socket wartet auf Verbindung und "lauscht"
 	rc = listen(serverSocket, 10);
@@ -61,8 +61,8 @@ int Output::startTCPServer()
 	{
 		printf("serverSocket ist im listen Modus....\n");
 	}
-	//Verbindung akzeptieren
 
+	//Verbindung akzeptieren
 	connectedSocket = accept(serverSocket, NULL, NULL);
 	if (connectedSocket == INVALID_SOCKET)
 	{
@@ -73,7 +73,10 @@ int Output::startTCPServer()
 	{
 		printf("Neue Verbindung wurde akzeptiert!\n");
 	}
-	return 0;
+	//return 0;
+	float buf[2] = { 1.324f, 3.43f };
+	const char FAR* bufPointer = (const char*)&buf;
+	rc = send(connectedSocket, bufPointer, 8, 0);
 }
 
 int startWinsock(void)
