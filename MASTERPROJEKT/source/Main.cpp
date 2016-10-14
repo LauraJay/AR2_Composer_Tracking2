@@ -18,12 +18,13 @@ int main()
 {
 
 	MarkerManagement* mm = new MarkerManagement();
+	std::vector<Marker*> marker;
 	//TCP starten
 	Output* out = new Output();
-	out->startTCPServer();
+	out->startTCPServer(marker);
 
 	//Einbindung Video Laura 
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
 	
 
 	//Einbindung Video Vera 
@@ -67,7 +68,8 @@ int main()
 		{
 		mm->trackMarker(rects[i], markedCorners[i]);
 		}
-		std::vector<Marker*> marker = mm->getTrackedMarker();
+		marker = mm->getTrackedMarker();
+	
 		delete md;
 		
 		

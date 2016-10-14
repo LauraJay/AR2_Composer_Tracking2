@@ -6,7 +6,7 @@
 
 
 int startWinsock(void);
-int Output::startTCPServer()
+int Output::startTCPServer(std::vector<Marker*> allMarkers)
 {
 	long rc;
 	SOCKET serverSocket;
@@ -74,9 +74,9 @@ int Output::startTCPServer()
 		printf("Neue Verbindung wurde akzeptiert!\n");
 	}
 	//return 0;
-	float buf[2] = { 1.324f, 3.43f };
-	const char FAR* bufPointer = (const char*)&buf;
-	rc = send(connectedSocket, bufPointer, 8, 0);
+	int len = 13 * allMarkers.size();
+	const char FAR* markerPointer = (const char*)&allMarkers;
+	rc = send(connectedSocket, markerPointer, len, 0);
 }
 
 int startWinsock(void)

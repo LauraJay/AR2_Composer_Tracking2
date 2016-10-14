@@ -1,16 +1,16 @@
 #pragma once
 #include <opencv2/opencv.hpp>
+#include <Marker.h>
 
 
 class Output {
 
 private:
 
-	//int startWinsock();
 
 public:
-
-	int startTCPServer();
+	//void TCPsendData(std::vector<Marker*> allMarkers);
+	int startTCPServer(std::vector<Marker*> allMarkers);
 	Output();
 	~Output();
 
