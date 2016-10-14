@@ -11,26 +11,20 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	const double PI(3.14159265);
 	cv::Point2f unitVector(100, 0);
 
-	//Case 1: Green Corner lies above the center of the box
+	
 	cv::Point2f orientationVector = rectPoints[markCornerID] - center;
 	//Calculate the angle between the unit vector and the vector between the center and the green corner
 	float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
 	float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
 	float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
 	angleRad = acos(scalar / (distance1 * distance2));
+	//Case 1: Green Corner lies above the center of the box
 	if (rectPoints[markCornerID].y <= center.y) {
 		angleGrad = angleRad * 180 / PI;
 		// TODO Void methode und angle nur in Markerobject
 	}
-	//Case 1: Green Corner lies below the center of the box
+	//Case 2: Green Corner lies below the center of the box
 	if (rectPoints[markCornerID].y > center.y) {
-		cv::Point2f orientationVector = rectPoints[markCornerID] - center;
-		//Calculate the angle between the unit vector and the vector between the center and the green corner
-		float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
-		//TODO sqrt wirklich notwendig? Könnten wir nicht auch die quardratischen Werte nehmen?
-		float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
-		float distance2 = sqrt((orientationVector.x * orientationVector.x) + (orientationVector.y * orientationVector.y));
-		angleRad = acos(scalar / (distance1 * distance2));
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 	return angleGrad;
