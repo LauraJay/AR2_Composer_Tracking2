@@ -9,6 +9,7 @@ int startWinsock(void);
 long rc;
 SOCKET serverSocket;
 SOCKET connectedSocket;
+int c;
 int Output::startTCPServer()
 {
 	
@@ -84,10 +85,29 @@ int startWinsock(void)
 }
 
 void Output::sendTCPData(std::vector<Marker*> allMarkers) {
-	int len = 13 * allMarkers.size();
-	const char FAR* markerPointer = (const char*)&allMarkers;
-	rc = send(connectedSocket, markerPointer, 26, 0);
+	rc = send(connectedSocket, getPointerOfMarkerVec(allMarkers), 4100, 0);
 
+}
+
+const char FAR* Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
+	struct MarkerStruct ms[256+1];
+	
+	//const int mc = 256 * 16 + 4;
+	//byte m[mc];
+
+		for (int i = 0; i < allMarkers.size(); i++) {
+			ms[i].id = allMarkers.at(i)->getId();
+			printf("\tid: %d\n", ms[i].id);
+			ms[i].posX = allMarkers.at(i)->getCenter().x;
+			ms[i].posY = allMarkers.at(i)->getCenter().y;
+			ms[i].angle = allMarkers.at(i)->getAngle();
+			/*int x = m[i];
+			printf("Integer: %d\n", x);*/
+		}
+		ms[allMarkers.size()].id = -1;
+		printf("Frame: %d\n", c);
+		c++;
+		return (const char FAR*)&ms;
 }
 
 

@@ -1,14 +1,12 @@
 #include "Marker.h"
 
 
-
-
-
 float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints)
 {
 	float angleRad;
 	float angleGrad;
 	const double PI(3.14159265);
+	//const int markerCount = 256;
 	cv::Point2f unitVector(100, 0);
 
 	
@@ -34,7 +32,7 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	return 0.0f;
 }
 
-Marker::Marker(unsigned char id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)
+Marker::Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)
 {
 	Marker::id = id;
 	rectPoints = rect;
@@ -47,9 +45,14 @@ Marker::~Marker()
 {
 }
 
-unsigned char Marker::getId()
+int Marker::getId()
 {
 	return id;
+}
+
+int* Marker::getIdPointer()
+{
+	return &id;
 }
 
 std::vector<cv::Point2f> Marker::getPoints()
@@ -79,7 +82,7 @@ void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center)
 
 }
 
-void Marker::setMarkedCornerID(unsigned char id)
+void Marker::setMarkedCornerID(int id)
 {
 	Marker::id = id;
 }

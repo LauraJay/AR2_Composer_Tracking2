@@ -19,7 +19,6 @@ int main()
 
 	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
-	//printf()
 	//TCP starten
 	Output* out = new Output();
 	out->startTCPServer();
@@ -42,7 +41,7 @@ int main()
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
 
 
-	//AUSKOMMENTIERT UM TCP ZU TESTEN
+	
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 
@@ -70,8 +69,7 @@ int main()
 		mm->trackMarker(rects[i], markedCorners[i]);
 		}
 		marker = mm->getTrackedMarker();
-		//Senden an Luke
-		out->sendTCPData(marker);
+	
 		delete md;
 		
 		
@@ -109,7 +107,11 @@ int main()
 			//for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
 			//	line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
 			//}
+
 		}
+
+		//Senden an Luke
+		out->sendTCPData(marker);
 		imshow("edges", debug);
 		if (waitKey(4) >= 0) break;
 	}

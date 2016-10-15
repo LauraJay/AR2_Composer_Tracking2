@@ -4,7 +4,7 @@
 class Marker 
 {
 private:
-		unsigned char id; //0...255
+		int id; 
 		unsigned char markCornerID;
 		std::vector<cv::Point2f> rectPoints;
 		cv::Point2f center;
@@ -21,10 +21,12 @@ private:
 		float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
 
 public:
-	Marker(unsigned char id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID);
+	Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID);
 	~Marker();
+	//const int markerCount;
 	//getter
-	unsigned char getId();
+	int getId();
+	int* getIdPointer();
 	std::vector<cv::Point2f> getPoints();
 	unsigned char getMarkedCornerID();
 	cv::Point2f getCenter();
@@ -32,7 +34,7 @@ public:
 
 	//setter
 	void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
-	void setMarkedCornerID(unsigned char id);
+	void setMarkedCornerID(int id);
 	void setAngle(float angle);
 
 	
