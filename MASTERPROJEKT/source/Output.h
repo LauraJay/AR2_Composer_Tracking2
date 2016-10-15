@@ -9,8 +9,9 @@ private:
 
 
 public:
-	//void TCPsendData(std::vector<Marker*> allMarkers);
-	int startTCPServer(std::vector<Marker*> allMarkers);
+
+	int startTCPServer();
+	void sendTCPData(std::vector<Marker*> allMarkers);
 	Output();
 	~Output();
 

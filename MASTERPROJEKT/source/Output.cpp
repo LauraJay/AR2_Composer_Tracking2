@@ -6,11 +6,12 @@
 
 
 int startWinsock(void);
-int Output::startTCPServer(std::vector<Marker*> allMarkers)
+long rc;
+SOCKET serverSocket;
+SOCKET connectedSocket;
+int Output::startTCPServer()
 {
-	long rc;
-	SOCKET serverSocket;
-	SOCKET connectedSocket;
+	
 	SOCKADDR_IN addr; 
 	// Winsock starten
 	rc = startWinsock();
@@ -74,9 +75,6 @@ int Output::startTCPServer(std::vector<Marker*> allMarkers)
 		printf("Neue Verbindung wurde akzeptiert!\n");
 	}
 	//return 0;
-	int len = 13 * allMarkers.size();
-	const char FAR* markerPointer = (const char*)&allMarkers;
-	rc = send(connectedSocket, markerPointer, len, 0);
 }
 
 int startWinsock(void)
@@ -84,6 +82,15 @@ int startWinsock(void)
 	WSADATA wsa;
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
+
+void Output::sendTCPData(std::vector<Marker*> allMarkers) {
+	int len = 13 * allMarkers.size();
+	const char FAR* markerPointer = (const char*)&allMarkers;
+	rc = send(connectedSocket, markerPointer, 26, 0);
+
+}
+
+
 
 
 Output::Output()
