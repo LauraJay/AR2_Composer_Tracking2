@@ -1,7 +1,18 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
+
+#include <uEye.h>
+#include <uEye_tools.h>
+#include <ueye_deprecated.h>
+#include <wchar.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <uEye_input.h>
 #include <Main.h>
 using namespace cv;
+
+
 
 Main::~Main()
 {
@@ -14,6 +25,7 @@ Main::Main() {
 }
 
 
+
 int main()
 {
 
@@ -24,7 +36,7 @@ int main()
 	out->startTCPServer();
 
 	//Einbindung Video Laura 
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
 	
 
 	//Einbindung Video Vera 
@@ -42,16 +54,23 @@ int main()
 
 
 	
-	if (!cap.isOpened())  // check if we succeeded
-		return -1;
+	//if (!cap.isOpened())  // check if we succeeded
+	//	return -1;
 
+	// uEye Caputure
+	//_________________________________________________________________________________________
+	uEye_input* uei = new uEye_input();
+	uei->inituEyeCam();
 	namedWindow("edges", 1);
+	namedWindow("Captured Video", 1);
 	int counter = 0;
+	Mat frame;
 	while (true)
 	{
-		
-		Mat frame;
-		cap >> frame; // get a new frame from camera
+		frame = uei->getCapturedFrame();
+		imshow("Captured Video", frame);
+		if (waitKey(1) >= 0) break;
+		//cap >> frame; // get a new frame from camera
 		if (frame.empty()) {
 			break;
 		}
@@ -113,9 +132,10 @@ int main()
 		//Send Markerdata via TCP
 		out->sendTCPData(marker);
 		imshow("edges", debug);
-		if (waitKey(4) >= 0) break;
+		if (waitKey(1) >= 0) break;
 	}
-
+	uei->exitCamera();
+	delete uei;
 	delete mm;
 	delete out;
 	return EXIT_SUCCESS;
