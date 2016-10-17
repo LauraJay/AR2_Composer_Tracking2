@@ -14,30 +14,30 @@ int Output::startTCPServer()
 {
 	
 	SOCKADDR_IN addr; 
-	// Winsock starten
+	// start Winsock
 	rc = startWinsock();
 	if (rc != 0)
 	{
-		printf("Fehler: startWinsock, fehler code: %d\n", rc);
+		printf("ERROR: startWinsock, code: %d\n", rc);
 		return 1;
 	}
 	else
 	{
-		printf("Winsock gestartet!\n");
+		printf("Winsock started!\n");
 	} 
-	// Socket erstellen
+	// build Socket
 	serverSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (serverSocket == INVALID_SOCKET)
 	{
-		printf("Fehler: Der Socket konnte nicht erstellt werden, fehler code: %d\n", WSAGetLastError());
+		printf("ERROR: The Socket could not be build, code: %d\n", WSAGetLastError());
 		return 1;
 	}
 	else
 	{
-		printf("Socket erstellt!\n");
+		printf("Socket built!\n");
 	} 
 	
-	//port festlegen
+	//define port
 	memset(&addr, 0, sizeof(SOCKADDR_IN));
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(10000);
@@ -45,37 +45,36 @@ int Output::startTCPServer()
 	rc = bind(serverSocket, (SOCKADDR*)&addr, sizeof(SOCKADDR_IN));
 	if (rc == SOCKET_ERROR)
 	{
-		printf("Fehler: bind, fehler code: %d\n", WSAGetLastError());
+		printf("ERROR: bind, code: %d\n", WSAGetLastError());
 		return 1;
 	}
 	else
 	{
-		printf("Socket an port 10000 gebunden\n");
+		printf("port nr. is set to 10000\n");
 	}
-	//server Socket wartet auf Verbindung und "lauscht"
+	// set server Socket in listen modus 
 	rc = listen(serverSocket, 10);
 	if (rc == SOCKET_ERROR)
 	{
-		printf("Fehler: listen, fehler code: %d\n", WSAGetLastError());
+		printf("ERROR: listen, code: %d\n", WSAGetLastError());
 		return 1;
 	}
 	else
 	{
-		printf("serverSocket ist im listen Modus....\n");
+		printf("server Socket is set to listen....\n");
 	}
 
-	//Verbindung akzeptieren
+	//accept connection
 	connectedSocket = accept(serverSocket, NULL, NULL);
 	if (connectedSocket == INVALID_SOCKET)
 	{
-		printf("Fehler: accept, fehler code: %d\n", WSAGetLastError());
+		printf("EROOR: accept, code: %d\n", WSAGetLastError());
 		return 1;
 	}
 	else
 	{
-		printf("Neue Verbindung wurde akzeptiert!\n");
+		printf("New connection accepted!\n");
 	}
-	//return 0;
 }
 
 int startWinsock(void)
@@ -86,14 +85,10 @@ int startWinsock(void)
 
 void Output::sendTCPData(std::vector<Marker*> allMarkers) {
 	rc = send(connectedSocket, getPointerOfMarkerVec(allMarkers), 4100, 0);
-
 }
 
 const char FAR* Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
 	struct MarkerStruct ms[256+1];
-	
-	//const int mc = 256 * 16 + 4;
-	//byte m[mc];
 
 		for (int i = 0; i < allMarkers.size(); i++) {
 			ms[i].id = allMarkers.at(i)->getId();
@@ -101,16 +96,13 @@ const char FAR* Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
 			ms[i].posX = allMarkers.at(i)->getCenter().x;
 			ms[i].posY = allMarkers.at(i)->getCenter().y;
 			ms[i].angle = allMarkers.at(i)->getAngle();
-			/*int x = m[i];
-			printf("Integer: %d\n", x);*/
 		}
+		//Last id is -1 to show the end of information per frame
 		ms[allMarkers.size()].id = -1;
 		printf("Frame: %d\n", c);
 		c++;
 		return (const char FAR*)&ms;
 }
-
-
 
 
 Output::Output()

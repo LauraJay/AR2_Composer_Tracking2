@@ -19,7 +19,7 @@ int main()
 
 	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
-	//TCP starten
+	//start TCP
 	Output* out = new Output();
 	out->startTCPServer();
 
@@ -110,7 +110,7 @@ int main()
 
 		}
 
-		//Senden an Luke
+		//Send Markerdata via TCP
 		out->sendTCPData(marker);
 		imshow("edges", debug);
 		if (waitKey(4) >= 0) break;
