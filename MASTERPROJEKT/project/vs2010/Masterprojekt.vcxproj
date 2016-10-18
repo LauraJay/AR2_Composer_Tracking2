@@ -56,7 +56,7 @@
     <ClCompile>
       <AdditionalOptions>/wd4351 %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\uEye\include;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN64;_CRT_SECURE_NO_WARNINGS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -72,9 +72,9 @@
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world310d.lib;ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
-      <AdditionalLibraryDirectories>..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDataBaseFileName>$(OutDir)Masterprojekt.pdb</ProgramDataBaseFileName>
@@ -107,7 +107,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\debug"<
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies);ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world310.lib;uEye_api_64.lib;ueye_tools_64.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
@@ -128,6 +128,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
     <ClCompile Include="..\..\source\Output.cpp" />
+    <ClCompile Include="..\..\source\uEye_input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Main.h" />
@@ -135,6 +136,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClInclude Include="..\..\source\MarkerDetection.h" />
     <ClInclude Include="..\..\source\MarkerManagement.h" />
     <ClInclude Include="..\..\source\Output.h" />
+    <ClInclude Include="..\..\source\uEye_input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

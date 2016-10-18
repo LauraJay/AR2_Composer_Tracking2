@@ -5,7 +5,7 @@ class MarkerDetection
 {
 private:
 	Mat imageHSV;
-	Mat cTImg;
+	
 	Mat colorThreshold(Mat &imageHSV);
 	std::vector<RotatedRect> detectedRects;
 	std::vector<unsigned char> markedCorners;
@@ -15,7 +15,7 @@ private:
 public:
 	MarkerDetection();
 	~MarkerDetection();
-	void runMarkerDetection(Mat &imageHSV);
+	int runMarkerDetection(Mat &imageHSV);
 	std::vector<RotatedRect> getDetectedRects();
 	std::vector<unsigned char> getMarkedCorners();
 };

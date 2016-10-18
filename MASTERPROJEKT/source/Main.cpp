@@ -1,6 +1,5 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
-
 #include <uEye.h>
 #include <uEye_tools.h>
 #include <ueye_deprecated.h>
@@ -62,35 +61,37 @@ int main()
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
 	namedWindow("edges", 1);
-	namedWindow("Captured Video", 1);
-	int counter = 0;
+	//namedWindow("Captured Video", 1);
+	int counter = -1;
 	Mat frame;
 	while (true)
 	{
+
+		counter++;
+		printf("COUNTER %i \n ", counter);
 		frame = uei->getCapturedFrame();
-		imshow("Captured Video", frame);
-		if (waitKey(1) >= 0) break;
+		/*imshow("Captured Video", frame);
+		if (waitKey(1) >= 0) break;*/
 		//cap >> frame; // get a new frame from camera
-		if (frame.empty()) {
-			break;
-		}
+		if (!frame.empty()) {
+			
+		
 		Mat imageHSV2;
 		cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
 
 		// run Marker Detection
 		MarkerDetection* md = new MarkerDetection();
-		md->runMarkerDetection(imageHSV2);
+		int sucess = md->runMarkerDetection(imageHSV2);
+		if(sucess>0){
 		std::vector<RotatedRect> rects = md->getDetectedRects();
 		std::vector<unsigned char> markedCorners = md->getMarkedCorners();
+
 		//run MarkerManagement
 		for (int i = 0; i < rects.size(); i++)
-		{
-		mm->trackMarker(rects[i], markedCorners[i]);
-		}
+		{mm->trackMarker(rects[i], markedCorners[i]);}
 		marker = mm->getTrackedMarker();
-	
 		delete md;
-		
+		}
 		
 
 		//_____________________________________________________________________________________________________________________________________//
@@ -115,24 +116,26 @@ int main()
 			float angle = m->getAngle();
 			Point2f c = m->getCenter();
 
-			// Print ID to BoxCenter
-			std::ostringstream os;
-			os << id;
-			String s = os.str();
-			
-			putText(debug, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			//// Print ID to BoxCenter
+			//std::ostringstream os;
+			//os << id;
+			//String s = os.str();
+			//
+			//putText(debug, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 		
-			//// Draw Boxes
-			//for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
-			//	line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
-			//}
+			// Draw Boxes
+			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
+				line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
+			}
 
 		}
 
 		//Send Markerdata via TCP
-		out->sendTCPData(marker);
-		imshow("edges", debug);
-		if (waitKey(1) >= 0) break;
+		//out->sendTCPData(marker);
+		imshow("edges",debug);
+		if (waitKey(4) >= 0) break;
+		}
+		mm->getTrackedMarker().empty();
 	}
 	uei->exitCamera();
 	delete uei;

@@ -13,23 +13,35 @@ MarkerDetection::~MarkerDetection()
 {
 }
 
-void MarkerDetection::runMarkerDetection(Mat &imageHSV)
+int MarkerDetection::runMarkerDetection(Mat &imageHSV)
 {
 	// TODO WORKS NOT CORRECT
+
+	Mat cTImg;
 	detectedRects.clear();
 	markedCorners.clear();
+	//printf("start colorThreshold \n");
 	cTImg = colorThreshold(imageHSV);
+	//printf("end colorThreshold \n");
+	//printf("start getObb \n");
 	std::vector<RotatedRect>  box = getOBB(cTImg);
-	Mat cornerThresImg = getCornerThresholdImage(imageHSV);
-
-	for (int i = 0; i < box.size(); i++)
-	{
-		unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
-		if (corner < 255)
-		{	markedCorners.push_back(corner);
-			detectedRects.push_back(box[i]);
+	if (!box.empty()) {
+	/*	printf("end getObb \n");
+		printf("start cornerThres \n");*/
+		Mat cornerThresImg = getCornerThresholdImage(imageHSV);
+		//printf("end cornerThres \n");
+		printf("box size: %i \n", box.size());
+		printf("start detect Corners \n");
+		for (int i = 0; i < box.size(); i++)
+		{
+				unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
+				markedCorners.push_back(corner);
+				detectedRects.push_back(box[i]);
+			
 		}
+		printf("end detect Corners \n");
 	}
+	return 1;
 }
 
 std::vector<RotatedRect> MarkerDetection::getDetectedRects()
@@ -103,23 +115,9 @@ unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &imageHS
 		minMaxIdx(circleimg, &min, &max);
 		if (max == 255) {
 			markedId = i;
-			//break;
-		}
-
-
-		//_______________________________________________________________________________________________________________________________//
-		// For Debug
-		// Print CornerPoints
-	/*	std::ostringstream os;
-		os << i;
-		String s = os.str();
-		putText(imageHSV, s, cornerPoints[i], FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);*/
-		//Circle Green Edges
-		if (max == 255) {
 			circle(imageHSV, cornerPoints[i], rect.size.height / 4, Scalar(255, 0, 255), 2);
 			break;
 		}
-	
 	}
 	return markedId;
 }

@@ -98,7 +98,7 @@ bool MarkerManagement::isTrackedMarker(std::vector<Point2f> points, unsigned cha
 // inits a new trackedMarker
 void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner)
 {
-	if (trackedMarker.size() <= 255) {
+	if (trackedMarker.size() <= 3000) {
 		Marker* m = new Marker(trackedMarker.size() + 1, rectPoints, center, markedCorner);
 		trackedMarker.push_back(m);
 	}

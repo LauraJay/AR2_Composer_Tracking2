@@ -23,7 +23,7 @@ int uEye_input::inituEyeCam() {
 	is_AllocImageMem(hCam, img_width, img_height, img_bpp, &imgMem, &memId);
 	is_SetImageMem(hCam, imgMem, memId);
 	is_SetDisplayMode(hCam, IS_SET_DM_DIB);
-	is_SetColorMode(hCam, IS_CM_RGB8_PACKED);
+	is_SetColorMode(hCam, IS_CM_BGR8_PACKED);
 	is_SetImageSize(hCam, img_width, img_height);
 
 
@@ -72,32 +72,28 @@ cv::Mat uEye_input::getCapturedFrame()
 	if (is_FreezeVideo(hCam, IS_WAIT) == IS_SUCCESS) {
 		void *pMemVoid; //pointer to where the image is stored
 		is_GetImageMem(hCam, &pMemVoid);
-		cv::Mat frame(img_width, img_height, CV_8UC3, pMemVoid);
 
-		//IplImage * img;
-		//img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
-		//img->nSize = 112;
-		//img->ID = 0;
-		//img->nChannels = 3;
-		//img->alphaChannel = 0;
-		//img->depth = 8;
-		//img->dataOrder = 0;
-		//img->origin = 0;
-		//img->align = 4;
-		//img->width = img_width;
-		//img->height = img_height;
-		//img->roi = NULL;
-		//img->maskROI = NULL;
-		//img->imageId = NULL;
-		//img->tileInfo = NULL;
-		//img->imageSize = 3 * img_width*img_height;
-		//img->imageData = (char*)pMemVoid;  //the pointer to imagaData
-		//img->widthStep = 3 * img_width;
-		//img->imageDataOrigin = (char*)pMemVoid; //and again
+		IplImage * img;
+		img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
+		img->nChannels = 3;
+		img->alphaChannel = 0;
+		img->depth = 8;
+		img->dataOrder = 0;
+		img->origin = 0;
+		img->align = 4;
+		img->width = img_width;
+		img->height = img_height;
+		img->imageSize = 3 * img_width*img_height;
+		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
+		img->widthStep = 3 * img_width;
+		img->imageDataOrigin = (char*)pMemVoid; //and again
 		//										//now you can use your img just like a normal OpenCV image
 		//cvNamedWindow("A", 1);
 		//cvShowImage("A", img);
 		//cv::waitKey(1);
+
+
+		frame = cv::cvarrToMat(img);
 	}
 
 	return frame;
