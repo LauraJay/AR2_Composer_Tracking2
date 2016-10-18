@@ -56,7 +56,7 @@ std::vector<unsigned char> MarkerDetection::getMarkedCorners()
 
 Mat MarkerDetection::colorThreshold(Mat &imageHSV) {
 	Mat output;
-	inRange(imageHSV, Scalar(30, 0, 0), Scalar(110, 255, 255), output);
+	inRange(imageHSV, Scalar(55, 0, 100), Scalar(110, 255, 255), output);
 	int erosion_size = 1;
 	Mat element = getStructuringElement(MORPH_RECT,
 		Size(2 * erosion_size + 1, 2 * erosion_size + 1),

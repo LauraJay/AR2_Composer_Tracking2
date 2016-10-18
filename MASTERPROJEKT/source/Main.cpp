@@ -66,6 +66,8 @@ int main()
 	Mat frame;
 	while (true)
 	{
+		//Send Markerdata via TCP
+		out->sendTCPData(marker);
 
 		counter++;
 		printf("COUNTER %i \n ", counter);
@@ -73,8 +75,7 @@ int main()
 		/*imshow("Captured Video", frame);
 		if (waitKey(1) >= 0) break;*/
 		//cap >> frame; // get a new frame from camera
-		if (!frame.empty()) {
-			
+		if (!frame.empty()) {	
 		
 		Mat imageHSV2;
 		cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
@@ -85,14 +86,14 @@ int main()
 		if(sucess>0){
 		std::vector<RotatedRect> rects = md->getDetectedRects();
 		std::vector<unsigned char> markedCorners = md->getMarkedCorners();
-
+		printf("Marked Corners: %i \n",markedCorners.size());
 		//run MarkerManagement
 		for (int i = 0; i < rects.size(); i++)
 		{mm->trackMarker(rects[i], markedCorners[i]);}
 		marker = mm->getTrackedMarker();
 		delete md;
 		}
-		
+		printf("marker Anz: %i \n", marker.size());
 
 		//_____________________________________________________________________________________________________________________________________//
 		//For Debugging
@@ -116,12 +117,12 @@ int main()
 			float angle = m->getAngle();
 			Point2f c = m->getCenter();
 
-			//// Print ID to BoxCenter
-			//std::ostringstream os;
-			//os << id;
-			//String s = os.str();
-			//
-			//putText(debug, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			// Print ID to BoxCenter
+			std::ostringstream os;
+			os << id;
+			String s = os.str();
+			
+			putText(debug, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 		
 			// Draw Boxes
 			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
@@ -130,8 +131,7 @@ int main()
 
 		}
 
-		//Send Markerdata via TCP
-		//out->sendTCPData(marker);
+		
 		imshow("edges",debug);
 		if (waitKey(4) >= 0) break;
 		}
@@ -140,7 +140,7 @@ int main()
 	uei->exitCamera();
 	delete uei;
 	delete mm;
-	delete out;
+	//delete out;
 	return EXIT_SUCCESS;
 }
 
