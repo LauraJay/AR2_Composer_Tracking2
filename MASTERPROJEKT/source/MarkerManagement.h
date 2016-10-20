@@ -1,11 +1,12 @@
 #pragma once
 #include <Marker.h>
+#include <IdMapping.h>
 using namespace cv;
 class MarkerManagement
 {
 private:
 	std::vector<Marker*> trackedMarker;
-	bool isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner);
+	//bool isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner);
 	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
 	bool isMarkerOutOfField();
 	void deleteMarker(int id);
