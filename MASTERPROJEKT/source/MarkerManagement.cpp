@@ -1,41 +1,6 @@
 #include "MarkerManagement.h"
 using namespace cv;
 
-
-bool MarkerManagement::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner)
-{
-	bool isConstant = false;
-	int thres = 10;
-
-	for each (Marker* m in trackedMarker)
-	{
-		if (markedCorner == m->getMarkedCornerID()) {
-			std::vector<Point2f> trakedPs = m->getPoints();
-			bool isConstMarker = true;
-			for each (Point2f trackedP in trakedPs)
-			{
-				bool isMatch = false;
-				for each (Point2f p in points)
-				{
-					if (trackedP.x + thres >= p.x && trackedP.x - thres <= p.x
-						&&trackedP.y + thres >= p.y && trackedP.y - thres <= p.y) {
-						isMatch = true;
-						break;
-					}
-				}
-				isConstMarker &= isMatch;
-				if (!isConstMarker) break;
-			}
-			if (isConstMarker) {
-				isConstant = true;
-				break;
-			}
-		}
-	}
-	return isConstant;
-}
-
-
 std::vector<Marker*> MarkerManagement::getTrackedMarker()
 {
 	return trackedMarker;
@@ -46,7 +11,8 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner)
 	//TODO
 	std::vector<Point2f> rectPoints = rectTOVectorPoints(rect);
 	Point2f center = rect.center;
-	if (!isConstantMarker(rectPoints, markedCorner))
+	IdMapping* im = new IdMapping();
+	if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
 		if (!isTrackedMarker(rectPoints, markedCorner))
 			registerNewMarker(rectPoints, center, markedCorner);
 }
