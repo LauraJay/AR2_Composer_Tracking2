@@ -18,11 +18,12 @@ private:
 			angle = mark.angle;
 			return *this;
 		}
-		float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
+		
 
 public:
 	Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID);
 	~Marker();
+	float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
 	//const int markerCount;
 	//getter
 	int getId();

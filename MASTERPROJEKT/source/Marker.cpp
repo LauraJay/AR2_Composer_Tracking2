@@ -26,10 +26,7 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 	return angleGrad;
-
-
-
-	return 0.0f;
+	//return 0.0f;
 }
 
 Marker::Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)

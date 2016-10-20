@@ -30,8 +30,8 @@ int MarkerDetection::runMarkerDetection(Mat &imageHSV)
 		printf("start cornerThres \n");*/
 		Mat cornerThresImg = getCornerThresholdImage(imageHSV);
 		//printf("end cornerThres \n");
-		printf("box size: %i \n", box.size());
-		printf("start detect Corners \n");
+		//printf("box size: %i \n", box.size());
+		//printf("start detect Corners \n");
 		for (int i = 0; i < box.size(); i++)
 		{
 				unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
@@ -39,7 +39,7 @@ int MarkerDetection::runMarkerDetection(Mat &imageHSV)
 				detectedRects.push_back(box[i]);
 			
 		}
-		printf("end detect Corners \n");
+		//printf("end detect Corners \n");
 	}
 	return 1;
 }

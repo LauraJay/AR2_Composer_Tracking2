@@ -3,16 +3,19 @@
 #include <winsock2.h>
 #include <windows.h>
 #include <stdio.h>
-
+#include <iostream>
+#include <fstream>
 
 int startWinsock(void);
 long rc;
 SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
+//std::ofstream myfile;
+struct Output::MarkerStruct ms[257];
+
 int Output::startTCPServer()
 {
-	
 	SOCKADDR_IN addr; 
 	// start Winsock
 	rc = startWinsock();
@@ -84,24 +87,32 @@ int startWinsock(void)
 }
 
 void Output::sendTCPData(std::vector<Marker*> allMarkers) {
-	rc = send(connectedSocket, getPointerOfMarkerVec(allMarkers), 4100, 0);
+	getPointerOfMarkerVec(allMarkers);
+	const char FAR* markerPointer = (const char*)&ms;	
+	rc = send(connectedSocket, markerPointer, 4100, 0);
 }
 
-const char FAR* Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
-	struct MarkerStruct ms[256+1];
-
+void Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
+	
+	//myfile.open("log.txt", std::ios::out | std::ios::app);
+	//myfile << "Current Frame " << c << "\n";
+	c++;
+		//myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 0; i < allMarkers.size(); i++) {
+			
 			ms[i].id = allMarkers.at(i)->getId();
-			printf("\tid: %d\n", ms[i].id);
+			//myfile << "\t tid " << ms[i].id << "\n";
 			ms[i].posX = allMarkers.at(i)->getCenter().x;
+			//myfile << "\t posX " << ms[i].posX << "\n";
 			ms[i].posY = allMarkers.at(i)->getCenter().y;
+			//myfile << "\t posY " << ms[i].posY << "\n";
 			ms[i].angle = allMarkers.at(i)->getAngle();
+			//myfile << "\t angle " << ms[i].angle << "\n";
 		}
+		
 		//Last id is -1 to show the end of information per frame
 		ms[allMarkers.size()].id = -1;
-		printf("Frame: %d\n", c);
-		c++;
-		return (const char FAR*)&ms;
+		//myfile.close();
 }
 
 

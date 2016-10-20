@@ -27,12 +27,13 @@ Main::Main() {
 
 int main()
 {
-
 	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
+
 	//start TCP
 	Output* out = new Output();
 	out->startTCPServer();
+	int hf = 0;
 
 	//Einbindung Video Laura 
 	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
@@ -66,11 +67,8 @@ int main()
 	Mat frame;
 	while (true)
 	{
-		//Send Markerdata via TCP
-		out->sendTCPData(marker);
-
 		counter++;
-		printf("COUNTER %i \n ", counter);
+		//printf("COUNTER %i \n ", counter);
 		frame = uei->getCapturedFrame();
 		/*imshow("Captured Video", frame);
 		if (waitKey(1) >= 0) break;*/
@@ -86,14 +84,14 @@ int main()
 		if(sucess>0){
 		std::vector<RotatedRect> rects = md->getDetectedRects();
 		std::vector<unsigned char> markedCorners = md->getMarkedCorners();
-		printf("Marked Corners: %i \n",markedCorners.size());
+		//printf("Marked Corners: %i \n",markedCorners.size());
 		//run MarkerManagement
 		for (int i = 0; i < rects.size(); i++)
 		{mm->trackMarker(rects[i], markedCorners[i]);}
 		marker = mm->getTrackedMarker();
 		delete md;
 		}
-		printf("marker Anz: %i \n", marker.size());
+		//printf("marker Anz: %i \n", marker.size());
 
 		//_____________________________________________________________________________________________________________________________________//
 		//For Debugging
@@ -114,8 +112,12 @@ int main()
 			std::vector<cv::Point2f>vertices;
 			vertices= m->getPoints();
 			int id = m->getId();
+			printf("\tid: %d\n", id);
 			float angle = m->getAngle();
+		//	printf("\angle: %d\n", angle);
 			Point2f c = m->getCenter();
+		//	printf("\PosX: %d\n", c.x);
+		//	printf("\PosY: %d\n", c.y);
 
 			// Print ID to BoxCenter
 			std::ostringstream os;
@@ -131,16 +133,19 @@ int main()
 
 		}
 
-		
+		//Send Markerdata via TCP
+		out->sendTCPData(marker);
+
 		imshow("edges",debug);
 		if (waitKey(4) >= 0) break;
 		}
 		mm->getTrackedMarker().empty();
 	}
+
 	uei->exitCamera();
 	delete uei;
 	delete mm;
-	//delete out;
+	delete out;
 	return EXIT_SUCCESS;
 }
 
