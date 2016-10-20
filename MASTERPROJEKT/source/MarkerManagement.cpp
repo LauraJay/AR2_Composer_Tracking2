@@ -5,7 +5,7 @@ using namespace cv;
 bool MarkerManagement::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner)
 {
 	bool isConstant = false;
-	int thres = 10;
+	int thres = 0.02;
 
 	for each (Marker* m in trackedMarker)
 	{
@@ -41,14 +41,14 @@ std::vector<Marker*> MarkerManagement::getTrackedMarker()
 	return trackedMarker;
 }
 
-void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner)
+void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,Size size)
 {
-	//TODO
-	std::vector<Point2f> rectPoints = rectTOVectorPoints(rect);
+	std::vector<Point2f> rectPoints = normalizeRectPoints(rect,size);
 	Point2f center = rect.center;
 	if (!isConstantMarker(rectPoints, markedCorner))
 		if (!isTrackedMarker(rectPoints, markedCorner))
 			registerNewMarker(rectPoints, center, markedCorner);
+	
 }
 
 MarkerManagement::MarkerManagement()
@@ -61,13 +61,22 @@ MarkerManagement::~MarkerManagement()
 {
 }
 
-std::vector<Point2f> MarkerManagement::rectTOVectorPoints(RotatedRect rect) {
+Point2f normalizeCoord(Point2f p, Size size) {
+
+	p.x = p.x / size.width;
+	p.y = p.y/size.height;
+
+	return p;
+}
+
+std::vector<Point2f> MarkerManagement::normalizeRectPoints(RotatedRect rect,Size size) {
 	std::vector<Point2f> v;
 	Point2f p[4];
 	rect.points(p);
 	for (int i = 0; i < 4; i++)
 	{
-		v.push_back(p[i]);
+		Point2f pN = normalizeCoord(p[i], size);
+		v.push_back(pN);
 	}
 	return v;
 }
@@ -102,5 +111,4 @@ void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2
 		Marker* m = new Marker(trackedMarker.size() + 1, rectPoints, center, markedCorner);
 		trackedMarker.push_back(m);
 	}
-
 }

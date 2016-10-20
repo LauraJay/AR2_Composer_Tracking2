@@ -12,10 +12,13 @@ class Main
 	
 private:
 	Main& operator=(const Main&) {};
-	Main(const Main& );
-	
+	Main(const Main&);;
+
 public:
 	Main();
 	~Main();
 };
 
+int main();
+void debug(Mat imageHSV2, std::vector<Marker*> marker, int counter);
+void getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size);
