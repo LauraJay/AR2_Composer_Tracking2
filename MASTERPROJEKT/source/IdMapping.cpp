@@ -1,7 +1,7 @@
 #include "IdMapping.h"
 #include <stdio.h>
 using namespace cv;
-//vector<Point2f> mv = 
+std::vector<Point2f> mv;
 
 std::vector<Point2f> IdMapping::CalculateMotionVector(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm) {
 
@@ -23,7 +23,7 @@ bool IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned 
 bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
 {
 	bool isConstant = false;
-	int thres = 0.005;
+	float thres = 0.01f;
 
 	for each (Marker* m in tm)
 	{

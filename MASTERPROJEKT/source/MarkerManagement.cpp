@@ -8,14 +8,14 @@ std::vector<Marker*> MarkerManagement::getTrackedMarker()
 
 void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,Size size)
 {
-	
+
 		std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
 		Point2f center = rect.center;
 		center.x = center.x / size.width;
 		center.y = center.y / size.height;
 		IdMapping* im = new IdMapping();
 		if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
-			//if (!isTrackedMarker(rectPoints, markedCorner))
+			if (!im->isTrackedMarker(rectPoints, markedCorner))
 			registerNewMarker(rectPoints, center, markedCorner);
 	
 }

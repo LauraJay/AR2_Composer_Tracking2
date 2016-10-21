@@ -10,9 +10,9 @@
 #include <uEye_input.h>
 #include <Main.h>
 using namespace cv;
-#define uEYE
+//#define uEYE
 //#define VIDEOVERA
-//#define VIDEOLAURA
+#define VIDEOLAURA
 //#define TCP
 
 Main::~Main()
@@ -42,8 +42,6 @@ int main()
 
 
 #ifdef VIDEOLAURA
-
-	//Einbindung Video Laura 
 	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -78,10 +76,12 @@ int main()
 
 	int counter = -1;
 	Mat frame;
+#ifdef uEYE
 	for (int i = 0; i < 30; i++)
 	{
 		frame = uei->getCapturedFrame();
 	}
+#endif //uEYE
 
 	namedWindow("edges", 1);
 
