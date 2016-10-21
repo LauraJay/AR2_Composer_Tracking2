@@ -1,23 +1,41 @@
 #include "IdMapping.h"
 #include <stdio.h>
 using namespace cv;
-std::vector<Point2f> mv;
+Point2f mv;
+float x;
+float y;
 
-std::vector<Point2f> IdMapping::CalculateMotionVector(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm) {
+Point2f IdMapping::CalculateMotionVector(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
 
-	//tm.at(0)->getCenter().y;
-	return std::vector<Point2f>();
+	//x = points.at(nr).x - tm.at(nr)->getCenter().x;
+	//y = points.at(nr).y - tm.at(nr)->getCenter().y;
+	//mv = points.at(nr) - tm.at(nr);
+	x = 1.2f;
+	y = 345.32f;
+	mv.x = x;
+	mv.y = y;
+	return mv;
 }
-
-bool IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
+void IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
+//bool IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
 {
-	bool isSameMarker = false;
+	Point2f tmp;
+	for (int i = 0; i < tm.size(); i++) {
+		tmp = CalculateMotionVector(points, markedCorner, tm, i);
+		//	printf("mv  %f \n " , i , ": ", tmp.at(0) , " , " , tmp.at(1));
+		printf("mv  %i \n ", i);
+		printf("mvX %t %f \n ", tmp.x);
+		printf("mvY %t %f \n ", tmp.y);
+
+	}
+
+	/*bool isSameMarker = false;
 
 	for each (Marker* m in tm)
 	{
-	}
+	}*/
 
-	return isSameMarker;
+	//return true;
 }
 
 bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
