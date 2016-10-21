@@ -123,6 +123,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
     <ClCompile Include="..\..\source\Marker.cpp" />
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
@@ -131,6 +132,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\uEye_input.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\source\IdMapping.h" />
     <ClInclude Include="..\..\source\Main.h" />
     <ClInclude Include="..\..\source\Marker.h" />
     <ClInclude Include="..\..\source\MarkerDetection.h" />

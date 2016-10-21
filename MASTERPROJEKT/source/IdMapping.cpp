@@ -6,6 +6,7 @@ using namespace cv;
 std::vector<Point2f> IdMapping::CalculateMotionVector(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm) {
 
 	//tm.at(0)->getCenter().y;
+	return std::vector<Point2f>();
 }
 
 bool IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
@@ -22,7 +23,7 @@ bool IdMapping::MotionEstimationPerMarker(std::vector<Point2f> points, unsigned 
 bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
 {
 	bool isConstant = false;
-	int thres = 10;
+	int thres = 0.005;
 
 	for each (Marker* m in tm)
 	{
@@ -54,6 +55,7 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char mark
 
 bool IdMapping::isMarkerOutOfField() {
 
+	return false;
 }
 
 // Proofs if this is moved Marker with known identity

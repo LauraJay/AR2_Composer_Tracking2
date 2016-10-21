@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\source\uEye_input.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\IdMapping.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp">
@@ -42,6 +45,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\uEye_input.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\IdMapping.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -2,6 +2,8 @@
 #include <opencv2/opencv.hpp>
 #include <Marker.h>
 
+using namespace cv;
+
 class IdMapping {
 
 private:

@@ -10,8 +10,9 @@
 #include <uEye_input.h>
 #include <Main.h>
 using namespace cv;
-
-
+#define uEYE
+//#define VIDEOVERA
+//#define TCP
 
 Main::~Main()
 {
@@ -29,54 +30,76 @@ int main()
 {
 	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
+#ifdef TCP
 
-	////start TCP
-	//Output* out = new Output();
-	//out->startTCPServer();
+	//start TCP
+	Output* out = new Output();
+	out->startTCPServer();
 	int hf = 0;
+#endif 	// TCP
 
 	//Einbindung Video Laura 
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
 
+#ifdef VIDEOVERA
 
 	//Einbindung Video Vera 
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
 
 
 
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
+#endif // VIDEOVERA
+#ifdef uEYE
 
-	//// uEye Caputure
-	////_________________________________________________________________________________________
-	//uEye_input* uei = new uEye_input();
-	//uei->inituEyeCam();
-	namedWindow("edges", 1);
+	// uEye Caputure
+	//_________________________________________________________________________________________
+	uEye_input* uei = new uEye_input();
+	uei->inituEyeCam();
+
 	//namedWindow("Captured Video", 1);
+#endif // uEYE
 	int counter = -1;
 	Mat frame;
+	for (int i = 0; i < 30; i++)
+	{
+		frame = uei->getCapturedFrame();
+	}
+
+	namedWindow("edges", 1);
+
 	while (true)
 	{
 		counter++;
-		//printf("COUNTER %i \n ", counter);
-		//frame = uei->getCapturedFrame();
-		/*imshow("Captured Video", frame);
-		if (waitKey(1) >= 0) break;*/
+		printf("COUNTER %i \n ", counter);
+#ifdef uEYE
+		frame = uei->getCapturedFrame();
+#endif // uEYE
+
+		//// Mark Middel for Calibration
+		//line(frame, Point2f(630, 512), Point2f(650, 512), Scalar(255, 0, 0), 2, CV_AA);
+		//line(frame, Point2f(640, 502), Point2f(640, 522), Scalar(255, 0, 0), 2, CV_AA);
+		//cv::imshow("Captured Video", frame);
+		//if (cv::waitKey(1) >= 0) break;
+
+#ifdef VIDEOVERA
+
 		cap >> frame; // get a new frame from camera
+#endif // VIDEOVERA
 		if (!frame.empty()) {
 			Mat imageHSV2;
 			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
-
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
 			int sucess = md->runMarkerDetection(imageHSV2);
@@ -86,42 +109,47 @@ int main()
 				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
 				for (int i = 0; i < rects.size(); i++)
-				{
-					mm->trackMarker(rects[i], markedCorners[i],frame.size());
-				}
-
+				{	mm->trackMarker(rects[i], markedCorners[i],frame.size());}
 				marker = mm->getTrackedMarker();
 				delete md;
 			}
 			//printf("marker Anz: %i \n", marker.size());
-			debug(imageHSV2, marker,counter);
-			
+			debug(imageHSV2, marker, counter);
+
+			imshow("edges", imageHSV2);
+			if(waitKey(4)>=0)break;
 		}
 
+#ifdef TCP
 			//Send Markerdata via TCP
-			//out->sendTCPData(marker);
+			out->sendTCPData(marker);
+
+#endif // TXP
 			mm->getTrackedMarker().empty();
 		}
-
-		//uei->exitCamera();
-		//delete uei;
+#ifdef uEYE
+		uei->exitCamera();
+		delete uei;
+#endif // uEYE
 		delete mm;
-		//delete out;
+#ifdef TCP
+		delete out;
+#endif // TCP
 		return EXIT_SUCCESS;
 	}
 
 
-	void debug(Mat imageHSV2, std::vector<Marker*> marker, int counter) {
-
+	void debug(Mat &imageHSV2, std::vector<Marker*> marker, int counter) {
+		
 		//_____________________________________________________________________________________________________________________________________//
 		//For Debugging
-		Mat debug = imageHSV2.clone();
+		//Mat debug = imageHSV2.clone();
 		// Print Frame Number
 		counter++;
 		std::ostringstream os2;
 		os2 << counter;
 		String s2 = os2.str();
-		putText(debug, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+		putText(imageHSV2, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 
 		for (int k = 0; k < marker.size(); k++) {
 			Marker* m = marker[k];
@@ -132,32 +160,37 @@ int main()
 			float angle = m->getAngle();
 				//printf("angle: %f\ n", angle);
 			Point2f c = m->getCenter();
+
+			c.x = c.x*imageHSV2.size().width;
+			c.y = c.y*imageHSV2.size().height;
 			//	printf("\PosX: %d\n", c.x);
 			//	printf("\PosY: %d\n", c.y);
-			getPixelCoords(vertices,c,debug.size());
+			vertices = getPixelCoords(vertices,c, imageHSV2.size());
 			// Print ID to BoxCenter
 			std::ostringstream os;
 			os << id;
 			String s = os.str();
 
-			putText(debug, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+			putText(imageHSV2, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 
-			//// Draw Boxes
-			//for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
-			//	line(debug, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
-			//}
+			// Draw Boxes
+			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
+				line(imageHSV2, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
+			}
 		}
-		imshow("edges", debug);
-		waitKey(4);
 	}
 
 
-	void getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size) {
-		for each (Point2f p in vertices)
+	std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size) {
+		for (int i = 0; i < vertices.size(); i++)
 		{
-			p.x = p.x*size.width;
-			p.y = p.y*size.height;
+			int x, y;
+			x = vertices[i].x*size.width;
+			y = vertices[i].y*size.height;
+			vertices.at(i).x = x;
+			vertices.at(i).y = y;
 		}
-		center.x = center.x*size.width;
-		center.y = center.y*size.height;
+		
+		
+		return vertices;
 	}

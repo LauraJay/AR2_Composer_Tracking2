@@ -34,9 +34,11 @@ int MarkerDetection::runMarkerDetection(Mat &imageHSV)
 		//printf("start detect Corners \n");
 		for (int i = 0; i < box.size(); i++)
 		{
-				unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
-				markedCorners.push_back(corner);
-				detectedRects.push_back(box[i]);
+			unsigned char corner = detectMarkedCorner(box[i], imageHSV, cornerThresImg);
+			if (corner < 5) {
+			markedCorners.push_back(corner);
+			detectedRects.push_back(box[i]);
+		}
 			
 		}
 		//printf("end detect Corners \n");
@@ -109,7 +111,7 @@ unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &imageHS
 	for (unsigned int i = 0; i < 4; i++)
 	{
 		Mat circleimg(CornerThresImage.rows, CornerThresImage.cols, CV_8UC1, Scalar(0, 0, 0));
-		circle(circleimg, cornerPoints[i], rect.size.height /2, Scalar(255, 255, 255), -1);
+		circle(circleimg, cornerPoints[i], rect.size.height /4, Scalar(255, 255, 255), -1);
 		bitwise_and(circleimg, CornerThresImage, circleimg);
 		double min, max;
 		minMaxIdx(circleimg, &min, &max);

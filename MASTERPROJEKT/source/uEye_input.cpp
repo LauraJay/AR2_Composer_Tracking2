@@ -42,7 +42,7 @@ int uEye_input::inituEyeCam() {
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 50;
+	double parameter = 40;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 	printf("failed Exposure");
@@ -60,8 +60,8 @@ int uEye_input::inituEyeCam() {
 		nRet = is_Focus(hCam, FOC_CMD_SET_DISABLE_AUTOFOCUS, NULL, 0);
 	}
 
-	/*nRet = is_SetGamma(hCam, 600);
-	enable = 2;*/
+	nRet = is_SetGamma(hCam,2200);
+	//enable = 2;
 
 	return 1;
 
