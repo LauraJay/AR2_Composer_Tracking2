@@ -12,6 +12,7 @@
 using namespace cv;
 #define uEYE
 //#define VIDEOVERA
+//#define VIDEOLAURA
 //#define TCP
 
 Main::~Main()
@@ -30,19 +31,25 @@ int main()
 {
 	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
-#ifdef TCP
 
+
+#ifdef TCP
 	//start TCP
 	Output* out = new Output();
 	out->startTCPServer();
 	int hf = 0;
 #endif 	// TCP
 
+
+#ifdef VIDEOLAURA
+
 	//Einbindung Video Laura 
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+#endif // VIDEOLAURA
 
 #ifdef VIDEOVERA
-
 	//Einbindung Video Vera 
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
@@ -55,21 +62,20 @@ int main()
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
-
-
-
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOVERA
-#ifdef uEYE
 
+
+
+#ifdef uEYE
 	// uEye Caputure
-	//_________________________________________________________________________________________
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
-
 	//namedWindow("Captured Video", 1);
 #endif // uEYE
+
+
 	int counter = -1;
 	Mat frame;
 	for (int i = 0; i < 30; i++)
@@ -93,10 +99,17 @@ int main()
 		//cv::imshow("Captured Video", frame);
 		//if (cv::waitKey(1) >= 0) break;
 
-#ifdef VIDEOVERA
 
+#ifdef VIDEOLAURA
+		cap >> frame; // get a new frame from camera
+#endif // VIDEOLAURA
+
+
+#ifdef VIDEOVERA
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
+
+
 		if (!frame.empty()) {
 			Mat imageHSV2;
 			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
@@ -124,17 +137,23 @@ int main()
 			//Send Markerdata via TCP
 			out->sendTCPData(marker);
 
-#endif // TXP
+#endif // TCP
 			mm->getTrackedMarker().empty();
 		}
 #ifdef uEYE
 		uei->exitCamera();
 		delete uei;
 #endif // uEYE
+
+
 		delete mm;
+
+
 #ifdef TCP
 		delete out;
 #endif // TCP
+
+
 		return EXIT_SUCCESS;
 	}
 
