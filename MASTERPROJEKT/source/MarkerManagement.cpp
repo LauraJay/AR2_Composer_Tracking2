@@ -14,10 +14,12 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 		center.x = center.x / size.width;
 		center.y = center.y / size.height;
 		IdMapping* im = new IdMapping();
-		im->MotionEstimationPerMarker(rectPoints, center, markedCorner, trackedMarker);
+		//isConstant Berechnung Laura
+		if (!im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker))
+		//isConstant Berechnung Vera
 		//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
-		//if (!im->isConstantMarker())
-			if (!im->isTrackedMarker(rectPoints, markedCorner))
+			//if (!im->isConstantMarker())
+			//if (!im->isTrackedMarker(rectPoints, markedCorner))
 			registerNewMarker(rectPoints, center, markedCorner);
 	
 }

@@ -1,0 +1,7358 @@
+Next Frame 
+	 isConstant 0
+Next Frame 
+	 isConstant 0
+Next Frame 
+	 Schleifendurchlauf 2
+	 isConstant 0
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 isConstant 0
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+	 isConstant 1
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+	 Schleifendurchlauf 55
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+	 Schleifendurchlauf 55
+	 Schleifendurchlauf 56
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+	 Schleifendurchlauf 55
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifendurchlauf 5
+	 Schleifendurchlauf 6
+	 Schleifendurchlauf 7
+	 Schleifendurchlauf 8
+	 Schleifendurchlauf 9
+	 Schleifendurchlauf 10
+	 Schleifendurchlauf 11
+	 Schleifendurchlauf 12
+	 Schleifendurchlauf 13
+	 Schleifendurchlauf 14
+	 Schleifendurchlauf 15
+	 Schleifendurchlauf 16
+	 Schleifendurchlauf 17
+	 Schleifendurchlauf 18
+	 Schleifendurchlauf 19
+	 Schleifendurchlauf 20
+	 Schleifendurchlauf 21
+	 Schleifendurchlauf 22
+	 Schleifendurchlauf 23
+	 Schleifendurchlauf 24
+	 Schleifendurchlauf 25
+	 Schleifendurchlauf 26
+	 Schleifendurchlauf 27
+	 Schleifendurchlauf 28
+	 Schleifendurchlauf 29
+	 Schleifendurchlauf 30
+	 Schleifendurchlauf 31
+	 Schleifendurchlauf 32
+	 Schleifendurchlauf 33
+	 Schleifendurchlauf 34
+	 Schleifendurchlauf 35
+	 Schleifendurchlauf 36
+	 Schleifendurchlauf 37
+	 Schleifendurchlauf 38
+	 Schleifendurchlauf 39
+	 Schleifendurchlauf 40
+	 Schleifendurchlauf 41
+	 Schleifendurchlauf 42
+	 Schleifendurchlauf 43
+	 Schleifendurchlauf 44
+	 Schleifendurchlauf 45
+	 Schleifendurchlauf 46
+	 Schleifendurchlauf 47
+	 Schleifendurchlauf 48
+	 Schleifendurchlauf 49
+	 Schleifendurchlauf 50
+	 Schleifendurchlauf 51
+	 Schleifendurchlauf 52
+	 Schleifendurchlauf 53
+	 Schleifendurchlauf 54
+	 Schleifendurchlauf 55
+	 Schleifendurchlauf 56
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+Next Frame 
+	 Schleifendurchlauf 2
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifenabbruch bei 1
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifenabbruch bei 2
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifenabbruch bei 3
+	 isConstant auf true gesetzt 
+Next Frame 
+	 Schleifendurchlauf 2
+	 Schleifendurchlauf 3
+	 Schleifendurchlauf 4
+	 Schleifenabbruch bei 4
+	 isConstant auf true gesetzt 
