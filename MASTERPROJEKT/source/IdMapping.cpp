@@ -12,7 +12,7 @@ float y;
 //Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
 float tCenterConstant = 0.01f;
 float tMarkedCornerConstant = 0.05f;
-float tTranslation = 0.1f;
+float tTranslation = 0.01f;
 
 void IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
 	x = center.x - tm.at(nr)->getCenter().x;
@@ -50,10 +50,10 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 			isConstant = false;
 			//myfile2 << "\t Schleifendurchlauf " << c << "\n";
 		}
-			if (isConstant){
-				isConstant = true;
-				break;
-			}
+		if (isConstant) {
+			isConstant = true;
+			break;
+		}
 	}
 	//myfile2.close();
 	return isConstant;
@@ -67,17 +67,17 @@ bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, 
 		CalculateMotionVectorMarkedCorner(points, center, markedCorner, tm, m->getId() - 1);
 
 		//if (abs(mvC.x) + abs(mvC.y) >= tCenterConstant && abs(mvC.x) + abs(mvC.y) <= tTranslation) {
-			if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
+		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}
 		else {
 			isTranslated = false;
 			//break;
 		}
-			if (isTranslated) {
-				isTranslated = true;
-				break;
-			}
+		if (isTranslated) {
+			isTranslated = true;
+			break;
+		}
 	}
 	return isTranslated;
 }

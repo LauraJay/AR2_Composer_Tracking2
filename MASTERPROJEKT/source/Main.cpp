@@ -44,8 +44,10 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURA
@@ -126,7 +128,9 @@ int main()
 				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
 				for (int i = 0; i < rects.size(); i++)
-				{	mm->trackMarker(rects[i], markedCorners[i],frame.size());}
+				{
+					mm->trackMarker(rects[i], markedCorners[i], frame.size());
+				}
 				marker = mm->getTrackedMarker();
 				delete md;
 				delete mm;
@@ -135,82 +139,82 @@ int main()
 			debug(imageHSV2, marker, counter);
 
 			imshow("edges", imageHSV2);
-			if(waitKey(4)>=0)break;
+			if (waitKey(4) >= 0)break;
 		}
 
 #ifdef TCP
-			//Send Markerdata via TCP
-			out->sendTCPData(marker);
+		//Send Markerdata via TCP
+		out->sendTCPData(marker);
 
 #endif // TCP
-			//mm->getTrackedMarker().empty();
-		}
+		//mm->getTrackedMarker().empty();
+	}
 #ifdef uEYE
-		uei->exitCamera();
-		delete uei;
+	uei->exitCamera();
+	delete uei;
 #endif // uEYE
 
 
-		//delete mm;
+	//delete mm;
 
 
 #ifdef TCP
-		delete out;
+	delete out;
 #endif // TCP
 
 
-		return EXIT_SUCCESS;
-	}
+	return EXIT_SUCCESS;
+}
 
 
-	void debug(Mat &imageHSV2, std::vector<Marker*> marker, int counter) {
-		
-		//_____________________________________________________________________________________________________________________________________//
-		//For Debugging
-		//Mat debug = imageHSV2.clone();
-		// Print Frame Number
-		counter++;
-		std::ostringstream os2;
-		os2 << counter;
-		String s2 = os2.str();
-		putText(imageHSV2, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+void debug(Mat &imageHSV2, std::vector<Marker*> marker, int counter) {
 
-		for (int k = 0; k < marker.size(); k++) {
-			Marker* m = marker[k];
-			std::vector<cv::Point2f>vertices;
-			vertices = m->getPoints();
-			int id = m->getId();
-			printf("\tid: %d\n", id);
-			float angle = m->getAngle();
-			Point2f c = m->getCenter();
-			c.x = c.x*imageHSV2.size().width;
-			c.y = c.y*imageHSV2.size().height;
-			vertices = getPixelCoords(vertices,c, imageHSV2.size());
-			// Print ID to BoxCenter
-			std::ostringstream os;
-			os << id;
-			String s = os.str();
+	//_____________________________________________________________________________________________________________________________________//
+	//For Debugging
+	//Mat debug = imageHSV2.clone();
+	// Print Frame Number
+	counter++;
+	std::ostringstream os2;
+	os2 << counter;
+	String s2 = os2.str();
+	putText(imageHSV2, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
 
-			putText(imageHSV2, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+	for (int k = 0; k < marker.size(); k++) {
+		Marker* m = marker[k];
+		std::vector<cv::Point2f>vertices;
+		vertices = m->getPoints();
+		int id = m->getId();
+		printf("\tid: %d\n", id);
+		float angle = m->getAngle();
+		Point2f c = m->getCenter();
+		c.x = c.x*imageHSV2.size().width;
+		c.y = c.y*imageHSV2.size().height;
+		vertices = getPixelCoords(vertices, c, imageHSV2.size());
+		// Print ID to BoxCenter
+		std::ostringstream os;
+		os << id;
+		String s = os.str();
 
-			// Draw Boxes
-			for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
-				line(imageHSV2, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
-			}
+		putText(imageHSV2, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+
+		// Draw Boxes
+		for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
+			line(imageHSV2, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
 		}
 	}
+}
 
 
-	std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size) {
-		for (int i = 0; i < vertices.size(); i++)
-		{
-			int x, y;
-			x = vertices[i].x*size.width;
-			y = vertices[i].y*size.height;
-			vertices.at(i).x = x;
-			vertices.at(i).y = y;
-		}
-		
-		
-		return vertices;
+std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size) {
+	for (int i = 0; i < vertices.size(); i++)
+	{
+		int x, y;
+		x = vertices[i].x*size.width;
+		y = vertices[i].y*size.height;
+		vertices.at(i).x = x;
+		vertices.at(i).y = y;
 	}
+
+
+	return vertices;
+}
