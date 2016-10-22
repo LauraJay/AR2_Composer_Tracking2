@@ -10,7 +10,7 @@ Point2f mvMC;
 float x;
 float y;
 //Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
-float tCenterConstant = 0.05f;
+float tCenterConstant = 0.01f;
 float tMarkedCornerConstant = 0.05f;
 float tTranslation = 0.1f;
 

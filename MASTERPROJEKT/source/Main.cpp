@@ -29,7 +29,9 @@ Main::Main() {
 
 int main()
 {
-	MarkerManagement* mm = new MarkerManagement();
+	//MarkerManagement* mm = new MarkerManagement(); 
+	/*-> Ich erzeuge mm erst später und lösche es nach jedem frame wieder,
+	damit die Kästen um die Marker neu gesetzt werden. Macht für die debug() Sinn oder?*/
 	std::vector<Marker*> marker;
 
 
@@ -43,6 +45,7 @@ int main()
 
 #ifdef VIDEOLAURA
 	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURA
@@ -115,6 +118,7 @@ int main()
 			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
+			MarkerManagement* mm = new MarkerManagement();
 			int sucess = md->runMarkerDetection(imageHSV2);
 			if (sucess > 0) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
@@ -125,6 +129,7 @@ int main()
 				{	mm->trackMarker(rects[i], markedCorners[i],frame.size());}
 				marker = mm->getTrackedMarker();
 				delete md;
+				delete mm;
 			}
 			//printf("marker Anz: %i \n", marker.size());
 			debug(imageHSV2, marker, counter);
@@ -138,7 +143,7 @@ int main()
 			out->sendTCPData(marker);
 
 #endif // TCP
-			mm->getTrackedMarker().empty();
+			//mm->getTrackedMarker().empty();
 		}
 #ifdef uEYE
 		uei->exitCamera();
@@ -146,7 +151,7 @@ int main()
 #endif // uEYE
 
 
-		delete mm;
+		//delete mm;
 
 
 #ifdef TCP
@@ -177,13 +182,9 @@ int main()
 			int id = m->getId();
 			printf("\tid: %d\n", id);
 			float angle = m->getAngle();
-				//printf("angle: %f\ n", angle);
 			Point2f c = m->getCenter();
-
 			c.x = c.x*imageHSV2.size().width;
 			c.y = c.y*imageHSV2.size().height;
-			//	printf("\PosX: %d\n", c.x);
-			//	printf("\PosY: %d\n", c.y);
 			vertices = getPixelCoords(vertices,c, imageHSV2.size());
 			// Print ID to BoxCenter
 			std::ostringstream os;
