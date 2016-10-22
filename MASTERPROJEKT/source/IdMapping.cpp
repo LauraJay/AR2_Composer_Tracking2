@@ -29,15 +29,15 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
 	float thresholdC = 0.005f;
-	float thresholdMC = 0.005f;
+	float thresholdMC = 0.01f;
 	int c = 1;
 
 	for each (Marker* m in tm)
 	{
 		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
-		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
+		CalculateMotionVectorMarkedCorner(points, center, markedCorner, tm, m->getId() - 1);
 
-		if (abs(mvC.x) + abs(mvC.y) >= thresholdC) {
+		if (abs(mvC.x) + abs(mvC.y) >= thresholdC && abs(mvMC.x) + abs(mvMC.y) >= thresholdMC) {
 			c++;
 			isConstant = false;
 			//myfile2 << "\t Schleifendurchlauf " << c << "\n";
@@ -52,6 +52,31 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 	//myfile2.close();
 	return isConstant;
 }
+
+bool IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
+	bool isRotated = false;
+
+	return isRotated;
+}
+
+bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm){
+	bool isTranslated = false;
+
+	return isTranslated;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
 {

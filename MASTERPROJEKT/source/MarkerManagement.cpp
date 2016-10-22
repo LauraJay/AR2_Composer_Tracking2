@@ -18,6 +18,8 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 		if (!im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker))
 		//isConstant Berechnung Vera
 		//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
+			if (!im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker))
+				if (!im->isRotatedMarker(rectPoints, center, markedCorner, trackedMarker))
 			//if (!im->isConstantMarker())
 			//if (!im->isTrackedMarker(rectPoints, markedCorner))
 			registerNewMarker(rectPoints, center, markedCorner);
