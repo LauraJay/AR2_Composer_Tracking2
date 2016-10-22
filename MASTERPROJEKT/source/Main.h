@@ -15,6 +15,7 @@ private:
 	Main(const Main&);;
 
 public:
+	int [] idOrder;
 	Main();
 	~Main();
 };

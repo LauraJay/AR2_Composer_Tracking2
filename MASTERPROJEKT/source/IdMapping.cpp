@@ -9,10 +9,12 @@ Point2f mvC;
 Point2f mvMC;
 float x;
 float y;
+//int savedId;
 //Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
 float tCenterConstant = 0.01f;
 float tMarkedCornerConstant = 0.05f;
 float tTranslation = 0.01f;
+float tRotattion = 0.01f;
 
 void IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
 	x = center.x - tm.at(nr)->getCenter().x;
@@ -52,6 +54,7 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 		}
 		if (isConstant) {
 			isConstant = true;
+			finalID = m->getId();
 			break;
 		}
 	}
@@ -66,16 +69,15 @@ bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, 
 		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
 		CalculateMotionVectorMarkedCorner(points, center, markedCorner, tm, m->getId() - 1);
 
-		//if (abs(mvC.x) + abs(mvC.y) >= tCenterConstant && abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}
 		else {
 			isTranslated = false;
-			//break;
 		}
 		if (isTranslated) {
 			isTranslated = true;
+			finalID = m->getId();
 			break;
 		}
 	}
@@ -89,15 +91,26 @@ bool IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, uns
 		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
 		CalculateMotionVectorMarkedCorner(points, center, markedCorner, tm, m->getId() - 1);
 
-		if (abs(mvC.x) + abs(mvC.y) >= tCenterConstant && abs(mvMC.x) + abs(mvMC.y) >= tTranslation) {
-			isRotated = false;
+		if (abs(mvC.x) + abs(mvC.y) <= tCenterConstant && abs(mvMC.x) + abs(mvMC.y) <= tRotattion) {
+			isRotated = true;
 		}
 		else {
-			isRotated = true;
-			break;
+			isRotated = false;
 		}
+			if (isRotated) {
+				isRotated = true;
+				finalID = m->getId();
+				break;
+			}
 	}
 	return isRotated;
+}
+
+// Proofs if this is translated Marker with known identity
+bool IdMapping::isTrackedMarker(std::vector<Point2f> points, unsigned char markedCorner)
+{
+	//TODO
+	return false;
 }
 
 
@@ -153,12 +166,7 @@ bool IdMapping::isMarkerOutOfField() {
 	return false;
 }
 
-// Proofs if this is moved Marker with known identity
-bool IdMapping::isTrackedMarker(std::vector<Point2f> points, unsigned char markedCorner)
-{
-	//TODO
-	return false;
-}
+
 
 
 IdMapping::IdMapping()

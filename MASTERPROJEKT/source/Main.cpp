@@ -33,8 +33,8 @@ int main()
 	/*-> Ich erzeuge mm erst später und lösche es nach jedem frame wieder,
 	damit die Kästen um die Marker neu gesetzt werden. Macht für die debug() Sinn oder?*/
 	std::vector<Marker*> marker;
-
-
+	int idOrder[256];
+	
 #ifdef TCP
 	//start TCP
 	Output* out = new Output();
@@ -127,11 +127,12 @@ int main()
 				std::vector<unsigned char> markedCorners = md->getMarkedCorners();
 				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
+				
 				for (int i = 0; i < rects.size(); i++)
 				{
-					mm->trackMarker(rects[i], markedCorners[i], frame.size());
+					idOrder[i] = mm->trackMarker(rects[i], markedCorners[i], frame.size());
 				}
-				marker = mm->getTrackedMarker();
+				marker = mm->getTrackedMarker(idOrder, rects.size());
 				delete md;
 				delete mm;
 			}

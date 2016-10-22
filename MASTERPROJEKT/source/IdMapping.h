@@ -10,6 +10,7 @@ private:
 
 
 public:
+	int finalID;
 	IdMapping();
 	~IdMapping();
 	void CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr);

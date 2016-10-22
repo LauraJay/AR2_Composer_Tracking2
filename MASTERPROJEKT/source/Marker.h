@@ -37,6 +37,7 @@ public:
 	void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
 	void setMarkedCornerID(int id);
 	void setAngle(float angle);
+	void setId(int id);
 
 	
 

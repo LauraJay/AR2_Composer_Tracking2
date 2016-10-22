@@ -1,14 +1,18 @@
 #include "MarkerManagement.h"
 using namespace cv;
 
-std::vector<Marker*> MarkerManagement::getTrackedMarker()
+std::vector<Marker*> MarkerManagement::getTrackedMarker(int idOrder [], int length)
 {
+
+	for (int i = 0; i < length; i++) {
+		//IDS tauschen
+	}
 	return trackedMarker;
 }
 
-void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,Size size)
+int MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,Size size)
 {
-
+		int id;
 		std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
 		Point2f center = rect.center;
 		center.x = center.x / size.width;
@@ -16,14 +20,13 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 		IdMapping* im = new IdMapping();
 		//isConstant Berechnung Laura
 		if (!im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker))
-		//isConstant Berechnung Vera
-		//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
+			//isConstant Berechnung Vera
+			//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
 			if (!im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker))
 				//if (!im->isRotatedMarker(rectPoints, center, markedCorner, trackedMarker))
-			//if (!im->isConstantMarker())
-			//if (!im->isTrackedMarker(rectPoints, markedCorner))
+				id = im->finalID;
 			registerNewMarker(rectPoints, center, markedCorner);
-	
+			return id;
 }
 
 MarkerManagement::MarkerManagement()
