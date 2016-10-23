@@ -29,10 +29,10 @@ Main::Main() {
 
 int main()
 {
-	MarkerManagement* mm = new MarkerManagement(); 
+	MarkerManagement* mm = new MarkerManagement();
 	std::vector<Marker*> marker;
 	int idOrder[256];
-	
+
 #ifdef TCP
 	//start TCP
 	Output* out = new Output();
@@ -42,8 +42,9 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/006_Nacheinander_Hineinschieben.avi");
 	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 
 	if (!cap.isOpened())  // check if we succeeded
@@ -125,14 +126,24 @@ int main()
 				std::vector<unsigned char> markedCorners = md->getMarkedCorners();
 				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
+
 				for (int i = 0; i < rects.size(); i++)
 				{
-					mm->trackMarker(rects[i], markedCorners[i], frame.size());
+					if (counter < 2) {
+						std::vector<Point2f> rectPoints = mm->normalizeRectPoints(rects[i], frame.size());
+						Point2f center = rects[i].center;
+						center.x = center.x / frame.size().width;
+						center.y = center.y / frame.size().height;
+						mm->firstInit(i+1, rectPoints, center, markedCorners[i]);
+					}
+					else {
+						mm->trackMarker(rects[i], markedCorners[i], frame.size());
+					}
 				}
 				marker = mm->getTrackedMarker();
 				delete md;
 				//delete mm;
-				
+
 			}
 			//printf("marker Anz: %i \n", marker.size());
 			debug(imageHSV2, marker, counter);

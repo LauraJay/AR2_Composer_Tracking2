@@ -6,15 +6,16 @@ class MarkerManagement
 {
 private:
 	std::vector<Marker*> trackedMarker;
-	//bool isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner);
-	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
 	bool isMarkerOutOfField();
 	void deleteMarker(int id);
 	void registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
-	
+
 public:
 	std::vector<Marker*> getTrackedMarker();
-	void trackMarker(RotatedRect rect, unsigned char markedCorner,Size size);
+	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
+	void setCurrentMarkerValues(int id, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
+	void trackMarker(RotatedRect rect, unsigned char markedCorner, Size size);
+	void firstInit(int id, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
 	MarkerManagement();
 	~MarkerManagement();
 };
