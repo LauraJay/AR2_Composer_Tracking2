@@ -13,8 +13,8 @@ private:
 	void registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
 	
 public:
-	std::vector<Marker*> getTrackedMarker(int idOrder [], int length);
-	int trackMarker(RotatedRect rect, unsigned char markedCorner,Size size);
+	std::vector<Marker*> getTrackedMarker();
+	void trackMarker(RotatedRect rect, unsigned char markedCorner,Size size);
 	MarkerManagement();
 	~MarkerManagement();
 };

@@ -29,9 +29,7 @@ Main::Main() {
 
 int main()
 {
-	//MarkerManagement* mm = new MarkerManagement(); 
-	/*-> Ich erzeuge mm erst später und lösche es nach jedem frame wieder,
-	damit die Kästen um die Marker neu gesetzt werden. Macht für die debug() Sinn oder?*/
+	MarkerManagement* mm = new MarkerManagement(); 
 	std::vector<Marker*> marker;
 	int idOrder[256];
 	
@@ -120,21 +118,21 @@ int main()
 			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
-			MarkerManagement* mm = new MarkerManagement();
+			//MarkerManagement* mm = new MarkerManagement();
 			int sucess = md->runMarkerDetection(imageHSV2);
 			if (sucess > 0) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
 				std::vector<unsigned char> markedCorners = md->getMarkedCorners();
 				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
-				
 				for (int i = 0; i < rects.size(); i++)
 				{
-					idOrder[i] = mm->trackMarker(rects[i], markedCorners[i], frame.size());
+					mm->trackMarker(rects[i], markedCorners[i], frame.size());
 				}
-				marker = mm->getTrackedMarker(idOrder, rects.size());
+				marker = mm->getTrackedMarker();
 				delete md;
-				delete mm;
+				//delete mm;
+				
 			}
 			//printf("marker Anz: %i \n", marker.size());
 			debug(imageHSV2, marker, counter);
@@ -156,7 +154,7 @@ int main()
 #endif // uEYE
 
 
-	//delete mm;
+	delete mm;
 
 
 #ifdef TCP

@@ -9,11 +9,10 @@ Point2f mvC;
 Point2f mvMC;
 float x;
 float y;
-//int savedId;
 //Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
 float tCenterConstant = 0.01f;
 float tMarkedCornerConstant = 0.05f;
-float tTranslation = 0.01f;
+float tTranslation = 0.1f;
 float tRotattion = 0.01f;
 
 void IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
@@ -54,7 +53,6 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 		}
 		if (isConstant) {
 			isConstant = true;
-			finalID = m->getId();
 			break;
 		}
 	}
@@ -77,7 +75,6 @@ bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, 
 		}
 		if (isTranslated) {
 			isTranslated = true;
-			finalID = m->getId();
 			break;
 		}
 	}
@@ -99,7 +96,6 @@ bool IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, uns
 		}
 			if (isRotated) {
 				isRotated = true;
-				finalID = m->getId();
 				break;
 			}
 	}

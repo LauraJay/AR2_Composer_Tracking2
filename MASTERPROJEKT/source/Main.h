@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include <MarkerDetection.h>
 #include <MarkerManagement.h>
+#include <IdMapping.h>
 #include <Marker.h>
 #include <Output.h>
 
@@ -15,7 +16,6 @@ private:
 	Main(const Main&);;
 
 public:
-	int [] idOrder;
 	Main();
 	~Main();
 };
