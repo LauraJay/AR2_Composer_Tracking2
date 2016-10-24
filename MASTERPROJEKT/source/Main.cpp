@@ -119,7 +119,6 @@ int main()
 			cvtColor(frame, imageHSV2, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
-			//MarkerManagement* mm = new MarkerManagement();
 			int sucess = md->runMarkerDetection(imageHSV2);
 			if (sucess > 0) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
@@ -129,12 +128,12 @@ int main()
 
 				for (int i = 0; i < rects.size(); i++)
 				{
-					if (counter < 2) {
+					if (counter < 1) {
 						std::vector<Point2f> rectPoints = mm->normalizeRectPoints(rects[i], frame.size());
 						Point2f center = rects[i].center;
 						center.x = center.x / frame.size().width;
 						center.y = center.y / frame.size().height;
-						mm->firstInit(i+1, rectPoints, center, markedCorners[i]);
+						mm->registerNewMarker(rectPoints, center, markedCorners[i]);
 					}
 					else {
 						mm->trackMarker(rects[i], markedCorners[i], frame.size());
@@ -142,7 +141,6 @@ int main()
 				}
 				marker = mm->getTrackedMarker();
 				delete md;
-				//delete mm;
 
 			}
 			//printf("marker Anz: %i \n", marker.size());
@@ -157,7 +155,7 @@ int main()
 		out->sendTCPData(marker);
 
 #endif // TCP
-		//mm->getTrackedMarker().empty();
+		mm->getTrackedMarker().empty();
 	}
 #ifdef uEYE
 	uei->exitCamera();

@@ -9,7 +9,6 @@ Point2f mvC;
 Point2f mvMC;
 float x;
 float y;
-int matchID = 0;
 //Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
 float tCenterConstant = 0.01f;
 float tMarkedCornerConstant = 0.05f;
@@ -30,12 +29,12 @@ void IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, P
 	mvMC.y = y;
 }
 
-bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
+int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
 	/*myfile2.open("isConstant.txt", std::ios::out | std::ios::app);
 	myfile2 << "Next Frame " << "\n";*/
 	MarkerManagement* mm = new MarkerManagement();
 	bool isConstant = false;
-	int c = 1;
+	int c = 1, matchID=0;
 
 	for each (Marker* m in tm)
 	{
@@ -62,12 +61,13 @@ bool IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, un
 	}
 	//myfile2.close();
 	//delete mm;
-	return isConstant;
+	return matchID;
 }
 
-bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
+int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
 	MarkerManagement* mm = new MarkerManagement();
 	bool isTranslated = false;
+	int matchID = 0;
 	for each (Marker* m in tm)
 	{
 		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
@@ -87,11 +87,12 @@ bool IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, 
 		}
 	}
 	delete mm;
-	return isTranslated;
+	return matchID;
 }
-
-bool IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
+//Noch mal überdenken!
+int IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
 	bool isRotated = false;
+	int matchID = 0;
 	for each (Marker* m in tm)
 	{
 		CalculateMotionVectorCenter(points, center, markedCorner, tm, m->getId() - 1);
@@ -109,18 +110,11 @@ bool IdMapping::isRotatedMarker(std::vector<Point2f> points, Point2f center, uns
 			break;
 		}
 	}
-	return isRotated;
+	return matchID;
 }
 
 
-std::vector<Marker*>IdMapping::CurrentMarker(std::vector<Marker*> tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
-	if (matchID <= tm.size()) {
-		Marker* updatedMarker = new Marker(matchID, rectPoints, center, markedCorner);
-		tm.at(matchID) = updatedMarker;
-		delete updatedMarker;
-	}
-	return tm;
-}
+
 
 
 
@@ -148,38 +142,38 @@ bool IdMapping::isTrackedMarker(std::vector<Point2f> points, unsigned char marke
 
 
 
-bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
-{
-	bool isConstant = false;
-	float thres = 0.01f;
-
-	for each (Marker* m in tm)
-	{
-		if (markedCorner == m->getMarkedCornerID()) {
-			std::vector<Point2f> trakedPs = m->getPoints();
-			bool isConstMarker = true;
-			for each (Point2f trackedP in trakedPs)
-			{
-				bool isMatch = false;
-				for each (Point2f p in points)
-				{
-					if (trackedP.x + thres >= p.x && trackedP.x - thres <= p.x
-						&&trackedP.y + thres >= p.y && trackedP.y - thres <= p.y) {
-						isMatch = true;
-						break;
-					}
-				}
-				isConstMarker &= isMatch;
-				if (!isConstMarker) break;
-			}
-			if (isConstMarker) {
-				isConstant = true;
-				break;
-			}
-		}
-	}
-	return isConstant;
-}
+//bool IdMapping::isConstantMarker(std::vector<Point2f> points, unsigned char markedCorner, std::vector<Marker*> tm)
+//{
+//	bool isConstant = false;
+//	float thres = 0.01f;
+//
+//	for each (Marker* m in tm)
+//	{
+//		if (markedCorner == m->getMarkedCornerID()) {
+//			std::vector<Point2f> trakedPs = m->getPoints();
+//			bool isConstMarker = true;
+//			for each (Point2f trackedP in trakedPs)
+//			{
+//				bool isMatch = false;
+//				for each (Point2f p in points)
+//				{
+//					if (trackedP.x + thres >= p.x && trackedP.x - thres <= p.x
+//						&&trackedP.y + thres >= p.y && trackedP.y - thres <= p.y) {
+//						isMatch = true;
+//						break;
+//					}
+//				}
+//				isConstMarker &= isMatch;
+//				if (!isConstMarker) break;
+//			}
+//			if (isConstMarker) {
+//				isConstant = true;
+//				break;
+//			}
+//		}
+//	}
+//	return isConstant;
+//}
 
 bool IdMapping::isMarkerOutOfField() {
 

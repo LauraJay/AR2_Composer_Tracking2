@@ -72,21 +72,25 @@ float Marker::getAngle()
 	return angle;
 }
 
-void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center)
+void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f c)
 {	
 	rectPoints = rect;
-	center = center;
-
+	center = c;
 }
 
 void Marker::setMarkedCornerID(int id)
 {
-	Marker::id = id;
+	Marker::markCornerID = id;
 }
 
 void Marker::setAngle(float angle)
 {
 	Marker::angle = angle;
+}
+
+void Marker::setId(int id)
+{
+	Marker::id = id;
 }
 
 

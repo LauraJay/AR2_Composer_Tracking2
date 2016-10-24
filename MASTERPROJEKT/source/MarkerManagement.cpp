@@ -13,18 +13,24 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 	center.x = center.x / size.width;
 	center.y = center.y / size.height;
 	IdMapping* im = new IdMapping();
+	//isConstant Berechnung Vera
+	//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
 	//isConstant Berechnung Laura
-	if (im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker)) {
-		trackedMarker = im->CurrentMarker(trackedMarker, rectPoints, center, markedCorner);
+	int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker);
+	if (matchID>0) {
+		CurrentMarker(trackedMarker[matchID-1], rectPoints, center, markedCorner);
+	}
+	else if (matchID=im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker)>0) {
+		CurrentMarker(trackedMarker[matchID - 1], rectPoints, center, markedCorner);
+		}
+	else if (matchID=im->isRotatedMarker(rectPoints, center, markedCorner, trackedMarker)>0) {
+		CurrentMarker(trackedMarker[matchID - 1], rectPoints, center, markedCorner);
+	}
+	else{
+		registerNewMarker(rectPoints, center, markedCorner);
 	}
 
-	else {
-		//isConstant Berechnung Vera
-		//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
-		//if (!im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker))
-			//if (!im->isRotatedMarker(rectPoints, center, markedCorner, trackedMarker))
-			registerNewMarker(rectPoints, center, markedCorner);
-	}
+	delete im;
 }
 
 MarkerManagement::MarkerManagement()
@@ -74,21 +80,6 @@ void MarkerManagement::deleteMarker(int id)
 	//delete &m;
 }
 
-//If detected Marker is a known one, the linked information will be updated
-void MarkerManagement::setCurrentMarkerValues(int id, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner)
-{
-	if (id <= trackedMarker.size()) {
-		Marker* updatedMarker = new Marker(id, rectPoints, center, markedCorner);
-		trackedMarker.at(id) = updatedMarker;
-		delete updatedMarker;
-	}
-}
-
-void MarkerManagement::firstInit(int id, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
-	Marker* m = new Marker(id, rectPoints, center, markedCorner);
-	trackedMarker.push_back(m);
-}
-
 
 // inits a new trackedMarker
 void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner)
@@ -97,4 +88,9 @@ void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2
 		Marker* m = new Marker(trackedMarker.size() + 1, rectPoints, center, markedCorner);
 		trackedMarker.push_back(m);
 	}
+}
+void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
+	tm->setMarkedCornerID(markedCorner);
+	tm->setPoints(rectPoints, center);
+	tm->computeAngle(markedCorner, rectPoints);
 }
