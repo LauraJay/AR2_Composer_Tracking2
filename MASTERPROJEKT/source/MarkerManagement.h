@@ -15,7 +15,6 @@ public:
 	std::vector<Marker*> getTrackedMarker();
 	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
 	void trackMarker(RotatedRect rect, unsigned char markedCorner, Size size);
-	//void firstInit(int id, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
 	MarkerManagement();
 	~MarkerManagement();
 };

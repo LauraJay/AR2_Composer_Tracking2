@@ -61,8 +61,6 @@ int uEye_input::inituEyeCam() {
 	}
 
 	nRet = is_SetGamma(hCam,2200);
-	//enable = 2;
-
 	return 1;
 
 }

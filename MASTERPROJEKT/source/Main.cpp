@@ -9,10 +9,11 @@
 #include <stdio.h>
 #include <uEye_input.h>
 #include <Main.h>
+
 using namespace cv;
-//#define uEYE
+#define uEYE
 //#define VIDEOVERA
-#define VIDEOLAURA
+//#define VIDEOLAURA
 //#define TCP
 
 Main::~Main()
@@ -24,7 +25,6 @@ Main::~Main()
 Main::Main() {
 	//TODO
 }
-
 
 
 int main()
@@ -54,16 +54,16 @@ int main()
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
 	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOVERA
@@ -74,7 +74,6 @@ int main()
 	// uEye Caputure
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
-	//namedWindow("Captured Video", 1);
 #endif // uEYE
 
 
@@ -123,7 +122,6 @@ int main()
 			if (sucess > 0) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
 				std::vector<unsigned char> markedCorners = md->getMarkedCorners();
-				//printf("Marked Corners: %i \n",markedCorners.size());
 				//run MarkerManagement
 
 				for (int i = 0; i < rects.size(); i++)
@@ -143,7 +141,6 @@ int main()
 				delete md;
 
 			}
-			//printf("marker Anz: %i \n", marker.size());
 			debug(imageHSV2, marker, counter);
 
 			imshow("edges", imageHSV2);
@@ -177,9 +174,6 @@ int main()
 
 void debug(Mat &imageHSV2, std::vector<Marker*> marker, int counter) {
 
-	//_____________________________________________________________________________________________________________________________________//
-	//For Debugging
-	//Mat debug = imageHSV2.clone();
 	// Print Frame Number
 	counter++;
 	std::ostringstream os2;

@@ -13,9 +13,6 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 	center.x = center.x / size.width;
 	center.y = center.y / size.height;
 	IdMapping* im = new IdMapping();
-	//isConstant Berechnung Vera
-	//if (!im->isConstantMarker(rectPoints, markedCorner, trackedMarker))
-	//isConstant Berechnung Laura
 	int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker);
 	if (matchID>0) {
 		CurrentMarker(trackedMarker[matchID-1], rectPoints, center, markedCorner);
