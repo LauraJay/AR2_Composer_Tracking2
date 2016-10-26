@@ -12,24 +12,14 @@ class IdMapping {
 
 private:
 	std::ofstream myfile2;
-	Point2f mvC;
-	Point2f mvMC;
-	float x;
-	float y;
-	//Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
-	float tCenterConstant = 0.03f;
-	float tMarkedCornerConstant = 0.05f;
-	float tTranslation = 0.2f;
-	float tRotattion = 0.03f;
-
-	void CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr);
-	void CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr);
-
+	
 public:
-	int isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm);
-	int isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm);
-	int isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm);
-	bool isMarkerOutOfField();
+	static std::vector<Point2f> IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> trackedMarker);
+	static std::vector<Point2f>  CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> trackedMarker);
+	static int isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs);
+	//static int isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs);
+	static int isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs);
+	static bool isMarkerOutOfField();
 	IdMapping();
 	~IdMapping();
 };

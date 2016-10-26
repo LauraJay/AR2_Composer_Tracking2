@@ -9,8 +9,9 @@ private:
 		std::vector<cv::Point2f> rectPoints;
 		cv::Point2f center;
 		float angle;
-		//mvC
-		//mvMC
+		cv::Point2f motionCenterVec;
+		cv::Point2f motionMarkCornerVec;
+
 		Marker(const Marker& mark) : id(mark.id),rectPoints(mark.rectPoints),markCornerID(mark.markCornerID),center(mark.center),angle(mark.angle) {};
 		Marker& operator=(const Marker& mark) {
 			id = mark.id;
@@ -18,8 +19,6 @@ private:
 			markCornerID = mark.markCornerID;
 			center = mark.center;
 			angle = mark.angle;
-			//mvC
-			//mvMC
 			return *this;
 		}
 		
@@ -30,6 +29,8 @@ public:
 	float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
 
 	//getter
+	cv::Point2f getMotionCenterVec();
+	cv::Point2f getMotionMarkCornerVec();
 	int getId();
 	int* getIdPointer();
 	std::vector<cv::Point2f> getPoints();
@@ -38,12 +39,11 @@ public:
 	float getAngle();
 
 	//setter
+	void setMotionCenterVec(cv::Point2f motionCenterVec);
+	void setMotionMarkCornerVec(cv::Point2f motionMarkCornerVec);
 	void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
 	void setMarkedCornerID(int id);
 	void setAngle(float angle);
 	void setId(int id);
-
-	
-
 };
 
