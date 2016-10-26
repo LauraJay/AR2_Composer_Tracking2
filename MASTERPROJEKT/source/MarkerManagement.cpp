@@ -9,9 +9,7 @@ std::vector<Marker*> MarkerManagement::getTrackedMarker()
 void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner, Size size)
 {
 	std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
-	Point2f center = rect.center;
-	center.x = center.x / size.width;
-	center.y = center.y / size.height;
+	Point2f center = normalizeCoord(rect.center,size);
 	IdMapping* im = new IdMapping();
 	int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker);
 	if (matchID>0) {
@@ -30,17 +28,8 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 	delete im;
 }
 
-MarkerManagement::MarkerManagement()
-{
 
-}
-
-
-MarkerManagement::~MarkerManagement()
-{
-}
-
-Point2f normalizeCoord(Point2f p, Size size) {
+Point2f MarkerManagement::normalizeCoord(Point2f p, Size size) {
 
 	p.x = p.x / size.width;
 	p.y = p.y / size.height;
@@ -60,14 +49,6 @@ std::vector<Point2f> MarkerManagement::normalizeRectPoints(RotatedRect rect, Siz
 	return v;
 }
 
-// checks if Marker is removed from Playfield
-bool MarkerManagement::isMarkerOutOfField()
-{
-	//TODO
-	int id;
-	deleteMarker(id);
-	return false;
-}
 
 // Delete Function of Marker
 void MarkerManagement::deleteMarker(int id)
@@ -81,13 +62,23 @@ void MarkerManagement::deleteMarker(int id)
 // inits a new trackedMarker
 void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner)
 {
-	if (trackedMarker.size() <= 3000) {
 		Marker* m = new Marker(trackedMarker.size() + 1, rectPoints, center, markedCorner);
 		trackedMarker.push_back(m);
-	}
 }
+
 void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
 	tm->setMarkedCornerID(markedCorner);
 	tm->setPoints(rectPoints, center);
 	tm->computeAngle(markedCorner, rectPoints);
+}
+
+MarkerManagement::MarkerManagement()
+{
+
+}
+
+
+MarkerManagement::~MarkerManagement()
+{
+
 }

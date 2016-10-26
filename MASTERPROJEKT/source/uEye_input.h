@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <Marker.h>
 
-
 class uEye_input {
 
 private:
@@ -19,14 +18,11 @@ private:
 	cv::Mat frame;
 	
 public:
-
-	uEye_input();
-
-	~uEye_input();
-
 	int inituEyeCam();
 	cv::Mat getCapturedFrame();
-
 	int exitCamera();
+
+	~uEye_input();
+	uEye_input();
 
 };

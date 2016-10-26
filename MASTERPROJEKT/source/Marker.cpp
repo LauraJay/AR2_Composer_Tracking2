@@ -6,9 +6,7 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	float angleRad;
 	float angleGrad;
 	const double PI(3.14159265);
-	//const int markerCount = 256;
 	cv::Point2f unitVector(100, 0);
-
 	
 	cv::Point2f orientationVector = rectPoints[markCornerID] - center;
 	//Calculate the angle between the unit vector and the vector between the center and the green corner
@@ -19,14 +17,12 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	//Case 1: Green Corner lies above the center of the box
 	if (rectPoints[markCornerID].y <= center.y) {
 		angleGrad = angleRad * 180 / PI;
-		// TODO Void methode und angle nur in Markerobject
 	}
 	//Case 2: Green Corner lies below the center of the box
 	if (rectPoints[markCornerID].y > center.y) {
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 	return angleGrad;
-	//return 0.0f;
 }
 
 Marker::Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)

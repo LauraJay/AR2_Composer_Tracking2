@@ -1,38 +1,20 @@
 #include "IdMapping.h"
-#include <stdio.h>
-#include <fstream>
-#include <stdlib.h>
+
 using namespace cv;
 
-std::ofstream myfile2;
-Point2f mvC;
-Point2f mvMC;
-float x;
-float y;
-//Müssen wir noch automatisieren über die Größe der Marker (wie besprochen)
-float tCenterConstant = 0.01f;
-float tMarkedCornerConstant = 0.05f;
-float tTranslation = 0.1f;
-float tRotattion = 0.01f;
-
 void IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
-	x = center.x - tm.at(nr)->getCenter().x;
-	y = center.y - tm.at(nr)->getCenter().y;
-	mvC.x = x;
-	mvC.y = y;
+	mvC.x = center.x - tm.at(nr)->getCenter().x;
+	mvC.y = center.y - tm.at(nr)->getCenter().y;
 }
 
 void IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, int nr) {
-	x = points.at(markedCorner).x - tm.at(nr)->getCenter().x;
-	y = center.y - tm.at(nr)->getCenter().y;
-	mvMC.x = x;
-	mvMC.y = y;
+	mvMC.x = points.at(markedCorner).x - tm.at(nr)->getCenter().x;
+	mvMC.y = center.y - tm.at(nr)->getCenter().y;
 }
 
 int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
 	/*myfile2.open("isConstant.txt", std::ios::out | std::ios::app);
 	myfile2 << "Next Frame " << "\n";*/
-	MarkerManagement* mm = new MarkerManagement();
 	bool isConstant = false;
 	int c = 1, matchID=0;
 
@@ -45,7 +27,6 @@ int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, uns
 			isConstant = true;
 			/*myfile2 << "\t Schleifenabbruch bei " << c << "\n";
 			myfile2 << "\t isConstant auf true gesetzt \n";*/
-			//break;
 		}
 		else {
 			c++;
@@ -59,12 +40,10 @@ int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, uns
 		}
 	}
 	//myfile2.close();
-	//delete mm;
 	return matchID;
 }
 
 int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm) {
-	MarkerManagement* mm = new MarkerManagement();
 	bool isTranslated = false;
 	int matchID = 0;
 	for each (Marker* m in tm)
@@ -81,11 +60,9 @@ int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, u
 		if (isTranslated) {
 			isTranslated = true;
 			matchID = m->getId();
-			//mm->setCurrentMarkerValues(m->getId(), points, center, markedCorner);
 			break;
 		}
 	}
-	delete mm;
 	return matchID;
 }
 //Noch mal überdenken!
@@ -130,3 +107,4 @@ IdMapping::~IdMapping()
 {
 
 }
+ 

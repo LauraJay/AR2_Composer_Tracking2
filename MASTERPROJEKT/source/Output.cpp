@@ -88,7 +88,7 @@ int startWinsock(void)
 
 void Output::sendTCPData(std::vector<Marker*> allMarkers) {
 	getPointerOfMarkerVec(allMarkers);
-	const char FAR* markerPointer = (const char*)&ms;	
+	const char FAR* markerPointer = (const char*)&ms;
 	rc = send(connectedSocket, markerPointer, 4100, 0);
 }
 
