@@ -3,8 +3,8 @@
 
 using namespace cv;
 //#define uEYE
-#define VIDEOVERA
-//#define VIDEOLAURA
+//#define VIDEOVERA
+#define VIDEOLAURA
 //#define TCP
 
 Main::~Main()
@@ -31,7 +31,7 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
 	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
 	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/006_Nacheinander_Hineinschieben.avi");
 	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
