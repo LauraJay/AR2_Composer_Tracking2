@@ -31,10 +31,18 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/006_Nacheinander_Hineinschieben.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
+	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung3.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus3.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus4.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus5.avi");
+
 
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
