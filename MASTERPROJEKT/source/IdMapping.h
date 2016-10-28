@@ -3,11 +3,11 @@
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <Marker.h>
+//#include <Marker.h>
 #include <MarkerManagement.h>
 
 using namespace cv;
-class IdMapping {
+class IdMapping{
 
 private:
 	std::ofstream myfile2;
