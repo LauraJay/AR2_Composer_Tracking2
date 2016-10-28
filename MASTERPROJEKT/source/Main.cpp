@@ -3,8 +3,8 @@
 
 using namespace cv;
 //#define uEYE
-//#define VIDEOVERA
-#define VIDEOLAURA
+#define VIDEOVERA
+//#define VIDEOLAURA
 //#define TCP
 
 Main::~Main()
@@ -102,6 +102,8 @@ int main()
 #endif // VIDEOVERA
 
 		if (!frame.empty()) {
+			if (counter == 3)
+				printf("");
 			cvtColor(frame, frame, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
@@ -115,6 +117,9 @@ int main()
 
 				for (int i = 0; i < rects.size(); i++)
 				{
+					if (i == 3) {
+						printf("");
+					}
 						mm->trackMarker(rects[i], markedCorners[i], frame.size());
 				}
 				marker = mm->getTrackedMarker();
@@ -126,6 +131,7 @@ int main()
 			imshow("edges", frame);
 			if (waitKey(4) >= 0)break;
 		}
+		else break;
 
 #ifdef TCP
 		//Send Markerdata via TCP

@@ -1,10 +1,12 @@
 #pragma once
+#include <queue>
 #include <Marker.h>
 #include <IdMapping.h>
 using namespace cv;
 class MarkerManagement
 {
 private:
+	std::queue <int> idQueue;
 	std::vector<Marker*> trackedMarker;
 	Point2f normalizeCoord(Point2f p, Size size);
 	void deleteMarker(int id);
