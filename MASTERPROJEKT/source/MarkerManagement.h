@@ -6,12 +6,14 @@ using namespace cv;
 class MarkerManagement
 {
 private:
-	std::queue <int> idQueue;
-	std::vector<Marker*> trackedMarker;
 	Point2f normalizeCoord(Point2f p, Size size);
 	void deleteMarker(int id);
 	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
 	void registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
+protected:
+	std::queue <int> takenIDQueue;
+	std::vector<int> usedIDVec;
+	std::vector<Marker*> trackedMarker;
 
 public:
 	void CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);

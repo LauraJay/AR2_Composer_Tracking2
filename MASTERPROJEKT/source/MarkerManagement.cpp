@@ -8,15 +8,16 @@ std::vector<Marker*> MarkerManagement::getTrackedMarker()
 
 void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner, Size size)
 {
+	IdMapping* im = new IdMapping();
 	std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
 	Point2f center = normalizeCoord(rect.center,size);
-	std::vector<Point2f> motionCenterVecs = IdMapping::CalculateMotionVectorCenter(rectPoints, center, markedCorner,trackedMarker);
-	std::vector<Point2f> motionMarkCornerVecs = IdMapping::CalculateMotionVectorMarkedCorner(rectPoints, center, markedCorner, trackedMarker);
-	int matchID = IdMapping::isConstantMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs);
+	std::vector<Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(rectPoints, center, markedCorner,trackedMarker);
+	std::vector<Point2f> motionMarkCornerVecs = im->CalculateMotionVectorMarkedCorner(rectPoints, center, markedCorner, trackedMarker);
+	int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs);
 	if (matchID>0) {
 		CurrentMarker(trackedMarker[matchID-1], rectPoints, center, markedCorner);
 	}
-	else if (matchID= IdMapping::isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs)>0) {
+	else if (matchID= im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs)>0) {
 		CurrentMarker(trackedMarker[matchID-1], rectPoints, center, markedCorner);
 		}
 	/*else if (matchID= IdMapping::isRotatedMarker(rectPoints, center, markedCorner, trackedMarker)>0) {
@@ -25,6 +26,7 @@ void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner,
 	else{
 		registerNewMarker(rectPoints, center, markedCorner);
 	}
+	delete im;
 }
 
 
@@ -52,10 +54,16 @@ std::vector<Point2f> MarkerManagement::normalizeRectPoints(RotatedRect rect, Siz
 // Delete Function of Marker
 void MarkerManagement::deleteMarker(int id)
 {
-
 	//Marker* m = trackedMarker[id];
 	trackedMarker.erase(trackedMarker.begin() + id);
-	idQueue.push(id);
+	takenIDQueue.push(id);
+	for (int i = 0; i < usedIDVec.size(); i++)
+	{
+		if (usedIDVec[i] == id) {
+			usedIDVec.erase(usedIDVec.begin() + i);
+			break;
+		}
+	}
 	//delete &m;
 }
 
@@ -63,10 +71,11 @@ void MarkerManagement::deleteMarker(int id)
 // inits a new trackedMarker
 void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner)
 {
-	int id = idQueue.front();
-	idQueue.pop();
+	int id = takenIDQueue.front();
+	takenIDQueue.pop();
 	Marker* m = new Marker(id, rectPoints, center, markedCorner);
 	trackedMarker.push_back(m);
+	usedIDVec.push_back(id);
 }
 
 void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
@@ -79,7 +88,7 @@ MarkerManagement::MarkerManagement()
 {
 	for (size_t i = 1 ; i < 200; i++)
 	{
-		idQueue.push(i);
+		takenIDQueue.push(i);
 	}
 }
 
