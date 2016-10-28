@@ -21,7 +21,8 @@ Main::Main() {
 int main()
 {
 	MarkerManagement* mm = new MarkerManagement();
-	std::vector<Marker*> marker;
+	std::array<Marker*,200> marker;
+	std::vector<int> takenIdVec;
 
 #ifdef TCP
 	//start TCP
@@ -42,7 +43,7 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
@@ -51,7 +52,7 @@ int main()
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -123,10 +124,12 @@ int main()
 						mm->trackMarker(rects[i], markedCorners[i], frame.size());
 				}
 				marker = mm->getTrackedMarker();
+				takenIdVec = mm->getTakenIDVec();
+
 				delete md;
 
 			}
-			debug(frame, marker, counter);
+			debug(frame, marker, counter,takenIdVec);
 
 			imshow("edges", frame);
 			if (waitKey(4) >= 0)break;
@@ -155,17 +158,18 @@ int main()
 }
 
 
-void debug(Mat &frame, std::vector<Marker*> marker, int counter) {
-
+void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
+{
 	// Print Frame Number
 	counter++;
 	std::ostringstream os2;
 	os2 << counter;
 	String s2 = os2.str();
 	putText(frame, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
-
-	for (int k = 0; k < marker.size(); k++) {
-		Marker* m = marker[k];
+	for each (int id in takenIDVec)
+	{
+	//for (int k = 0; k < marker.size(); k++) {
+		Marker* m = marker[id];
 		std::vector<cv::Point2f>vertices;
 		vertices = m->getPoints();
 		int id = m->getId();

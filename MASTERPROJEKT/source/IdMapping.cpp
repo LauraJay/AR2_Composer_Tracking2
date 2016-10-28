@@ -2,10 +2,12 @@
 
 using namespace cv;
 
-std::vector<Point2f> IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> trackedMarker) {
+std::vector<Point2f> IdMapping::CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+{
 	std::vector<Point2f> motionVectors;
-	for each (Marker* tm in trackedMarker)
+	for each (int id in takenIDVec)
 	{
+		Marker* tm = trackedMarker[id];
 		Point2f mvC;
 		mvC.x = center.x - tm->getCenter().x;
 		mvC.y = center.y - tm->getCenter().y;
@@ -14,10 +16,12 @@ std::vector<Point2f> IdMapping::CalculateMotionVectorCenter(std::vector<Point2f>
 	return motionVectors;
 }
 
-std::vector<Point2f> IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> trackedMarker) {
+std::vector<Point2f> IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+{
 	std::vector<Point2f> motionVectors;
-	for each (Marker* tm in trackedMarker)
+	for each (int id in takenIDVec)
 	{
+	Marker* tm = trackedMarker[id];
 	Point2f mvMC;
 	mvMC.x = points.at(markedCorner).x - tm->getCenter().x;
 	mvMC.y = center.y - tm->getCenter().y;
@@ -26,7 +30,8 @@ std::vector<Point2f> IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Po
 	return motionVectors;
 }
 
-int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs , std::vector<Point2f> motionMarkCornerVecs) {
+int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs, std::vector<int> takenIDVec)
+{
 	/*myfile2.open("isConstant.txt", std::ios::out | std::ios::app);
 	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
@@ -34,9 +39,10 @@ int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, uns
 	float tCenterConstant = 0.03f;
 	float tMarkedCornerConstant = 0.05f;
 
-	for (int i = 0; i < tm.size(); i++)
+	for (int i = 0; i < takenIDVec.size(); i++)
 	{
-		Marker* m = tm[i];
+		int id = takenIDVec[i];
+		Marker* m = trackedMarker[id];
 		Point2f mvC = motionCenterVecs[i];
 		Point2f mvMC = motionMarkCornerVecs[i];
 		if (abs(mvC.x) + abs(mvC.y) <= tCenterConstant && abs(mvMC.x) + abs(mvMC.y) <= tMarkedCornerConstant) {
@@ -58,13 +64,15 @@ int IdMapping::isConstantMarker(std::vector<Point2f> points, Point2f center, uns
 	return matchID;
 }
 
-int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs) {
+int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs, std::vector<int> takenIDVec)
+{
 	bool isTranslated = false;
 	int matchID = 0;
 	float tTranslation = 0.2f;
-	for (int i = 0; i < tm.size(); i++)
+	for (int i = 0; i < takenIDVec.size(); i++)
 	{
-		Marker* m = tm[i];
+		int id = takenIDVec[i];
+		Marker* m = trackedMarker[id];
 		Point2f mvC = motionCenterVecs[i];
 		Point2f mvMC = motionMarkCornerVecs[i];
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
@@ -116,10 +124,6 @@ bool IdMapping::isMarkerOutOfField() {
 IdMapping::IdMapping()
 {
 }
-
-
-
-
 
 
 IdMapping::~IdMapping()
