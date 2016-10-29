@@ -42,6 +42,14 @@ int main()
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus3.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus4.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/ReinRaus5.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap3.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/TotalCover1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/TotalCover2.avi");
+
+
+
 
 
 	if (!cap.isOpened())  // check if we succeeded
@@ -130,7 +138,9 @@ int main()
 
 			}
 			debug(frame, marker, counter);
-
+			/*int screenX = GetSystemMetrics(SM_CXSCREEN);
+			int screenY = GetSystemMetrics(SM_CYSCREEN);
+			resizeWindow("edges", screenX, screenY);*/			
 			imshow("edges", frame);
 			if (waitKey(4) >= 0)break;
 		}
