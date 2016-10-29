@@ -1,4 +1,4 @@
-#include "Output.h"
+#include "TCP_output.h"
 #pragma comment(lib,"ws2_32.lib") //ggf. auskommentieren
 #include <winsock2.h>
 #include <windows.h>
@@ -12,9 +12,9 @@ SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
 //std::ofstream myfile;
-struct Output::MarkerStruct ms[257];
+struct TCP_output::MarkerStruct ms[257];
 
-int Output::startTCPServer()
+int TCP_output::startTCPServer()
 {
 	SOCKADDR_IN addr; 
 	// start Winsock
@@ -86,13 +86,13 @@ int startWinsock(void)
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
 
-void Output::sendTCPData(std::vector<Marker*> allMarkers) {
+void TCP_output::sendTCPData(std::array<Marker*, 200> allMarkers) {
 	getPointerOfMarkerVec(allMarkers);
 	const char FAR* markerPointer = (const char*)&ms;
 	rc = send(connectedSocket, markerPointer, 4100, 0);
 }
 
-void Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
+void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers) {
 	
 	//myfile.open("log.txt", std::ios::out | std::ios::app);
 	//myfile << "Current Frame " << c << "\n";
@@ -116,12 +116,12 @@ void Output::getPointerOfMarkerVec(std::vector<Marker*> allMarkers) {
 }
 
 
-Output::Output()
+TCP_output::TCP_output()
 {
 
 }
 
-Output::~Output()
+TCP_output::~TCP_output()
 {
 
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include <opencv2/opencv.hpp>
+#include <array>
 #include <Marker.h>
 
 
-class Output {
+class TCP_output {
 
 private:
 	
@@ -16,9 +17,9 @@ public:
 		float angle;
 	};
 	int startTCPServer();
-	void sendTCPData(std::vector<Marker*> allMarkers);
-	void getPointerOfMarkerVec(std::vector<Marker*> allMarkers);
-	Output();
-	~Output();
+	void sendTCPData(std::array<Marker*, 200> allMarkers);
+	void getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers);
+	TCP_output();
+	~TCP_output();
 
 };

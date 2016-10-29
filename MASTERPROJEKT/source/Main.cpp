@@ -3,9 +3,9 @@
 
 using namespace cv;
 //#define uEYE
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURA
-//#define TCP
+#define TCP
 
 Main::~Main()
 {
@@ -26,7 +26,7 @@ int main()
 
 #ifdef TCP
 	//start TCP
-	Output* out = new Output();
+	TCP_output* out = new TCP_output();
 	out->startTCPServer();
 #endif 	// TCP
 
