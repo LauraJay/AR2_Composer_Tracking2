@@ -6,7 +6,7 @@ using namespace cv;
 //#define VIDEOVERA
 #define VIDEOLAURA
 //#define TCP
-//#define logFile
+#define logFile
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -37,11 +37,11 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
+	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung2.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift1.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift2.avi");
-	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Register1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Register1.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus1.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus2.avi");
 	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap1.avi");
@@ -147,7 +147,7 @@ int main()
 				delete md;
 
 			}
-			//debug(frame, marker, counter,takenIdVec);
+			debug(frame, marker, counter,takenIdVec);
 
 			imshow("edges", frame);
 			if (waitKey(4) >= 0)break;

@@ -86,7 +86,7 @@ void MarkerManagement::registerNewMarker(std::vector<Point2f> rectPoints, Point2
 void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner) {
 	tm->setMarkedCornerID(markedCorner);
 	tm->setPoints(rectPoints, center);
-	tm->computeAngle(markedCorner, rectPoints);
+	tm->setAngle(tm->computeAngle(markedCorner, rectPoints));
 }
 
 MarkerManagement::MarkerManagement()
