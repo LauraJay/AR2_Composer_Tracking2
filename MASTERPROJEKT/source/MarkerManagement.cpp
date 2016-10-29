@@ -89,6 +89,8 @@ void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints
 	tm->setAngle(tm->computeAngle(markedCorner, rectPoints));
 }
 
+
+
 MarkerManagement::MarkerManagement()
 {
 	for (size_t i = 1 ; i < 200; i++)
