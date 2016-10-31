@@ -18,13 +18,13 @@
     <ClInclude Include="..\..\source\MarkerManagement.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\Output.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\uEye_input.h">
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\IdMapping.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\TCP_output.h">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClCompile Include="..\..\source\MarkerManagement.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Output.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\uEye_input.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\IdMapping.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\TCP_output.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,905 @@
+Current Frame 0
+Current Frame 1
+Current Frame 2
+Current Frame 3
+Current Frame 4
+Current Frame 5
+Current Frame 6
+Current Frame 7
+Current Frame 8
+Current Frame 9
+Current Frame 10
+Current Frame 11
+Current Frame 12
+Current Frame 13
+Current Frame 14
+Current Frame 15
+Current Frame 16
+Current Frame 17
+Current Frame 18
+Current Frame 19
+Current Frame 20
+Current Frame 21
+Current Frame 22
+Current Frame 23
+Current Frame 24
+Current Frame 25
+Current Frame 26
+Current Frame 27
+Current Frame 28
+Current Frame 29
+Current Frame 30
+Current Frame 31
+Current Frame 32
+Current Frame 33
+Current Frame 34
+Current Frame 35
+Current Frame 36
+Current Frame 37
+Current Frame 38
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 39
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 40
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 41
+	 ID: 1
+	 	  ANGLE: 221.541
+	 	  CENTER X: 731.473 CENTER Y: 255.698
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 42
+	 ID: 1
+	 	  ANGLE: 233.997
+	 	  CENTER X: 720.199 CENTER Y: 288.206
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 43
+	 ID: 1
+	 	  ANGLE: 229.67
+	 	  CENTER X: 706.579 CENTER Y: 312.787
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 44
+	 ID: 1
+	 	  ANGLE: 225.478
+	 	  CENTER X: 699.514 CENTER Y: 318.919
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 45
+	 ID: 1
+	 	  ANGLE: 227.106
+	 	  CENTER X: 699.688 CENTER Y: 321.934
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 46
+	 ID: 1
+	 	  ANGLE: 227.211
+	 	  CENTER X: 702.857 CENTER Y: 322.789
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 47
+	 ID: 1
+	 	  ANGLE: 227.211
+	 	  CENTER X: 702.857 CENTER Y: 322.789
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 48
+	 ID: 1
+	 	  ANGLE: 229.786
+	 	  CENTER X: 702.583 CENTER Y: 321.196
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 49
+	 ID: 1
+	 	  ANGLE: 227.558
+	 	  CENTER X: 702.852 CENTER Y: 322.73
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 50
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 51
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 52
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 53
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 54
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 55
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 56
+	 ID: 1
+	 	  ANGLE: 218.738
+	 	  CENTER X: 702.901 CENTER Y: 321.98
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 57
+	 ID: 1
+	 	  ANGLE: 182.144
+	 	  CENTER X: 696.336 CENTER Y: 321.247
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 58
+	 ID: 1
+	 	  ANGLE: 168.505
+	 	  CENTER X: 692.377 CENTER Y: 319.184
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 59
+	 ID: 1
+	 	  ANGLE: 168.505
+	 	  CENTER X: 692.377 CENTER Y: 319.184
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 60
+	 ID: 1
+	 	  ANGLE: 140.068
+	 	  CENTER X: 683.058 CENTER Y: 314.288
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 61
+	 ID: 1
+	 	  ANGLE: 129.262
+	 	  CENTER X: 679.5 CENTER Y: 311
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 62
+	 ID: 1
+	 	  ANGLE: 104.029
+	 	  CENTER X: 670.234 CENTER Y: 308.858
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 63
+	 ID: 1
+	 	  ANGLE: 77.1251
+	 	  CENTER X: 661.5 CENTER Y: 302.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 64
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 65
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 66
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 67
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 68
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 0
+Current Frame 1
+Current Frame 2
+Current Frame 3
+Current Frame 4
+Current Frame 5
+Current Frame 6
+Current Frame 7
+Current Frame 8
+Current Frame 9
+Current Frame 10
+Current Frame 11
+Current Frame 12
+Current Frame 13
+Current Frame 14
+Current Frame 15
+Current Frame 16
+Current Frame 17
+Current Frame 18
+Current Frame 19
+Current Frame 20
+Current Frame 21
+Current Frame 22
+Current Frame 23
+Current Frame 24
+Current Frame 25
+Current Frame 26
+Current Frame 27
+Current Frame 28
+Current Frame 29
+Current Frame 30
+Current Frame 31
+Current Frame 32
+Current Frame 33
+Current Frame 34
+Current Frame 35
+Current Frame 36
+Current Frame 37
+Current Frame 38
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 39
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 40
+	 ID: 1
+	 	  ANGLE: 281.566
+	 	  CENTER X: 737.255 CENTER Y: 146.165
+Current Frame 41
+	 ID: 1
+	 	  ANGLE: 221.541
+	 	  CENTER X: 731.473 CENTER Y: 255.698
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 42
+	 ID: 1
+	 	  ANGLE: 233.997
+	 	  CENTER X: 720.199 CENTER Y: 288.206
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 43
+	 ID: 1
+	 	  ANGLE: 229.67
+	 	  CENTER X: 706.579 CENTER Y: 312.787
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 44
+	 ID: 1
+	 	  ANGLE: 225.478
+	 	  CENTER X: 699.514 CENTER Y: 318.919
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 45
+	 ID: 1
+	 	  ANGLE: 227.106
+	 	  CENTER X: 699.688 CENTER Y: 321.934
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 46
+	 ID: 1
+	 	  ANGLE: 227.211
+	 	  CENTER X: 702.857 CENTER Y: 322.789
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 47
+	 ID: 1
+	 	  ANGLE: 227.211
+	 	  CENTER X: 702.857 CENTER Y: 322.789
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 48
+	 ID: 1
+	 	  ANGLE: 229.786
+	 	  CENTER X: 702.583 CENTER Y: 321.196
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 49
+	 ID: 1
+	 	  ANGLE: 227.558
+	 	  CENTER X: 702.852 CENTER Y: 322.73
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 50
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 51
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 52
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 53
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 54
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 55
+	 ID: 1
+	 	  ANGLE: 226.402
+	 	  CENTER X: 703.503 CENTER Y: 322.849
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 56
+	 ID: 1
+	 	  ANGLE: 218.738
+	 	  CENTER X: 702.901 CENTER Y: 321.98
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 57
+	 ID: 1
+	 	  ANGLE: 182.144
+	 	  CENTER X: 696.336 CENTER Y: 321.247
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 58
+	 ID: 1
+	 	  ANGLE: 168.505
+	 	  CENTER X: 692.377 CENTER Y: 319.184
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 59
+	 ID: 1
+	 	  ANGLE: 168.505
+	 	  CENTER X: 692.377 CENTER Y: 319.184
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 60
+	 ID: 1
+	 	  ANGLE: 140.068
+	 	  CENTER X: 683.058 CENTER Y: 314.288
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 61
+	 ID: 1
+	 	  ANGLE: 129.262
+	 	  CENTER X: 679.5 CENTER Y: 311
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 62
+	 ID: 1
+	 	  ANGLE: 104.029
+	 	  CENTER X: 670.234 CENTER Y: 308.858
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 63
+	 ID: 1
+	 	  ANGLE: 77.1251
+	 	  CENTER X: 661.5 CENTER Y: 302.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 64
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 65
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 66
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 67
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 68
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 69
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 70
+	 ID: 1
+	 	  ANGLE: 56.8094
+	 	  CENTER X: 650.472 CENTER Y: 296.349
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 71
+	 ID: 1
+	 	  ANGLE: 54.4393
+	 	  CENTER X: 655 CENTER Y: 307.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 72
+	 ID: 1
+	 	  ANGLE: 53.1301
+	 	  CENTER X: 656.5 CENTER Y: 307
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 73
+	 ID: 1
+	 	  ANGLE: 52.4993
+	 	  CENTER X: 657.5 CENTER Y: 306.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 74
+	 ID: 1
+	 	  ANGLE: 52.4993
+	 	  CENTER X: 657.5 CENTER Y: 306.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 75
+	 ID: 1
+	 	  ANGLE: 52.4993
+	 	  CENTER X: 657.5 CENTER Y: 306.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 76
+	 ID: 1
+	 	  ANGLE: 52.4993
+	 	  CENTER X: 657.5 CENTER Y: 306.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 77
+	 ID: 1
+	 	  ANGLE: 51.9272
+	 	  CENTER X: 657.5 CENTER Y: 307
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 78
+	 ID: 1
+	 	  ANGLE: 51.9272
+	 	  CENTER X: 657.5 CENTER Y: 307
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 79
+	 ID: 1
+	 	  ANGLE: 46.7333
+	 	  CENTER X: 655.657 CENTER Y: 308.193
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 80
+	 ID: 1
+	 	  ANGLE: 38.6287
+	 	  CENTER X: 653.485 CENTER Y: 308.79
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 81
+	 ID: 1
+	 	  ANGLE: 286.794
+	 	  CENTER X: 542.175 CENTER Y: 304.856
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 82
+	 ID: 1
+	 	  ANGLE: 22.3043
+	 	  CENTER X: 650.3 CENTER Y: 307.4
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 83
+	 ID: 1
+	 	  ANGLE: 1.03779
+	 	  CENTER X: 647.5 CENTER Y: 304.5
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 84
+	 ID: 1
+	 	  ANGLE: 257.547
+	 	  CENTER X: 547.467 CENTER Y: 297.741
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 85
+	 ID: 1
+	 	  ANGLE: 250.331
+	 	  CENTER X: 548.259 CENTER Y: 295.754
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 86
+	 ID: 1
+	 	  ANGLE: 249.663
+	 	  CENTER X: 548.515 CENTER Y: 295.877
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 87
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 88
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 89
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 90
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 91
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 92
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 93
+	 ID: 1
+	 	  ANGLE: 252.351
+	 	  CENTER X: 547.508 CENTER Y: 296.41
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 94
+	 ID: 1
+	 	  ANGLE: 217.771
+	 	  CENTER X: 557.399 CENTER Y: 295.73
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 95
+	 ID: 1
+	 	  ANGLE: 212.373
+	 	  CENTER X: 558.183 CENTER Y: 297.122
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 96
+	 ID: 1
+	 	  ANGLE: 296.679
+	 	  CENTER X: 632.177 CENTER Y: 291.294
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 97
+	 ID: 1
+	 	  ANGLE: 288.561
+	 	  CENTER X: 629.037 CENTER Y: 288.062
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 98
+	 ID: 1
+	 	  ANGLE: 278.779
+	 	  CENTER X: 626.379 CENTER Y: 283.023
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 99
+	 ID: 1
+	 	  ANGLE: 265.836
+	 	  CENTER X: 626.053 CENTER Y: 279.191
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 100
+	 ID: 1
+	 	  ANGLE: 266.261
+	 	  CENTER X: 624.475 CENTER Y: 279.27
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 101
+	 ID: 1
+	 	  ANGLE: 264.063
+	 	  CENTER X: 624.22 CENTER Y: 278.936
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 102
+	 ID: 1
+	 	  ANGLE: 264.063
+	 	  CENTER X: 624.22 CENTER Y: 278.936
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 103
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 104
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 105
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 106
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 107
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 108
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 109
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 110
+	 ID: 1
+	 	  ANGLE: 264.222
+	 	  CENTER X: 624.205 CENTER Y: 279.055
+	 ID: 2
+	 	  ANGLE: 110.435
+	 	  CENTER X: 570.004 CENTER Y: 264.801
+Current Frame 111
+	 ID: 1
+	 	  ANGLE: 223.495
+	 	  CENTER X: 626.617 CENTER Y: 268.52
+	 ID: 2
+	 	  ANGLE: 137.764
+	 	  CENTER X: 567.565 CENTER Y: 284.905
+Current Frame 112
+	 ID: 1
+	 	  ANGLE: 223.084
+	 	  CENTER X: 626.538 CENTER Y: 269.174
+	 ID: 2
+	 	  ANGLE: 79.9328
+	 	  CENTER X: 567.146 CENTER Y: 285.869
+Current Frame 113
+	 ID: 1
+	 	  ANGLE: 220.763
+	 	  CENTER X: 626.906 CENTER Y: 269.597
+	 ID: 2
+	 	  ANGLE: 59.7284
+	 	  CENTER X: 565.44 CENTER Y: 283.321
+Current Frame 114
+	 ID: 1
+	 	  ANGLE: 221.658
+	 	  CENTER X: 627.096 CENTER Y: 269.519
+	 ID: 2
+	 	  ANGLE: 51.2279
+	 	  CENTER X: 567.3 CENTER Y: 278.6
+Current Frame 115
+	 ID: 1
+	 	  ANGLE: 219.858
+	 	  CENTER X: 626.619 CENTER Y: 270.6
+	 ID: 2
+	 	  ANGLE: 45.8915
+	 	  CENTER X: 567.192 CENTER Y: 277.538
+Current Frame 116
+	 ID: 1
+	 	  ANGLE: 221.336
+	 	  CENTER X: 626.366 CENTER Y: 271.293
+	 ID: 2
+	 	  ANGLE: 47.3934
+	 	  CENTER X: 568.154 CENTER Y: 277.731
+Current Frame 117
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 118
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 119
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 120
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 121
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 122
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 123
+	 ID: 1
+	 	  ANGLE: 223.571
+	 	  CENTER X: 625.149 CENTER Y: 272.108
+	 ID: 2
+	 	  ANGLE: 49.3706
+	 	  CENTER X: 569.443 CENTER Y: 278.077
+Current Frame 124
+	 ID: 1
+	 	  ANGLE: 226.017
+	 	  CENTER X: 619.543 CENTER Y: 273.116
+	 ID: 2
+	 	  ANGLE: 41.8751
+	 	  CENTER X: 570.15 CENTER Y: 285.05
+Current Frame 125
+	 ID: 1
+	 	  ANGLE: 220.474
+	 	  CENTER X: 619.568 CENTER Y: 275.015
+	 ID: 2
+	 	  ANGLE: 349.643
+	 	  CENTER X: 563.368 CENTER Y: 277.81
+Current Frame 126
+	 ID: 1
+	 	  ANGLE: 224.278
+	 	  CENTER X: 619.728 CENTER Y: 274.04
+	 ID: 2
+	 	  ANGLE: 341.532
+	 	  CENTER X: 563.833 CENTER Y: 273.93
+Current Frame 127
+	 ID: 1
+	 	  ANGLE: 225.267
+	 	  CENTER X: 619.156 CENTER Y: 275.722
+	 ID: 2
+	 	  ANGLE: 330.338
+	 	  CENTER X: 565.274 CENTER Y: 270.128

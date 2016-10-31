@@ -128,7 +128,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\Marker.cpp" />
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
-    <ClCompile Include="..\..\source\Output.cpp" />
+    <ClCompile Include="..\..\source\TCP_output.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +137,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClInclude Include="..\..\source\Marker.h" />
     <ClInclude Include="..\..\source\MarkerDetection.h" />
     <ClInclude Include="..\..\source\MarkerManagement.h" />
-    <ClInclude Include="..\..\source\Output.h" />
+    <ClInclude Include="..\..\source\TCP_output.h" />
     <ClInclude Include="..\..\source\uEye_input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

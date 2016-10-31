@@ -11,7 +11,9 @@ private:
 	void deleteMarker(int id);
 	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
 	void registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
+	
 protected:
+
 	std::queue <int> openIDQueue;
 	std::vector<int> takenIDVec;
 	std::array<Marker*, 200> trackedMarker;

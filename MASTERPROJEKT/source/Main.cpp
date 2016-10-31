@@ -3,9 +3,14 @@
 
 using namespace cv;
 //#define uEYE
-#define VIDEOVERA
-//#define VIDEOLAURA
+//#define VIDEOVERA
+#define VIDEOLAURA
 //#define TCP
+//#define logFile
+
+#ifdef logFile
+	std::ofstream debugLogFile;
+#endif //logFile
 
 Main::~Main()
 {
@@ -26,16 +31,29 @@ int main()
 
 #ifdef TCP
 	//start TCP
-	Output* out = new Output();
+	TCP_output* out = new TCP_output();
 	out->startTCPServer();
 #endif 	// TCP
 
 
 #ifdef VIDEOLAURA
-	VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/006_Nacheinander_Hineinschieben.avi");
-	//VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Register1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap2.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/totalCover1.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/totalCover2.avi");
+
+	//alt
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_B_Ohne_Verdeckung.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/006_Nacheinander_Hineinschieben.avi");
+	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -45,7 +63,7 @@ int main()
 	//Einbindung Video Vera 
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
@@ -159,6 +177,10 @@ int main()
 
 void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
 {
+#ifdef logFile
+	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);
+	debugLogFile << "Current Frame " << counter << "\n";
+#endif //logFile
 	// Print Frame Number
 	counter++;
 	std::ostringstream os2;
@@ -172,12 +194,20 @@ void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vecto
 		std::vector<cv::Point2f>vertices;
 		vertices = m->getPoints();
 		int id = m->getId();
-		printf("\tid: %d\n", id);
+		//printf("\t id: %d\n", id);
 		float angle = m->getAngle();
+		//printf("\t \t angle: %f\n", angle);
 		Point2f c = m->getCenter();
 		c.x = c.x*frame.size().width;
 		c.y = c.y*frame.size().height;
 		vertices = getPixelCoords(vertices, c, frame.size());
+
+#ifdef logFile 
+		debugLogFile << "\t ID: " << id << "\n";
+		debugLogFile << "\t \t  ANGLE: " << angle << "\n";
+		debugLogFile << "\t \t  CENTER X: " << c.x << " CENTER Y: " << c.y << "\n";
+#endif //logFile
+
 		// Print ID to BoxCenter
 		std::ostringstream os;
 		os << id;
@@ -190,6 +220,9 @@ void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vecto
 			line(frame, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
 		}
 	}
+#ifdef logFile
+	debugLogFile.close();
+#endif //logFile
 }
 
 
