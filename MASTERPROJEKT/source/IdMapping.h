@@ -20,5 +20,5 @@ public:
 	int isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs, std::vector<int> takenIDVec);
 	bool isMarkerOutOfField();
 	IdMapping();
-	~IdMapping();
+	~IdMapping() {};
 };

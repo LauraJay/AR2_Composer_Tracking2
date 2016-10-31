@@ -52,8 +52,10 @@ int main()
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
+	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/reinraus1.avi");
+
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOVERA
@@ -118,9 +120,6 @@ int main()
 
 				for (int i = 0; i < rects.size(); i++)
 				{
-					if (i == 3) {
-						printf("");
-					}
 						mm->trackMarker(rects[i], markedCorners[i], frame.size());
 				}
 				marker = mm->getTrackedMarker();

@@ -118,6 +118,8 @@ int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, u
 
 
 bool IdMapping::isMarkerOutOfField() {
+
+
 	return false;
 }
 
