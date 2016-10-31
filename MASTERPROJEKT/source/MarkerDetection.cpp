@@ -18,12 +18,12 @@ int MarkerDetection::runMarkerDetection(Mat &frame)
 	detectedRects.clear();
 	markedCorners.clear();
 	colorThresImg = colorThreshold(frame);
-	std::vector<RotatedRect>  box = getOBB(colorThresImg);
+	std::vector<RotatedRect>  box = getOBB(colorThresImg.clone());
 	if (!box.empty()) {
 		Mat cornerThresImg = getCornerThresholdImage(frame);
 		for (int i = 0; i < box.size(); i++)
 		{
-			unsigned char corner = detectMarkedCorner(box[i], frame, cornerThresImg);
+			unsigned char corner = detectMarkedCorner(box[i], colorThresImg, cornerThresImg);
 			if (corner < 5) {
 				markedCorners.push_back(corner);
 				detectedRects.push_back(box[i]);
@@ -57,11 +57,11 @@ Mat MarkerDetection::colorThreshold(Mat &frame) {
 	return output;
 }
 
-std::vector<RotatedRect>  MarkerDetection::getOBB(Mat &colorThresImg) {
+std::vector<RotatedRect>  MarkerDetection::getOBB(Mat colorThresImg) {
 	std::vector<Point> points;
 	std::vector<std::vector<Point> > contours;
 	std::vector<Vec4i> hierarchy;
-	Canny(colorThresImg, colorThresImg, 100, 300, 3);
+	Canny(colorThresImg, colorThresImg, 100, 600, 3);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 	std::vector<std::vector<Point> > contours_poly(contours.size());
 	std::vector<RotatedRect> boundRect(contours.size());
@@ -99,13 +99,13 @@ unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &frame, 
 	for (unsigned int i = 0; i < 4; i++)
 	{
 		Mat circleimg(CornerThresImage.rows, CornerThresImage.cols, CV_8UC1, Scalar(0, 0, 0));
-		circle(circleimg, cornerPoints[i], rect.size.height / 3, Scalar(255, 255, 255), -1);
+		circle(circleimg, cornerPoints[i], rect.size.height / 3.5, Scalar(255, 255, 255), -1);
 		bitwise_and(circleimg, CornerThresImage, circleimg);
 		double min, max;
 		minMaxIdx(circleimg, &min, &max);
 		if (max == 255) {
 			markedId = i;
-			circle(frame, cornerPoints[i], rect.size.height / 3, Scalar(255, 0, 255), 2);
+			circle(frame, cornerPoints[i], rect.size.height / 3.5, Scalar(255, 0, 255), 2);
 			break;
 		}
 	}

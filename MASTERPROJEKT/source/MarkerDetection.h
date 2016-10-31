@@ -8,7 +8,7 @@ private:
 	Mat colorThreshold(Mat &frame);
 	std::vector<RotatedRect> detectedRects;
 	std::vector<unsigned char> markedCorners;
-	std::vector<RotatedRect> getOBB(Mat &colorThresImg);
+	std::vector<RotatedRect> getOBB(Mat colorThresImg);
 	unsigned char detectMarkedCorner(RotatedRect rect, Mat &frame, Mat &CornerThresImage);
 	Mat getCornerThresholdImage(Mat &frame);
 public:
