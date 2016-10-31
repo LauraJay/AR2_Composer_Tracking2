@@ -21,30 +21,24 @@ int uEye_input::inituEyeCam() {
 	is_SetColorMode(hCam, IS_CM_BGR8_PACKED);
 	is_SetImageSize(hCam, img_width, img_height);
 	
+	double pixelClock = 37;
+	
+	is_PixelClock(hCam,IS_PIXELCLOCK_CMD_SET , &pixelClock, sizeof(pixelClock));
+
 	double FPS, NEWFPS;
-	FPS = 24;
+	FPS = 23;
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 40;
+	double parameter = 21;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 	printf("failed Exposure");
 	}
-	// ?????
-	error = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 
-	UINT uiCaps = 0;
-
-	INT nRet = is_Focus(hCam, FDT_CMD_GET_CAPABILITIES, &uiCaps, sizeof(uiCaps));
-
-	if (nRet == IS_SUCCESS && (uiCaps & FOC_CAP_AUTOFOCUS_SUPPORTED))
-	{
-		printf("If supported, enable auto focus");
-		nRet = is_Focus(hCam, FOC_CMD_SET_DISABLE_AUTOFOCUS, NULL, 0);
-	}
-
-	nRet = is_SetGamma(hCam,2200);
+	double factor = 0.5;
+	INT Color = is_SetColorCorrection(hCam, IS_CCOR_ENABLE_NORMAL,&factor );
+	INT nRet = is_SetGamma(hCam,1800);
 	return 1;
 
 }

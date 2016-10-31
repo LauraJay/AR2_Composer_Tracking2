@@ -68,7 +68,7 @@ int IdMapping::isTranslatedMarker(std::vector<Point2f> points, Point2f center, u
 {
 	bool isTranslated = false;
 	int matchID = 0;
-	float tTranslation = 0.2f;
+	float tTranslation = 0.1f;
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
 		int id = takenIDVec[i];
@@ -128,8 +128,8 @@ IdMapping::IdMapping()
 }
 
 
-IdMapping::~IdMapping()
-{
-
-}
+//IdMapping::~IdMapping()
+//{
+//
+//}
  

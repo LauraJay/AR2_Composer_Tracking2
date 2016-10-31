@@ -33,6 +33,12 @@ Marker::Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsign
 	Marker::markCornerID = markCornerID;
 	Marker::center = center;
 	angle = computeAngle(markCornerID, rectPoints);
+	motionCenterVec = cv::Point2f(0,0);
+	motionMarkCornerVec = cv::Point2f(0, 0);
+}
+
+Marker::Marker()
+{
 }
 
 Marker::~Marker()

@@ -12,19 +12,22 @@ private:
 		cv::Point2f motionCenterVec;
 		cv::Point2f motionMarkCornerVec;
 
-		Marker(const Marker& mark) : id(mark.id),rectPoints(mark.rectPoints),markCornerID(mark.markCornerID),center(mark.center),angle(mark.angle) {};
+		Marker(const Marker& mark) : id(mark.id),rectPoints(mark.rectPoints),markCornerID(mark.markCornerID),center(mark.center),angle(mark.angle),motionCenterVec(mark.motionCenterVec),motionMarkCornerVec(mark.motionMarkCornerVec) {};
 		Marker& operator=(const Marker& mark) {
 			id = mark.id;
 			rectPoints = mark.rectPoints;
 			markCornerID = mark.markCornerID;
 			center = mark.center;
 			angle = mark.angle;
+			motionCenterVec = mark.motionCenterVec;
+			motionMarkCornerVec=mark.motionMarkCornerVec;
 			return *this;
 		}
 		
 
 public:
 	Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID);
+	Marker();
 	~Marker();
 	float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
 

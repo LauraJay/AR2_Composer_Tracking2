@@ -13,25 +13,25 @@ std::vector<int> MarkerManagement::getTakenIDVec()
 
 void MarkerManagement::trackMarker(RotatedRect rect, unsigned char markedCorner, Size size)
 {
-	IdMapping* im = new IdMapping();
-	std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
-	Point2f center = normalizeCoord(rect.center,size);
-	std::vector<Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(rectPoints, center, markedCorner,trackedMarker,takenIDVec);
-	std::vector<Point2f> motionMarkCornerVecs = im->CalculateMotionVectorMarkedCorner(rectPoints, center, markedCorner, trackedMarker,takenIDVec);
-	int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs,takenIDVec);
-	if (matchID>0) {
-		CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
-	}
-	else if (matchID= im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs,takenIDVec)>0) {
-		CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
+		std::vector<Point2f> rectPoints = normalizeRectPoints(rect, size);
+		Point2f center = normalizeCoord(rect.center, size);
+		IdMapping* im = new IdMapping();
+		std::vector<Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(rectPoints, center, markedCorner, trackedMarker, takenIDVec);
+		std::vector<Point2f> motionMarkCornerVecs = im->CalculateMotionVectorMarkedCorner(rectPoints, center, markedCorner, trackedMarker, takenIDVec);
+		int matchID = im->isConstantMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs, takenIDVec);
+		if (matchID > 0) {
+			CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
 		}
-	/*else if (matchID= IdMapping::isRotatedMarker(rectPoints, center, markedCorner, trackedMarker)>0) {
-		CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
-	}*/
-	else{
-		registerNewMarker(rectPoints, center, markedCorner);
-	}
-	delete im;
+		else if (matchID = im->isTranslatedMarker(rectPoints, center, markedCorner, trackedMarker, motionCenterVecs, motionMarkCornerVecs, takenIDVec) > 0) {
+			CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
+		}
+		/*else if (matchID= IdMapping::isRotatedMarker(rectPoints, center, markedCorner, trackedMarker)>0) {
+			CurrentMarker(trackedMarker[matchID], rectPoints, center, markedCorner);
+		}*/
+		else {
+			registerNewMarker(rectPoints, center, markedCorner);
+		}
+		delete im;
 }
 
 
@@ -93,9 +93,9 @@ void MarkerManagement::CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints
 
 MarkerManagement::MarkerManagement()
 {
-	for (size_t i = 1 ; i < 200; i++)
+	for (size_t i = 0 ; i < trackedMarker.size(); i++)
 	{
-		openIDQueue.push(i);
+		if(i>0)	openIDQueue.push(i);
 	}
 }
 

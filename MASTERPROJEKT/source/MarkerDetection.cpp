@@ -46,7 +46,7 @@ std::vector<unsigned char> MarkerDetection::getMarkedCorners()
 
 Mat MarkerDetection::colorThreshold(Mat &frame) {
 	Mat output;
-	inRange(frame, Scalar(55, 0, 100), Scalar(110, 255, 255), output);
+	inRange(frame, Scalar(55, 0, 50), Scalar(110, 255, 255), output);
 	int erosion_size = 1;
 	Mat element = getStructuringElement(MORPH_RECT,
 		Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -61,7 +61,7 @@ std::vector<RotatedRect>  MarkerDetection::getOBB(Mat &colorThresImg) {
 	std::vector<Point> points;
 	std::vector<std::vector<Point> > contours;
 	std::vector<Vec4i> hierarchy;
-	Canny(colorThresImg, colorThresImg, 50, 150, 3);
+	Canny(colorThresImg, colorThresImg, 100, 300, 3);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 	std::vector<std::vector<Point> > contours_poly(contours.size());
 	std::vector<RotatedRect> boundRect(contours.size());
@@ -76,7 +76,7 @@ std::vector<RotatedRect>  MarkerDetection::getOBB(Mat &colorThresImg) {
 
 Mat MarkerDetection::getCornerThresholdImage(Mat &frame) {
 	Mat CornerThresImage;
-	inRange(frame, Scalar(30, 0, 100), Scalar(55, 255, 255), CornerThresImage);
+	inRange(frame, Scalar(30, 100, 100), Scalar(55, 255, 255), CornerThresImage);
 
 	int erosion_size = 3;
 	Mat element = getStructuringElement(MORPH_RECT,
@@ -99,13 +99,13 @@ unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &frame, 
 	for (unsigned int i = 0; i < 4; i++)
 	{
 		Mat circleimg(CornerThresImage.rows, CornerThresImage.cols, CV_8UC1, Scalar(0, 0, 0));
-		circle(circleimg, cornerPoints[i], rect.size.height / 4, Scalar(255, 255, 255), -1);
+		circle(circleimg, cornerPoints[i], rect.size.height / 3, Scalar(255, 255, 255), -1);
 		bitwise_and(circleimg, CornerThresImage, circleimg);
 		double min, max;
 		minMaxIdx(circleimg, &min, &max);
 		if (max == 255) {
 			markedId = i;
-			circle(frame, cornerPoints[i], rect.size.height / 4, Scalar(255, 0, 255), 2);
+			circle(frame, cornerPoints[i], rect.size.height / 3, Scalar(255, 0, 255), 2);
 			break;
 		}
 	}

@@ -2,9 +2,9 @@
 #include <Main.h>
 
 using namespace cv;
-//#define uEYE
+#define uEYE
 //#define VIDEOVERA
-#define VIDEOLAURA
+//#define VIDEOLAURA
 //#define TCP
 //#define logFile
 
@@ -63,7 +63,7 @@ int main()
 	//Einbindung Video Vera 
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
@@ -123,8 +123,6 @@ int main()
 #endif // VIDEOVERA
 
 		if (!frame.empty()) {
-			if (counter == 3)
-				printf("");
 			cvtColor(frame, frame, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
@@ -146,6 +144,7 @@ int main()
 				delete md;
 
 			}
+			else { marker = mm->getTrackedMarker(); }
 			debug(frame, marker, counter,takenIdVec);
 
 			imshow("edges", frame);
