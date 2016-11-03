@@ -50,5 +50,8 @@
     <ClCompile Include="..\..\source\TCP_output.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\ARUCOFactory.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

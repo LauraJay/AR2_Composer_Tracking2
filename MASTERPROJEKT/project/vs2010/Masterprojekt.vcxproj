@@ -123,6 +123,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\source\ARUCOFactory.cpp" />
     <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
     <ClCompile Include="..\..\source\Marker.cpp" />

@@ -2,8 +2,8 @@
 #include <Main.h>
 
 using namespace cv;
-#define uEYE
-//#define VIDEOVERA
+//#define uEYE
+#define VIDEOVERA
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
@@ -25,6 +25,9 @@ Main::Main() {
 
 int main()
 {
+
+	std::cout << CV_VERSION << std::endl;
+
 	MarkerManagement* mm = new MarkerManagement();
 	std::array<Marker*,200> marker;
 	std::vector<int> takenIdVec;
@@ -169,7 +172,6 @@ int main()
 #ifdef TCP
 	delete out;
 #endif // TCP
-
 	return EXIT_SUCCESS;
 }
 
