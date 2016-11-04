@@ -72,9 +72,9 @@
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>opencv_world310d.lib;ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib;opencv_contrib_world310d.lib;opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
-      <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDataBaseFileName>$(OutDir)Masterprojekt.pdb</ProgramDataBaseFileName>
@@ -107,9 +107,9 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\debug"<
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>opencv_world310.lib;uEye_api_64.lib;ueye_tools_64.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>uEye_api_64.lib;ueye_tools_64.lib;ws2_32.lib;opencv_contrib_world310.lib;opencv_world310.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
-      <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
@@ -123,7 +123,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\ARUCOFactory.cpp" />
+    <ClCompile Include="..\..\source\ArucoCodeGenerator.cpp" />
     <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
     <ClCompile Include="..\..\source\Marker.cpp" />
