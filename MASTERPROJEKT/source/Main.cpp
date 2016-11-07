@@ -7,6 +7,7 @@ using namespace cv;
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
+//#define useTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -22,7 +23,7 @@ Main::Main() {
 	//TODO
 }
 
-
+#ifdef useTestClasses
 int main()
 {
 
@@ -174,7 +175,7 @@ int main()
 #endif // TCP
 	return EXIT_SUCCESS;
 }
-
+#endif //useTestClasses
 
 void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
 {
