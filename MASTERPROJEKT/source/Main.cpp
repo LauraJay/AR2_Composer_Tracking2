@@ -3,11 +3,12 @@
 
 using namespace cv;
 //#define uEYE
-#define VIDEOVERA
+//#define VIDEOVERA
+#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define TCP
+#define TCP
 //#define logFile
-//#define useTestClasses
+#define useTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -62,6 +63,14 @@ int main()
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURA
+
+#ifdef VIDEOLAURAALIEN
+	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
+	
+
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+#endif // VIDEOLAURAALIEN
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
@@ -120,6 +129,10 @@ int main()
 #ifdef VIDEOLAURA
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOLAURA
+
+#ifdef VIDEOLAURAALIEN
+		cap >> frame; // get a new frame from camera
+#endif // VIDEOLAURAALIEN
 
 
 #ifdef VIDEOVERA

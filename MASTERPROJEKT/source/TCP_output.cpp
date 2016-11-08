@@ -11,8 +11,8 @@ long rc;
 SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
-//std::ofstream myfile;
-struct TCP_output::MarkerStruct ms[257];
+std::ofstream myfile;
+struct TCP_output::MarkerStruct ms[201];
 
 int TCP_output::startTCPServer()
 {
@@ -89,32 +89,32 @@ int startWinsock(void)
 void TCP_output::sendTCPData(std::array<Marker*, 200> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
-	rc = send(connectedSocket, markerPointer, 4100, 0);
+	rc = send(connectedSocket, markerPointer, 3204, 0);
 	/*const char FAR* markerPointer = (const char*) &allMarkers;
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }
 
 void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers, std::vector<int> takenIdVec) {
 	
-	//myfile.open("log.txt", std::ios::out | std::ios::app);
-	//myfile << "Current Frame " << c << "\n";
+	myfile.open("log.txt", std::ios::out | std::ios::app);
+	myfile << "Current Frame " << c << "\n";
 	c++;
-		//myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
-		for (int i = 0; i < takenIdVec.size(); i++) {
+		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
+		for (int i = 1; i <= takenIdVec.size(); i++) {
 			
-			ms[i].id = allMarkers[i]->getId();
-			//myfile << "\t tid " << ms[i].id << "\n";
-			ms[i].posX = allMarkers[i]->getCenter().x;
-			//myfile << "\t posX " << ms[i].posX << "\n";
-			ms[i].posY = allMarkers[i]->getCenter().y;
-			//myfile << "\t posY " << ms[i].posY << "\n";
-			ms[i].angle = allMarkers[i]->getAngle();
-			//myfile << "\t angle " << ms[i].angle << "\n";
+			ms[i-1].id = allMarkers[i]->getId();
+			myfile << "\t tid " << ms[i].id << "\n";
+			ms[i-1].posX = allMarkers[i]->getCenter().x;
+			myfile << "\t posX " << ms[i].posX << "\n";
+			ms[i-1].posY = allMarkers[i]->getCenter().y;
+			myfile << "\t posY " << ms[i].posY << "\n";
+			ms[i-1].angle = allMarkers[i]->getAngle();
+			myfile << "\t angle " << ms[i].angle << "\n";
 		}
 		
 		//Last id is -1 to show the end of information per frame
 		ms[takenIdVec.size()].id = -1;
-		//myfile.close();
+		myfile.close();
 }
 
 
