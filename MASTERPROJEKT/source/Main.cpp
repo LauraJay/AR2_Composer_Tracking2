@@ -3,12 +3,13 @@
 
 using namespace cv;
 //#define uEYE
-//#define VIDEOVERA
-#define VIDEOLAURAALIEN
+#define VIDEOVERA
+//#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define TCP
+//#define TCP
 //#define logFile
-#define useTestClasses
+//#define useonlyMarkerDetection
+#define useNotTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -24,15 +25,17 @@ Main::Main() {
 	//TODO
 }
 
-#ifdef useTestClasses
+#ifdef useNotTestClasses
 int main()
 {
 
 	std::cout << CV_VERSION << std::endl;
-
+#ifdef useonlyMarkerDetection
 	MarkerManagement* mm = new MarkerManagement();
+
 	std::array<Marker*,200> marker;
 	std::vector<int> takenIdVec;
+#endif // useonlyMarkerDetection
 
 #ifdef TCP
 	//start TCP
@@ -146,7 +149,9 @@ int main()
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
-				std::vector<unsigned char> markedCorners = md->getMarkedCorners();
+				//std::vector<unsigned char> markedCorners = md->getMarkedCorners();
+
+#ifdef useonlyMarkerDetection
 
 				// LUT Kalibration des Rechtecks
 				//run MarkerManagement
@@ -158,14 +163,16 @@ int main()
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
 
+#endif // useonlyMarkerDetection
 				delete md;
-
 			}
+#ifdef useonlyMarkerDetection
 			else { marker = mm->getTrackedMarker(); }
 			debug(frame, marker, counter,takenIdVec);
 
 			imshow("edges", frame);
 			if (waitKey(4) >= 0)break;
+#endif // useonlyMarkerDetection
 		}
 		else break;
 
@@ -179,8 +186,10 @@ int main()
 	uei->exitCamera();
 	delete uei;
 #endif // uEYE
+#ifdef useonlyMarkerDetection
 
 	delete mm;
+#endif // useonlyMarkerDetection
 
 
 #ifdef TCP

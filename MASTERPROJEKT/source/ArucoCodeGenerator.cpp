@@ -2,7 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/aruco.hpp>
-#define inUse
+//#define inUse
 using namespace cv;
 // ATTENTION!!!! Comment main() in Main before compiling
 #ifdef inUse

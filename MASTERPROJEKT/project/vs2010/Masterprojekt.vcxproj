@@ -131,6 +131,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
     <ClCompile Include="..\..\source\TCP_output.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
+    <ClCompile Include="Aruco_Maker_Detection.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\IdMapping.h" />

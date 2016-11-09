@@ -5,6 +5,7 @@ using namespace cv;
 
 MarkerDetection::MarkerDetection()
 {
+	initArucoParams();
 }
 
 
@@ -14,21 +15,25 @@ MarkerDetection::~MarkerDetection()
 
 int MarkerDetection::runMarkerDetection(Mat &frame)
 {
-	Mat colorThresImg;
 	detectedRects.clear();
-	markedCorners.clear();
-	colorThresImg = colorThreshold(frame);
-	std::vector<RotatedRect>  box = getOBB(colorThresImg.clone());
+	arucoIds.clear();
+
+	std::vector<RotatedRect>  box = detectMarkerRectangles(frame);
+	detectArucoMarker(frame);
+	
 	if (!box.empty()) {
-		Mat cornerThresImg = getCornerThresholdImage(frame);
+
+
+
+		
 		for (int i = 0; i < box.size(); i++)
 		{
-			unsigned char corner = detectMarkedCorner(box[i], colorThresImg, cornerThresImg);
-			if (corner < 5) {
+			
+			/*if (corner < 5) {
 				markedCorners.push_back(corner);
 				detectedRects.push_back(box[i]);
-			}
-			else return 0;
+			}*/
+			//else return 0;
 		}
 	}
 	return 1;
@@ -36,12 +41,14 @@ int MarkerDetection::runMarkerDetection(Mat &frame)
 
 std::vector<RotatedRect> MarkerDetection::getDetectedRects()
 {
+
+
 	return detectedRects;
 }
 
-std::vector<unsigned char> MarkerDetection::getMarkedCorners()
+std::vector<int> MarkerDetection::getArucoIds()
 {
-	return markedCorners;
+	return arucoIds;
 }
 
 Mat MarkerDetection::colorThreshold(Mat &frame) {
@@ -73,41 +80,87 @@ std::vector<RotatedRect>  MarkerDetection::getOBB(Mat colorThresImg) {
 	return boundRect;
 }
 
-
-Mat MarkerDetection::getCornerThresholdImage(Mat &frame) {
-	Mat CornerThresImage;
-	inRange(frame, Scalar(30, 100, 100), Scalar(55, 255, 255), CornerThresImage);
-
-	int erosion_size = 3;
-	Mat element = getStructuringElement(MORPH_RECT,
-		Size(2 * erosion_size + 1, 2 * erosion_size + 1),
-		Point(erosion_size, erosion_size));
-
-	morphologyEx(CornerThresImage, CornerThresImage, MORPH_OPEN, element, Point(-1, -1));
-	morphologyEx(CornerThresImage, CornerThresImage, MORPH_CLOSE, element, Point(-1, -1));
-	return CornerThresImage;
+std::vector<RotatedRect> MarkerDetection::detectMarkerRectangles(Mat frame)
+{
+	Mat colorThresImg = colorThreshold(frame);
+	std::vector<RotatedRect>  box = getOBB(colorThresImg.clone());
+	return box;
 }
 
-unsigned char MarkerDetection::detectMarkedCorner(RotatedRect rect, Mat &frame, Mat &CornerThresImage)
+void MarkerDetection::initArucoParams()
 {
-	Point2f cornerPoints[4];
-	rect.points(cornerPoints);
-	unsigned char markedId = 255;
+	dictionaryId = aruco::DICT_4X4_50;
+	showRejected = false;// zeige verworfene Marker an
+	estimatePose = false; //
+	float markerLength = 0.025; //ausgedruckte Größe
+	detectorParams = aruco::DetectorParameters::create();
+	detectorParams->adaptiveThreshWinSizeMin = 3;
+	detectorParams->adaptiveThreshWinSizeMax = 23;
+	detectorParams->adaptiveThreshWinSizeStep = 10;
+	detectorParams->adaptiveThreshConstant = 7;
+	detectorParams->minMarkerPerimeterRate = 0.03;
+	detectorParams->maxMarkerPerimeterRate = 4.0;
+	detectorParams->polygonalApproxAccuracyRate = 0.05;
+	detectorParams->minCornerDistanceRate = 10.0;
+	detectorParams->minDistanceToBorder = 3;
+	detectorParams->minMarkerDistanceRate = 0.05;
+	detectorParams->doCornerRefinement = false;
+	detectorParams->cornerRefinementWinSize = 5;
+	detectorParams->cornerRefinementMaxIterations = 30;
+	detectorParams->cornerRefinementMinAccuracy = 0.1;
+	detectorParams->markerBorderBits = 1;
+	detectorParams->perspectiveRemovePixelPerCell = 8;
+	detectorParams->perspectiveRemoveIgnoredMarginPerCell = 0.13;
+	detectorParams->maxErroneousBitsInBorderRate = 0.04;
+	detectorParams->minOtsuStdDev = 5.0;
+	detectorParams->errorCorrectionRate = 0.6;
+	dictionary = aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
+	// nur mit Kamerakalibierung benutzten!!!
+	if (estimatePose) {
+		//bool readOk = readCameraParameters(parser.get<string>("c"), camMatrix, distCoeffs);
+		/*if (!readOk) {
+		cerr << "Invalid camera file" << endl;
+		return 0;
+		}*/
+	}
+}
 
-	double min, max;
+void MarkerDetection::detectArucoMarker(Mat frame)
+{
+	std::vector< int > ids = {};
+	std::vector< std::vector< Point2f > > corners
+		= {};
+	std::vector< std::vector< Point2f > > rejected = {};
+	std::vector< Vec3d > rvecs, tvecs;
+	Mat rgb;
+	cvtColor(frame, rgb, COLOR_HSV2BGR);
+	// detect markers and estimate pose
+	aruco::detectMarkers(rgb, dictionary, corners, ids, detectorParams, rejected);
 
-	for (unsigned int i = 0; i < 4; i++)
-	{
-		Mat circleimg(CornerThresImage.rows, CornerThresImage.cols, CV_8UC1, Scalar(0, 0, 0));
-		circle(circleimg, cornerPoints[i], rect.size.height / 3.5, Scalar(255, 255, 255), -1);
-		bitwise_and(circleimg, CornerThresImage, circleimg);
-		double min, max;
-		minMaxIdx(circleimg, &min, &max);
-		if (max == 255) {
-			markedId = i;
-			circle(frame, cornerPoints[i], rect.size.height / 3.5, Scalar(255, 0, 255), 2);
-			break;
+	if (estimatePose && ids.size() > 0)
+		aruco::estimatePoseSingleMarkers(corners, arucoMarkerLength, camMatrix, distCoeffs, rvecs,tvecs);
+	
+	// draw results
+	Mat imageCopy;
+	frame.copyTo(imageCopy);
+	if (ids.size() > 0) {
+		aruco::drawDetectedMarkers(imageCopy, corners, ids);
+
+		if (estimatePose) {
+			for (unsigned int i = 0; i < ids.size(); i++)
+				aruco::drawAxis(imageCopy, camMatrix, distCoeffs, rvecs[i], tvecs[i],
+					arucoMarkerLength * 0.5f);
 		}
 	}
-	return markedId;
+
+	if (showRejected && rejected.size() > 0)
+		aruco::drawDetectedMarkers(imageCopy, rejected, noArray(), Scalar(100, 0, 255));
+
+	imshow("out", imageCopy);
+	waitKey(4);
+
+
+
 }
+
+
