@@ -5,15 +5,8 @@ using namespace cv;
 class MarkerDetection
 {
 private:
-	Mat frame, camMatrix, distCoeffs;
+	Mat frame;
 	Mat colorThreshold(Mat &frame);
-	int dictionaryId = aruco::DICT_4X4_50;
-	bool showRejected;// zeige verworfene Marker an
-	bool estimatePose; //
-	float arucoMarkerLength; //ausgedruckte Größe
-	Ptr<aruco::Dictionary> dictionary;
-	Ptr<aruco::DetectorParameters> detectorParams;
-
 	std::vector<RotatedRect> detectedRects;
 	std::vector<int> arucoIds;
 	std::vector<RotatedRect> getOBB(Mat colorThresImg);

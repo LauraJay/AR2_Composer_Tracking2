@@ -9,7 +9,7 @@ using namespace cv;
 //#define TCP
 //#define logFile
 //#define useonlyMarkerDetection
-#define useNotTestClasses
+//#define useNotTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -149,8 +149,7 @@ int main()
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<RotatedRect> rects = md->getDetectedRects();
-				//std::vector<unsigned char> markedCorners = md->getMarkedCorners();
-
+				// getIDVector
 #ifdef useonlyMarkerDetection
 
 				// LUT Kalibration des Rechtecks
