@@ -72,7 +72,7 @@
       <AdditionalIncludeDirectories>..\..\source;..\..\thirdparty\opencv\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib;opencv_world310d.lib;opencv_aruco310.lib;opencv_ccalib310.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;uEye_api_64.lib;uEye_tools_64.lib;opencv_world310d.lib;opencv_aruco310d.lib;opencv_ccalib310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)Masterprojekt.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\thirdparty\uEye\Lib;..\..\thirdparty\opencv\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
