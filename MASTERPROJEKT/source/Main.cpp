@@ -3,13 +3,13 @@
 
 using namespace cv;
 //#define uEYE
-//#define VIDEOVERA
+#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
 //#define useonlyMarkerDetection
-//#define useNotTestClasses
+#define useNotTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;
@@ -77,7 +77,7 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
+	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
@@ -89,6 +89,7 @@ int main()
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
 	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/reinraus1.avi");
+	VideoCapture cap("C:/Users/Vera/Desktop/ARUCO_TESTER.avi");
 
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -143,7 +144,6 @@ int main()
 #endif // VIDEOVERA
 
 		if (!frame.empty()) {
-			cvtColor(frame, frame, COLOR_BGR2HSV);
 			// run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
 			int sucess = md->runMarkerDetection(frame);
