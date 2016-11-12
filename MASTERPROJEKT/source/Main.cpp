@@ -3,7 +3,7 @@
 
 using namespace cv;
 //#define uEYE
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
