@@ -6,19 +6,19 @@
 //#include <Marker.h>
 #include <MarkerManagement.h>
 
-using namespace cv;
 class IdMapping{
 
 private:
 	std::ofstream myfile2;
+	bool computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f c, cv::Point2f p);
 	
 public:
-	std::vector<Point2f> IdMapping::CalculateMotionVectorMarkedCorner(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
-	std::vector<Point2f>  CalculateMotionVectorCenter(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
-	int isConstantMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs, std::vector<int> takenIDVec);
-	//static int isRotatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::vector<Marker*> tm, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs);
-	int isTranslatedMarker(std::vector<Point2f> points, Point2f center, unsigned char markedCorner, std::array<Marker*, 200> trackedMarker, std::vector<Point2f> motionCenterVecs, std::vector<Point2f> motionMarkCornerVecs, std::vector<int> takenIDVec);
+	std::vector<cv::Point2f>  CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
+	int isConstantMarker(std::vector<cv::Point2f> motionCenterVecs,   std::array<Marker*, 200> trackedMarker,std::vector<int> takenIDVec);
+	int isRotatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
+	int isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
 	bool isMarkerOutOfField();
-	IdMapping();
+	int hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds);
+	IdMapping() {};
 	~IdMapping() {};
 };

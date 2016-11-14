@@ -26,23 +26,26 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	return angleGrad;
 }
 
-Marker::Marker(int id, std::vector<cv::Point2f> rect, cv::Point2f center, unsigned char markCornerID)
+Marker::Marker(int id, cv::RotatedRect normRect)
 {
 	Marker::id = id;
-	rectPoints = rect;
-	Marker::markCornerID = markCornerID;
-	Marker::center = center;
-	angle = computeAngle(markCornerID, rectPoints);
+	std::vector<cv::Point2f> rectPoints;
+	cv::Point2f p[4];
+	normRect.points(p);
+	for (int i = 0; i < 4; i++)
+	{
+		rectPoints.push_back(p[i]);
+	}
+	Marker::rectPoints = rectPoints;
+	Marker::center = normRect.center;
+	//Marker::angle = computeAngle(markCornerID, rectPoints);
+	Marker::angle = normRect.angle;
 	motionCenterVec = cv::Point2f(0,0);
-	motionMarkCornerVec = cv::Point2f(0, 0);
 }
 
 Marker::Marker()
 {
-}
-
-Marker::~Marker()
-{
+	Marker::id = 0;
 }
 
 cv::Point2f Marker::getMotionCenterVec()
@@ -50,14 +53,15 @@ cv::Point2f Marker::getMotionCenterVec()
 	return motionCenterVec;
 }
 
-cv::Point2f Marker::getMotionMarkCornerVec()
-{
-	return motionMarkCornerVec;
-}
 
 int Marker::getId()
 {
 	return id;
+}
+
+int Marker::getArucoID()
+{
+	return arucoID;
 }
 
 int* Marker::getIdPointer()
@@ -68,11 +72,6 @@ int* Marker::getIdPointer()
 std::vector<cv::Point2f> Marker::getPoints()
 {
 	return rectPoints;
-}
-
-unsigned char Marker::getMarkedCornerID()
-{
-	return markCornerID;
 }
 
 cv::Point2f Marker::getCenter()
@@ -90,20 +89,10 @@ void Marker::setMotionCenterVec(cv::Point2f motionCenterVec)
 	Marker::motionCenterVec = motionCenterVec;
 }
 
-void Marker::setMotionMarkCornerVec(cv::Point2f motionMarkCornerVec)
-{
-	Marker::motionMarkCornerVec = motionMarkCornerVec;
-}
-
 void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f c)
 {	
 	rectPoints = rect;
 	center = c;
-}
-
-void Marker::setMarkedCornerID(int id)
-{
-	Marker::markCornerID = id;
 }
 
 void Marker::setAngle(float angle)
@@ -114,6 +103,16 @@ void Marker::setAngle(float angle)
 void Marker::setId(int id)
 {
 	Marker::id = id;
+}
+
+void Marker::setArucoID(int arucoID)
+{
+	Marker::arucoID = arucoID;
+}
+
+void Marker::setCenter(cv::Point2f center)
+{
+	Marker::center = center;
 }
 
 

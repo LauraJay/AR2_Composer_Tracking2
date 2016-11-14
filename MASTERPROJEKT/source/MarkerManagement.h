@@ -3,14 +3,13 @@
 #include <array>
 #include <Marker.h>
 #include <IdMapping.h>
-using namespace cv;
 class MarkerManagement
 {
 private:
-	Point2f normalizeCoord(Point2f p, Size size);
+	cv::RotatedRect normalizeCoord(cv::RotatedRect r, cv::Size size);
 	void deleteMarker(int id);
-	std::vector<Point2f> normalizeRectPoints(RotatedRect rect, Size size);
-	void registerNewMarker(std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
+	void registerNewMarker(cv::RotatedRect normRect);
+	int findMatchID( int arucoID);
 	
 protected:
 
@@ -19,10 +18,10 @@ protected:
 	std::array<Marker*, 200> trackedMarker;
 
 public:
-	void CurrentMarker(Marker* tm, std::vector<Point2f> rectPoints, Point2f center, unsigned char markedCorner);
+	void CurrentMarker(Marker* tm, cv::RotatedRect normRect);
 	std::array<Marker*, 200> getTrackedMarker();
 	std::vector<int> getTakenIDVec();
-	void trackMarker(RotatedRect rect, unsigned char markedCorner, Size size);
+	void trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size);
 	MarkerManagement();
 	~MarkerManagement();
 };

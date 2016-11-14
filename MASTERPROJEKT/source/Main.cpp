@@ -1,18 +1,15 @@
 
 #include <Main.h>
 
-using namespace cv;
-//#define uEYE
 #define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
-//#define useonlyMarkerDetection
 #define useNotTestClasses
 
 #ifdef logFile
-	std::ofstream debugLogFile;
+	ofstream debugLogFile;
 #endif //logFile
 
 Main::~Main()
@@ -29,14 +26,13 @@ Main::Main() {
 int main()
 {
 
-	std::cout << CV_VERSION << std::endl;
-#ifdef useonlyMarkerDetection
 	MarkerManagement* mm = new MarkerManagement();
 
 	std::array<Marker*,200> marker;
 	std::vector<int> takenIdVec;
-#endif // useonlyMarkerDetection
 
+	int counter = -1;
+	cv::Mat frame;
 #ifdef TCP
 	//start TCP
 	TCP_output* out = new TCP_output();
@@ -69,66 +65,37 @@ int main()
 
 #ifdef VIDEOLAURAALIEN
 	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
-	
-
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURAALIEN
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_A_Ohne_Verdeckung.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/002_B_Nichtmarkierte_Ecken_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_A_Markierte_Ecke_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/003_B_Markierte_Ecke_verdeckt.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_A_Person_verdeckt_Marker.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/004_B_Person_verdeckt_Marker.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_A_Farbige_Aermel.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/005_B_Farbige_Aermel.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/006_Nacheinander_Hineinschieben.avi");
-	//VideoCapture cap("F:/Master/Masterprojekt/Testvideos/reinraus1.avi");
-	VideoCapture cap("C:/Users/Vera/Desktop/ARUCO_TESTER.avi");
-
+	cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOVERA
-
-
 
 #ifdef uEYE
 	// uEye Caputure
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
-#endif // uEYE
 
-
-	int counter = -1;
-	Mat frame;
-#ifdef uEYE
 	for (int i = 0; i < 30; i++)
 	{
 		frame = uei->getCapturedFrame();
 	}
 #endif //uEYE
 
-	namedWindow("edges", 1);
-	//LUT aufstellen
+	cv::namedWindow("edges", 1);
 
 	while (true)
 	{
 		counter++;
-		printf("COUNTER %i \n ", counter);
+
 #ifdef uEYE
 		frame = uei->getCapturedFrame();
 #endif // uEYE
-
-		//// Mark Middel for Calibration
-		//line(frame, Point2f(630, 512), Point2f(650, 512), Scalar(255, 0, 0), 2, CV_AA);
-		//line(frame, Point2f(640, 502), Point2f(640, 522), Scalar(255, 0, 0), 2, CV_AA);
-		//cv::imshow("Captured Video", frame);
-		//if (cv::waitKey(1) >= 0) break;
 
 #ifdef VIDEOLAURA
 		cap >> frame; // get a new frame from camera
@@ -137,7 +104,6 @@ int main()
 #ifdef VIDEOLAURAALIEN
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOLAURAALIEN
-
 
 #ifdef VIDEOVERA
 		cap >> frame; // get a new frame from camera
@@ -148,30 +114,32 @@ int main()
 			MarkerDetection* md = new MarkerDetection();
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
-				std::vector<RotatedRect> rects = md->getDetectedRects();
-				// getIDVector
-#ifdef useonlyMarkerDetection
+				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+				std::vector<int> arucoIds =md->getArucoIds();
+				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+				delete md;
+				printf("N Rects: %d",rects.size());
+				for each (cv::RotatedRect r in rects)
+				{
+					cv::Point2f vert[4];
+					r.points(vert);
 
-				// LUT Kalibration des Rechtecks
+					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+					}
+			}
+
 				//run MarkerManagement
 
-				for (int i = 0; i < rects.size(); i++)
-				{
-						mm->trackMarker(rects[i], markedCorners[i], frame.size());
-				}
+				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
 
-#endif // useonlyMarkerDetection
-				delete md;
-			}
-#ifdef useonlyMarkerDetection
+				}
 			else { marker = mm->getTrackedMarker(); }
 			debug(frame, marker, counter,takenIdVec);
-
-			imshow("edges", frame);
-			if (waitKey(4) >= 0)break;
-#endif // useonlyMarkerDetection
+			cv::imshow("edges", frame);
+			if (cv::waitKey(4) >= 0)break;
 		}
 		else break;
 
@@ -185,10 +153,8 @@ int main()
 	uei->exitCamera();
 	delete uei;
 #endif // uEYE
-#ifdef useonlyMarkerDetection
 
 	delete mm;
-#endif // useonlyMarkerDetection
 
 
 #ifdef TCP
@@ -198,29 +164,26 @@ int main()
 }
 #endif //useTestClasses
 
-void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
+void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
 {
 #ifdef logFile
-	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);
+	debugLogFile.open("debugOutput.txt", ios::out | ios::app);
 	debugLogFile << "Current Frame " << counter << "\n";
 #endif //logFile
 	// Print Frame Number
 	counter++;
 	std::ostringstream os2;
 	os2 << counter;
-	String s2 = os2.str();
-	putText(frame, s2, Point(100, 100), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+	cv::String s2 = os2.str();
+	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 	for each (int id in takenIDVec)
 	{
-	//for (int k = 0; k < marker.size(); k++) {
 		Marker* m = marker[id];
 		std::vector<cv::Point2f>vertices;
 		vertices = m->getPoints();
 		int id = m->getId();
-		//printf("\t id: %d\n", id);
 		float angle = m->getAngle();
-		//printf("\t \t angle: %f\n", angle);
-		Point2f c = m->getCenter();
+		cv::Point2f c = m->getCenter();
 		c.x = c.x*frame.size().width;
 		c.y = c.y*frame.size().height;
 		vertices = getPixelCoords(vertices, c, frame.size());
@@ -234,13 +197,13 @@ void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vecto
 		// Print ID to BoxCenter
 		std::ostringstream os;
 		os << id;
-		String s = os.str();
+		cv::String s = os.str();
 
-		putText(frame, s, c, FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 255), 1, 8, false);
+		putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 
 		// Draw Boxes
-		for (int i = 0; i < sizeof(vertices) / sizeof(Point2f); ++i) {
-			line(frame, vertices[i], vertices[(i + 1) % 4], Scalar(255, 255, 255), 1, CV_AA);
+		for (int i = 0; i < sizeof(vertices) / sizeof(cv::Point2f); ++i) {
+			line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
 		}
 	}
 #ifdef logFile
@@ -249,7 +212,7 @@ void debug(Mat & frame, std::array<Marker*, 200> marker, int counter, std::vecto
 }
 
 
-std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size) {
+std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Point2f center, cv::Size size) {
 	for (int i = 0; i < vertices.size(); i++)
 	{
 		int x, y;

@@ -19,14 +19,12 @@
 #include <Marker.h>
 #include <TCP_output.h>
 
-
-
 class Main
 {
 	
 private:
 	Main& operator=(const Main&) {};
-	Main(const Main&);;
+	Main(const Main&);
 
 public:
 	Main();
@@ -34,5 +32,5 @@ public:
 };
 
 int main();
-void debug(Mat &frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec);
-std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, Point2f center, Size size);
+void debug(cv::Mat &frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec);
+std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Point2f center, cv::Size size);
