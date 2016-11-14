@@ -15,7 +15,7 @@ private:
 public:
 	std::vector<cv::Point2f>  CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
 	int isConstantMarker(std::vector<cv::Point2f> motionCenterVecs,   std::array<Marker*, 200> trackedMarker,std::vector<int> takenIDVec);
-	int isRotatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
+	int isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
 	int isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
 	bool isMarkerOutOfField();
 	int hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds);

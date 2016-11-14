@@ -1,6 +1,6 @@
 #include "MarkerManagement.h"
 
-std::array<Marker*,200> MarkerManagement::getTrackedMarker()
+std::array<Marker*, 200> MarkerManagement::getTrackedMarker()
 {
 	return trackedMarker;
 }
@@ -12,6 +12,8 @@ std::vector<int> MarkerManagement::getTakenIDVec()
 
 void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size)
 {
+
+	if (corners.size() > 0) {
 		for (int i = 0; i < corners.size(); i++)
 		{
 			std::vector<cv::Point2f> v = corners[i];
@@ -24,36 +26,52 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 			}
 			corners[i] = v;
 		}
+	}
 
-		for each (cv::RotatedRect r in rect)
-		{
-			cv::RotatedRect normRect = normalizeCoord(r, size);
-			IdMapping* im = new IdMapping();
-			int matchID = 0;
-			int arucoID = 0;
-			//test if id matches MarkerRect
-			if ((arucoID = im->hasArucoID(normRect, corners, arucoIds)) > 0) {
-				matchID = findMatchID(arucoID);
-				if (matchID > 0 && trackedMarker[matchID]->getId() > 0) {
-					CurrentMarker(trackedMarker[matchID], normRect);
-					trackedMarker[matchID]->setArucoID(arucoID);
-				}
-				else if(matchID>0)
-					registerNewMarker(normRect);
+	for each (cv::RotatedRect r in rect)
+	{
+		cv::RotatedRect normRect = normalizeCoord(r, size);
+		IdMapping* im = new IdMapping();
+		int matchID = 0;
+		int arucoID = 0;
+		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(normRect, trackedMarker, takenIDVec);
+		//test if id matches MarkerRect
+		if ((arucoID = im->hasArucoID(normRect, corners, arucoIds)) > 0) {
+			matchID = findMatchID(arucoID);
+			if (matchID > 0) {
+				CurrentMarker(trackedMarker[matchID], normRect);
+				if (arucoID > 0)trackedMarker[matchID]->setArucoID(arucoID);
 			}
+			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+				CurrentMarker(trackedMarker[matchID], normRect);
+				if (arucoID > 0)trackedMarker[matchID]->setArucoID(arucoID);
+			}
+			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+				CurrentMarker(trackedMarker[matchID], normRect);
+				if (arucoID > 0)trackedMarker[matchID]->setArucoID(arucoID);
+			}
+			/*else if ((matchID = im->isRotatedMarker(normRect, motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			CurrentMarker(trackedMarker[matchID], normRect);
+			}*/
 			else {
-				std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(normRect, trackedMarker, takenIDVec);
-				if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
-					CurrentMarker(trackedMarker[matchID], normRect);
-				}
-				else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
-					CurrentMarker(trackedMarker[matchID], normRect);
-				}
-				else {
-					registerNewMarker(normRect);
-					}
-				}
-			delete im;
+				registerNewMarker(normRect, arucoID);
+			}
+		}
+		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			CurrentMarker(trackedMarker[matchID], normRect);
+			if (arucoID > 0)trackedMarker[matchID]->setArucoID(arucoID);
+		}
+		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			CurrentMarker(trackedMarker[matchID], normRect);
+			if (arucoID > 0)trackedMarker[matchID]->setArucoID(arucoID);
+		}
+		/*else if ((matchID = im->isRotatedMarker(normRect, motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			CurrentMarker(trackedMarker[matchID], normRect);
+		}*/
+		else {
+			registerNewMarker(normRect, arucoID);
+			}
+		delete im;
 	}
 }
 
@@ -86,14 +104,16 @@ void MarkerManagement::deleteMarker(int id)
 
 
 // inits a new trackedMarker
-void MarkerManagement::registerNewMarker(cv::RotatedRect normRect)
-{
+
+void MarkerManagement::registerNewMarker(cv::RotatedRect normRect, int arucoID) {
 	int id = openIDQueue.front();
 	openIDQueue.pop();
 	Marker* m = new Marker(id, normRect);
+	if(arucoID>0)m->setArucoID(arucoID);
 	trackedMarker[id] = m;
 	takenIDVec.push_back(id);
 }
+
 
 int MarkerManagement::findMatchID(int arucoID)
 {
@@ -106,24 +126,25 @@ int MarkerManagement::findMatchID(int arucoID)
 }
 
 void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect normRect) {
-	std::vector<cv::Point2f> rectPoints;
-	cv::Point2f p[4];
-	normRect.points(p);
-	for (int i = 0; i < 4; i++)
-	{
-		rectPoints.push_back(p[i]);
-	}
-	tm->setPoints(rectPoints, normRect.center);
-	tm->setAngle(normRect.angle);
+	//std::vector<cv::Point2f> rectPoints;
+	//cv::Point2f p[4];
+	//normRect.points(p);
+	//for (int i = 0; i < 4; i++)
+	//{
+	//	rectPoints.push_back(p[i]);
+	//}
+	/*tm->setPoints(rectPoints, normRect.center);
+	tm->setAngle(normRect.angle);*/
+	tm->setNormRect(normRect);
 }
 
 
 
 MarkerManagement::MarkerManagement()
 {
-	for (size_t i = 0 ; i < trackedMarker.size(); i++)
+	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
-		if(i>0)	openIDQueue.push(i);
+		if (i > 0)	openIDQueue.push(i);
 		trackedMarker[i] = new Marker();
 	}
 

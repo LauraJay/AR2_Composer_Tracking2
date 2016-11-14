@@ -8,7 +8,7 @@ class MarkerManagement
 private:
 	cv::RotatedRect normalizeCoord(cv::RotatedRect r, cv::Size size);
 	void deleteMarker(int id);
-	void registerNewMarker(cv::RotatedRect normRect);
+	void registerNewMarker(cv::RotatedRect normRect, int arucoID);
 	int findMatchID( int arucoID);
 	
 protected:

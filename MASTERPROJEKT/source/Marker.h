@@ -5,12 +5,13 @@ class Marker
 {
 private:
 		int id,arucoID; 
-		std::vector<cv::Point2f> rectPoints;
+	/*	std::vector<cv::Point2f> rectPoints;
 		cv::Point2f center;
-		float angle;
+		float angle;*/
+		cv::RotatedRect normRect;
 		cv::Point2f motionCenterVec;
 
-		Marker(const Marker& mark) : id(mark.id),rectPoints(mark.rectPoints),center(mark.center),angle(mark.angle),motionCenterVec(mark.motionCenterVec) {};
+		/*Marker(const Marker& mark) : id(mark.id),rectPoints(mark.rectPoints),center(mark.center),angle(mark.angle),motionCenterVec(mark.motionCenterVec) {};
 		Marker& operator=(const Marker& mark) {
 			id = mark.id;
 			rectPoints = mark.rectPoints;
@@ -18,7 +19,7 @@ private:
 			angle = mark.angle;
 			motionCenterVec = mark.motionCenterVec;
 			return *this;
-		}
+		}*/
 		
 
 public:
@@ -31,6 +32,7 @@ public:
 	cv::Point2f getMotionCenterVec();
 	int getId();
 	int getArucoID();
+	cv::RotatedRect getNormRect();
 	int* getIdPointer();
 	std::vector<cv::Point2f> getPoints();
 	cv::Point2f getCenter();
@@ -38,10 +40,11 @@ public:
 
 	//setter
 	void setMotionCenterVec(cv::Point2f motionCenterVec);
-	void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
-	void setAngle(float angle);
+	void setNormRect(cv::RotatedRect normRect);
+	/*void setPoints(std::vector<cv::Point2f>  rect, cv::Point2f center);
+	void setAngle(float angle);*/
 	void setId(int id);
 	void setArucoID(int arucoID);
-	void setCenter(cv::Point2f center);
+	//void setCenter(cv::Point2f center);
 };
 

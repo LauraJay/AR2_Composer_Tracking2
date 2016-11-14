@@ -45,14 +45,14 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
 	int  matchID = 0;
-	float tCenterConstant = 0.03f;
+	float tCenterConstant = 0.25 *(50./1024);
 
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
 		int id = takenIDVec[i];
 		Marker* m = trackedMarker[id];
 		cv::Point2f mvC = motionCenterVecs[i];
-		if (abs(mvC.x) + abs(mvC.y) <= tCenterConstant) {
+		if (abs(mvC.x + mvC.y) <= tCenterConstant) {
 			isConstant = true;
 			/*myfile2 << "\t Schleifenabbruch bei " << c << "\n";
 			myfile2 << "\t isConstant auf true gesetzt \n";*/
@@ -71,16 +71,45 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 	return matchID;
 }
 
-int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
 {
 	bool isTranslated = false;
 	int matchID = 0;
-	float tTranslation = 2.*(50./1024.);
+	float tTranslation = 50. / 1024.;
+	float tAngle = 20.;
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
 		int id = takenIDVec[i];
 		Marker* m = trackedMarker[id];
 		cv::Point2f mvC = motionCenterVecs[i];
+		float mAngle = m->getAngle();
+		if (abs(mvC.x) + abs(mvC.y) <= tTranslation && abs(mAngle-normRect.angle)<=tAngle) {
+			isTranslated = true;
+		}
+		else {
+			isTranslated = false;
+		}
+		if (isTranslated) {
+			isTranslated = true;
+			matchID = m->getId();
+			break;
+		}
+	}
+	return matchID;
+}
+
+int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+{
+	bool isTranslated = false;
+	int matchID = 0;
+	for (int i = 0; i < takenIDVec.size(); i++)
+	{
+		int id = takenIDVec[i];
+		Marker* m = trackedMarker[id];
+		cv::Point2f mvC = motionCenterVecs[i];
+		cv::Point2f mvCMarker=	m->getMotionCenterVec();
+		cv::Point2f centerMarker = m->getCenter();
+		float tTranslation =0.1f;
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}

@@ -118,7 +118,8 @@ int main()
 				std::vector<int> arucoIds =md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 				delete md;
-				printf("N Rects: %d",rects.size());
+				printf("FrameNumer: %d ; ", counter);
+				printf("N Rects: %d \n",rects.size());
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
@@ -130,7 +131,8 @@ int main()
 			}
 
 				//run MarkerManagement
-
+				if (counter == 79)
+					printf("");
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
@@ -202,7 +204,7 @@ void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::v
 		putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 
 		// Draw Boxes
-		for (int i = 0; i < sizeof(vertices) / sizeof(cv::Point2f); ++i) {
+		for (int i = 0; i < vertices.size(); ++i) {
 			line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
 		}
 	}

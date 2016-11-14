@@ -8,7 +8,7 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	const double PI(3.14159265);
 	cv::Point2f unitVector(100, 0);
 	
-	cv::Point2f orientationVector = rectPoints[markCornerID] - center;
+	cv::Point2f orientationVector = rectPoints[markCornerID] - normRect.center;
 	//Calculate the angle between the unit vector and the vector between the center and the green corner
 	float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
 	float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
@@ -16,11 +16,11 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	angleRad = acos(scalar / (distance1 * distance2));
 	
 	//Case 1: Green Corner lies above the center of the box
-	if (rectPoints[markCornerID].y <= center.y) {
+	if (rectPoints[markCornerID].y <= normRect.center.y) {
 		angleGrad = angleRad * 180 / PI;
 	}
 	//Case 2: Green Corner lies below the center of the box
-	if (rectPoints[markCornerID].y > center.y) {
+	if (rectPoints[markCornerID].y > normRect.center.y) {
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 	return angleGrad;
@@ -36,10 +36,11 @@ Marker::Marker(int id, cv::RotatedRect normRect)
 	{
 		rectPoints.push_back(p[i]);
 	}
-	Marker::rectPoints = rectPoints;
-	Marker::center = normRect.center;
+	Marker::normRect = normRect;
+	/*Marker::rectPoints = rectPoints;
+	Marker::center = normRect.center;*/
 	//Marker::angle = computeAngle(markCornerID, rectPoints);
-	Marker::angle = normRect.angle;
+	//Marker::angle = normRect.angle;
 	motionCenterVec = cv::Point2f(0,0);
 }
 
@@ -64,6 +65,11 @@ int Marker::getArucoID()
 	return arucoID;
 }
 
+cv::RotatedRect Marker::getNormRect()
+{
+	return normRect;
+}
+
 int* Marker::getIdPointer()
 {
 	return &id;
@@ -71,17 +77,24 @@ int* Marker::getIdPointer()
 
 std::vector<cv::Point2f> Marker::getPoints()
 {
+	std::vector<cv::Point2f> rectPoints;
+	cv::Point2f p[4];
+	normRect.points(p);
+	for (int i = 0; i < 4; i++)
+	{
+		rectPoints.push_back(p[i]);
+	}
 	return rectPoints;
 }
 
 cv::Point2f Marker::getCenter()
 {
-	return center;
+	return normRect.center;
 }
 
 float Marker::getAngle()
 {
-	return angle;
+	return normRect.angle;
 }
 
 void Marker::setMotionCenterVec(cv::Point2f motionCenterVec)
@@ -89,16 +102,21 @@ void Marker::setMotionCenterVec(cv::Point2f motionCenterVec)
 	Marker::motionCenterVec = motionCenterVec;
 }
 
-void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f c)
-{	
-	rectPoints = rect;
-	center = c;
+void Marker::setNormRect(cv::RotatedRect normRect)
+{
+	Marker::normRect = normRect;
 }
 
-void Marker::setAngle(float angle)
-{
-	Marker::angle = angle;
-}
+//void Marker::setPoints(std::vector<cv::Point2f>  rect, cv::Point2f c)
+//{	
+//	rectPoints = rect;
+//	center = c;
+//}
+//
+//void Marker::setAngle(float angle)
+//{
+//	Marker::angle = angle;
+//}
 
 void Marker::setId(int id)
 {
@@ -110,9 +128,9 @@ void Marker::setArucoID(int arucoID)
 	Marker::arucoID = arucoID;
 }
 
-void Marker::setCenter(cv::Point2f center)
-{
-	Marker::center = center;
-}
+//void Marker::setCenter(cv::Point2f center)
+//{
+//	Marker::center = center;
+//}
 
 
