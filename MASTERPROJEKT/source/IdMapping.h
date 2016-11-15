@@ -17,7 +17,7 @@ public:
 	int isConstantMarker(std::vector<cv::Point2f> motionCenterVecs,   std::array<Marker*, 200> trackedMarker,std::vector<int> takenIDVec);
 	int isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
 	int isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec);
-	bool isMarkerOutOfField();
+	int isMarkerOutOfField(Marker * m, cv::Size imgSize);
 	int hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds);
 	IdMapping() {};
 	~IdMapping() {};

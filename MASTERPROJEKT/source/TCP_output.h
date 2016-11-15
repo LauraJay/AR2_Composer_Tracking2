@@ -7,7 +7,7 @@
 class TCP_output {
 
 private:
-	
+	cv::RotatedRect normalizeCoord(cv::RotatedRect r, cv::Size size);
 
 public:
 	struct MarkerStruct {

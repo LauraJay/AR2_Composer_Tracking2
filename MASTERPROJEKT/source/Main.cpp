@@ -25,7 +25,6 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
-
 	MarkerManagement* mm = new MarkerManagement();
 
 	std::array<Marker*,200> marker;
@@ -42,23 +41,6 @@ int main()
 
 #ifdef VIDEOLAURA
 	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung2.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Lift2.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Register1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/reinraus2.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Swap2.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/totalCover1.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/totalCover2.avi");
-
-	//alt
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_A_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/001_B_Ohne_Verdeckung.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/006_Nacheinander_Hineinschieben.avi");
-	//VideoCapture cap("C:/Users/AR/Desktop/Laura/01_Testmaterial/002_A_Nichtmarkierte_Ecken_verdeckt.avi");
-
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURA
@@ -71,7 +53,8 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
+	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/02.avi");
+	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOVERA
@@ -88,7 +71,6 @@ int main()
 #endif //uEYE
 
 	cv::namedWindow("edges", 1);
-
 	while (true)
 	{
 		counter++;
@@ -124,7 +106,6 @@ int main()
 				{
 					cv::Point2f vert[4];
 					r.points(vert);
-
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
@@ -136,9 +117,8 @@ int main()
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
-
 				}
-			else { marker = mm->getTrackedMarker(); }
+			else {marker = mm->getTrackedMarker(); }
 			debug(frame, marker, counter,takenIdVec);
 			cv::imshow("edges", frame);
 			if (cv::waitKey(4) >= 0)break;
@@ -181,31 +161,30 @@ void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::v
 	for each (int id in takenIDVec)
 	{
 		Marker* m = marker[id];
-		std::vector<cv::Point2f>vertices;
-		vertices = m->getPoints();
-		int id = m->getId();
-		float angle = m->getAngle();
-		cv::Point2f c = m->getCenter();
-		c.x = c.x*frame.size().width;
-		c.y = c.y*frame.size().height;
-		vertices = getPixelCoords(vertices, c, frame.size());
+		if (m->isVisible() == 1) {
+			std::vector<cv::Point2f>vertices;
+			vertices = m->getPoints();
+			int id = m->getId();
+			float angle = m->getAngle();
+			cv::Point2f c = m->getCenter();
 
 #ifdef logFile 
-		debugLogFile << "\t ID: " << id << "\n";
-		debugLogFile << "\t \t  ANGLE: " << angle << "\n";
-		debugLogFile << "\t \t  CENTER X: " << c.x << " CENTER Y: " << c.y << "\n";
+			debugLogFile << "\t ID: " << id << "\n";
+			debugLogFile << "\t \t  ANGLE: " << angle << "\n";
+			debugLogFile << "\t \t  CENTER X: " << c.x << " CENTER Y: " << c.y << "\n";
 #endif //logFile
 
-		// Print ID to BoxCenter
-		std::ostringstream os;
-		os << id;
-		cv::String s = os.str();
+			// Print ID to BoxCenter
+			std::ostringstream os;
+			os << id;
+			cv::String s = os.str();
 
-		putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
+			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 
-		// Draw Boxes
-		for (int i = 0; i < vertices.size(); ++i) {
-			line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
+			// Draw Boxes
+			for (int i = 0; i < vertices.size(); ++i) {
+				line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
+			}
 		}
 	}
 #ifdef logFile
@@ -218,8 +197,8 @@ std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Po
 	for (int i = 0; i < vertices.size(); i++)
 	{
 		int x, y;
-		x = vertices[i].x*size.width;
-		y = vertices[i].y*size.height;
+		x = vertices[i].x*size.height;
+		y = vertices[i].y*size.width;
 		vertices.at(i).x = x;
 		vertices.at(i).y = y;
 	}

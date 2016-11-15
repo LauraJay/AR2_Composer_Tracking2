@@ -45,7 +45,7 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
 	int  matchID = 0;
-	float tCenterConstant = 0.25 *(50./1024);
+	float tCenterConstant = 10;
 
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
@@ -73,29 +73,7 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 
 int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
 {
-	bool isTranslated = false;
-	int matchID = 0;
-	float tTranslation = 50. / 1024.;
-	float tAngle = 20.;
-	for (int i = 0; i < takenIDVec.size(); i++)
-	{
-		int id = takenIDVec[i];
-		Marker* m = trackedMarker[id];
-		cv::Point2f mvC = motionCenterVecs[i];
-		float mAngle = m->getAngle();
-		if (abs(mvC.x) + abs(mvC.y) <= tTranslation && abs(mAngle-normRect.angle)<=tAngle) {
-			isTranslated = true;
-		}
-		else {
-			isTranslated = false;
-		}
-		if (isTranslated) {
-			isTranslated = true;
-			matchID = m->getId();
-			break;
-		}
-	}
-	return matchID;
+	return 0;
 }
 
 int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
@@ -109,7 +87,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		cv::Point2f mvC = motionCenterVecs[i];
 		cv::Point2f mvCMarker=	m->getMotionCenterVec();
 		cv::Point2f centerMarker = m->getCenter();
-		float tTranslation =0.1f;
+		float tTranslation =200;
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}
@@ -125,10 +103,16 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 	return matchID;
 }
 
-bool IdMapping::isMarkerOutOfField() {
-
-
-	return false;
+int IdMapping::isMarkerOutOfField(Marker* m,cv::Size imgSize) {
+	std::vector<cv::Point2f> ps = m->getPoints();
+	float threshold = 2.;
+	for each (cv::Point2f p in ps)
+	{
+		if (p.x > imgSize.width-threshold || p.x < 0.+threshold || 
+			p.y > imgSize.height-threshold || p.y < 0.+threshold)
+			return 1;
+	}
+	return 0;
 }
 
 int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds)

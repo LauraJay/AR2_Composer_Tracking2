@@ -101,7 +101,7 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers, std
 	c++;
 		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 1; i <= takenIdVec.size(); i++) {
-			
+			allMarkers[i]->setRect( normalizeCoord(allMarkers[i]->getRect(),cv::Size (1024,1280)));
 			ms[i-1].id = allMarkers[i]->getId();
 			myfile << "\t tid " << ms[i].id << "\n";
 			ms[i-1].posX = allMarkers[i]->getCenter().x;
@@ -120,10 +120,17 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers, std
 
 TCP_output::TCP_output()
 {
-
 }
 
 TCP_output::~TCP_output()
 {
+}
 
+cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r, cv::Size size) {
+	cv::Point2f center = r.center;
+	center.x = center.x / size.width;
+	center.y = center.y / size.height;
+	cv::Size2f normSize = cv::Size2f((r.size.width / size.width), (r.size.height / size.height));
+	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
+	return rect;
 }
