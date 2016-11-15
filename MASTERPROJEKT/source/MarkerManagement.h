@@ -11,7 +11,8 @@ private:
 	int findMatchID( int arucoID);
 	
 protected:
-
+	cv::Size markerSize;
+	cv::Size frameSize;
 	std::queue <int> openIDQueue;
 	std::vector<int> takenIDVec;
 	std::array<Marker*, 200> trackedMarker;
@@ -21,7 +22,7 @@ public:
 	std::array<Marker*, 200> getTrackedMarker();
 	std::vector<int> getTakenIDVec();
 	void trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size);
-	MarkerManagement();
+	MarkerManagement(cv::Size markerSize, cv::Size frameSize);
 	~MarkerManagement();
 };
 

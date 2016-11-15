@@ -15,10 +15,40 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 
 	IdMapping* im = new IdMapping();
-	for each (cv::RotatedRect r in rect)
+	for (int i = 0; i < rect.size(); i++)
 	{
+		cv::RotatedRect r = rect[i];
+	
 		int matchID = 0;
 		int arucoID = 0;
+		cv::Size rs = r.size;
+
+		/*if(arucoIds.size()>rect.size())
+		 {
+			 if (rs.width / rs.height > 0.4 ||
+				 rs.height / rs.width > 0.4
+				 ) {
+				 if (rs.width > rs.height) {
+					 cv::Point2f newCenter = cv::Point2f(r.center.x - r.size.width / 4, r.center.y);
+					 cv::Size2f newSize = cv::Size2f(markerSize.height, markerSize.height);
+					 cv::RotatedRect newOne = cv::RotatedRect(newCenter, newSize, r.angle);
+					 r.center.x = r.center.x + r.size.width / 4;
+					 r.size.height = markerSize.height;
+					 r.size.width = markerSize.height;
+					 rect.push_back(newOne);
+				 }
+				 else {
+					 cv::Point2f newCenter = cv::Point2f(r.center.x, r.center.y - r.size.height / 4);
+					 cv::Size2f newSize = cv::Size2f(markerSize.height, markerSize.height);
+					 cv::RotatedRect newOne = cv::RotatedRect(newCenter, newSize, r.angle);
+					 r.center.y = r.center.y + r.size.height / 4;
+					 r.size.height = markerSize.height;
+					 r.size.width = markerSize.height;
+					 rect.push_back(newOne);
+				 }
+			 }
+		}*/
+
 		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(r, trackedMarker, takenIDVec);
 
 		//test if id matches MarkerRect
@@ -51,7 +81,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 	{
 		int id = takenIDVec[i];
 		if (trackedMarker[id]->isTracked() == 0) {
-			if ((matchID = im->isMarkerOutOfField(trackedMarker[id],cv::Size(1280,1024))) > 0) {
+			if ((matchID = im->isMarkerOutOfField(trackedMarker[id],frameSize)) > 0) {
 				deleteMarker(id);
 			}
 			else 
@@ -118,13 +148,15 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect, int aruco
 
 
 
-MarkerManagement::MarkerManagement()
+MarkerManagement::MarkerManagement(cv::Size markerSize,cv::Size frameSize)
 {
 	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
 		if (i > 0)	openIDQueue.push(i);
 		trackedMarker[i] = new Marker();
 	}
+	MarkerManagement::markerSize = markerSize;
+	MarkerManagement::frameSize = frameSize;
 }
 
 

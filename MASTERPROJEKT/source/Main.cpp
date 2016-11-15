@@ -1,11 +1,12 @@
 
 #include <Main.h>
 
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
+#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -25,7 +26,6 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
-	MarkerManagement* mm = new MarkerManagement();
 
 	std::array<Marker*,200> marker;
 	std::vector<int> takenIdVec;
@@ -69,7 +69,9 @@ int main()
 		frame = uei->getCapturedFrame();
 	}
 #endif //uEYE
-
+	//first MarkerSize, second Threshold
+	cv::Size markerSize = cv::Size(68,48);
+	MarkerManagement* mm = new MarkerManagement(markerSize, frame.size());
 	cv::namedWindow("edges", 1);
 	while (true)
 	{
@@ -110,6 +112,10 @@ int main()
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
 			}
+				for each (std::vector<cv::Point2f> var in corners)
+				{
+					cv::circle(frame, var[1], 5, cv::Scalar(255, 0, 0));
+				}
 
 				//run MarkerManagement
 				if (counter == 79)
