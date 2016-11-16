@@ -1,0 +1,204 @@
+Current Frame 0
+Current Frame 1
+Current Frame 2
+Current Frame 3
+Current Frame 4
+Current Frame 5
+Current Frame 0
+Current Frame 1
+Current Frame 2
+Current Frame 3
+Current Frame 4
+Current Frame 5
+Current Frame 6
+Current Frame 7
+Current Frame 8
+Current Frame 9
+Current Frame 10
+Current Frame 11
+Current Frame 0
+	 ID: 1
+	 	  ANGLE: -37.1169
+	 	  CENTER X: 734.092 CENTER Y: 692.444
+	 ID: 2
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 639.156 CENTER Y: 613.287
+Current Frame 1
+	 ID: 1
+	 	  ANGLE: -38.8534
+	 	  CENTER X: 733.871 CENTER Y: 691.201
+	 ID: 2
+	 	  ANGLE: -39.6442
+	 	  CENTER X: 637.958 CENTER Y: 612.949
+Current Frame 2
+	 ID: 1
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 734.639 CENTER Y: 692.467
+	 ID: 2
+	 	  ANGLE: -42.1844
+	 	  CENTER X: 637.774 CENTER Y: 612.751
+Current Frame 3
+	 ID: 1
+	 	  ANGLE: -39.0355
+	 	  CENTER X: 734.866 CENTER Y: 691.852
+	 ID: 2
+	 	  ANGLE: -41.5318
+	 	  CENTER X: 637.705 CENTER Y: 611.99
+Current Frame 4
+	 ID: 1
+	 	  ANGLE: -36.8699
+	 	  CENTER X: 734.64 CENTER Y: 690.52
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 637.997 CENTER Y: 613.054
+Current Frame 5
+	 ID: 1
+	 	  ANGLE: -40.6013
+	 	  CENTER X: 733.882 CENTER Y: 691.529
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 638.134 CENTER Y: 612.88
+Current Frame 6
+	 ID: 1
+	 	  ANGLE: -39.4725
+	 	  CENTER X: 734.083 CENTER Y: 689.637
+	 ID: 2
+	 	  ANGLE: -42.9546
+	 	  CENTER X: 637.892 CENTER Y: 613.032
+Current Frame 7
+	 ID: 1
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 734.287 CENTER Y: 692.344
+	 ID: 2
+	 	  ANGLE: -42.2737
+	 	  CENTER X: 637.932 CENTER Y: 612.925
+Current Frame 8
+	 ID: 1
+	 	  ANGLE: -37.1169
+	 	  CENTER X: 733.385 CENTER Y: 691.722
+	 ID: 2
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 637.549 CENTER Y: 612.459
+Current Frame 9
+	 ID: 1
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 734.328 CENTER Y: 692.393
+	 ID: 2
+	 	  ANGLE: -41.9872
+	 	  CENTER X: 637.751 CENTER Y: 613.224
+Current Frame 10
+	 ID: 1
+	 	  ANGLE: -38.8534
+	 	  CENTER X: 734.075 CENTER Y: 691.731
+	 ID: 2
+	 	  ANGLE: -42.0892
+	 	  CENTER X: 637.875 CENTER Y: 612.968
+Current Frame 11
+	 ID: 1
+	 	  ANGLE: -40.7321
+	 	  CENTER X: 732.754 CENTER Y: 693.795
+	 ID: 2
+	 	  ANGLE: -39.8056
+	 	  CENTER X: 637.549 CENTER Y: 612.459
+Current Frame 12
+	 ID: 1
+	 	  ANGLE: -43.2101
+	 	  CENTER X: 729.985 CENTER Y: 695.484
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 637.854 CENTER Y: 612.838
+Current Frame 13
+	 ID: 1
+	 	  ANGLE: -51.1155
+	 	  CENTER X: 707.337 CENTER Y: 714.482
+	 ID: 2
+	 	  ANGLE: -41.9872
+	 	  CENTER X: 637.727 CENTER Y: 613.196
+Current Frame 14
+	 ID: 1
+	 	  ANGLE: -54.2933
+	 	  CENTER X: 699.447 CENTER Y: 721.4
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 638.188 CENTER Y: 612.883
+Current Frame 15
+	 ID: 1
+	 	  ANGLE: -66.8014
+	 	  CENTER X: 674.81 CENTER Y: 752.276
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 637.797 CENTER Y: 612.889
+Current Frame 16
+	 ID: 1
+	 	  ANGLE: -64.9831
+	 	  CENTER X: 666.296 CENTER Y: 762.938
+	 ID: 2
+	 	  ANGLE: -42.1844
+	 	  CENTER X: 637.869 CENTER Y: 612.666
+Current Frame 17
+	 ID: 1
+	 	  ANGLE: -69.2744
+	 	  CENTER X: 658.856 CENTER Y: 774.202
+	 ID: 2
+	 	  ANGLE: -40.6013
+	 	  CENTER X: 638.982 CENTER Y: 613.229
+Current Frame 18
+	 ID: 1
+	 	  ANGLE: -65.6589
+	 	  CENTER X: 653.133 CENTER Y: 786.81
+	 ID: 2
+	 	  ANGLE: -42.0892
+	 	  CENTER X: 637.944 CENTER Y: 612.599
+Current Frame 19
+	 ID: 1
+	 	  ANGLE: -73.0725
+	 	  CENTER X: 643.324 CENTER Y: 802.794
+	 ID: 2
+	 	  ANGLE: -40.156
+	 	  CENTER X: 639.181 CENTER Y: 613.769
+Current Frame 20
+	 ID: 1
+	 	  ANGLE: -73.54
+	 	  CENTER X: 633.395 CENTER Y: 819.855
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 637.634 CENTER Y: 613.035
+Current Frame 21
+	 ID: 2
+	 	  ANGLE: -42.5104
+	 	  CENTER X: 637.787 CENTER Y: 612.904
+Current Frame 22
+	 ID: 2
+	 	  ANGLE: -41.1859
+	 	  CENTER X: 637.544 CENTER Y: 613.336
+	 ID: 3
+	 	  ANGLE: -77.3196
+	 	  CENTER X: 603.2 CENTER Y: 876.057
+Current Frame 23
+	 ID: 2
+	 	  ANGLE: -43.9191
+	 	  CENTER X: 637.444 CENTER Y: 613.48
+	 ID: 3
+	 	  ANGLE: -76.5514
+	 	  CENTER X: 596.048 CENTER Y: 896.392
+Current Frame 24
+	 ID: 2
+	 	  ANGLE: -41.8779
+	 	  CENTER X: 638 CENTER Y: 613
+	 ID: 3
+	 	  ANGLE: -79.6952
+	 	  CENTER X: 580.408 CENTER Y: 933.756
+Current Frame 25
+	 ID: 2
+	 	  ANGLE: -42.5104
+	 	  CENTER X: 637.396 CENTER Y: 612.887
+	 ID: 3
+	 	  ANGLE: -79.9194
+	 	  CENTER X: 563.5 CENTER Y: 973.5
+Current Frame 26
+	 ID: 2
+	 	  ANGLE: -43.1524
+	 	  CENTER X: 637.317 CENTER Y: 612.671
+	 ID: 3
+	 	  ANGLE: -84.9204
+	 	  CENTER X: 555.268 CENTER Y: 990.735

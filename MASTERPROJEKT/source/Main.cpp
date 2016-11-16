@@ -1,16 +1,16 @@
 
 #include <Main.h>
 
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
-//#define VIDEOLAURA
+#define VIDEOLAURA
 //#define TCP
-//#define logFile
+#define logFile
 //#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
-	ofstream debugLogFile;
+	std::ofstream debugLogFile;
 #endif //logFile
 
 Main::~Main()
@@ -40,7 +40,7 @@ int main()
 
 
 #ifdef VIDEOLAURA
-	VideoCapture cap("C:/Users/AR/Desktop/Laura/02_Testmaterial/Drehung1.avi");
+	cv::VideoCapture cap("C:/Users/AR/Desktop/Laura/05_Testmaterial/02.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 #endif // VIDEOLAURA
@@ -155,7 +155,7 @@ int main()
 void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
 {
 #ifdef logFile
-	debugLogFile.open("debugOutput.txt", ios::out | ios::app);
+	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);
 	debugLogFile << "Current Frame " << counter << "\n";
 #endif //logFile
 	// Print Frame Number
