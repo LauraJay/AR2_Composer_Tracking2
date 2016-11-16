@@ -1,12 +1,12 @@
 
 #include <Main.h>
 
-//#define VIDEOVERA
+#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
-#define uEYE
+//#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
