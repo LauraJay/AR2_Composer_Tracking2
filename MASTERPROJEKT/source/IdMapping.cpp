@@ -45,7 +45,7 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
 	int  matchID = 0;
-	float tCenterConstant = 10;
+	float tCenterConstant = 45;
 
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
@@ -87,7 +87,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		cv::Point2f mvC = motionCenterVecs[i];
 		cv::Point2f mvCMarker=	m->getMotionCenterVec();
 		cv::Point2f centerMarker = m->getCenter();
-		float tTranslation =50;
+		float tTranslation =100;
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}
@@ -132,7 +132,7 @@ int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::
 			if (!isInsideOfRect)break;
 		}
 		if (isInsideOfRect)
-			return arucoIds[i];
+			return i;
 	}
 	return 0;
 }

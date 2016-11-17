@@ -11,10 +11,10 @@ private:
 		int isTrack=0;
 		
 public:
-	Marker(int id, cv::RotatedRect rect);
+	Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint);
 	Marker();
 	~Marker() {};
-	float computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints);
+	float computeAngle(cv::Point2f angelPoint, cv::Point2f center);
 
 	//getter
 	int isTracked();
@@ -32,9 +32,12 @@ public:
 	void setTracked(int isTracked);
 	void setVisible(int isVisible);
 	void setMotionCenterVec(cv::Point2f motionCenterVec);
+	void setRectWithAngle(cv::RotatedRect rect, cv::Point2f anglePoint);
 	void setRect(cv::RotatedRect rect);
 	void setId(int id);
 	void setArucoID(int arucoID);
+
+	void clear();
 	
 };
 

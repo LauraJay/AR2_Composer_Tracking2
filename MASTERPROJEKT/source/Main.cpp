@@ -1,11 +1,11 @@
 
 #include <Main.h>
 
-//#define VIDEOVERA
+#define VIDEOVERA
 //#define VIDEOLAURAALIEN
-#define VIDEOLAURA
+//#define VIDEOLAURA
 //#define TCP
-#define logFile
+//#define logFile
 //#define uEYE
 #define useNotTestClasses
 
@@ -43,20 +43,23 @@ int main()
 	cv::VideoCapture cap("C:/Users/AR/Desktop/Laura/05_Testmaterial/02.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
+	cap >> frame;
 #endif // VIDEOLAURA
 
 #ifdef VIDEOLAURAALIEN
 	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
+	cap >> frame;
 #endif // VIDEOLAURAALIEN
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/02.avi");
+	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/01.avi");
 	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
+	cap >> frame;
 #endif // VIDEOVERA
 
 #ifdef uEYE
@@ -114,11 +117,11 @@ int main()
 			}
 				for each (std::vector<cv::Point2f> var in corners)
 				{
-					cv::circle(frame, var[1], 5, cv::Scalar(255, 0, 0));
+					cv::circle(frame, var[2], 5, cv::Scalar(255, 0, 0));
 				}
 
 				//run MarkerManagement
-				if (counter == 79)
+				if (counter == 122)
 					printf("");
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
@@ -182,7 +185,7 @@ void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::v
 
 			// Print ID to BoxCenter
 			std::ostringstream os;
-			os << id;
+			os << angle;
 			cv::String s = os.str();
 
 			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);

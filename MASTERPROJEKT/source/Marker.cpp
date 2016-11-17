@@ -1,14 +1,14 @@
 #include "Marker.h"
 
 
-float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> rectPoints)
+float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 {
 	float angleRad;
 	float angleGrad;
 	const double PI(3.14159265);
 	cv::Point2f unitVector(100, 0);
 	
-	cv::Point2f orientationVector = rectPoints[markCornerID] - rect.center;
+	cv::Point2f orientationVector = angelPoint - center;
 	//Calculate the angle between the unit vector and the vector between the center and the green corner
 	float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
 	float distance1 = sqrt((unitVector.x * unitVector.x) + (unitVector.y * unitVector.y));
@@ -16,31 +16,22 @@ float Marker::computeAngle(unsigned char markCornerID, std::vector<cv::Point2f> 
 	angleRad = acos(scalar / (distance1 * distance2));
 	
 	//Case 1: Green Corner lies above the center of the box
-	if (rectPoints[markCornerID].y <= rect.center.y) {
+	if (angelPoint.y <= rect.center.y) {
 		angleGrad = angleRad * 180 / PI;
 	}
 	//Case 2: Green Corner lies below the center of the box
-	if (rectPoints[markCornerID].y > rect.center.y) {
+	if (angelPoint.y > rect.center.y) {
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 	return angleGrad;
 }
 
-Marker::Marker(int id, cv::RotatedRect rect)
+Marker::Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint)
 {
 	Marker::id = id;
-	std::vector<cv::Point2f> rectPoints;
-	cv::Point2f p[4];
-	rect.points(p);
-	for (int i = 0; i < 4; i++)
-	{
-		rectPoints.push_back(p[i]);
-	}
 	Marker::rect = rect;
-	/*Marker::rectPoints = rectPoints;
-	Marker::center = rect.center;*/
-	//Marker::angle = computeAngle(markCornerID, rectPoints);
-	//Marker::angle = rect.angle;
+	Marker::rect.angle = computeAngle(anglePoint,rect.center);
+	Marker::rect.angle += rect.angle;
 	motionCenterVec = cv::Point2f(0,0);
 }
 
@@ -64,6 +55,14 @@ cv::Point2f Marker::getMotionCenterVec()
 	return motionCenterVec;
 }
 
+void Marker::clear() {
+	
+	isVis = 1;
+	id=0;
+	rect = cv::RotatedRect();
+	motionCenterVec = cv::Point2f();
+	int isTrack = 0;
+}
 
 int Marker::getId()
 {
@@ -125,7 +124,14 @@ void Marker::setMotionCenterVec(cv::Point2f motionCenterVec)
 void Marker::setRect(cv::RotatedRect rect)
 {
 	Marker::rect = rect;
+	
 }
+void Marker::setRectWithAngle(cv::RotatedRect rect, cv::Point2f anglePoint)
+{
+	Marker::rect = rect;
+	Marker::rect.angle = computeAngle(anglePoint, rect.center);
+	Marker::rect.angle += rect.angle;
+	}
 
 void Marker::setId(int id)
 {
