@@ -61,7 +61,7 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 			isConstant = false;
 			//myfile2 << "\t Schleifendurchlauf " << c << "\n";
 		}
-		if (isConstant && m->getArucoID() == -1) {
+		if (isConstant && arucoID == -1) {
 			isConstant = true;
 			matchID = m->getId();
 			break;
@@ -100,7 +100,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		else {
 			isTranslated = false;
 		}
-		if (isTranslated && m->getArucoID() == -1) {
+		if (isTranslated && arucoID == -1) {
 			isTranslated = true;
 			matchID = m->getId();
 			break;
@@ -116,7 +116,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 
 int IdMapping::isMarkerOutOfField(Marker* m,cv::Size imgSize) {
 	std::vector<cv::Point2f> ps = m->getPoints();
-	float threshold = 2.;
+	float threshold = 20.;
 	for each (cv::Point2f p in ps)
 	{
 		if (p.x > imgSize.width-threshold || p.x < 0.+threshold || 

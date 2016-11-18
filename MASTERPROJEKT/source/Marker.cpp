@@ -57,6 +57,7 @@ cv::Point2f Marker::getMotionCenterVec()
 void Marker::clear() {
 	
 	isVis = 1;
+	arucoID = 0;
 	id=0;
 	angle = 0.;
 	rect = cv::RotatedRect();
@@ -103,7 +104,7 @@ cv::Point2f Marker::getCenter()
 
 float Marker::getAngle()
 {
-	return angle;
+	return -1*angle;
 }
 
 void Marker::setAngle(float angle) {

@@ -21,16 +21,16 @@ int uEye_input::inituEyeCam() {
 	is_SetColorMode(hCam, IS_CM_BGR8_PACKED);
 	is_SetImageSize(hCam, img_width, img_height);
 
-	double pixelClock = 37;
+	double pixelClock = 35;
 
 	is_PixelClock(hCam, IS_PIXELCLOCK_CMD_SET, &pixelClock, sizeof(pixelClock));
 
 	double FPS, NEWFPS;
-	FPS = 23;
+	FPS = 21;
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 6.;
+	double parameter = 8.;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 		printf("failed Exposure");
@@ -41,7 +41,7 @@ int uEye_input::inituEyeCam() {
 	double factor = 0.5;
 	INT Color = is_SetColorCorrection(hCam, IS_CCOR_ENABLE_NORMAL, &factor);
 
-	INT nRet = is_SetGamma(hCam, 1800);
+	INT nRet = is_SetGamma(hCam, 2200);
 	return 1;
 
 }

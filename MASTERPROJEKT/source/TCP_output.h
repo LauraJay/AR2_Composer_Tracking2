@@ -15,6 +15,7 @@ public:
 		float posX;
 		float posY;
 		float angle;
+		int isVisible;
 	};
 	int startTCPServer();
 	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec);

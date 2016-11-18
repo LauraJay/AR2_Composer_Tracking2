@@ -4,7 +4,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define TCP
+#define TCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -66,16 +66,13 @@ int main()
 	// uEye Caputure
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
+	frame = uei->getCapturedFrame();
 
-	for (int i = 0; i < 30; i++)
-	{
-		frame = uei->getCapturedFrame();
-	}
 #endif //uEYE
 	//first MarkerSize, second Threshold
 	cv::Size markerSize = cv::Size(68,48);
 	MarkerManagement* mm = new MarkerManagement(markerSize, frame.size());
-	cv::namedWindow("edges", 1);
+	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	while (true)
 	{
 		counter++;
@@ -105,8 +102,7 @@ int main()
 				std::vector<int> arucoIds =md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 				delete md;
-				printf("FrameNumer: %d ; ", counter);
-				printf("N Rects: %d \n",rects.size());
+				
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
@@ -115,11 +111,10 @@ int main()
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
 			}
-				for each (std::vector<cv::Point2f> var in corners)
+				/*for each (std::vector<cv::Point2f> var in corners)
 				{
 					cv::circle(frame, var[2], 5, cv::Scalar(255, 0, 0));
-				}
-
+				}*/
 				//run MarkerManagement
 				if (counter == 26)
 					printf("");
@@ -185,7 +180,7 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 
 			// Print ID to BoxCenter
 			std::ostringstream os;
-			os << angle;
+			os << id;
 			cv::String s = os.str();
 
 			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);

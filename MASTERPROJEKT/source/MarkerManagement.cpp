@@ -29,7 +29,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
 			matchID = findMatchID(arucoIds[arucoID]);
 			if (matchID > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoID, corners[arucoID].at(2));
+				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
 			}
 			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
@@ -123,7 +123,7 @@ void MarkerManagement::CurrentMarkerWAruco(Marker* tm, cv::RotatedRect rect, int
 }
 
 void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
-	rect.angle = tm->getAngle();
+	//rect.angle = tm->getAngle();
 	tm->setRect(rect);
 	tm->setTracked(1);
 	tm->setVisible(1);

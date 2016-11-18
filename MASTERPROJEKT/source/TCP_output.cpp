@@ -89,7 +89,7 @@ int startWinsock(void)
 void TCP_output::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
-	rc = send(connectedSocket, markerPointer, 3204, 0);
+	rc = send(connectedSocket, markerPointer, 2004, 0);
 	/*const char FAR* markerPointer = (const char*) &allMarkers;
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }
@@ -101,15 +101,17 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 	c++;
 		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 1; i <= takenIdVec.size(); i++) {
-			allMarkers[i]->setRect( normalizeCoord(allMarkers[i]->getRect(),cv::Size (1024,1280)));
+			cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect(),cv::Size (1024,1280));
 			ms[i-1].id = allMarkers[i]->getId();
 			myfile << "\t tid " << ms[i].id << "\n";
-			ms[i-1].posX = allMarkers[i]->getCenter().x;
+			ms[i-1].posX = r.center.x;
 			myfile << "\t posX " << ms[i].posX << "\n";
-			ms[i-1].posY = allMarkers[i]->getCenter().y;
+			ms[i-1].posY = r.center.y;
 			myfile << "\t posY " << ms[i].posY << "\n";
 			ms[i-1].angle = allMarkers[i]->getAngle();
 			myfile << "\t angle " << ms[i].angle << "\n";
+			ms[i - 1].isVisible = allMarkers[i]->isVisible();
+			myfile << "\t angle " << ms[i].isVisible << "\n";
 		}
 		
 		//Last id is -1 to show the end of information per frame
@@ -128,9 +130,9 @@ TCP_output::~TCP_output()
 
 cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r, cv::Size size) {
 	cv::Point2f center = r.center;
-	center.x = center.x / size.width;
-	center.y = center.y / size.height;
-	cv::Size2f normSize = cv::Size2f((r.size.width / size.width), (r.size.height / size.height));
+	center.x = (center.x / size.width);
+	center.y = (center.y / size.height);
+	cv::Size2f normSize = cv::Size2f((r.size.width / size.width),(r.size.height / size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
 	return rect;
 }
