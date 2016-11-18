@@ -1,12 +1,12 @@
 
 #include <Main.h>
 
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
-//#define uEYE
+#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -27,7 +27,7 @@ Main::Main() {
 int main()
 {
 
-	std::array<Marker*,200> marker;
+	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
 
 	int counter = -1;
@@ -55,7 +55,7 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/01.avi");
+	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/02.avi");
 	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -97,7 +97,7 @@ int main()
 #endif // VIDEOVERA
 
 		if (!frame.empty()) {
-			// run Marker Detection
+			 //run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
@@ -121,7 +121,7 @@ int main()
 				}
 
 				//run MarkerManagement
-				if (counter == 122)
+				if (counter == 26)
 					printf("");
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
@@ -130,7 +130,7 @@ int main()
 			else {marker = mm->getTrackedMarker(); }
 			debug(frame, marker, counter,takenIdVec);
 			cv::imshow("edges", frame);
-			if (cv::waitKey(4) >= 0)break;
+			cv::waitKey(1);
 		}
 		else break;
 
@@ -155,7 +155,7 @@ int main()
 }
 #endif //useTestClasses
 
-void debug(cv::Mat & frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec)
+void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec)
 {
 #ifdef logFile
 	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);

@@ -17,8 +17,8 @@ public:
 		float angle;
 	};
 	int startTCPServer();
-	void sendTCPData(std::array<Marker*, 200> allMarkers, std::vector<int> takenIdVec);
-	void getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers, std::vector<int> takenIdVec);
+	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec);
+	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
 	TCP_output();
 	~TCP_output();
 

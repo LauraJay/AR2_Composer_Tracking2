@@ -30,8 +30,7 @@ Marker::Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint)
 {
 	Marker::id = id;
 	Marker::rect = rect;
-	Marker::rect.angle = computeAngle(anglePoint,rect.center);
-	Marker::rect.angle += rect.angle;
+	Marker::angle = computeAngle(anglePoint,rect.center);
 	motionCenterVec = cv::Point2f(0,0);
 }
 
@@ -59,6 +58,7 @@ void Marker::clear() {
 	
 	isVis = 1;
 	id=0;
+	angle = 0.;
 	rect = cv::RotatedRect();
 	motionCenterVec = cv::Point2f();
 	int isTrack = 0;
@@ -103,9 +103,12 @@ cv::Point2f Marker::getCenter()
 
 float Marker::getAngle()
 {
-	return rect.angle;
+	return angle;
 }
 
+void Marker::setAngle(float angle) {
+	Marker::angle = angle;
+}
 void Marker::setTracked(int isTracked)
 {
 	Marker::isTrack = isTracked;
@@ -129,10 +132,8 @@ void Marker::setRect(cv::RotatedRect rect)
 void Marker::setRectWithAngle(cv::RotatedRect rect, cv::Point2f anglePoint)
 {
 	Marker::rect = rect;
-	Marker::rect.angle = computeAngle(anglePoint, rect.center);
-	Marker::rect.angle += rect.angle;
+	Marker::angle = computeAngle(anglePoint, rect.center);
 	}
-
 void Marker::setId(int id)
 {
 	Marker::id = id;

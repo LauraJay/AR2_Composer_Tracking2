@@ -15,12 +15,12 @@ protected:
 	cv::Size frameSize;
 	std::queue <int> openIDQueue;
 	std::vector<int> takenIDVec;
-	std::array<Marker*, 200> trackedMarker;
+	std::array<Marker*, 100> trackedMarker;
 
 public:
 	void CurrentMarkerWAruco(Marker* tm, cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint);
 	void CurrentMarker(Marker* tm, cv::RotatedRect normRect);
-	std::array<Marker*, 200> getTrackedMarker();
+	std::array<Marker*, 100> getTrackedMarker();
 	std::vector<int> getTakenIDVec();
 	void trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size);
 	MarkerManagement(cv::Size markerSize, cv::Size frameSize);

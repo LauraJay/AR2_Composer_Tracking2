@@ -86,7 +86,7 @@ int startWinsock(void)
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
 
-void TCP_output::sendTCPData(std::array<Marker*, 200> allMarkers, std::vector<int> takenIdVec) {
+void TCP_output::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
 	rc = send(connectedSocket, markerPointer, 3204, 0);
@@ -94,7 +94,7 @@ void TCP_output::sendTCPData(std::array<Marker*, 200> allMarkers, std::vector<in
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }
 
-void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 200>  allMarkers, std::vector<int> takenIdVec) {
+void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
 	
 	myfile.open("log.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";

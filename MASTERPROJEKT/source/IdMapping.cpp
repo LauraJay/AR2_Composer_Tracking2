@@ -25,7 +25,7 @@ bool IdMapping::computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f
 
 }
 
-std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
 {
 	std::vector<cv::Point2f> motionVectors;
 	for each (int id in takenIDVec)
@@ -39,7 +39,7 @@ std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect 
 	return motionVectors;
 }
 
-int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	/*myfile2.open("isConstant.txt", std::ios::out | std::ios::app);
 	myfile2 << "Next Frame " << "\n";*/
@@ -61,22 +61,28 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 			isConstant = false;
 			//myfile2 << "\t Schleifendurchlauf " << c << "\n";
 		}
-		if (isConstant) {
+		if (isConstant && m->getArucoID() == -1) {
+			isConstant = true;
+			matchID = m->getId();
+			break;
+		}
+		else if (isConstant && m->getArucoID()==arucoID) {
 			isConstant = true;
 			matchID = m->getId();
 			break;
 		}
 	}
+
 	//myfile2.close();
 	return matchID;
 }
 
-int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
 {
 	return 0;
 }
 
-int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 200> trackedMarker, std::vector<int> takenIDVec)
+int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	bool isTranslated = false;
 	int matchID = 0;
@@ -94,7 +100,12 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		else {
 			isTranslated = false;
 		}
-		if (isTranslated) {
+		if (isTranslated && m->getArucoID() == -1) {
+			isTranslated = true;
+			matchID = m->getId();
+			break;
+		}
+		else if (isTranslated && m->getArucoID()==arucoID) {
 			isTranslated = true;
 			matchID = m->getId();
 			break;
@@ -134,7 +145,7 @@ int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::
 		if (isInsideOfRect)
 			return i;
 	}
-	return 0;
+	return -1;
 }
 
 

@@ -32,5 +32,5 @@ public:
 };
 
 int main();
-void debug(cv::Mat &frame, std::array<Marker*, 200> marker, int counter, std::vector<int> takenIDVec);
+void debug(cv::Mat &frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec);
 std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Point2f center, cv::Size size);

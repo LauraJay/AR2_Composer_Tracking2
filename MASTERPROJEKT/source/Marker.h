@@ -7,6 +7,7 @@ private:
 		int id,arucoID; 
 		int isVis = 1;
 		cv::RotatedRect rect;
+		float angle;
 		cv::Point2f motionCenterVec;
 		int isTrack=0;
 		
@@ -28,7 +29,9 @@ public:
 	cv::Point2f getCenter();
 	float getAngle();
 
+
 	//setter
+	void setAngle(float angle);
 	void setTracked(int isTracked);
 	void setVisible(int isVisible);
 	void setMotionCenterVec(cv::Point2f motionCenterVec);

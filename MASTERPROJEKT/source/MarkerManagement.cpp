@@ -1,6 +1,6 @@
 #include "MarkerManagement.h"
 
-std::array<Marker*, 200> MarkerManagement::getTrackedMarker()
+std::array<Marker*, 100> MarkerManagement::getTrackedMarker()
 {
 	return trackedMarker;
 }
@@ -26,25 +26,25 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 		//test if id matches MarkerRect
 
-		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) > 0) {
+		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
 			matchID = findMatchID(arucoIds[arucoID]);
 			if (matchID > 0) {
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoID, corners[arucoID].at(2));
 			}
-			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
 			}
-			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
 			}
 			else {
 				registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(2));
 			}
 		}
-		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec,-1)) > 0) {
 			CurrentMarker(trackedMarker[matchID], r);
 		}
-		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec)) > 0) {
+		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec,-1)) > 0) {
 			CurrentMarker(trackedMarker[matchID], r);
 		}
 			/*else {

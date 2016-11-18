@@ -39,7 +39,7 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_BGR2HSV);
-	inRange(output, cv::Scalar(35, 0, 50), cv::Scalar(65, 255, 255), output);
+	inRange(output, cv::Scalar(35, 0, 30), cv::Scalar(65, 255, 255), output);
 	int erosion_size = 1;
 	cv::Mat element = getStructuringElement(cv::MORPH_RECT,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -72,7 +72,7 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat col
 void MarkerDetection::initArucoParams()
 {
 	dictionaryId = cv::aruco::DICT_4X4_50;
-	showRejected = true; // zeigt die fehlerhaften Marker
+	showRejected = false; // zeigt die fehlerhaften Marker
 	estimatePose = false; // use CameraCalib
 	markerLength = 0.02; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
@@ -97,7 +97,7 @@ void MarkerDetection::detectArucoMarker(cv::Mat frame)
 	if (estimatePose && arucoIds.size() > 0)
 		cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);
 	// draw results TODEBUG
-	cv::Mat imageCopy;
+	/*cv::Mat imageCopy;
 	frame.copyTo(imageCopy);
 	if (arucoIds.size() > 0) {
 		cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
@@ -113,7 +113,7 @@ void MarkerDetection::detectArucoMarker(cv::Mat frame)
 		cv::aruco::drawDetectedMarkers(imageCopy, rejected, cv::noArray(), cv::Scalar(100, 0, 255));
 
 	imshow("out", imageCopy);
-	cv::waitKey(1);
+	cv::waitKey(1);*/
 
 }
 
