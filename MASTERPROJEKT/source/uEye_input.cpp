@@ -21,22 +21,21 @@ int uEye_input::inituEyeCam() {
 	is_SetColorMode(hCam, IS_CM_BGR8_PACKED);
 	is_SetImageSize(hCam, img_width, img_height);
 
-	double pixelClock = 35;
+	UINT pixelClock = 37;
 
 	is_PixelClock(hCam, IS_PIXELCLOCK_CMD_SET, &pixelClock, sizeof(pixelClock));
-
+	
 	double FPS, NEWFPS;
-	FPS = 21;
+	FPS = 23;
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 8.;
+	double parameter = 10.;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 		printf("failed Exposure");
 	}
 
-	//INT ret = is_SetHardwareGain(hCam,IS_SET_MASTER_GAIN_FACTOR, 100, 100, 100);
 
 	double factor = 0.5;
 	INT Color = is_SetColorCorrection(hCam, IS_CCOR_ENABLE_NORMAL, &factor);
@@ -48,10 +47,16 @@ int uEye_input::inituEyeCam() {
 
 cv::Mat uEye_input::getCapturedFrame()
 {
-	if (is_FreezeVideo(hCam, IS_WAIT) == IS_SUCCESS) {
+	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
+	if (ret == IS_CAPTURE_RUNNING || ret==IS_SUCCESS) {
 		void *pMemVoid; //pointer to where the image is stored
 		is_GetImageMem(hCam, &pMemVoid);
-
+		UINT check;
+		is_PixelClock(hCam, IS_PIXELCLOCK_CMD_GET, &check, sizeof(check));
+		printf("Pixelclock: %d \n", check);
+		double fps;
+		is_GetFramesPerSecond(hCam, &fps);
+		printf("fps: %f \n", fps);
 		IplImage * img;
 		img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
 		img->nChannels = 3;
@@ -73,6 +78,8 @@ cv::Mat uEye_input::getCapturedFrame()
 
 		frame = cv::cvarrToMat(img);
 	}
+	
+	
 	return frame;
 }
 
