@@ -16,6 +16,7 @@
 class Calibration {
 
 private:
+	std::vector<cv::Point2f> planeCorners;
 
 public:
 	~Calibration() {};

@@ -13,8 +13,7 @@
 	std::ofstream debugLogFile;
 #endif //logFile
 
-Main::~Main()
-{
+Main::~Main(){
 	//TODO
 }
 
@@ -26,6 +25,10 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
+
+	Calibration calib = Calibration();
+	calib.runCalibration(true, false, false); 
+
 
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
@@ -94,6 +97,8 @@ int main()
 #endif // VIDEOVERA
 
 		if (!frame.empty()) {
+
+
 			 //run Marker Detection
 			MarkerDetection* md = new MarkerDetection();
 			int sucess = md->runMarkerDetection(frame);

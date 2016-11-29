@@ -7,9 +7,13 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 	cv::Mat frame = uei->getCapturedFrame();
 	
 	int ret = 0;
-	PlaneCalibration* pc = new PlaneCalibration();
-	ret = pc->runPlaneCalibration();
-	delete pc;
+	if (doPlaneCalib) {
+		PlaneCalibration* pc = new PlaneCalibration();
+		ret = pc->runPlaneCalibration(frame);
+		if (ret)
+			planeCorners = pc->getPlaneCorners();
+		delete pc;
+	}
 
 	PoseEstimation* pe = new PoseEstimation();
 	ret = pe->runPoseEstimation();
