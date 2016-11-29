@@ -3,6 +3,7 @@
 #include <opencv2/aruco.hpp>
 class MarkerDetection
 {
+
 private:
 	cv::Mat frame;
 	cv::Mat colorThreshold(cv::Mat frame);

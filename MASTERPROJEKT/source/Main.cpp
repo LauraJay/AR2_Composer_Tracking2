@@ -6,8 +6,8 @@
 //#define VIDEOLAURA
 //#define TCP
 //#define logFile
-#define uEYE
-#define useNotTestClasses
+//#define uEYE
+//#define useNotTestClasses
 
 #ifdef logFile
 	std::ofstream debugLogFile;

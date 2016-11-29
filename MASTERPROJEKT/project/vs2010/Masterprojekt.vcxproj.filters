@@ -27,6 +27,18 @@
     <ClInclude Include="..\..\source\TCP_output.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\Calibration.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlaneCalibration.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PoseEstimation.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\MarkerSizeCalibration.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp">
@@ -54,6 +66,21 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="Aruco_Maker_Detection.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\Calibration.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PlaneCalibration.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PoseEstimation.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\CreateCharucoBoard.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
