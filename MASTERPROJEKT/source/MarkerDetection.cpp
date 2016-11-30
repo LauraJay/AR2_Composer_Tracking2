@@ -5,7 +5,7 @@ MarkerDetection::MarkerDetection()
 	initArucoParams();
 }
 
-int MarkerDetection::runMarkerDetection(cv::Mat &frame)
+int MarkerDetection::runMarkerDetection(cv::Mat frame)
 {
 	detectedRects.clear();
 	arucoIds.clear();
@@ -34,7 +34,7 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_BGR2HSV);
-	inRange(output, cv::Scalar(35, 60, 80), cv::Scalar(65, 255, 255), output);
+	inRange(output, cv::Scalar(35, 0, 50), cv::Scalar(65, 255, 255), output);
 	int erosion_size = 1;
 	cv::Mat element = getStructuringElement(cv::MORPH_RECT,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -69,25 +69,26 @@ void MarkerDetection::initArucoParams()
 {
 	dictionaryId = cv::aruco::DICT_4X4_50;
 	showRejected = false; // zeigt die fehlerhaften Marker
-	estimatePose = false; // use CameraCalib
 	markerLength = 0.02; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
-	if (estimatePose) {
-		cv::FileStorage fs("filename", cv::FileStorage::READ);
+	/*cv::FileStorage fs("CameraCalib.txt", cv::FileStorage::READ);
 		fs["camera_matrix"] >> camMatrix;
 		fs["distortion_coefficients"] >> distCoeffs;
-	}
+		fs["rvecs"] >> rvecs;
+		fs["tvecs"] >> tvecs;*/
+
 }
 
-void MarkerDetection::detectArucoMarker(cv::Mat &frame)
-{
+
+
+void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
 	// detect markers and estimate pose
-	if (estimatePose && arucoIds.size() > 0)
-		cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);
-	// draw results TODEBUG
+	//if (arucoIds.size() > 0)
+	//	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);
+	//// draw results TODEBUG
 	/*cv::Mat imageCopy;
 	frame.copyTo(imageCopy);
 	if (arucoIds.size() > 0) {

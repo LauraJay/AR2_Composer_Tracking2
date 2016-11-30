@@ -53,10 +53,10 @@ cv::Mat uEye_input::getCapturedFrame()
 		is_GetImageMem(hCam, &pMemVoid);
 		UINT check;
 		is_PixelClock(hCam, IS_PIXELCLOCK_CMD_GET, &check, sizeof(check));
-		printf("Pixelclock: %d \n", check);
+		//printf("Pixelclock: %d \n", check);
 		double fps;
 		is_GetFramesPerSecond(hCam, &fps);
-		printf("fps: %f \n", fps);
+		//printf("fps: %f \n", fps);
 		IplImage * img;
 		img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
 		img->nChannels = 3;

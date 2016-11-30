@@ -1,12 +1,12 @@
 
 #include <Main.h>
 
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define TCP
+//#define TCP
 //#define logFile
-//#define uEYE
+#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -26,10 +26,9 @@ Main::Main() {
 int main()
 {
 
-	Calibration calib = Calibration();
-	calib.runCalibration(false, true, false); 
-	PlaneCalibration::planeCalibData pcd = calib.getPlaneCalibData();
-
+	Calibration* calib = new Calibration();
+	calib->runCalibration(true, false, false); 
+	PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
 
@@ -124,9 +123,9 @@ int main()
 				takenIdVec = mm->getTakenIDVec();
 				}
 			else {marker = mm->getTrackedMarker(); }
-			//debug(frame, marker, counter,takenIdVec);
-			/*cv::imshow("edges", frame);
-			cv::waitKey(1);*/
+			debug(frame, marker, counter,takenIdVec);
+			cv::imshow("edges", frame);
+			cv::waitKey(1);
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;

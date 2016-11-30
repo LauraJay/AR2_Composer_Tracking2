@@ -1,6 +1,6 @@
 #include "PoseEstimation.h"
 
-PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
+int PoseEstimation::runPoseEstimation(uEye_input* uei)
 {
 	std::printf("Starting Pose Estimation ...");
 	//TODO fill with correct data
@@ -9,7 +9,7 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 	float squareLength = 0.034;
 	float markerLength = 0.023;
 	int dictionaryId = cv::aruco::DICT_ARUCO_ORIGINAL;
-	std::string outputFile = "Path";
+	std::string outputFile = "CameraCalib.txt";
 
 	bool showChessboardCorners = false;
 
@@ -91,12 +91,13 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 		std::cerr << "Not enough captures for calibration" << std::endl;
 	}
 
-	PoseEstimation::PoseEsti pe;
+	cv::Mat cameraMatrix, distCoeffs;
+	std::vector<cv::Mat > rvecs, tvecs;
 	double repError;
 
 	if (calibrationFlags & cv::CALIB_FIX_ASPECT_RATIO) {
-		pe.cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
-		pe.cameraMatrix.at< double >(0, 0) = aspectRatio;
+		cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
+		cameraMatrix.at< double >(0, 0) = aspectRatio;
 	}
 
 	// prepare data for calibration
@@ -115,8 +116,8 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 	// calibrate camera using aruco markers
 	double arucoRepErr;
 	arucoRepErr = cv::aruco::calibrateCameraAruco(allCornersConcatenated, allIdsConcatenated,
-		markerCounterPerFrame, board, imgSize, pe.cameraMatrix,
-		pe.distCoeffs, cv::noArray(), cv::noArray(), calibrationFlags);
+		markerCounterPerFrame, board, imgSize, cameraMatrix,
+		distCoeffs, rvecs, tvecs, calibrationFlags);
 
 	// prepare data for charuco calibration
 	int nFrames = (int)allCorners.size();
@@ -130,8 +131,8 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 		// interpolate using camera parameters
 		cv::Mat currentCharucoCorners, currentCharucoIds;
 		cv::aruco::interpolateCornersCharuco(allCorners[i], allIds[i], allImgs[i], charucoboard,
-			currentCharucoCorners, currentCharucoIds, pe.cameraMatrix,
-			pe.distCoeffs);
+			currentCharucoCorners, currentCharucoIds, cameraMatrix,
+			distCoeffs);
 
 		allCharucoCorners.push_back(currentCharucoCorners);
 		allCharucoIds.push_back(currentCharucoIds);
@@ -145,14 +146,14 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 	// calibrate camera using charuco
 	repError =
 		cv::aruco::calibrateCameraCharuco(allCharucoCorners, allCharucoIds, charucoboard, imgSize,
-			pe.cameraMatrix, pe.distCoeffs, pe.rvecs, pe.tvecs, calibrationFlags);
+			cameraMatrix, distCoeffs, rvecs, tvecs, calibrationFlags);
 
-	/*bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,
-		pe.cameraMatrix, pe.distCoeffs, repError);
-	if (!saveOk) {
-		std::cerr << "Cannot save output file" << std::endl;
-		return;
-	}*/
+	//bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,
+	//	cameraMatrix, distCoeffs, rvecs, tvecs, repError);
+	//if (!saveOk) {
+	//	std::cerr << "Cannot save output file" << std::endl;
+	//	return 0;
+	//}
 
 	std::cout << "Rep Error: " << repError << std::endl;
 	std::cout << "Rep Error Aruco: " << arucoRepErr << std::endl;
@@ -175,7 +176,7 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 			if (key == 27) break;
 		}
 	}
-	return pe;
+	return 0;
 }
 
 
@@ -209,10 +210,9 @@ static bool readDetectorParameters(std::string filename, cv::Ptr<cv::aruco::Dete
 
 
 
-/**
-*/
+
 static bool saveCameraParams(const std::string &filename, cv::Size imageSize, float aspectRatio, int flags,
-	const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, double totalAvgErr) {
+	const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat> rvecs, const std::vector<cv::Mat> tvecs, double totalAvgErr) {
 	cv::FileStorage fs(filename, cv::FileStorage::WRITE);
 	if (!fs.isOpened())
 		return false;
@@ -242,7 +242,8 @@ static bool saveCameraParams(const std::string &filename, cv::Size imageSize, fl
 
 	fs << "camera_cv::Matrix" << cameraMatrix;
 	fs << "distortion_coefficients" << distCoeffs;
-
+	fs << "rvecs" << rvecs;
+	fs << "tvecs" << tvecs;
 	fs << "avg_reprojection_error" << totalAvgErr;
 
 	return true;

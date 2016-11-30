@@ -48,13 +48,8 @@ class PoseEstimation {
 private:
 
 public:
-	struct PoseEsti{
-		cv::Mat cameraMatrix;
-		cv::Mat distCoeffs;
-		std::vector< cv::Mat > rvecs;
-		std::vector< cv::Mat > tvecs;
-	};
+	
 	~PoseEstimation() {};
 	PoseEstimation() {};
-	PoseEsti runPoseEstimation(uEye_input* uei);
+	int runPoseEstimation(uEye_input* uei);
 };

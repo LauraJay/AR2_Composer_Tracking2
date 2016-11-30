@@ -14,16 +14,16 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 			pcd = pc->getPlaneCalibData();
 		delete pc;
 	}
-	if (doPoseEstimation) {}
+	if (doPoseEstimation) {
 	PoseEstimation* pe = new PoseEstimation();
-	PoseEstimation::PoseEsti camCalib = pe->runPoseEstimation(uei);
+	ret = pe->runPoseEstimation(uei);
 	delete pe;
 }
 
-	MarkerSizeCalibration* msc = new MarkerSizeCalibration();
+	/*MarkerSizeCalibration* msc = new MarkerSizeCalibration();
 	ret = msc->runMarkerSizeCalibration();
-
 	delete msc;
+*/
 	uei->exitCamera();
 	delete uei;
 	return 0;
@@ -32,3 +32,5 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
 	return pcd;
 }
+
+

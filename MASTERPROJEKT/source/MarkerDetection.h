@@ -1,6 +1,7 @@
 #pragma once
 #include <opencv2/opencv.hpp>
 #include <opencv2/aruco.hpp>
+#include<PoseEstimation.h>
 class MarkerDetection
 {
 
@@ -9,10 +10,9 @@ private:
 	cv::Mat colorThreshold(cv::Mat &frame);
 	std::vector<cv::RotatedRect> detectedRects;
 	std::vector<int> arucoIds;
-	std::vector< cv::Vec3d > rvecs, tvecs;
+	std::vector< cv::Mat > rvecs, tvecs;
 	int dictionaryId;
 	bool showRejected;
-	bool estimatePose;
 	float markerLength;
 	cv::Mat camMatrix;
 	cv::Mat distCoeffs;
@@ -29,7 +29,7 @@ protected:
 public:
 	MarkerDetection();
 	~MarkerDetection() {};
-	int runMarkerDetection(cv::Mat &frame);
+	int runMarkerDetection(cv::Mat frame);
 	std::vector<cv::RotatedRect> getDetectedRects();
 	std::vector<int> getArucoIds();
 	std::vector<std::vector<cv::Point2f>> getArucoCorners();
