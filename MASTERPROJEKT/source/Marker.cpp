@@ -104,7 +104,7 @@ cv::Point2f Marker::getCenter()
 
 float Marker::getAngle()
 {
-	return -1*angle;
+	return angle;
 }
 
 void Marker::setAngle(float angle) {

@@ -123,13 +123,13 @@ int main()
 				takenIdVec = mm->getTakenIDVec();
 				}
 			else {marker = mm->getTrackedMarker(); }
-			debug(frame, marker, counter,takenIdVec);
-			cv::imshow("edges", frame);
-			cv::waitKey(1);
+			//debug(frame, marker, counter,takenIdVec);
+			/*cv::imshow("edges", frame);
+			cv::waitKey(1);*/
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
-			printf("frame sec: %f\n",1./z);
+			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 		}
 		else break;
 

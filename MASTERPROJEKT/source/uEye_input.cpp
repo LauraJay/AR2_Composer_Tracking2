@@ -13,7 +13,6 @@ int uEye_input::inituEyeCam() {
 	is_GetSensorInfo(hCam, &sInfo);
 	img_width = sInfo.nMaxWidth;
 	img_height = sInfo.nMaxHeight;
-
 	int img_bpp = 24;
 	is_AllocImageMem(hCam, img_width, img_height, img_bpp, &imgMem, &memId);
 	is_SetImageMem(hCam, imgMem, memId);

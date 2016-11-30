@@ -101,17 +101,18 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 	c++;
 		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 1; i <= takenIdVec.size(); i++) {
-			cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
-			ms[i-1].id = allMarkers[i]->getId();
-			myfile << "\t tid " << ms[i].id << "\n";
+			int id = takenIdVec[i-1];
+			cv::RotatedRect r = normalizeCoord(allMarkers[id]->getRect());
+			ms[i-1].id = allMarkers[id]->getId();
+			myfile << "\t tid " << ms[i-1].id << "\n";
 			ms[i-1].posX = r.center.x;
-			myfile << "\t posX " << ms[i].posX << "\n";
+			myfile << "\t posX " << ms[i-1].posX << "\n";
 			ms[i-1].posY = r.center.y;
-			myfile << "\t posY " << ms[i].posY << "\n";
-			ms[i-1].angle = allMarkers[i]->getAngle();
-			myfile << "\t angle " << ms[i].angle << "\n";
-			ms[i - 1].isVisible = allMarkers[i]->isVisible();
-			myfile << "\t angle " << ms[i].isVisible << "\n";
+			myfile << "\t posY " << ms[i-1].posY << "\n";
+			ms[i-1].angle = allMarkers[id]->getAngle();
+			myfile << "\t angle " << ms[i-1].angle << "\n";
+			ms[i - 1].isVisible = allMarkers[id]->isVisible();
+			myfile << "\t isVisible " << ms[i-1].isVisible << "\n";
 		}
 		
 		//Last id is -1 to show the end of information per frame
