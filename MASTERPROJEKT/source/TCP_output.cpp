@@ -124,8 +124,7 @@ TCP_output::TCP_output(PlaneCalibration::planeCalibData pcData){
 	pcd = pcData;
 }
 
-TCP_output::~TCP_output()
-{
+TCP_output::~TCP_output(){
 }
 
 cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r) {
