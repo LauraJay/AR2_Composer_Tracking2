@@ -9,11 +9,6 @@ int MarkerDetection::runMarkerDetection(cv::Mat &frame)
 {
 	detectedRects.clear();
 	arucoIds.clear();
-	corners.clear();
-	arucoIds.clear();
-	rvecs.clear();
-	rejected.clear();
-	tvecs.clear();
 	cv::Mat colorThresImg = colorThreshold(frame);
 	detectedRects = detectMarkerRectangles(colorThresImg);
 	detectArucoMarker(frame);
@@ -35,11 +30,11 @@ std::vector<std::vector<cv::Point2f>> MarkerDetection::getArucoCorners()
 	return corners;
 }
 
-cv::Mat MarkerDetection::colorThreshold(cv::Mat frame) {
+cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_BGR2HSV);
-	inRange(output, cv::Scalar(35, 0, 30), cv::Scalar(65, 255, 255), output);
+	inRange(output, cv::Scalar(35, 60, 80), cv::Scalar(65, 255, 255), output);
 	int erosion_size = 1;
 	cv::Mat element = getStructuringElement(cv::MORPH_RECT,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -51,12 +46,12 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat frame) {
 }
 
 
-std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat colorThresImg)
+std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &colorThresImg)
 {
 	std::vector<cv::Point> points;
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
-	cv::Canny(colorThresImg, colorThresImg, 500, 1000, 5);
+	cv::Canny(colorThresImg, colorThresImg, 300, 600, 3);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;
@@ -64,8 +59,9 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat col
 	{
 		approxPolyDP(cv::Mat(contours[i]), contours_poly[i], 3, true);
 		cv::RotatedRect r = minAreaRect(cv::Mat(contours_poly[i]));
-		if (r.size.height>20 && r.size.width>20) box.push_back(r);
+		if (r.size.height>10 && r.size.width>10) box.push_back(r);
 	}
+
 	return box;
 }
 
@@ -85,13 +81,8 @@ void MarkerDetection::initArucoParams()
 	}
 }
 
-void MarkerDetection::detectArucoMarker(cv::Mat frame)
+void MarkerDetection::detectArucoMarker(cv::Mat &frame)
 {
-	cv::Mat img;
-	frame.copyTo(img);
-	cv::Mat blurImg;
-	GaussianBlur(img, blurImg, cv::Size(0, 0), 5);
-	addWeighted(img, 1.5, blurImg, -0.5, 0, img);
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
 	// detect markers and estimate pose
 	if (estimatePose && arucoIds.size() > 0)

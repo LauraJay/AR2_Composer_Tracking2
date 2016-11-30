@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <uEye_input.h>
 #include <fstream>
-
+#include <time.h> 
 
 #include <MarkerDetection.h>
 #include <MarkerManagement.h>
@@ -33,4 +33,3 @@ public:
 
 int main();
 void debug(cv::Mat &frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec);
-std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Point2f center, cv::Size size);

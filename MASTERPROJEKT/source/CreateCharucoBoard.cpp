@@ -92,10 +92,10 @@ int main(int argc, char *argv[]) {
 		imshow("board", boardImage);
 		waitKey(0);
 	}
-#endif //inUse
 
 	
 
 	return 0;
 }
+#endif //inUse
 
