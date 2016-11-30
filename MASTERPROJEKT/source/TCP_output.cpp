@@ -101,7 +101,7 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 	c++;
 		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 1; i <= takenIdVec.size(); i++) {
-			cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect(),cv::Size (1024,1280));
+			cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
 			ms[i-1].id = allMarkers[i]->getId();
 			myfile << "\t tid " << ms[i].id << "\n";
 			ms[i-1].posX = r.center.x;
@@ -128,11 +128,11 @@ TCP_output::~TCP_output()
 {
 }
 
-cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r, cv::Size size) {
+cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
-	center.x = pcd.upperLeftCorner.x + center.x * pcd.size.width;
-	center.y = pcd.upperLeftCorner.y + center.y * pcd.size.height;
-	cv::Size2f normSize = cv::Size2f((r.size.width / size.width),(r.size.height / size.height));
+	center.x = (center.x - pcd.upperLeftCorner.x) / pcd.size.width;
+	center.y = (center.y + pcd.size.height - pcd.upperLeftCorner.y) / pcd.size.height;
+	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width),(r.size.height / pcd.size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
 	return rect;
 }

@@ -17,7 +17,9 @@ int PlaneCalibration::runMarkerDetection(cv::Mat &frame){
 
 int PlaneCalibration::detectAruco(cv::Mat frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
-	for (int i = 0; i < arucoIds.size(); i++) {
+	if (arucoIds.size() != 4)
+		return -1;
+	for (int i = 0; i < 4; i++) {
 		int ID = arucoIds.at(i);
 		switch (ID) {
 		case 200:	upperRight = corners.at(i).at(1); break;	// Corner 1 is upper right corner of marker, which
@@ -26,39 +28,40 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		case 800:	lowerRight = corners.at(i).at(1); break;
 		default: return -1;
 		}
-		// Ensure that plane is a rectangle by choosing the x and y 
-		// coordinates closest to the center for each respective side
-		cv::Point2f center = cv::Point2f(
-			upperRight.x * 0.25f +
-			upperLeft.x * 0.25f +
-			lowerRight.x * 0.25f +
-			lowerLeft.x * 0.25f,
-			upperRight.y * 0.25f +
-			upperLeft.y * 0.25f +
-			lowerRight.y * 0.25f +
-			lowerLeft.y * 0.25f
-		);
-		if (upperLeft.x - center.x <= lowerLeft.x - center.x)
-			lowerLeft.x = upperLeft.x;
-		else
-			upperLeft.x = lowerLeft.x;
-
-		if (upperRight.x - center.x <= lowerRight.x - center.x)
-			lowerRight.x = upperRight.x;
-		else
-			upperRight.x = lowerRight.x;
-
-		if (upperLeft.y - center.y <= upperRight.y - center.y)
-			upperRight.y = upperLeft.y;
-		else
-			upperLeft.y = upperRight.y;
-
-		if (lowerLeft.y - center.y <= lowerRight.y - center.y)
-			lowerRight.y = lowerLeft.y;
-		else
-			lowerLeft.y = lowerRight.y;
-
 	}
+
+	// Ensure that plane is a rectangle by choosing the x and y 
+	// coordinates closest to the center for each respective side
+	cv::Point2f center = cv::Point2f(
+		upperRight.x * 0.25f +
+		upperLeft.x * 0.25f +
+		lowerRight.x * 0.25f +
+		lowerLeft.x * 0.25f,
+		upperRight.y * 0.25f +
+		upperLeft.y * 0.25f +
+		lowerRight.y * 0.25f +
+		lowerLeft.y * 0.25f
+	);
+	if (upperLeft.x - center.x <= lowerLeft.x - center.x)
+		lowerLeft.x = upperLeft.x;
+	else
+		upperLeft.x = lowerLeft.x;
+
+	if (upperRight.x - center.x <= lowerRight.x - center.x)
+		lowerRight.x = upperRight.x;
+	else
+		upperRight.x = lowerRight.x;
+
+	if (upperLeft.y - center.y <= upperRight.y - center.y)
+		upperRight.y = upperLeft.y;
+	else
+		upperLeft.y = upperRight.y;
+
+	if (lowerLeft.y - center.y <= lowerRight.y - center.y)
+		lowerRight.y = lowerLeft.y;
+	else
+		lowerLeft.y = lowerRight.y;
+
 	return 0;
 }
 

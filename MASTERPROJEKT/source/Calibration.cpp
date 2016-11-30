@@ -10,7 +10,7 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 	if (doPlaneCalib) {
 		PlaneCalibration* pc = new PlaneCalibration();
 		ret = pc->runPlaneCalibration(frame);
-		if (ret)
+		if (ret == 0)
 			pcd = pc->getPlaneCalibData();
 		delete pc;
 	}

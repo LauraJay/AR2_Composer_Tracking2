@@ -8,7 +8,7 @@
 class TCP_output {
 
 private:
-	cv::RotatedRect normalizeCoord(cv::RotatedRect r, cv::Size size);
+	cv::RotatedRect normalizeCoord(cv::RotatedRect r);
 	PlaneCalibration::planeCalibData pcd;
 
 public:

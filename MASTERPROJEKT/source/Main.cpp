@@ -4,7 +4,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define TCP
+#define TCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
