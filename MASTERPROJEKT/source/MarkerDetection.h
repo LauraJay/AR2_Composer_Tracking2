@@ -3,9 +3,10 @@
 #include <opencv2/aruco.hpp>
 class MarkerDetection
 {
+
 private:
 	cv::Mat frame;
-	cv::Mat colorThreshold(cv::Mat frame);
+	cv::Mat colorThreshold(cv::Mat &frame);
 	std::vector<cv::RotatedRect> detectedRects;
 	std::vector<int> arucoIds;
 	std::vector< cv::Vec3d > rvecs, tvecs;
@@ -15,11 +16,11 @@ private:
 	float markerLength;
 	cv::Mat camMatrix;
 	cv::Mat distCoeffs;
-	std::vector<cv::RotatedRect> detectMarkerRectangles(cv::Mat frame);
+	std::vector<cv::RotatedRect> detectMarkerRectangles(cv::Mat &frame);
 	cv::Ptr<cv::aruco::DetectorParameters> detectorParams;
 	cv::Ptr<cv::aruco::Dictionary> dictionary;
 	void initArucoParams();
-	void detectArucoMarker(cv::Mat frame);
+	void detectArucoMarker(cv::Mat &frame);
 
 protected:
 

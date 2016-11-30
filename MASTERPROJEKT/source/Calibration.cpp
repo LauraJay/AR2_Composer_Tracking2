@@ -16,7 +16,7 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 	}
 
 	PoseEstimation* pe = new PoseEstimation();
-	ret = pe->runPoseEstimation();
+	PoseEstimation::PoseEsti camCalib = pe->runPoseEstimation(uei);
 	delete pe;
 
 	MarkerSizeCalibration* msc = new MarkerSizeCalibration();

@@ -125,6 +125,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
   <ItemGroup>
     <ClCompile Include="..\..\source\ArucoCodeGenerator.cpp" />
     <ClCompile Include="..\..\source\Calibration.cpp" />
+    <ClCompile Include="..\..\source\CreateCharucoBoard.cpp" />
     <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
     <ClCompile Include="..\..\source\Marker.cpp" />
@@ -133,7 +134,6 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp" />
     <ClCompile Include="..\..\source\PlaneCalibration.cpp" />
     <ClCompile Include="..\..\source\PoseEstimation.cpp" />
-    <ClCompile Include="..\..\source\Quelle.cpp" />
     <ClCompile Include="..\..\source\TCP_output.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
     <ClCompile Include="Aruco_Maker_Detection.cpp" />

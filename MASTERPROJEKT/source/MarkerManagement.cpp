@@ -47,9 +47,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec,-1)) > 0) {
 			CurrentMarker(trackedMarker[matchID], r);
 		}
-			/*else {
-				registerNewMarker(r, arucoID);
-			}*/
+			
 	}
 
 	int matchID = 0;
@@ -63,11 +61,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 			else
 				trackedMarker[id]->setVisible(0);
 		}
-
-		// check if devided
-		// reset isTracked for next frame
 		trackedMarker[id]->setTracked(0);
-
 	}
 	delete im;
 }
@@ -131,14 +125,13 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
 
 
 
-MarkerManagement::MarkerManagement(cv::Size markerSize, cv::Size frameSize)
+MarkerManagement::MarkerManagement(cv::Size frameSize)
 {
 	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
 		if (i > 0)	openIDQueue.push(i);
 		trackedMarker[i] = new Marker();
 	}
-	MarkerManagement::markerSize = markerSize;
 	MarkerManagement::frameSize = frameSize;
 }
 

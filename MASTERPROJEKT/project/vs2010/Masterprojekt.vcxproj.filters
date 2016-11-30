@@ -80,7 +80,7 @@
     <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\Quelle.cpp">
+    <ClCompile Include="..\..\source\CreateCharucoBoard.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

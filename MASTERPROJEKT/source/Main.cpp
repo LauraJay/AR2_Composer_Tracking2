@@ -1,12 +1,12 @@
 
 #include <Main.h>
 
-//#define VIDEOVERA
+#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
 #define TCP
 //#define logFile
-#define uEYE
+//#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -73,12 +73,13 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	cv::Size markerSize = cv::Size(68,48);
-	MarkerManagement* mm = new MarkerManagement(markerSize, frame.size());
-	cv::namedWindow("edges", cv::WINDOW_NORMAL);
+	MarkerManagement* mm = new MarkerManagement(frame.size());
+	//cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	while (true)
 	{
+		clock_t start, end;
 		counter++;
+		start = clock();
 
 #ifdef uEYE
 		frame = uei->getCapturedFrame();
@@ -95,7 +96,6 @@ int main()
 #ifdef VIDEOVERA
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
-
 		if (!frame.empty()) {
 
 
@@ -107,7 +107,7 @@ int main()
 				std::vector<int> arucoIds =md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 				delete md;
-				
+			/*	
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
@@ -115,22 +115,22 @@ int main()
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
-			}
-				/*for each (std::vector<cv::Point2f> var in corners)
-				{
-					cv::circle(frame, var[2], 5, cv::Scalar(255, 0, 0));
-				}*/
+			}*/
+				
 				//run MarkerManagement
-				if (counter == 26)
-					printf("");
+
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
 				}
 			else {marker = mm->getTrackedMarker(); }
-			debug(frame, marker, counter,takenIdVec);
-			cv::imshow("edges", frame);
-			cv::waitKey(1);
+			//debug(frame, marker, counter,takenIdVec);
+			/*cv::imshow("edges", frame);
+			cv::waitKey(1);*/
+			end = clock();
+			float z = end - start;
+			z /= CLOCKS_PER_SEC;
+			printf("frame sec: %f\n",1./z);
 		}
 		else break;
 
@@ -202,14 +202,3 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 }
 
 
-std::vector<cv::Point2f> getPixelCoords(std::vector<cv::Point2f>vertices, cv::Point2f center, cv::Size size) {
-	for (int i = 0; i < vertices.size(); i++)
-	{
-		int x, y;
-		x = vertices[i].x*size.height;
-		y = vertices[i].y*size.width;
-		vertices.at(i).x = x;
-		vertices.at(i).y = y;
-	}
-	return vertices;
-}
