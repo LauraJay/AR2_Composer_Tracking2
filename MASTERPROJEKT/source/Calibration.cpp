@@ -5,7 +5,7 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
 	cv::Mat frame = uei->getCapturedFrame();
-	
+
 	int ret = 0;
 	if (doPlaneCalib) {
 		PlaneCalibration* pc = new PlaneCalibration();
@@ -14,10 +14,11 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 			pcd = pc->getPlaneCalibData();
 		delete pc;
 	}
-
+	if (doPoseEstimation) {}
 	PoseEstimation* pe = new PoseEstimation();
 	PoseEstimation::PoseEsti camCalib = pe->runPoseEstimation(uei);
 	delete pe;
+}
 
 	MarkerSizeCalibration* msc = new MarkerSizeCalibration();
 	ret = msc->runMarkerSizeCalibration();

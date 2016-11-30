@@ -27,7 +27,7 @@ int main()
 {
 
 	Calibration calib = Calibration();
-	calib.runCalibration(true, false, false); 
+	calib.runCalibration(false, true, false); 
 	PlaneCalibration::planeCalibData pcd = calib.getPlaneCalibData();
 
 	std::array<Marker*,100> marker;

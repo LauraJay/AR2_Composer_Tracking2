@@ -4,10 +4,10 @@ PoseEstimation::PoseEsti PoseEstimation::runPoseEstimation(uEye_input* uei)
 {
 	std::printf("Starting Pose Estimation ...");
 	//TODO fill with correct data
-	int squaresX = 5;
-	int squaresY =5;
-	float squareLength = 0.1;
-	float markerLength = 0.1;
+	int squaresX = 8;
+	int squaresY =8;
+	float squareLength = 0.034;
+	float markerLength = 0.023;
 	int dictionaryId = cv::aruco::DICT_ARUCO_ORIGINAL;
 	std::string outputFile = "Path";
 
