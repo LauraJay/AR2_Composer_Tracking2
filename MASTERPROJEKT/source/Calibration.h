@@ -16,10 +16,11 @@
 class Calibration {
 
 private:
-	std::vector<cv::Point2f> planeCorners;
+	PlaneCalibration::planeCalibData pcd;
 
 public:
 	~Calibration() {};
 	Calibration() {};
 	int runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib);
+	PlaneCalibration::planeCalibData getPlaneCalibData();
 };

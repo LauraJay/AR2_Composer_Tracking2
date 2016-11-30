@@ -11,7 +11,7 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 		PlaneCalibration* pc = new PlaneCalibration();
 		ret = pc->runPlaneCalibration(frame);
 		if (ret)
-			planeCorners = pc->getPlaneCorners();
+			pcd = pc->getPlaneCalibData();
 		delete pc;
 	}
 
@@ -26,4 +26,8 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 	uei->exitCamera();
 	delete uei;
 	return 0;
+}
+
+PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
+	return pcd;
 }

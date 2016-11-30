@@ -28,7 +28,7 @@ int main()
 
 	Calibration calib = Calibration();
 	calib.runCalibration(true, false, false); 
-
+	PlaneCalibration::planeCalibData pcd = calib.getPlaneCalibData();
 
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
@@ -37,7 +37,7 @@ int main()
 	cv::Mat frame;
 #ifdef TCP
 	//start TCP
-	TCP_output* out = new TCP_output();
+	TCP_output* out = new TCP_output(pcd);
 	out->startTCPServer();
 #endif 	// TCP
 

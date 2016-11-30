@@ -120,8 +120,8 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 }
 
 
-TCP_output::TCP_output()
-{
+TCP_output::TCP_output(PlaneCalibration::planeCalibData pcData){
+	pcd = pcData;
 }
 
 TCP_output::~TCP_output()
@@ -130,8 +130,8 @@ TCP_output::~TCP_output()
 
 cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r, cv::Size size) {
 	cv::Point2f center = r.center;
-	center.x = (center.x / size.width);
-	center.y = (center.y / size.height);
+	center.x = pcd.upperLeftCorner.x + center.x * pcd.size.width;
+	center.y = pcd.upperLeftCorner.y + center.y * pcd.size.height;
 	cv::Size2f normSize = cv::Size2f((r.size.width / size.width),(r.size.height / size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
 	return rect;

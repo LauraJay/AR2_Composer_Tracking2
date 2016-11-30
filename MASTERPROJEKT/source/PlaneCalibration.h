@@ -29,6 +29,10 @@ protected:
 public:
 	~PlaneCalibration() {};
 	PlaneCalibration();
-	std::vector<cv::Point2f> getPlaneCorners();
+	struct planeCalibData {
+		cv::Point2f upperLeftCorner;
+		cv::Size size;
+	};
+	planeCalibData getPlaneCalibData();
 	int runPlaneCalibration(cv::Mat frame);
 };
