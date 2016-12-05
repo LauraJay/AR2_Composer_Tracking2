@@ -30,6 +30,7 @@ public:
 	~PlaneCalibration() {};
 	PlaneCalibration();
 	struct planeCalibData {
+		bool success;
 		cv::Point2f upperLeftCorner;
 		cv::Size size;
 	};

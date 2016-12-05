@@ -19,10 +19,17 @@ public:
 		float angle;
 		int isVisible;
 	};
+
+	struct TCPInput {
+		int isCalibrated;
+	};
+
 	int startTCPServer();
 	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec);
+	int TCP_output::receiveTCPData();
 	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
-	TCP_output(PlaneCalibration::planeCalibData pcd);
+	TCP_output();
+	void setPCD(PlaneCalibration::planeCalibData pcData);
 	~TCP_output();
 
 };

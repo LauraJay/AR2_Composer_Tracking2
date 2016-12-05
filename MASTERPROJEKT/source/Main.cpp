@@ -4,7 +4,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define TCP
+#define TCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -25,19 +25,18 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
-
-	Calibration* calib = new Calibration();
-	calib->runCalibration(true, false, false); 
-	PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
-
+	bool calibSuccess = true;
 	int counter = -1;
 	cv::Mat frame;
 #ifdef TCP
+	calibSuccess = false;
 	//start TCP
-	TCP_output* out = new TCP_output(pcd);
+	TCP_output* out = new TCP_output();
 	out->startTCPServer();
+	//receive data
+	int isCalibrated = out->receiveTCPData();
 #endif 	// TCP
 
 
@@ -75,6 +74,7 @@ int main()
 	MarkerManagement* mm = new MarkerManagement(frame.size());
 	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
+	
 	while (true){
 		clock_t start, end;
 		counter++;
@@ -96,46 +96,62 @@ int main()
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-			 //run Marker Detection			
-			int sucess = md->runMarkerDetection(frame);
-			if (sucess == 1) {
-				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-				std::vector<int> arucoIds = md->getArucoIds();
-				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();				
-			/*	
-				for each (cv::RotatedRect r in rects)
-				{
-					cv::Point2f vert[4];
-					r.points(vert);
-					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
-					}
-			}*/
-				
-				//run MarkerManagement
-
-				mm->trackMarker(rects,corners,arucoIds,frame.size());
-				marker = mm->getTrackedMarker();
-				takenIdVec = mm->getTakenIDVec();
-				}else{
-				marker = mm->getTrackedMarker(); 
+#ifdef TCP
+			if (isCalibrated == 0) {
+				Calibration* calib = new Calibration();
+				calib->runCalibration(true, false, false);
+				printf("hrilues");
+				PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
+				calibSuccess = pcd.success;
+				out->setPCD(pcd);
+				if (calibSuccess)
+					isCalibrated = 1;
 			}
-			debug(frame, marker, counter,takenIdVec);
-			cv::imshow("edges", frame);
-			cv::waitKey(1);
-			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
-		}
-		else break;
+#endif // TCP
+			if (calibSuccess) {
+
+				//run Marker Detection			
+				int sucess = md->runMarkerDetection(frame);
+				if (sucess == 1) {
+					std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+					std::vector<int> arucoIds = md->getArucoIds();
+					std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+					/*
+						for each (cv::RotatedRect r in rects)
+						{
+							cv::Point2f vert[4];
+							r.points(vert);
+							for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+								line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+							}
+					}*/
+
+					//run MarkerManagement
+
+					mm->trackMarker(rects, corners, arucoIds, frame.size());
+					marker = mm->getTrackedMarker();
+					takenIdVec = mm->getTakenIDVec();
+				}
+				else {
+					marker = mm->getTrackedMarker();
+				}
+				debug(frame, marker, counter, takenIdVec);
+				cv::imshow("edges", frame);
+				cv::waitKey(1);
+				//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
+			}
+			else break;
 
 #ifdef TCP
-		//Send Markerdata via TCP
-		out->sendTCPData(marker,takenIdVec);
+			//Send Markerdata via TCP
+			out->sendTCPData(marker, takenIdVec);
 
 #endif // TCP
-		end = clock();
-		float z = end - start;
-		z /= CLOCKS_PER_SEC;
-		printf("fps: %f\r", z);
+			end = clock();
+			float z = end - start;
+			z /= CLOCKS_PER_SEC;
+			printf("fps: %f\r", z);
+		}
 	}
 	delete md;
 #ifdef uEYE

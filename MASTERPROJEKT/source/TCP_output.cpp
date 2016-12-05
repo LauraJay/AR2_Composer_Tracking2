@@ -12,7 +12,8 @@ SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
 std::ofstream myfile;
-struct TCP_output::MarkerStruct ms[201];
+struct TCP_output::MarkerStruct ms[101];
+struct TCP_output::TCPInput m[1];
 
 int TCP_output::startTCPServer()
 {
@@ -89,9 +90,16 @@ int startWinsock(void)
 void TCP_output::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
-	rc = send(connectedSocket, markerPointer, 2004, 0);
+	send(connectedSocket, markerPointer, 2004, 0);
 	/*const char FAR* markerPointer = (const char*) &allMarkers;
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
+}
+
+int TCP_output::receiveTCPData() {
+	char far* mPointer = (char*)&m;
+	recv(connectedSocket, mPointer, 4, 0 );	
+	printf("%i ", m[0].isCalibrated);
+	return m[0].isCalibrated;
 }
 
 void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
@@ -113,6 +121,7 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 			myfile << "\t angle " << ms[i-1].angle << "\n";
 			ms[i - 1].isVisible = allMarkers[id]->isVisible();
 			myfile << "\t isVisible " << ms[i-1].isVisible << "\n";
+
 		}
 		
 		//Last id is -1 to show the end of information per frame
@@ -121,11 +130,14 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 }
 
 
-TCP_output::TCP_output(PlaneCalibration::planeCalibData pcData){
-	pcd = pcData;
+TCP_output::TCP_output(){
 }
 
 TCP_output::~TCP_output(){
+}
+
+void TCP_output::setPCD(PlaneCalibration::planeCalibData pcData) {
+	pcd = pcData;
 }
 
 cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r) {
