@@ -33,10 +33,10 @@ int main()
 #ifdef TCP
 	calibSuccess = false;
 	//start TCP
-	TCP* out = new TCP();
-	out->startTCPServer();
+	TCP* tcp = new TCP();
+	tcp->startTCPServer();
 	//receive data
-	int isCalibrated = out->receiveTCPData();
+	int isCalibrated = tcp->receiveTCPData();
 #endif 	// TCP
 
 
@@ -103,7 +103,7 @@ int main()
 				printf("hrilues");
 				PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 				calibSuccess = pcd.success;
-				out->setPCD(pcd);
+				tcp->setPCD(pcd);
 				if (calibSuccess)
 					isCalibrated = 1;
 			}
@@ -144,7 +144,7 @@ int main()
 
 #ifdef TCP
 			//Send Markerdata via TCP
-			out->sendTCPData(marker, takenIdVec);
+			tcp->sendTCPData(marker, takenIdVec);
 
 #endif // TCP
 			end = clock();
@@ -163,7 +163,7 @@ int main()
 
 
 #ifdef TCP
-	delete out;
+	delete tcp;
 #endif // TCP
 	return EXIT_SUCCESS;
 }
