@@ -5,7 +5,7 @@
 #include <PlaneCalibration.h>
 
 
-class TCP_output {
+class TCP {
 
 private:
 	cv::RotatedRect normalizeCoord(cv::RotatedRect r);
@@ -20,16 +20,16 @@ public:
 		int isVisible;
 	};
 
-	struct TCPInput {
+	struct Calibration {
 		int isCalibrated;
 	};
 
 	int startTCPServer();
 	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec);
-	int TCP_output::receiveTCPData();
+	int receiveTCPData();
 	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
-	TCP_output();
 	void setPCD(PlaneCalibration::planeCalibData pcData);
-	~TCP_output();
+	TCP();
+	~TCP();
 
 };

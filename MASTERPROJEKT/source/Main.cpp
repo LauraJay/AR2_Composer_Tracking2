@@ -4,9 +4,9 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define TCP
+//#define TCP
 //#define logFile
-#define uEYE
+//#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -33,7 +33,7 @@ int main()
 #ifdef TCP
 	calibSuccess = false;
 	//start TCP
-	TCP_output* out = new TCP_output();
+	TCP* out = new TCP();
 	out->startTCPServer();
 	//receive data
 	int isCalibrated = out->receiveTCPData();

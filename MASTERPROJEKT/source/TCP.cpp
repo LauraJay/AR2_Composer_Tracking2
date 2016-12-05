@@ -1,4 +1,4 @@
-#include "TCP_output.h"
+#include "TCP.h"
 #pragma comment(lib,"ws2_32.lib") //ggf. auskommentieren
 #include <winsock2.h>
 #include <windows.h>
@@ -12,10 +12,10 @@ SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
 std::ofstream myfile;
-struct TCP_output::MarkerStruct ms[101];
-struct TCP_output::TCPInput m[1];
+struct TCP::MarkerStruct ms[101];
+struct TCP::Calibration m[1];
 
-int TCP_output::startTCPServer()
+int TCP::startTCPServer()
 {
 	SOCKADDR_IN addr; 
 	// start Winsock
@@ -87,7 +87,7 @@ int startWinsock(void)
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
 
-void TCP_output::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
+void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2004, 0);
@@ -95,14 +95,14 @@ void TCP_output::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<in
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }
 
-int TCP_output::receiveTCPData() {
+int TCP::receiveTCPData() {
 	char far* mPointer = (char*)&m;
 	recv(connectedSocket, mPointer, 4, 0 );	
 	printf("%i ", m[0].isCalibrated);
 	return m[0].isCalibrated;
 }
 
-void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
+void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
 	
 	myfile.open("log.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
@@ -130,17 +130,17 @@ void TCP_output::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std
 }
 
 
-TCP_output::TCP_output(){
+TCP::TCP(){
 }
 
-TCP_output::~TCP_output(){
+TCP::~TCP(){
 }
 
-void TCP_output::setPCD(PlaneCalibration::planeCalibData pcData) {
+void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 	pcd = pcData;
 }
 
-cv::RotatedRect TCP_output::normalizeCoord(cv::RotatedRect r) {
+cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
 	center.x = (center.x - pcd.upperLeftCorner.x) / pcd.size.width;
 	center.y = (center.y + pcd.size.height - pcd.upperLeftCorner.y) / pcd.size.height;
