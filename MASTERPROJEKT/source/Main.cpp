@@ -73,9 +73,9 @@ int main()
 #endif //uEYE
 	//first MarkerSize, second Threshold
 	MarkerManagement* mm = new MarkerManagement(frame.size());
-	//cv::namedWindow("edges", cv::WINDOW_NORMAL);
-	while (true)
-	{
+	cv::namedWindow("edges", cv::WINDOW_NORMAL);
+	MarkerDetection* md = new MarkerDetection();
+	while (true){
 		clock_t start, end;
 		counter++;
 		start = clock();
@@ -96,16 +96,12 @@ int main()
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-
-
-			 //run Marker Detection
-			MarkerDetection* md = new MarkerDetection();
+			 //run Marker Detection			
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-				std::vector<int> arucoIds =md->getArucoIds();
-				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-				delete md;
+				std::vector<int> arucoIds = md->getArucoIds();
+				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();				
 			/*	
 				for each (cv::RotatedRect r in rects)
 				{
@@ -121,14 +117,12 @@ int main()
 				mm->trackMarker(rects,corners,arucoIds,frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
-				}
-			else {marker = mm->getTrackedMarker(); }
-			//debug(frame, marker, counter,takenIdVec);
-			/*cv::imshow("edges", frame);
-			cv::waitKey(1);*/
-			end = clock();
-			float z = end - start;
-			z /= CLOCKS_PER_SEC;
+				}else{
+				marker = mm->getTrackedMarker(); 
+			}
+			debug(frame, marker, counter,takenIdVec);
+			cv::imshow("edges", frame);
+			cv::waitKey(1);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 		}
 		else break;
@@ -138,7 +132,12 @@ int main()
 		out->sendTCPData(marker,takenIdVec);
 
 #endif // TCP
+		end = clock();
+		float z = end - start;
+		z /= CLOCKS_PER_SEC;
+		printf("fps: %f\r", z);
 	}
+	delete md;
 #ifdef uEYE
 	uei->exitCamera();
 	delete uei;

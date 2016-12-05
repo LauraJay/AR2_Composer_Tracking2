@@ -40,6 +40,20 @@ int uEye_input::inituEyeCam() {
 	INT Color = is_SetColorCorrection(hCam, IS_CCOR_ENABLE_NORMAL, &factor);
 
 	INT nRet = is_SetGamma(hCam, 2200);
+
+	img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
+		img->nChannels = 3;
+		img->alphaChannel = 0;
+		img->depth = 8;
+		img->dataOrder = 0;
+		img->origin = 0;
+		img->align = 4;
+		img->width = img_width;
+		img->height = img_height;
+		img->imageSize = 3 * img_width*img_height;
+		
+
+
 	return 1;
 
 }
@@ -55,20 +69,9 @@ cv::Mat uEye_input::getCapturedFrame()
 		//printf("Pixelclock: %d \n", check);
 		double fps;
 		is_GetFramesPerSecond(hCam, &fps);
-		//printf("fps: %f \n", fps);
-		IplImage * img;
-		img = cvCreateImage(cvSize(img_width, img_height), IPL_DEPTH_8U, 3);
-		img->nChannels = 3;
-		img->alphaChannel = 0;
-		img->depth = 8;
-		img->dataOrder = 0;
-		img->origin = 0;
-		img->align = 4;
-		img->width = img_width;
-		img->height = img_height;
-		img->imageSize = 3 * img_width*img_height;
+		//printf("fps cAMERA: %f \n", fps);
 		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
-		img->widthStep = 3 * img_width;
+		img->widthStep = 3 * img_width;		
 		img->imageDataOrigin = (char*)pMemVoid; //and again
 												//										//now you can use your img just like a normal OpenCV image
 												//cvNamedWindow("A", 1);
@@ -76,6 +79,7 @@ cv::Mat uEye_input::getCapturedFrame()
 												//cv::waitKey(1);
 
 		frame = cv::cvarrToMat(img);
+		
 	}
 	
 	
