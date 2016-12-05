@@ -29,10 +29,16 @@ int uEye_input::inituEyeCam() {
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 10.;
+	double parameter = 5.;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 		printf("failed Exposure");
+
+		is_SetHWGainFactor(hCam,IS_SET_RED_GAIN_FACTOR , 0);
+		is_SetHWGainFactor(hCam, IS_SET_GREEN_GAIN_FACTOR, 0);
+		is_SetHWGainFactor(hCam, IS_SET_BLUE_GAIN_FACTOR, 0);
+		is_SetGainBoost(hCam, IS_SET_GAINBOOST_OFF);
+
 	}
 
 
@@ -61,7 +67,7 @@ int uEye_input::inituEyeCam() {
 cv::Mat uEye_input::getCapturedFrame()
 {
 	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
-	if (ret == IS_CAPTURE_RUNNING || ret==IS_SUCCESS) {
+	if (ret==IS_SUCCESS) {
 		void *pMemVoid; //pointer to where the image is stored
 		is_GetImageMem(hCam, &pMemVoid);
 		UINT check;
@@ -69,6 +75,9 @@ cv::Mat uEye_input::getCapturedFrame()
 		//printf("Pixelclock: %d \n", check);
 		double fps;
 		is_GetFramesPerSecond(hCam, &fps);
+		double parameter;
+		int error = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, (void*)&parameter, sizeof(parameter));
+
 		//printf("fps cAMERA: %f \n", fps);
 		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
 		img->widthStep = 3 * img_width;		

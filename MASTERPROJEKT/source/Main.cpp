@@ -102,7 +102,7 @@ int main()
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();				
-			/*	
+			
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
@@ -110,7 +110,7 @@ int main()
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
-			}*/
+			}
 				
 				//run MarkerManagement
 
@@ -120,6 +120,7 @@ int main()
 				}else{
 				marker = mm->getTrackedMarker(); 
 			}
+			
 			debug(frame, marker, counter,takenIdVec);
 			cv::imshow("edges", frame);
 			cv::waitKey(1);
@@ -188,11 +189,9 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 
 			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 
-			// Draw Boxes
-			for (int i = 0; i < vertices.size(); ++i) {
-				line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
-			}
+			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 		}
+	
 	}
 #ifdef logFile
 	debugLogFile.close();
