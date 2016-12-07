@@ -1,12 +1,11 @@
-
 #include <Main.h>
 
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define TCP
+#define useTCP
 //#define logFile
-//#define uEYE
+#define uEYE
 #define useNotTestClasses
 
 #ifdef logFile
@@ -30,7 +29,7 @@ int main()
 	bool calibSuccess = true;
 	int counter = -1;
 	cv::Mat frame;
-#ifdef TCP
+#ifdef useTCP
 	calibSuccess = false;
 	//start TCP
 	TCP* tcp = new TCP();
@@ -96,21 +95,19 @@ int main()
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-#ifdef TCP
+#ifdef useTCP
 			if (isCalibrated == 0) {
 				Calibration* calib = new Calibration();
-				calib->runCalibration(true, false, false);
-				printf("hrilues");
+				calib->runCalibration(frame, true, false, false);
 				PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 				calibSuccess = pcd.success;
 				tcp->setPCD(pcd);
 				if (calibSuccess)
 					isCalibrated = 1;
 			}
-#endif // TCP
+#endif // TCP_connection
 			if (calibSuccess) {
-
-				//run Marker Detection			
+				//run Marker Detection
 				int sucess = md->runMarkerDetection(frame);
 				if (sucess == 1) {
 					std::vector<cv::RotatedRect> rects = md->getDetectedRects();
@@ -142,15 +139,15 @@ int main()
 			}
 			else break;
 
-#ifdef TCP
+#ifdef useTCP
 			//Send Markerdata via TCP
 			tcp->sendTCPData(marker, takenIdVec);
 
-#endif // TCP
+#endif // TCP_connection
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
-			printf("fps: %f\r", z);
+			printf("fps: %f\r", 1/z);
 		}
 	}
 	delete md;
@@ -162,9 +159,9 @@ int main()
 	delete mm;
 
 
-#ifdef TCP
+#ifdef useTCP
 	delete tcp;
-#endif // TCP
+#endif // TCP_connection
 	return EXIT_SUCCESS;
 }
 #endif //useTestClasses

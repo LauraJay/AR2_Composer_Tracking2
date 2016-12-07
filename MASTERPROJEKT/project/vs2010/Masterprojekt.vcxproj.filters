@@ -24,9 +24,6 @@
     <ClInclude Include="..\..\source\IdMapping.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\TCP_output.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\Calibration.h">
       <Filter>source</Filter>
     </ClInclude>
@@ -37,6 +34,9 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\MarkerSizeCalibration.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\TCP.h">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,9 +59,6 @@
     <ClCompile Include="..\..\source\IdMapping.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\TCP_output.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\ArucoCodeGenerator.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -81,6 +78,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\CreateCharucoBoard.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\TCP.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

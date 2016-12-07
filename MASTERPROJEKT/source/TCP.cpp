@@ -20,24 +20,19 @@ int TCP::startTCPServer()
 	SOCKADDR_IN addr; 
 	// start Winsock
 	rc = startWinsock();
-	if (rc != 0)
-	{
+	if (rc != 0){
 		printf("ERROR: startWinsock, code: %d\n", rc);
 		return 1;
-	}
-	else
-	{
+	}else{
 		printf("Winsock started!\n");
 	} 
 	// build Socket
 	serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if (serverSocket == INVALID_SOCKET)
-	{
+	if (serverSocket == INVALID_SOCKET){
 		printf("ERROR: The Socket could not be build, code: %d\n", WSAGetLastError());
 		return 1;
 	}
-	else
-	{
+	else{
 		printf("Socket built!\n");
 	} 
 	
@@ -47,24 +42,20 @@ int TCP::startTCPServer()
 	addr.sin_port = htons(10000);
 	addr.sin_addr.s_addr = ADDR_ANY;
 	rc = bind(serverSocket, (SOCKADDR*)&addr, sizeof(SOCKADDR_IN));
-	if (rc == SOCKET_ERROR)
-	{
+	if (rc == SOCKET_ERROR){
 		printf("ERROR: bind, code: %d\n", WSAGetLastError());
 		return 1;
 	}
-	else
-	{
+	else{
 		printf("port nr. is set to 10000\n");
 	}
 	// set server Socket in listen modus 
 	rc = listen(serverSocket, 10);
-	if (rc == SOCKET_ERROR)
-	{
+	if (rc == SOCKET_ERROR){
 		printf("ERROR: listen, code: %d\n", WSAGetLastError());
 		return 1;
 	}
-	else
-	{
+	else{
 		printf("server Socket is set to listen....\n");
 	}
 
@@ -75,8 +66,7 @@ int TCP::startTCPServer()
 		printf("EROOR: accept, code: %d\n", WSAGetLastError());
 		return 1;
 	}
-	else
-	{
+	else{
 		printf("New connection accepted!\n");
 	}
 }
