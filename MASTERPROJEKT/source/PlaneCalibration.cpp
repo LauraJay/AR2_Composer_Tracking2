@@ -9,6 +9,25 @@ void PlaneCalibration::initAruco() {
 }
 
 int PlaneCalibration::runMarkerDetection(cv::Mat &frame){
+	calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
+	if (calibFile.is_open()) {
+		std::string lineX;
+		std::string lineY;
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		upperRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		upperLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		lowerLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		lowerRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		calibFile.close();
+		return 0;
+	}
 	arucoIds.clear();
 	corners.clear();
 	rejected.clear();
@@ -26,9 +45,23 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		case 400:	upperLeft = corners.at(i).at(1); break;		// is oriented outwards on all our wood markers.
 		case 600:	lowerLeft = corners.at(i).at(1); break;
 		case 800:	lowerRight = corners.at(i).at(1); break;
-		default: return -1;
+		default: printf("Error detecting calibration marker!"); return -1;
 		}
 	}
+	calibFile.open("TrackingPlaneCalibration.txt", std::ios::out);
+	if (calibFile.is_open()) {
+		calibFile << upperRight.x << "\n";
+		calibFile << upperRight.y << "\n";
+		calibFile << upperLeft.x << "\n";
+		calibFile << upperLeft.y << "\n";
+		calibFile << lowerLeft.x << "\n";
+		calibFile << lowerLeft.y << "\n";
+		calibFile << lowerRight.x << "\n";
+		calibFile << lowerRight.y << "\n";
+		calibFile.close();
+	}
+	else
+		printf("Error writing calibration to file!");
 
 	// Ensure that plane is a rectangle by choosing the x and y 
 	// coordinates closest to the center for each respective side

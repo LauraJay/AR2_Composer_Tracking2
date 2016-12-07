@@ -132,8 +132,10 @@ void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 
 cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
-	center.x = (center.x - pcd.upperLeftCorner.x) / pcd.size.width;
-	center.y = (center.y + pcd.size.height - pcd.upperLeftCorner.y) / pcd.size.height;
+	printf("Before coord: %f, %f; ", center.x, center.y);
+	center.x = -((pcd.upperLeftCorner.x - center.x) / pcd.size.width);
+	center.y = (pcd.upperLeftCorner.y - center.y) / pcd.size.height;
+	printf("Normalized coord: %f, %f; ", center.x, center.y);
 	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width),(r.size.height / pcd.size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
 	return rect;

@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <opencv2/aruco.hpp>
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 class PlaneCalibration {
 
@@ -21,6 +25,7 @@ private:
 	int detectAruco(cv::Mat frame);
 	std::vector<int> arucoIds;
 	int runMarkerDetection(cv::Mat &frame);
+	std::fstream calibFile;
 
 protected:
 	std::vector<std::vector<cv::Point2f>> corners;
