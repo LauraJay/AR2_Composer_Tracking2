@@ -20,6 +20,7 @@ private:
 	
 public:
 	int inituEyeCam();
+	int inituEyeCamForCalib();
 	cv::Mat getCapturedFrame();
 	int exitCamera();
 

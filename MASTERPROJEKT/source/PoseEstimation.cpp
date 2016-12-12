@@ -35,8 +35,10 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	std::vector< std::vector< int > > allIds;
 	std::vector< cv::Mat > allImgs;
 	cv::Size imgSize;
-	
-	while (true) {
+	int captures = 0;
+	std::cerr << "Please translate pose marker to ten different image positions." << std::endl;
+	std::cerr << "Press 'c' to confirm  current image position and continue to next position." << std::endl;
+	while (captures <10) {
 		cv::Mat image, imageCopy;
 		image = uei->getCapturedFrame();
 		std::vector< int > ids;
@@ -60,19 +62,17 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 		if (currentCharucoCorners.total() > 0)
 			cv::aruco::drawDetectedCornersCharuco(imageCopy, currentCharucoCorners, currentCharucoIds);
-
-		putText(imageCopy, "Press 'c' to add current frame. 'ESC' to finish and calibrate",
-			cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 0), 2);
-
+	
 		imshow("out", imageCopy);
 		char key = (char)cv::waitKey(1);
 		if (key == 27) break;
 		if (key == 'c' && ids.size() > 0) {
-			std::cout << "Frame captured" << std::endl;
 			allCorners.push_back(corners);
 			allIds.push_back(ids);
 			allImgs.push_back(image);
 			imgSize = image.size();
+			captures++;
+			printf("Marker No. %d confirmed.\n",captures);
 		}
 	}
 
@@ -137,12 +137,11 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 		cv::aruco::calibrateCameraCharuco(allCharucoCorners, allCharucoIds, charucoboard, imgSize,
 			cameraMatrix, distCoeffs, rvecs, tvecs, calibrationFlags);
 
-	//bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,
-	//	cameraMatrix, distCoeffs, rvecs, tvecs, repError);
-	//if (!saveOk) {
-	//	std::cerr << "Cannot save output file" << std::endl;
-	//	return 0;
-	//}
+	bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,cameraMatrix, distCoeffs, repError);
+	if (!saveOk) {
+		std::cerr << "Cannot save output file" << std::endl;
+		return 0;
+	}
 
 	std::cout << "Rep Error: " << repError << std::endl;
 	std::cout << "Rep Error Aruco: " << arucoRepErr << std::endl;
@@ -169,39 +168,8 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 }
 
 
-
-static bool readDetectorParameters(std::string filename, cv::Ptr<cv::aruco::DetectorParameters> &params) {
-	cv::FileStorage fs(filename, cv::FileStorage::READ);
-	if (!fs.isOpened())
-		return false;
-	fs["adaptiveThreshWinSizeMin"] >> params->adaptiveThreshWinSizeMin;
-	fs["adaptiveThreshWinSizeMax"] >> params->adaptiveThreshWinSizeMax;
-	fs["adaptiveThreshWinSizeStep"] >> params->adaptiveThreshWinSizeStep;
-	fs["adaptiveThreshConstant"] >> params->adaptiveThreshConstant;
-	fs["minMarkerPerimeterRate"] >> params->minMarkerPerimeterRate;
-	fs["maxMarkerPerimeterRate"] >> params->maxMarkerPerimeterRate;
-	fs["polygonalApproxAccuracyRate"] >> params->polygonalApproxAccuracyRate;
-	fs["minCornerDistanceRate"] >> params->minCornerDistanceRate;
-	fs["minDistanceToBorder"] >> params->minDistanceToBorder;
-	fs["minMarkerDistanceRate"] >> params->minMarkerDistanceRate;
-	fs["doCornerRefinement"] >> params->doCornerRefinement;
-	fs["cornerRefinementWinSize"] >> params->cornerRefinementWinSize;
-	fs["cornerRefinementMaxIterations"] >> params->cornerRefinementMaxIterations;
-	fs["cornerRefinementMinAccuracy"] >> params->cornerRefinementMinAccuracy;
-	fs["markerBorderBits"] >> params->markerBorderBits;
-	fs["perspectiveRemovePixelPerCell"] >> params->perspectiveRemovePixelPerCell;
-	fs["perspectiveRemoveIgnoredMarginPerCell"] >> params->perspectiveRemoveIgnoredMarginPerCell;
-	fs["maxErroneousBitsInBorderRate"] >> params->maxErroneousBitsInBorderRate;
-	fs["minOtsuStdDev"] >> params->minOtsuStdDev;
-	fs["errorCorrectionRate"] >> params->errorCorrectionRate;
-	return true;
-}
-
-
-
-
-static bool saveCameraParams(const std::string &filename, cv::Size imageSize, float aspectRatio, int flags,
-	const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat> rvecs, const std::vector<cv::Mat> tvecs, double totalAvgErr) {
+bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imageSize, float aspectRatio, int flags,
+	const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, double totalAvgErr) {
 	cv::FileStorage fs(filename, cv::FileStorage::WRITE);
 	if (!fs.isOpened())
 		return false;
@@ -220,7 +188,7 @@ static bool saveCameraParams(const std::string &filename, cv::Size imageSize, fl
 	if (flags & cv::CALIB_FIX_ASPECT_RATIO) fs << "aspectRatio" << aspectRatio;
 
 	if (flags != 0) {
-		sprintf(buf, "flags: %s%s%s%s",
+		sprintf(buf, "flags:	%s%s%s%s",
 			flags & cv::CALIB_USE_INTRINSIC_GUESS ? "+use_intrinsic_guess" : "",
 			flags & cv::CALIB_FIX_ASPECT_RATIO ? "+fix_aspectRatio" : "",
 			flags & cv::CALIB_FIX_PRINCIPAL_POINT ? "+fix_principal_point" : "",
@@ -229,12 +197,10 @@ static bool saveCameraParams(const std::string &filename, cv::Size imageSize, fl
 
 	fs << "flags" << flags;
 
-	fs << "camera_cv::Matrix" << cameraMatrix;
+	fs << "camera_matrix" << cameraMatrix;
 	fs << "distortion_coefficients" << distCoeffs;
-	fs << "rvecs" << rvecs;
-	fs << "tvecs" << tvecs;
+
 	fs << "avg_reprojection_error" << totalAvgErr;
 
 	return true;
 }
-

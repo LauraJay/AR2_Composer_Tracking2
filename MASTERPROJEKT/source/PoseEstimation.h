@@ -52,4 +52,5 @@ public:
 	~PoseEstimation() {};
 	PoseEstimation() {};
 	int runPoseEstimation(uEye_input* uei);
+	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
 };

@@ -3,7 +3,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define useTCP
+//#define useTCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -36,10 +36,12 @@ int main()
 	//receive data
 	int isCalibrated = tcp->receiveTCPData();
 	if (isCalibrated == 0) {
+#endif 	// TCP
 		Calibration* calib = new Calibration();
 		calib->runCalibration(true, true, false);
 		PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 		calibSuccess = pcd.success;
+#ifdef useTCP
 		tcp->setPCD(pcd);
 	}
 #endif 	// TCP
@@ -127,7 +129,9 @@ int main()
 				marker = mm->getTrackedMarker(); 
 			}
 			
-			debug(frame.clone(), marker, counter,takenIdVec);
+			cv::Mat imgDebug = debug(frame.clone(), marker, counter,takenIdVec);
+			cv::imshow("edges", imgDebug);
+			cv::waitKey(1);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 
 #ifdef useTCP
@@ -158,7 +162,7 @@ int main()
 }
 #endif //useTestClasses
 
-void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec)
+cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec)
 {
 #ifdef logFile
 	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);
@@ -195,13 +199,13 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 
 			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 		}
-	
-		cv::imshow("edges", frame);
-		cv::waitKey(1);
+
+		
 	}
 #ifdef logFile
 	debugLogFile.close();
 #endif //logFile
+		return frame;
 }
 
 

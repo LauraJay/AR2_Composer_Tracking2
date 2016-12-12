@@ -3,7 +3,7 @@
 int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib)
 {
 	uEye_input* uei = new uEye_input();
-	uei->inituEyeCam();
+	uei->inituEyeCamForCalib();
 	cv::Mat frame = uei->getCapturedFrame();
 	if (doPlaneCalib) {
 		int ret = 0;
