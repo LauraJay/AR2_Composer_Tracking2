@@ -17,10 +17,11 @@ class Calibration {
 
 private:
 	PlaneCalibration::planeCalibData pcd;
+	uEye_input uei;
 
 public:
 	~Calibration() {};
 	Calibration() {};
-	int runCalibration(cv::Mat frame, bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib);
+	int runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib);
 	PlaneCalibration::planeCalibData getPlaneCalibData();
 };

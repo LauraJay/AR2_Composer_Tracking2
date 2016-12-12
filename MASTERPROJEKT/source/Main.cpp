@@ -30,12 +30,18 @@ int main()
 	int counter = -1;
 	cv::Mat frame;
 #ifdef useTCP
-	calibSuccess = false;
 	//start TCP
 	TCP* tcp = new TCP();
 	tcp->startTCPServer();
 	//receive data
 	int isCalibrated = tcp->receiveTCPData();
+	if (isCalibrated == 0) {
+		Calibration* calib = new Calibration();
+		calib->runCalibration(true, true, false);
+		PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
+		calibSuccess = pcd.success;
+		tcp->setPCD(pcd);
+	}
 #endif 	// TCP
 
 
@@ -95,49 +101,34 @@ int main()
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-#ifdef useTCP
-			if (isCalibrated == 0) {
-				Calibration* calib = new Calibration();
-				calib->runCalibration(frame, true, false, false);
-				PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
-				calibSuccess = pcd.success;
-				tcp->setPCD(pcd);
-				if (calibSuccess)
-					isCalibrated = 1;
-			}
-#endif // TCP_connection
-			if (calibSuccess) {
-				//run Marker Detection
-				int sucess = md->runMarkerDetection(frame);
-				if (sucess == 1) {
-					std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-					std::vector<int> arucoIds = md->getArucoIds();
-					std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-					/*
-						for each (cv::RotatedRect r in rects)
-						{
-							cv::Point2f vert[4];
-							r.points(vert);
-							for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-								line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
-							}
-					}*/
 
-					//run MarkerManagement
-
-					mm->trackMarker(rects, corners, arucoIds, frame.size());
-					marker = mm->getTrackedMarker();
-					takenIdVec = mm->getTakenIDVec();
-				}
-				else {
-					marker = mm->getTrackedMarker();
-				}
-				debug(frame, marker, counter, takenIdVec);
-				cv::imshow("edges", frame);
-				cv::waitKey(1);
-				//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
+			 //run Marker Detection			
+			int sucess = md->runMarkerDetection(frame);
+			if (sucess == 1) {
+				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+				std::vector<int> arucoIds = md->getArucoIds();
+				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();				
+			
+				for each (cv::RotatedRect r in rects)
+				{
+					cv::Point2f vert[4];
+					r.points(vert);
+					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+					}
 			}
-			else break;
+				
+				//run MarkerManagement
+
+				mm->trackMarker(rects,corners,arucoIds,frame.size());
+				marker = mm->getTrackedMarker();
+				takenIdVec = mm->getTakenIDVec();
+				}else{
+				marker = mm->getTrackedMarker(); 
+			}
+			
+			debug(frame.clone(), marker, counter,takenIdVec);
+			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 
 #ifdef useTCP
 			//Send Markerdata via TCP
@@ -149,7 +140,8 @@ int main()
 			z /= CLOCKS_PER_SEC;
 			printf("fps: %f\r", 1/z);
 		}
-	}
+		else break;
+		}
 	delete md;
 #ifdef uEYE
 	uei->exitCamera();
@@ -158,11 +150,11 @@ int main()
 
 	delete mm;
 
-
 #ifdef useTCP
 	delete tcp;
 #endif // TCP_connection
 	return EXIT_SUCCESS;
+	
 }
 #endif //useTestClasses
 
@@ -201,11 +193,11 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 
 			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
 
-			// Draw Boxes
-			for (int i = 0; i < vertices.size(); ++i) {
-				line(frame, vertices[i], vertices[(i + 1) % 4], cv::Scalar(255, 255, 255), 1, CV_AA);
-			}
+			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 		}
+	
+		cv::imshow("edges", frame);
+		cv::waitKey(1);
 	}
 #ifdef logFile
 	debugLogFile.close();

@@ -2,7 +2,7 @@
 
 int PoseEstimation::runPoseEstimation(uEye_input* uei)
 {
-	std::printf("Starting Pose Estimation ...");
+	
 	//TODO fill with correct data
 	int squaresX = 8;
 	int squaresY =8;
@@ -15,22 +15,11 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	int calibrationFlags = 0;
 	float aspectRatio = 1;
-	/*if (parser.has("a")) {
-		calibrationFlags |= cv::CALIB_FIX_ASPECT_RATIO;
-		aspectRatio = parser.get<float>("a");
-	}
+	
 	if (false) calibrationFlags |= cv::CALIB_ZERO_TANGENT_DIST;
-	if (false) calibrationFlags |= cv::CALIB_FIX_PRINCIPAL_POINT;*/
+	if (false) calibrationFlags |= cv::CALIB_FIX_PRINCIPAL_POINT;
 
 	cv::Ptr<cv::aruco::DetectorParameters> detectorParams = cv::aruco::DetectorParameters::create();
-	/*if (parser.has("dp")) {
-		bool readOk = readDetectorParameters(parser.get<std::string>("dp"), detectorParams);
-		if (!readOk) {
-			std::cerr << "Invalid detector parameters file" << std::endl;
-			return 0;
-		}
-	}*/
-
 	bool refindStrategy = false;
 	
 	cv::Ptr<cv::aruco::Dictionary> dictionary =
@@ -38,7 +27,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	// create charuco board object
 	cv::Ptr<cv::aruco::CharucoBoard> charucoboard =
-		cv::aruco::CharucoBoard::create(squaresX, squaresY, squareLength, markerLength, dictionary);
+	cv::aruco::CharucoBoard::create(squaresX, squaresY, squareLength, markerLength, dictionary);
 	cv::Ptr<cv::aruco::Board> board = charucoboard.staticCast<cv::aruco::Board>();
 
 	// collect data from each frame
