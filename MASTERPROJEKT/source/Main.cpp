@@ -121,9 +121,7 @@ int main()
 				marker = mm->getTrackedMarker(); 
 			}
 			
-			debug(frame, marker, counter,takenIdVec);
-			cv::imshow("edges", frame);
-			cv::waitKey(1);
+			debug(frame.clone(), marker, counter,takenIdVec);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 		}
 		else break;
@@ -192,6 +190,8 @@ void debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::v
 			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 		}
 	
+		cv::imshow("edges", frame);
+		cv::waitKey(1);
 	}
 #ifdef logFile
 	debugLogFile.close();

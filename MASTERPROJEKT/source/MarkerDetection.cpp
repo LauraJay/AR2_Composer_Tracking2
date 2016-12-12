@@ -34,9 +34,9 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
-	inRange(output, cv::Scalar(65, 120, 35), cv::Scalar(80, 255, 255), output);
-	int erosion_size = 1;
-	cv::Mat element = getStructuringElement(cv::MORPH_RECT,
+	inRange(output, cv::Scalar(60, 120, 30), cv::Scalar(85, 255, 255), output);
+	int erosion_size = 2;
+	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 		cv::Point(erosion_size, erosion_size));
 
