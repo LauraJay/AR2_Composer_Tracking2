@@ -2,32 +2,42 @@
 
 int PoseEstimation::runPoseEstimation(uEye_input* uei)
 {
-	
-	//TODO fill with correct data
-	int squaresX = 8;
+	printf("Calibration using a ChArUco board\n");
+	printf("  To capture a frame for calibration, press 'c',\n");
+	printf("  To finish capturing, press 'ESC' key and calibration starts.\n");
+
+
+	int squaresX =8;
 	int squaresY =8;
 	float squareLength = 0.034;
 	float markerLength = 0.023;
-	int dictionaryId = cv::aruco::DICT_ARUCO_ORIGINAL;
-	std::string outputFile = "CameraCalib.txt";
-
+	int dictionaryId = 16;
+	std::string outputFile = "CameraMatrix.yml";
+	bool fixAspectRatio = false;
+	bool dozeroTangent = false;
+	bool doPrincipalPoint = false;
 	bool showChessboardCorners = false;
 
 	int calibrationFlags = 0;
 	float aspectRatio = 1;
-	
-	if (false) calibrationFlags |= cv::CALIB_ZERO_TANGENT_DIST;
-	if (false) calibrationFlags |= cv::CALIB_FIX_PRINCIPAL_POINT;
+	if (fixAspectRatio) {
+		calibrationFlags |= cv::CALIB_FIX_ASPECT_RATIO;
+		aspectRatio = 1;
+	}
+	if (dozeroTangent) calibrationFlags |= cv::CALIB_ZERO_TANGENT_DIST;
+	if (doPrincipalPoint) calibrationFlags |= cv::CALIB_FIX_PRINCIPAL_POINT;
 
 	cv::Ptr<cv::aruco::DetectorParameters> detectorParams = cv::aruco::DetectorParameters::create();
+	
 	bool refindStrategy = false;
 	
+	cv::Mat frame = uei->getCapturedFrame();
 	cv::Ptr<cv::aruco::Dictionary> dictionary =
 		cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
 
 	// create charuco board object
 	cv::Ptr<cv::aruco::CharucoBoard> charucoboard =
-	cv::aruco::CharucoBoard::create(squaresX, squaresY, squareLength, markerLength, dictionary);
+		cv::aruco::CharucoBoard::create(squaresX, squaresY, squareLength, markerLength, dictionary);
 	cv::Ptr<cv::aruco::Board> board = charucoboard.staticCast<cv::aruco::Board>();
 
 	// collect data from each frame
@@ -35,53 +45,55 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	std::vector< std::vector< int > > allIds;
 	std::vector< cv::Mat > allImgs;
 	cv::Size imgSize;
-	int captures = 0;
-	std::cerr << "Please translate pose marker to ten different image positions." << std::endl;
-	std::cerr << "Press 'c' to confirm  current image position and continue to next position." << std::endl;
-	while (captures <10) {
-		cv::Mat image, imageCopy;
-		image = uei->getCapturedFrame();
+
+	while (!frame.empty()) {
+		cv::Mat imageCopy;
+		frame = uei->getCapturedFrame();
+
 		std::vector< int > ids;
 		std::vector< std::vector< cv::Point2f > > corners, rejected;
 
 		// detect markers
-		cv::aruco::detectMarkers(image, dictionary, corners, ids, detectorParams, rejected);
+		cv::aruco::detectMarkers(frame, dictionary, corners, ids, detectorParams, rejected);
 
 		// refind strategy to detect more markers
-		if (refindStrategy) cv::aruco::refineDetectedMarkers(image, board, corners, ids, rejected);
+		if (refindStrategy) cv::aruco::refineDetectedMarkers(frame, board, corners, ids, rejected);
 
 		// interpolate charuco corners
 		cv::Mat currentCharucoCorners, currentCharucoIds;
 		if (ids.size() > 0)
-			cv::aruco::interpolateCornersCharuco(corners, ids, image, charucoboard, currentCharucoCorners,
+			cv::aruco::interpolateCornersCharuco(corners, ids, frame, charucoboard, currentCharucoCorners,
 				currentCharucoIds);
 
 		// draw results
-		image.copyTo(imageCopy);
+		frame.copyTo(imageCopy);
 		if (ids.size() > 0) cv::aruco::drawDetectedMarkers(imageCopy, corners);
 
 		if (currentCharucoCorners.total() > 0)
 			cv::aruco::drawDetectedCornersCharuco(imageCopy, currentCharucoCorners, currentCharucoIds);
-	
+
+		putText(imageCopy, "Press 'c' to add current frame. 'ESC' to finish and calibrate",
+			cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 0), 2);
+
 		imshow("out", imageCopy);
-		char key = (char)cv::waitKey(1);
+		char key = (char)cv::waitKey(10);
 		if (key == 27) break;
 		if (key == 'c' && ids.size() > 0) {
+			std::cout << "Frame captured" << std::endl;
 			allCorners.push_back(corners);
 			allIds.push_back(ids);
-			allImgs.push_back(image);
-			imgSize = image.size();
-			captures++;
-			printf("Marker No. %d confirmed.\n",captures);
+			allImgs.push_back(frame);
+			imgSize = frame.size();
 		}
 	}
 
 	if (allIds.size() < 1) {
 		std::cerr << "Not enough captures for calibration" << std::endl;
+		return 0;
 	}
 
 	cv::Mat cameraMatrix, distCoeffs;
-	std::vector<cv::Mat > rvecs, tvecs;
+	std::vector< cv::Mat > rvecs, tvecs;
 	double repError;
 
 	if (calibrationFlags & cv::CALIB_FIX_ASPECT_RATIO) {
@@ -102,11 +114,11 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 		}
 	}
 
-	// calibrate camera using aruco markers
+	// calibrate camera using cv::aruco markers
 	double arucoRepErr;
 	arucoRepErr = cv::aruco::calibrateCameraAruco(allCornersConcatenated, allIdsConcatenated,
 		markerCounterPerFrame, board, imgSize, cameraMatrix,
-		distCoeffs, rvecs, tvecs, calibrationFlags);
+		distCoeffs, cv::noArray(), cv::noArray(), calibrationFlags);
 
 	// prepare data for charuco calibration
 	int nFrames = (int)allCorners.size();
@@ -130,6 +142,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	if (allCharucoCorners.size() < 4) {
 		std::cerr << "Not enough corners for calibration" << std::endl;
+		return 0;
 	}
 
 	// calibrate camera using charuco
@@ -137,7 +150,8 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 		cv::aruco::calibrateCameraCharuco(allCharucoCorners, allCharucoIds, charucoboard, imgSize,
 			cameraMatrix, distCoeffs, rvecs, tvecs, calibrationFlags);
 
-	bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,cameraMatrix, distCoeffs, repError);
+	bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,
+		cameraMatrix, distCoeffs, repError);
 	if (!saveOk) {
 		std::cerr << "Cannot save output file" << std::endl;
 		return 0;
@@ -164,7 +178,9 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 			if (key == 27) break;
 		}
 	}
+
 	return 0;
+
 }
 
 
@@ -188,7 +204,7 @@ bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imag
 	if (flags & cv::CALIB_FIX_ASPECT_RATIO) fs << "aspectRatio" << aspectRatio;
 
 	if (flags != 0) {
-		sprintf(buf, "flags:	%s%s%s%s",
+		sprintf(buf, "flags: %s%s%s%s",
 			flags & cv::CALIB_USE_INTRINSIC_GUESS ? "+use_intrinsic_guess" : "",
 			flags & cv::CALIB_FIX_ASPECT_RATIO ? "+fix_aspectRatio" : "",
 			flags & cv::CALIB_FIX_PRINCIPAL_POINT ? "+fix_principal_point" : "",

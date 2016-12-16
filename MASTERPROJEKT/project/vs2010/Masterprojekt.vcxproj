@@ -134,6 +134,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp" />
     <ClCompile Include="..\..\source\PlaneCalibration.cpp" />
     <ClCompile Include="..\..\source\PoseEstimation.cpp" />
+    <ClCompile Include="..\..\source\PoseEstimationExample.cpp" />
     <ClCompile Include="..\..\source\TCP.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
     <ClCompile Include="Aruco_Maker_Detection.cpp" />
