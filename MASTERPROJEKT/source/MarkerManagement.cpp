@@ -129,15 +129,8 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
 
 
 
-bool MarkerManagement::readCameraParameters(std::string filename, cv::Mat3f &lut) {
-	cv::FileStorage fs(filename, cv::FileStorage::READ);
-	if (!fs.isOpened())
-		return false;
-	fs["LUT"] >> lut;
-	return true;
-}
 
-MarkerManagement::MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCalibData pcd)
+MarkerManagement::MarkerManagement(cv::Size frameSize)
 {
 	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
@@ -145,8 +138,6 @@ MarkerManagement::MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCa
 		trackedMarker[i] = new Marker();
 	}
 	MarkerManagement::frameSize = frameSize;
-	cv::Mat3f lut = cv::Mat3f(frameSize);
-	readCameraParameters("LUT.yml", lut);
 	}
 
 

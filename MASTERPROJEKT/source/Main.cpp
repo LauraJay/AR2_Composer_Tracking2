@@ -3,7 +3,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define useTCP
+#define useTCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -33,8 +33,14 @@ int main()
 	int counter = -1;
 	cv::Mat frame;
 #ifdef useTCP
-	//start TCP
-	TCP* tcp = new TCP();
+	//start 
+	// uEye Caputure
+	uEye_input* uei1 = new uEye_input();
+	uei1->inituEyeCam();
+	frame = uei1->getCapturedFrame();
+	TCP* tcp = new TCP(frame.size());
+	uei1->exitCamera();
+	delete uei1;
 	tcp->startTCPServer();
 	//receive data
 	int isCalibrated = tcp->receiveTCPData();
@@ -81,7 +87,7 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	MarkerManagement* mm = new MarkerManagement(frame.size(),pcd);
+	MarkerManagement* mm = new MarkerManagement(frame.size());
 	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
 	
