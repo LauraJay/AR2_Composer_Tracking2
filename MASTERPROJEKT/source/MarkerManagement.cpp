@@ -70,6 +70,8 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 
 
+
+
 // Delete Function of Marker
 void MarkerManagement::deleteMarker(int id)
 {
@@ -125,7 +127,17 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
 
 
 
-MarkerManagement::MarkerManagement(cv::Size frameSize)
+
+
+bool MarkerManagement::readCameraParameters(std::string filename, cv::Mat3f &lut) {
+	cv::FileStorage fs(filename, cv::FileStorage::READ);
+	if (!fs.isOpened())
+		return false;
+	fs["LUT"] >> lut;
+	return true;
+}
+
+MarkerManagement::MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCalibData pcd)
 {
 	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
@@ -133,7 +145,9 @@ MarkerManagement::MarkerManagement(cv::Size frameSize)
 		trackedMarker[i] = new Marker();
 	}
 	MarkerManagement::frameSize = frameSize;
-}
+	cv::Mat3f lut = cv::Mat3f(frameSize);
+	readCameraParameters("LUT.yml", lut);
+	}
 
 
 MarkerManagement::~MarkerManagement()

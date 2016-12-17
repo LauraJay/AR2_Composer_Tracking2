@@ -10,7 +10,6 @@ private:
 	cv::Mat colorThreshold(cv::Mat &frame);
 	std::vector<cv::RotatedRect> detectedRects;
 	std::vector<int> arucoIds;
-	std::vector< cv::Mat > rvecs, tvecs;
 	int dictionaryId;
 	bool showRejected;
 	float markerLength;
@@ -21,7 +20,6 @@ private:
 	cv::Ptr<cv::aruco::Dictionary> dictionary;
 	void initArucoParams();
 	void detectArucoMarker(cv::Mat &frame);
-
 protected:
 
 	std::vector<std::vector<cv::Point2f>> corners;

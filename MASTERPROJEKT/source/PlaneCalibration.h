@@ -37,6 +37,9 @@ public:
 	struct planeCalibData {
 		bool success;
 		cv::Point2f upperLeftCorner;
+		cv::Point2f lowerLeft;
+		cv::Point2f upperRight;
+		cv::Point2f lowerRight;
 		cv::Size size;
 	};
 	planeCalibData getPlaneCalibData();

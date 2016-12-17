@@ -100,12 +100,16 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 
 PlaneCalibration::PlaneCalibration(){
 	initAruco();
+
 }
 
 PlaneCalibration::planeCalibData PlaneCalibration::getPlaneCalibData() {
 	planeCalibData pcd;
 	pcd.upperLeftCorner = upperLeft;
 	pcd.size = cv::Size(upperRight.x - upperLeft.x, upperLeft.y - lowerLeft.y);
+	pcd.upperRight = upperRight;
+	pcd.lowerLeft = lowerLeft;
+	pcd.lowerRight = lowerRight;
 	return pcd;
 }
 

@@ -27,6 +27,9 @@ int main()
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
 	bool calibSuccess = true;
+	bool doPoseEstimation = true;
+	bool doPlaneCalib = true;
+	bool doMarkerCalib = false;
 	int counter = -1;
 	cv::Mat frame;
 #ifdef useTCP
@@ -38,7 +41,7 @@ int main()
 	if (isCalibrated == 0) {
 #endif 	// TCP
 		Calibration* calib = new Calibration();
-		calib->runCalibration(true, true, false);
+		calib->runCalibration(doPlaneCalib, doPoseEstimation, doMarkerCalib);
 		PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
 		calibSuccess = pcd.success;
 #ifdef useTCP
@@ -78,7 +81,7 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	MarkerManagement* mm = new MarkerManagement(frame.size());
+	MarkerManagement* mm = new MarkerManagement(frame.size(),pcd);
 	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
 	

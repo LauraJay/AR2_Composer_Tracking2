@@ -72,8 +72,6 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 			break;
 		}
 	}
-
-	//myfile2.close();
 	return matchID;
 }
 
