@@ -122,8 +122,6 @@ int uEye_input::inituEyeCamForCalib()
 	img->height = img_height;
 	img->imageSize = 3 * img_width*img_height;
 
-
-
 	return 1; 
 }
 

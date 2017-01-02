@@ -10,6 +10,7 @@ private:
 	void deleteMarker(int id);
 	void registerNewMarker(cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint);
 	int findMatchID(int arucoID);
+	PlaneCalibration::planeCalibData pcd;
 	
 	
 protected:
@@ -25,6 +26,6 @@ public:
 	std::array<Marker*, 100> getTrackedMarker();
 	std::vector<int> getTakenIDVec();
 	void trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size);
-	MarkerManagement(cv::Size frameSize);
+	MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCalibData pcd);
 	~MarkerManagement();
 };

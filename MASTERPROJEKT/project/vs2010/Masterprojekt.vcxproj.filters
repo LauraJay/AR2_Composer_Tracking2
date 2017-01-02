@@ -83,5 +83,9 @@
     <ClCompile Include="..\..\source\TCP.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\PoseEstimationExample.cpp" />
+    <ClCompile Include="..\..\source\PSEyeTest.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

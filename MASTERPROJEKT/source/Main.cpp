@@ -27,11 +27,12 @@ int main()
 	std::array<Marker*,100> marker;
 	std::vector<int> takenIdVec;
 	bool calibSuccess = true;
-	bool doPoseEstimation = true;
+	bool doPoseEstimation = false;
 	bool doPlaneCalib = true;
 	bool doMarkerCalib = false;
 	int counter = -1;
 	cv::Mat frame;
+	PlaneCalibration::planeCalibData pcd;
 #ifdef useTCP
 	//start 
 	// uEye Caputure
@@ -48,7 +49,7 @@ int main()
 #endif 	// TCP
 		Calibration* calib = new Calibration();
 		calib->runCalibration(doPlaneCalib, doPoseEstimation, doMarkerCalib);
-		PlaneCalibration::planeCalibData pcd = calib->getPlaneCalibData();
+		pcd = calib->getPlaneCalibData();
 		calibSuccess = pcd.success;
 #ifdef useTCP
 		tcp->setPCD(pcd);
@@ -87,7 +88,7 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	MarkerManagement* mm = new MarkerManagement(frame.size());
+	MarkerManagement* mm = new MarkerManagement(frame.size(),pcd);
 	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
 	
@@ -139,6 +140,9 @@ int main()
 			}
 			
 			cv::Mat imgDebug = debug(frame.clone(), marker, counter,takenIdVec);
+			
+			cv::Rect r = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+			rectangle(imgDebug, r, cv::Scalar(0,0,255));
 			cv::imshow("edges", imgDebug);
 			cv::waitKey(1);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
@@ -183,6 +187,8 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	os2 << counter;
 	cv::String s2 = os2.str();
 	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
+	
+	
 	for each (int id in takenIDVec)
 	{
 		Marker* m = marker[id];

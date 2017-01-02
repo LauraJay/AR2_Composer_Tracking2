@@ -9,25 +9,25 @@ void PlaneCalibration::initAruco() {
 }
 
 int PlaneCalibration::runMarkerDetection(cv::Mat &frame){
-	calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
-	if (calibFile.is_open()) {
-		std::string lineX;
-		std::string lineY;
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		upperRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		upperLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		lowerLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		lowerRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-		calibFile.close();
-		return 0;
-	}
+	//calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
+	//if (calibFile.is_open()) {
+	//	std::string lineX;
+	//	std::string lineY;
+	//	getline(calibFile, lineX);
+	//	getline(calibFile, lineY);
+	//	upperRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+	//	getline(calibFile, lineX);
+	//	getline(calibFile, lineY);
+	//	upperLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+	//	getline(calibFile, lineX);
+	//	getline(calibFile, lineY);
+	//	lowerLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+	//	getline(calibFile, lineX);
+	//	getline(calibFile, lineY);
+	//	lowerRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+	//	calibFile.close();
+	//	return 0;
+	//}
 	arucoIds.clear();
 	corners.clear();
 	rejected.clear();
@@ -41,10 +41,10 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	for (int i = 0; i < 4; i++) {
 		int ID = arucoIds.at(i);
 		switch (ID) {
-		case 200:	upperRight = corners.at(i).at(1); break;	// Corner 1 is upper right corner of marker, which
-		case 400:	upperLeft = corners.at(i).at(1); break;		// is oriented outwards on all our wood markers.
-		case 600:	lowerLeft = corners.at(i).at(1); break;
-		case 800:	lowerRight = corners.at(i).at(1); break;
+		case 800:	upperRight = corners.at(i).at(1); break;	// Corner 1 is upper right corner of marker, which
+		case 600:	upperLeft = corners.at(i).at(1); break;		// is oriented outwards on all our wood markers.
+		case 400:	lowerLeft = corners.at(i).at(1); break;
+		case 200:	lowerRight = corners.at(i).at(1); break;
 		default: printf("Error detecting calibration marker!"); return -1;
 		}
 	}

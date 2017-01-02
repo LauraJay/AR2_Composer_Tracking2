@@ -112,13 +112,14 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 	return matchID;
 }
 
-int IdMapping::isMarkerOutOfField(Marker* m,cv::Size imgSize) {
+int IdMapping::isMarkerOutOfField(Marker* m, PlaneCalibration::planeCalibData pcd) {
 	std::vector<cv::Point2f> ps = m->getPoints();
-	float threshold = 20.;
+	cv::Rect r = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+
 	for each (cv::Point2f p in ps)
 	{
-		if (p.x > imgSize.width-threshold || p.x < 0.+threshold || 
-			p.y > imgSize.height-threshold || p.y < 0.+threshold)
+		cv::Point2i pi = cv::Point2i(p.x,p.y);
+		if (!r.contains(pi))
 			return 1;
 	}
 	return 0;
@@ -144,6 +145,20 @@ int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::
 			return i;
 	}
 	return -1;
+}
+
+int IdMapping::isRectOutOfField(cv::RotatedRect r, PlaneCalibration::planeCalibData pcd)
+{
+	cv::Point2f ps[4];
+	r.points(ps);
+	cv::Rect br = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+
+	for each (cv::Point2f p in ps)
+	{
+		if (!br.contains(p))
+			return 1;
+	}
+	return 0;
 }
 
 

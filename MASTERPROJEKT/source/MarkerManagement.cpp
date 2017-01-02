@@ -21,15 +21,19 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 		int matchID = 0;
 		int arucoID = 0;
-		
-		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(r, trackedMarker, takenIDVec);
+		int rep = 0;
 
-		//test if id matches MarkerRect
+		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(r, trackedMarker, takenIDVec);
 
 		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
 			matchID = findMatchID(arucoIds[arucoID]);
 			if (matchID > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
+				if ((rep = im->isMarkerOutOfField(trackedMarker[matchID], pcd)) > 0) {
+					deleteMarker(matchID);
+				}
+				else { 
+					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2)); 
+				}
 			}
 			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
@@ -38,16 +42,21 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
 			}
 			else {
-				registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(2));
+				if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
+					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(2));
+				}
 			}
 		}
-		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec,-1)) > 0) {
-			CurrentMarker(trackedMarker[matchID], r);
-		}
-		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec,-1)) > 0) {
-			CurrentMarker(trackedMarker[matchID], r);
-		}
+		else if ((rep = im->isRectOutOfField(r, pcd)) > 0) {
 			
+		}
+		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
+			CurrentMarker(trackedMarker[matchID], r);
+		}
+		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
+			CurrentMarker(trackedMarker[matchID], r);
+		}
+
 	}
 
 	int matchID = 0;
@@ -55,11 +64,8 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 	{
 		int id = takenIDVec[i];
 		if (trackedMarker[id]->isTracked() == 0) {
-			if ((matchID = im->isMarkerOutOfField(trackedMarker[id], frameSize)) > 0) {
-				deleteMarker(id);
-			}
-			else
-				trackedMarker[id]->setVisible(0);
+
+			trackedMarker[id]->setVisible(0);
 		}
 		trackedMarker[id]->setTracked(0);
 	}
@@ -130,7 +136,7 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
 
 
 
-MarkerManagement::MarkerManagement(cv::Size frameSize)
+MarkerManagement::MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCalibData pcd)
 {
 	for (size_t i = 0; i < trackedMarker.size(); i++)
 	{
@@ -138,7 +144,8 @@ MarkerManagement::MarkerManagement(cv::Size frameSize)
 		trackedMarker[i] = new Marker();
 	}
 	MarkerManagement::frameSize = frameSize;
-	}
+	MarkerManagement::pcd = pcd;
+}
 
 
 MarkerManagement::~MarkerManagement()

@@ -34,7 +34,7 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
-	inRange(output, cv::Scalar(60, 120, 30), cv::Scalar(85, 255, 255), output);
+	inRange(output, cv::Scalar(60, 120, 10), cv::Scalar(85, 255, 255), output);
 	int erosion_size = 2;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -81,28 +81,28 @@ void MarkerDetection::initArucoParams()
 
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
-	//std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
+	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
 	/*if (arucoIds.size() > 0)
 	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);*/
 
 
 
-	//// draw results TODEBUG
-	//cv::Mat imageCopy;
-	//frame.copyTo(imageCopy);
-	//if (arucoIds.size() > 0) {
-	//	cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
-	//		for (unsigned int i = 0; i < arucoIds.size(); i++)
-	//			cv::aruco::drawAxis(imageCopy, camMatrix, distCoeffs, rvecs[i], tvecs[i],
-	//				markerLength * 0.5f);
-	//	
-	//}
+	// draw results TODEBUG
+	cv::Mat imageCopy;
+	frame.copyTo(imageCopy);
+	if (arucoIds.size() > 0) {
+		cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
+			/*for (unsigned int i = 0; i < arucoIds.size(); i++)
+				cv::aruco::drawAxis(imageCopy, camMatrix, distCoeffs, rvecs[i], tvecs[i],
+					markerLength * 0.5f);*/
+		
+	}
 
-	//if (showRejected && rejected.size() > 0)
-	//	cv::aruco::drawDetectedMarkers(imageCopy, rejected, cv::noArray(), cv::Scalar(100, 0, 255));
+	if (showRejected && rejected.size() > 0)
+		cv::aruco::drawDetectedMarkers(imageCopy, rejected, cv::noArray(), cv::Scalar(100, 0, 255));
 
-	//imshow("out", imageCopy);
-	//cv::waitKey(1);
+	imshow("out", imageCopy);
+	cv::waitKey(1);
 
 }
 

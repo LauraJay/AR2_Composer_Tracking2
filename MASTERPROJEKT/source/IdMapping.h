@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <Marker.h>
+#include<PlaneCalibration.h>
 #include <MarkerManagement.h>
 
 class IdMapping{
@@ -17,8 +18,9 @@ public:
 	int isConstantMarker(std::vector<cv::Point2f> motionCenterVecs,   std::array<Marker*, 100> trackedMarker,std::vector<int> takenIDVec, int arucoID);
 	int isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec);
 	int isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID);
-	int isMarkerOutOfField(Marker * m, cv::Size imgSize);
+	int isMarkerOutOfField(Marker * m, PlaneCalibration::planeCalibData pcd);
 	int hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds);
+	int isRectOutOfField(cv::RotatedRect r, PlaneCalibration::planeCalibData pcd);
 	IdMapping() {};
 	~IdMapping() {};
 };
