@@ -9,10 +9,24 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include<uEye_input.h>
 
 class PlaneCalibration {
+public:
+	~PlaneCalibration() {};
+	PlaneCalibration();
+	struct planeCalibData {
+		bool success;
+		cv::Point2f upperCorner;
+		cv::Point2f lowerCorner;
+		cv::Size size;
+	};
+	planeCalibData pcd;
+	planeCalibData getPlaneCalibData();
+	int runPlaneCalibration(uEye_input* uei);
 
 private:
+	std::vector<cv::Point2f>markerPositions;
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;
 	cv::Point2f upperRight;
@@ -24,24 +38,11 @@ private:
 	void initAruco();
 	int detectAruco(cv::Mat frame);
 	std::vector<int> arucoIds;
-	int runMarkerDetection(cv::Mat &frame);
+	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::fstream calibFile;
 
 protected:
 	std::vector<std::vector<cv::Point2f>> corners;
 	std::vector<std::vector<cv::Point2f>> rejected;
 
-public:
-	~PlaneCalibration() {};
-	PlaneCalibration();
-	struct planeCalibData {
-		bool success;
-		cv::Point2f upperLeftCorner;
-		cv::Point2f lowerLeft;
-		cv::Point2f upperRight;
-		cv::Point2f lowerRight;
-		cv::Size size;
-	};
-	planeCalibData getPlaneCalibData();
-	int runPlaneCalibration(cv::Mat frame);
 };

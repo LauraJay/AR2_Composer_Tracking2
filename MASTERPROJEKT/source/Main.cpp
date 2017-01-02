@@ -3,7 +3,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define useTCP
+//#define useTCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -141,7 +141,7 @@ int main()
 			
 			cv::Mat imgDebug = debug(frame.clone(), marker, counter,takenIdVec);
 			
-			cv::Rect r = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 			rectangle(imgDebug, r, cv::Scalar(0,0,255));
 			cv::imshow("edges", imgDebug);
 			cv::waitKey(1);

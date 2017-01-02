@@ -114,7 +114,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 
 int IdMapping::isMarkerOutOfField(Marker* m, PlaneCalibration::planeCalibData pcd) {
 	std::vector<cv::Point2f> ps = m->getPoints();
-	cv::Rect r = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+	cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 
 	for each (cv::Point2f p in ps)
 	{
@@ -151,7 +151,7 @@ int IdMapping::isRectOutOfField(cv::RotatedRect r, PlaneCalibration::planeCalibD
 {
 	cv::Point2f ps[4];
 	r.points(ps);
-	cv::Rect br = cv::Rect(pcd.upperLeftCorner, pcd.lowerRight);
+	cv::Rect br = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 
 	for each (cv::Point2f p in ps)
 	{

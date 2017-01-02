@@ -8,111 +8,95 @@ void PlaneCalibration::initAruco() {
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
 }
 
-int PlaneCalibration::runMarkerDetection(cv::Mat &frame){
-	//calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
-	//if (calibFile.is_open()) {
-	//	std::string lineX;
-	//	std::string lineY;
-	//	getline(calibFile, lineX);
-	//	getline(calibFile, lineY);
-	//	upperRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-	//	getline(calibFile, lineX);
-	//	getline(calibFile, lineY);
-	//	upperLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-	//	getline(calibFile, lineX);
-	//	getline(calibFile, lineY);
-	//	lowerLeft = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-	//	getline(calibFile, lineX);
-	//	getline(calibFile, lineY);
-	//	lowerRight = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
-	//	calibFile.close();
-	//	return 0;
-	//}
-	arucoIds.clear();
-	corners.clear();
-	rejected.clear();
-	return detectAruco(frame);
+PlaneCalibration::planeCalibData PlaneCalibration::readPlaneCalibrationFile() {
+	
+	calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
+	if (calibFile.is_open()) {
+		std::string lineX;
+		std::string lineY;
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		pcd.upperCorner = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+	pcd.lowerCorner = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+	}
+	return pcd;
 }
 
 int PlaneCalibration::detectAruco(cv::Mat frame) {
+	std::vector<int> arucoIds;
+	std::vector<std::vector<cv::Point2f>> corners;
+	std::vector<std::vector<cv::Point2f>> rejected;
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
-	if (arucoIds.size() != 4)
+	if (arucoIds.size() < 1) {
+		printf("Please ensure that the marker of the controller is located in the image");
 		return -1;
-	for (int i = 0; i < 4; i++) {
+	}
+	for (int i = 0; i < arucoIds.size(); i++) {
+
 		int ID = arucoIds.at(i);
-		switch (ID) {
-		case 800:	upperRight = corners.at(i).at(1); break;	// Corner 1 is upper right corner of marker, which
-		case 600:	upperLeft = corners.at(i).at(1); break;		// is oriented outwards on all our wood markers.
-		case 400:	lowerLeft = corners.at(i).at(1); break;
-		case 200:	lowerRight = corners.at(i).at(1); break;
-		default: printf("Error detecting calibration marker!"); return -1;
+		if (ID == 800) {
+			markerPositions.push_back(corners.at(i).at(1)); 
+			break;	// Corner 1 is upper right corner of marker, which
 		}
 	}
-	calibFile.open("TrackingPlaneCalibration.txt", std::ios::out);
-	if (calibFile.is_open()) {
-		calibFile << upperRight.x << "\n";
-		calibFile << upperRight.y << "\n";
-		calibFile << upperLeft.x << "\n";
-		calibFile << upperLeft.y << "\n";
-		calibFile << lowerLeft.x << "\n";
-		calibFile << lowerLeft.y << "\n";
-		calibFile << lowerRight.x << "\n";
-		calibFile << lowerRight.y << "\n";
-		calibFile.close();
+
+	if (arucoIds.size() < 1) {
+		printf("Please ensure that the marker of the controller is located in the image");
+		return -1;
 	}
-	else
-		printf("Error writing calibration to file!");
-
-	// Ensure that plane is a rectangle by choosing the x and y 
-	// coordinates closest to the center for each respective side
-	cv::Point2f center = cv::Point2f(
-		upperRight.x * 0.25f +
-		upperLeft.x * 0.25f +
-		lowerRight.x * 0.25f +
-		lowerLeft.x * 0.25f,
-		upperRight.y * 0.25f +
-		upperLeft.y * 0.25f +
-		lowerRight.y * 0.25f +
-		lowerLeft.y * 0.25f
-	);
-	if (upperLeft.x - center.x <= lowerLeft.x - center.x)
-		lowerLeft.x = upperLeft.x;
-	else
-		upperLeft.x = lowerLeft.x;
-
-	if (upperRight.x - center.x <= lowerRight.x - center.x)
-		lowerRight.x = upperRight.x;
-	else
-		upperRight.x = lowerRight.x;
-
-	if (upperLeft.y - center.y <= upperRight.y - center.y)
-		upperRight.y = upperLeft.y;
-	else
-		upperLeft.y = upperRight.y;
-
-	if (lowerLeft.y - center.y <= lowerRight.y - center.y)
-		lowerRight.y = lowerLeft.y;
-	else
-		lowerLeft.y = lowerRight.y;
-
-	return 0;
+	return 1;
 }
 
-PlaneCalibration::PlaneCalibration(){
+ PlaneCalibration::planeCalibData PlaneCalibration::getPlaneCalibData()
+{
+	return pcd;
+}
+
+PlaneCalibration::PlaneCalibration() {
 	initAruco();
 
 }
 
-PlaneCalibration::planeCalibData PlaneCalibration::getPlaneCalibData() {
-	planeCalibData pcd;
-	pcd.upperLeftCorner = upperLeft;
-	pcd.size = cv::Size(upperRight.x - upperLeft.x, upperLeft.y - lowerLeft.y);
-	pcd.upperRight = upperRight;
-	pcd.lowerLeft = lowerLeft;
-	pcd.lowerRight = lowerRight;
-	return pcd;
-}
-
-int PlaneCalibration::runPlaneCalibration(cv::Mat frame){
-	return runMarkerDetection(frame);
+int PlaneCalibration::runPlaneCalibration(uEye_input* uei) {
+	cv::Mat frame;
+	int ret = 0;
+	std::cout << "Press c to capture" << std::endl;
+	frame = uei->getCapturedFrame();
+	while (!frame.empty()) {
+		frame = uei->getCapturedFrame();
+		cv::imshow("out", frame);
+		char key = (char)cv::waitKey(10);
+		if (key == 'c') {
+			int ret = detectAruco(frame);
+			std::cout << "Frame captured" << std::endl;
+		}
+		if (markerPositions.size() == 2) break;
+	}
+	if (markerPositions.size() == 2) {
+	if (markerPositions[0].y < markerPositions[1].y) {
+		pcd.upperCorner = markerPositions[0];
+		pcd.lowerCorner = markerPositions[1];
+	}
+	else {
+		pcd.upperCorner = markerPositions[1];
+		pcd.lowerCorner = markerPositions[0];
+	}
+	pcd.size = cv::Size(pcd.upperCorner.x - pcd.lowerCorner.x, pcd.lowerCorner.y - pcd.upperCorner.y);
+		calibFile.open("TrackingPlaneCalibration.txt", std::ios::out);
+		if (calibFile.is_open()) {
+			calibFile << pcd.upperCorner.x << "\n";
+			calibFile << pcd.upperCorner.y << "\n";
+			calibFile << pcd.lowerCorner.x << "\n";
+			calibFile << pcd.lowerCorner.y << "\n";
+			calibFile.close();
+		}
+		else {
+			printf("Error writing calibration to file!");
+			return 0;
+		}
+	}
+	else return 0;
+	return 1;
 }

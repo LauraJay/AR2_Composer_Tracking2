@@ -10,14 +10,8 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 		printf("Starting plane calibration ... \n");
 		printf("Please place the four plane marker on the table. \n");
 		PlaneCalibration* pc = new PlaneCalibration();
-		while (!frame.empty()) {
-			frame = uei->getCapturedFrame();
-			ret = pc->runPlaneCalibration(frame);
-			if (ret == 0) {
-			pcd = pc->getPlaneCalibData();
-			break;
-			}
-		}
+		ret = pc->runPlaneCalibration(uei);
+		pcd = pc->getPlaneCalibData();
 		delete pc;
 	    printf("Plane calibration finished. \n");
 		printf("Please remove the four plane marker. \n");
