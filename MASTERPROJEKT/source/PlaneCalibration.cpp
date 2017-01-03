@@ -1,8 +1,8 @@
 #include "PlaneCalibration.h"
 
 void PlaneCalibration::initAruco() {
-	dictionaryId = cv::aruco::DICT_ARUCO_ORIGINAL;
-	markerLength = 0.09; // size of outprinted Marker
+	dictionaryId = cv::aruco::DICT_4X4_50;
+	markerLength = 0.019; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
@@ -33,11 +33,19 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("Please ensure that the marker of the controller is located in the image");
 		return -1;
 	}
+
+	// draw results
+		if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
 	for (int i = 0; i < arucoIds.size(); i++) {
 
 		int ID = arucoIds.at(i);
-		if (ID == 800) {
-			markerPositions.push_back(corners.at(i).at(1)); 
+		if (ID == 6) {
+			std::vector<cv::Point2f> p = corners.at(i);
+			float centerX, centerY;
+			cv::Point2f d1 = (p[2] - p[0]);
+			cv::Point2f c = (d1)/2+p[0];
+			circle(frame, c, 1, cv::Scalar(0, 225, 255));
+			markerPositions.push_back(c); 
 			break;	// Corner 1 is upper right corner of marker, which
 		}
 	}
@@ -59,21 +67,12 @@ PlaneCalibration::PlaneCalibration() {
 
 }
 
-int PlaneCalibration::runPlaneCalibration(uEye_input* uei) {
-	cv::Mat frame;
-	int ret = 0;
-	std::cout << "Press c to capture" << std::endl;
-	frame = uei->getCapturedFrame();
-	while (!frame.empty()) {
-		frame = uei->getCapturedFrame();
-		cv::imshow("out", frame);
-		char key = (char)cv::waitKey(10);
-		if (key == 'c') {
-			int ret = detectAruco(frame);
-			std::cout << "Frame captured" << std::endl;
-		}
-		if (markerPositions.size() == 2) break;
-	}
+int PlaneCalibration::getSizeOfMarkerPos() {
+	return markerPositions.size();
+}
+
+int PlaneCalibration::computePlaneCalibration() {
+	
 	if (markerPositions.size() == 2) {
 	if (markerPositions[0].y < markerPositions[1].y) {
 		pcd.upperCorner = markerPositions[0];
@@ -83,7 +82,7 @@ int PlaneCalibration::runPlaneCalibration(uEye_input* uei) {
 		pcd.upperCorner = markerPositions[1];
 		pcd.lowerCorner = markerPositions[0];
 	}
-	pcd.size = cv::Size(pcd.upperCorner.x - pcd.lowerCorner.x, pcd.lowerCorner.y - pcd.upperCorner.y);
+	pcd.size = cv::Size(std::abs(pcd.upperCorner.x - pcd.lowerCorner.x), pcd.lowerCorner.y - pcd.upperCorner.y);
 		calibFile.open("TrackingPlaneCalibration.txt", std::ios::out);
 		if (calibFile.is_open()) {
 			calibFile << pcd.upperCorner.x << "\n";
