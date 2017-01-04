@@ -15,9 +15,6 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 		frame = uei->getCapturedFrame();
 		while (!frame.empty()) {
 			frame = uei->getCapturedFrame();
-		
-
-			
 			putText(frame, "Press 'c' to add current frame. 'ESC' to finish and calibrate",
 				cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 0), 2);
 
@@ -41,7 +38,7 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 			printf("Please try again. \n");
 		}
 		delete pc;
-	   
+       cvDestroyWindow("out");
 	}
 	if (doPoseEstimation) {
 		int ret = 0;

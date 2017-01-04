@@ -101,8 +101,8 @@ void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	if (showRejected && rejected.size() > 0)
 		cv::aruco::drawDetectedMarkers(imageCopy, rejected, cv::noArray(), cv::Scalar(100, 0, 255));
 
-	imshow("out", imageCopy);
-	cv::waitKey(1);
+	/*imshow("out", imageCopy);
+	cv::waitKey(1);*/
 
 }
 

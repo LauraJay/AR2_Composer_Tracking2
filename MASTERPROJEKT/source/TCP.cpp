@@ -97,36 +97,35 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
-	myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
-	myfile2 << "Current Frame " << c << "\n";
+	//myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
+	//myfile2 << "Current Frame " << c << "\n";
 	c++;
 		myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 		for (int i = 1; i <= takenIdVec.size(); i++) {
 			int id = takenIdVec[i-1];
 			cv::RotatedRect r = normalizeCoord(allMarkers[id]->getRect());
-			cv::Vec3f center = computeCamera2World(allMarkers[id]->getRect().center);
+		//	cv::Vec3f center = computeCamera2World(allMarkers[id]->getRect().center);
 			ms[i-1].id = allMarkers[id]->getId();
 			myfile << "\t tid " << ms[i-1].id << "\n";
-			myfile2 << "\t tid " << ms[i - 1].id << "\n";
+			//myfile2 << "\t tid " << ms[i - 1].id << "\n";
 			ms[i-1].posX = r.center.x;
 			myfile << "\t posX " << ms[i-1].posX << "\n";
 			ms[i-1].posY = r.center.y;
 			myfile << "\t posY " << ms[i-1].posY << "\n";
-			myfile2 << "\t posX " << center[0] << "\n";
-			myfile2 << "\t posY " << center[1] << "\n";
+			//myfile2 << "\t posX " << center[0] << "\n";
+			//myfile2 << "\t posY " << center[1] << "\n";
 			ms[i-1].angle = allMarkers[id]->getAngle();
 			myfile << "\t angle " << ms[i-1].angle << "\n";
-			myfile2 << "\t angle " << ms[i - 1].angle << "\n";
+			//myfile2 << "\t angle " << ms[i - 1].angle << "\n";
 			ms[i - 1].isVisible = allMarkers[id]->isVisible();
 			myfile << "\t isVisible " << ms[i-1].isVisible << "\n";
-			myfile2 << "\t isVisible " << ms[i - 1].isVisible << "\n";
+			//myfile2 << "\t isVisible " << ms[i - 1].isVisible << "\n";
 
 		}
-		
 		//Last id is -1 to show the end of information per frame
 		ms[takenIdVec.size()].id = -1;
 		myfile.close();
-		myfile2.close();
+		//myfile2.close();
 }
 
 
@@ -149,8 +148,8 @@ void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
 	//printf("Before coord: %f, %f; ", center.x, center.y);
-	center.x = -((pcd.upperCorner.x - center.x) / pcd.size.width);
-	center.y = (pcd.upperCorner.y - center.y) / pcd.size.height;
+	center.x = abs((pcd.upperCorner.x - center.x) / pcd.size.width);
+	center.y = abs((pcd.upperCorner.y - center.y) )/ pcd.size.height;
 	//printf("Normalized coord: %f, %f; ", center.x, center.y);
 	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width),(r.size.height / pcd.size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
