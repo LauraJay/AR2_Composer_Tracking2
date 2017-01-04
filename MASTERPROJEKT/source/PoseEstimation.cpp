@@ -48,7 +48,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	std::vector< std::vector< std::vector< cv::Point2f > > > allCorners;
 	std::vector< std::vector< int > > allIds;
 	std::vector< cv::Mat > allImgs;
-	cv::Size imgSize;
+	
 
 	while (!frame.empty()) {
 		cv::Mat imageCopy;
@@ -87,7 +87,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 			allCorners.push_back(corners);
 			allIds.push_back(ids);
 			allImgs.push_back(frame);
-			imgSize = frame.size();
+			size = frame.size();
 		}
 	}
 
@@ -121,7 +121,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	// calibrate camera using cv::aruco markers
 	double arucoRepErr;
 	arucoRepErr = cv::aruco::calibrateCameraAruco(allCornersConcatenated, allIdsConcatenated,
-		markerCounterPerFrame, board, imgSize, cameraMatrix,
+		markerCounterPerFrame, board, size, cameraMatrix,
 		distCoeffs, cv::noArray(), cv::noArray(), calibrationFlags);
 
 	// prepare data for charuco calibration
@@ -151,16 +151,17 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	// calibrate camera using charuco
 	repError =
-		cv::aruco::calibrateCameraCharuco(allCharucoCorners, allCharucoIds, charucoboard, imgSize,
+		cv::aruco::calibrateCameraCharuco(allCharucoCorners, allCharucoIds, charucoboard, size,
 			cameraMatrix, distCoeffs, rvecs, tvecs, calibrationFlags);
 
 
-	bool saveOk = saveCameraParams(outputFile, imgSize, aspectRatio, calibrationFlags,
+	bool saveOk = saveCameraParams(outputFile, size, aspectRatio, calibrationFlags,
 		cameraMatrix, distCoeffs,repError);
 	if (!saveOk) {
 		std::cerr << "Cannot save output file" << std::endl;
 		return 0;
 	}
+	std::cout << "Camera Calibration saved to " << outputFile << std::endl;
 
  // // FOR DEBUGGING
 	//cv::FileStorage fs("CameraMatrix.yml", cv::FileStorage::READ);
@@ -169,17 +170,20 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	//fs["camera_matrix"] >> cameraMatrix;
 	//fs [ "distortion_coefficients" ]>> distCoeffs;
 
+	return 0;
+}
+
+int  PoseEstimation::generateCam2WorldLUT() {
 	// compute CameraWorldMatrix
 	computeCameraWorld();
-	
+
 	//compute LUT
-	cv::Mat3f lut = computeCamera2WorldLut(frame.size());
+	cv::Mat3f lut = computeCamera2WorldLut();
 
-	saveOk = saveLUT(lut);
-	std::cout << "Rep Error: " << repError << std::endl;
-	std::cout << "Rep Error Aruco: " << arucoRepErr << std::endl;
-	std::cout << "Calibration saved to " << outputFile << std::endl;
+	int saveOk = saveLUT(lut);
 
+	if(saveOk == 1)	return 1;
+	
 	return 0;
 
 }
@@ -231,7 +235,7 @@ void PoseEstimation::computeCameraWorld()
 	std::cout << rotationMatrix << std::endl;
 }
 
-cv::Mat3f PoseEstimation::computeCamera2WorldLut(cv::Size size)
+cv::Mat3f PoseEstimation::computeCamera2WorldLut()
 {
 	std::cout << "Starting LUT computation. This takes some minutes." << std::endl;
 	cv::Mat3f lut = cv::Mat3f(size);
@@ -269,18 +273,14 @@ bool PoseEstimation::saveLUT(const cv::Mat3f lut) {
 	cv::FileStorage fs("LUT.yml", cv::FileStorage::WRITE);
 	if (!fs.isOpened())
 		return false;
-
 	time_t tt;
 	time(&tt);
 	struct tm *t2 = localtime(&tt);
 	char buf[1024];
 	strftime(buf, sizeof(buf) - 1, "%c", t2);
-
 	fs << "calibration_time" << buf;
-
 	fs << "LUT" << lut;
 	return true;
-
 }
 
 bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imageSize, float aspectRatio, int flags,
@@ -316,5 +316,16 @@ bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imag
 	fs << "distortion_coefficients" << distCoeffs;
 	fs << "avg_reprojection_error" << totalAvgErr;
 
+	return true;
+}
+
+bool PoseEstimation::loadCameraParameters() {
+	cv::FileStorage fs("CameraMatrix.yml", cv::FileStorage::READ);
+	if (!fs.isOpened())
+		return false;
+	fs["camera_matrix"] >> cameraMatrix;
+	fs [ "distortion_coefficients"] >> distCoeffs;
+	fs ["image_width"] >> size.width;
+	fs [ "image_height" ]>> size.height;
 	return true;
 }

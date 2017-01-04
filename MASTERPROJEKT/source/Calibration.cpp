@@ -1,6 +1,6 @@
 #include "Calibration.h"
 
-int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib)
+int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doCam2WorldLUT)
 {
 	uEye_input* uei = new uEye_input();
 	uei->inituEyeCam();
@@ -45,12 +45,16 @@ int Calibration::runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool d
 		printf("Starting Pose Estimation ... \n");
 		PoseEstimation* pe = new PoseEstimation();
 		ret = pe->runPoseEstimation(uei);
+		ret = pe->generateCam2WorldLUT();
 		delete pe;
 	}
 
-	/*MarkerSizeCalibration* msc = new MarkerSizeCalibration();
-	ret = msc->runMarkerSizeCalibration();
-	delete msc;*/
+	if (doCam2WorldLUT) {
+		PoseEstimation* pe = new PoseEstimation();
+		pe->loadCameraParameters();
+		int rep = pe->generateCam2WorldLUT();
+		delete pe;
+	}
 	
 	uei->exitCamera();
 	delete uei;

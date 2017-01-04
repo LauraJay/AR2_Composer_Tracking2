@@ -35,13 +35,13 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
 	inRange(output, cv::Scalar(60, 120, 10), cv::Scalar(85, 255, 255), output);
-	int erosion_size = 2;
+	int erosion_size = 3;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 		cv::Point(erosion_size, erosion_size));
 
 	morphologyEx(output, output, cv::MORPH_OPEN, element, cv::Point(-1, -1));
-	morphologyEx(output, output, cv::MORPH_CLOSE, element, cv::Point(-1, -1));
+	//morphologyEx(output, output, cv::MORPH_CLOSE, element, cv::Point(-1, -1));
 	return output;
 }
 

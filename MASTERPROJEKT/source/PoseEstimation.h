@@ -24,16 +24,18 @@ private:
 	cv::Mat1d cameraMatrix, distCoeffs;
 	cv::Mat rotationMatrix;
 	cv::Mat tvec;
+	cv::Size size;
 	void loadImagePlane();
 	void computeCameraWorld();
-	cv::Mat3f computeCamera2WorldLut(cv::Size size);
+	cv::Mat3f computeCamera2WorldLut();
 	bool saveLUT( const cv::Mat3f lut);
 	cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
 
 public:
-	
 	~PoseEstimation() {};
 	PoseEstimation();
+	bool loadCameraParameters();
+	int generateCam2WorldLUT();
 	int runPoseEstimation(uEye_input* uei);
 	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
 };

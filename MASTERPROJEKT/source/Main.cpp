@@ -3,7 +3,7 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define useTCP
+//#define useTCP
 //#define logFile
 #define uEYE
 #define useNotTestClasses
@@ -29,7 +29,7 @@ int main()
 	bool calibSuccess = true;
 	bool doPoseEstimation = false;
 	bool doPlaneCalib = true;
-	bool doMarkerCalib = false;
+	bool doCam2WorldLUT = false;
 	int counter = -1;
 	cv::Mat frame;
 	PlaneCalibration::planeCalibData pcd;
@@ -48,7 +48,7 @@ int main()
 	if (isCalibrated == 0) {
 #endif 	// TCP
 		Calibration* calib = new Calibration();
-		calib->runCalibration(doPlaneCalib, doPoseEstimation, doMarkerCalib);
+		calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT);
 		pcd = calib->getPlaneCalibData();
 		calibSuccess = pcd.success;
 #ifdef useTCP
