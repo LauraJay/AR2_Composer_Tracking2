@@ -23,7 +23,10 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 	if (angelPoint.y > rect.center.y) {
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
-	return angleGrad;
+
+   // angleGrad -= ((int)angleGrad % 2);
+
+	return  roundf(angleGrad * 10) / 10;
 }
 
 Marker::Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint)
