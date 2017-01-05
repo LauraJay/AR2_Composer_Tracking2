@@ -8,13 +8,19 @@
 #define uEYE
 #define useNotTestClasses
 
+bool doPoseEstimation = false;
+bool doPlaneCalib = false;
+bool doCam2WorldLUT = false;
+int currentStatus = 0;
+
 #ifdef logFile
-	std::ofstream debugLogFile;
+std::ofstream debugLogFile;
 #endif //logFile
 
-Main::~Main(){
+Main::~Main() {
 	//TODO
 }
+
 
 
 Main::Main() {
@@ -24,12 +30,10 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
-	std::array<Marker*,100> marker;
+	std::array<Marker*, 100> marker;
 	std::vector<int> takenIdVec;
-	bool calibSuccess = true;
-	bool doPoseEstimation = false;
-	bool doPlaneCalib = true;
-	bool doCam2WorldLUT = false;
+	//bool calibSuccess = true;
+
 	int counter = -1;
 	cv::Mat frame;
 	PlaneCalibration::planeCalibData pcd;
@@ -40,20 +44,76 @@ int main()
 	uei1->inituEyeCam();
 	frame = uei1->getCapturedFrame();
 	TCP* tcp = new TCP(frame.size());
+
+
+
 	uei1->exitCamera();
 	delete uei1;
 	tcp->startTCPServer();
 	//receive data
-	int isCalibrated = tcp->receiveTCPData();
-	if (isCalibrated == 0) {
+	//int isCalibrated = tcp->receiveTCPData();
+	//if (isCalibrated == 0) {
 #endif 	// TCP
-		Calibration* calib = new Calibration();
+
+
+	Calibration* calib = new Calibration();
+
+	while (true) {
+
+		currentStatus = tcp->receiveTCPData();
+		//SPIELFELDKALIBRIERUNG
+		if (currentStatus == tcp->planeOnlyCalib) {
+			doPlaneCali(calib, tcp);
+			doPlaneCalib = false;
+
+			doCam2WorldLUT = true;
+			calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
+			doCam2WorldLUT = false;
+			tcp->sendStatus(tcp->ArucoFound2);
+
+
+		}
+		//BEIDE KALIBRIERUNGEN
+		else if (currentStatus == tcp->planeAndPoseCalib) {
+			doPlaneCali(calib, tcp);
+			doPlaneCalib = false;
+
+			bool doPoseEstimation = true;
+			calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
+			tcp->sendStatus(tcp->PoseCalibDone);
+
+			doPoseEstimation = false;
+		}
+		else {
+			printf("No Calibration done!");
+		}
+
+
+
 		calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT);
-		pcd = calib->getPlaneCalibData();
-		calibSuccess = pcd.success;
-#ifdef useTCP
-		tcp->setPCD(pcd);
+
+
+
+
+		bool doPoseEstimation = false;
+		bool doPlaneCalib = false;
+		bool doCam2WorldLUT = false;
+
+
+
+
+		if (currentStatus == tcp->sceneStart) {
+			break;
+		}
 	}
+
+	//Calibration* calib = new Calibration();
+	//calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT);
+	pcd = calib->getPlaneCalibData();
+	//calibSuccess = pcd.success;
+#ifdef useTCP
+	tcp->setPCD(pcd);
+	//}
 #endif 	// TCP
 
 
@@ -88,11 +148,11 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	MarkerManagement* mm = new MarkerManagement(frame.size(),pcd);
+	MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
 	cv::namedWindow("edges", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
-	
-	while (true){
+
+	while (true) {
 		clock_t start, end;
 		counter++;
 		start = clock();
@@ -114,13 +174,13 @@ int main()
 #endif // VIDEOVERA
 		if (!frame.empty()) {
 
-			 //run Marker Detection			
+			//run Marker Detection			
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
 				std::vector<int> arucoIds = md->getArucoIds();
-				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();				
-			
+				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
@@ -128,21 +188,22 @@ int main()
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
-			}
-				
+				}
+
 				//run MarkerManagement
 
-				mm->trackMarker(rects,corners,arucoIds,frame.size());
+				mm->trackMarker(rects, corners, arucoIds, frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
-				}else{
-				marker = mm->getTrackedMarker(); 
 			}
-			
-			cv::Mat imgDebug = debug(frame.clone(), marker, counter,takenIdVec);
-			
+			else {
+				marker = mm->getTrackedMarker();
+			}
+
+			cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
+
 			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
-			rectangle(imgDebug, r, cv::Scalar(0,0,255));
+			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
 			cv::imshow("edges", imgDebug);
 			cv::waitKey(1);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
@@ -155,10 +216,10 @@ int main()
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
-			printf("fps: %f\r", 1/z);
+			printf("fps: %f\r", 1 / z);
 		}
 		else break;
-		}
+	}
 	delete md;
 #ifdef uEYE
 	uei->exitCamera();
@@ -171,7 +232,7 @@ int main()
 	delete tcp;
 #endif // TCP_connection
 	return EXIT_SUCCESS;
-	
+
 }
 #endif //useTestClasses
 
@@ -187,8 +248,8 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	os2 << counter;
 	cv::String s2 = os2.str();
 	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-	
-	
+
+
 	for each (int id in takenIDVec)
 	{
 		Marker* m = marker[id];
@@ -215,12 +276,30 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 		}
 
-		
+
 	}
+
+
 #ifdef logFile
 	debugLogFile.close();
 #endif //logFile
-		return frame;
+	return frame;
+}
+
+void doPlaneCali(Calibration * c, TCP * t)
+{
+	doPlaneCalib = true;
+
+	currentStatus = t->receiveTCPData();
+	if (currentStatus == t->ControlerButtonPressed) {
+		c->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
+		t->sendStatus(t->ArucoFound1);
+	}
+
+	currentStatus = t->receiveTCPData();
+	if (currentStatus == t->ControlerButtonPressed) {
+		c->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 1);
+	}
 }
 
 

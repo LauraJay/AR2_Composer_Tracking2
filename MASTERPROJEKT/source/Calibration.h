@@ -22,6 +22,6 @@ private:
 public:
 	~Calibration() {};
 	Calibration() {};
-	int runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib);
+	int runCalibration(bool doPlaneCalib, bool doPoseEstimation, bool doMarkerSizeCalib, int positionCount);
 	PlaneCalibration::planeCalibData getPlaneCalibData();
 };

@@ -78,6 +78,11 @@ int startWinsock(void)
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
 
+void TCP::sendStatus(int status) {
+	const char far* markerPointer = (const char*)&status;
+	send(connectedSocket, markerPointer, 4, 0);
+}
+
 void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;

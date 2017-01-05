@@ -23,12 +23,19 @@ public:
 		int isVisible;
 	};
 
+
+	enum TCPstatus { planeAndPoseCalib, planeOnlyCalib, sceneStart, PoseCalibDone, ControlerButtonPressed, ArucoFound1, ArucoFound2, ArucoNotFound, };
+
+
+
+
 	struct Calibration {
 		int isCalibrated;
 	};
 
 	int startTCPServer();
 	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec);
+	void sendStatus(int status);
 	int receiveTCPData();
 	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
 	void setPCD(PlaneCalibration::planeCalibData pcData);
