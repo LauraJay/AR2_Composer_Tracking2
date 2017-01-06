@@ -8,10 +8,9 @@
 #define uEYE
 #define useNotTestClasses
 
-bool doPoseEstimation = false;
-bool doPlaneCalib = false;
-bool doCam2WorldLUT = false;
+
 int currentStatus = 0;
+int calibStatus = 0;
 
 #ifdef logFile
 std::ofstream debugLogFile;
@@ -44,76 +43,55 @@ int main()
 	uei1->inituEyeCam();
 	frame = uei1->getCapturedFrame();
 	TCP* tcp = new TCP(frame.size());
+	tcp->startTCPServer();
+	Calibration* calib = new Calibration();
+	int numOfPlaneCorners=0;
+	PlaneCalibration::planeCalibData pcd;
+	while (true) {
 
+		calibStatus = tcp->receiveTCPData();
+		//SPIELFELDKALIBRIERUNG
+		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
 
+			currentStatus = tcp->receiveTCPData();
+			if (currentStatus == tcp->ControlerButtonPressed)
+				frame = uei1->getCapturedFrame();
+			numOfPlaneCorners = calib->catchPlaneMarker(frame);
+			switch (numOfPlaneCorners) {
+			case 1: tcp->sendStatus(tcp->ArucoFound1); break;
+			case 2: tcp->sendStatus(tcp->ArucoFound2);
+				int rep = calib->generatePlaneCalib();
+				if (rep > -1) pcd = calib->getPlaneCalibData();
+				else printf("Generation of Plane failed.");
+				break;
+			default:tcp->sendStatus(tcp->ArucoNotFound);
+			}
+
+			//BEIDE KALIBRIERUNGEN
+			if (calibStatus == tcp->planeAndPoseCalib) {
+				int res = calib->runCameraMatrix(uei1);
+				if (res > -1)	tcp->sendStatus(tcp->PoseCalibDone);
+				else {
+					printf("No Pose Calibration done!");
+				}
+			}
+			else {
+				int res = calib->generateCam2WorldLUT();
+				if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
+				else {
+					printf("No Plane Calibration done!");
+				}
+			}
+		}
+
+		if (currentStatus == tcp->sceneStart) 	break;
+		}
 
 	uei1->exitCamera();
 	delete uei1;
-	tcp->startTCPServer();
-	//receive data
-	//int isCalibrated = tcp->receiveTCPData();
-	//if (isCalibrated == 0) {
-#endif 	// TCP
-
-
-	Calibration* calib = new Calibration();
-
-	while (true) {
-
-		currentStatus = tcp->receiveTCPData();
-		//SPIELFELDKALIBRIERUNG
-		if (currentStatus == tcp->planeOnlyCalib) {
-			doPlaneCali(calib, tcp);
-			doPlaneCalib = false;
-
-			doCam2WorldLUT = true;
-			calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
-			doCam2WorldLUT = false;
-			tcp->sendStatus(tcp->ArucoFound2);
-
-
-		}
-		//BEIDE KALIBRIERUNGEN
-		else if (currentStatus == tcp->planeAndPoseCalib) {
-			doPlaneCali(calib, tcp);
-			doPlaneCalib = false;
-
-			bool doPoseEstimation = true;
-			calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
-			tcp->sendStatus(tcp->PoseCalibDone);
-
-			doPoseEstimation = false;
-		}
-		else {
-			printf("No Calibration done!");
-		}
-
-
-
-		calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT);
-
-
-
-
-		bool doPoseEstimation = false;
-		bool doPlaneCalib = false;
-		bool doCam2WorldLUT = false;
-
-
-
-
-		if (currentStatus == tcp->sceneStart) {
-			break;
-		}
-	}
-
-	//Calibration* calib = new Calibration();
-	//calib->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT);
-	pcd = calib->getPlaneCalibData();
-	//calibSuccess = pcd.success;
-#ifdef useTCP
+	delete calib;
+	
 	tcp->setPCD(pcd);
-	//}
 #endif 	// TCP
 
 
@@ -286,20 +264,6 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	return frame;
 }
 
-void doPlaneCali(Calibration * c, TCP * t)
-{
-	doPlaneCalib = true;
 
-	currentStatus = t->receiveTCPData();
-	if (currentStatus == t->ControlerButtonPressed) {
-		c->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 0);
-		t->sendStatus(t->ArucoFound1);
-	}
-
-	currentStatus = t->receiveTCPData();
-	if (currentStatus == t->ControlerButtonPressed) {
-		c->runCalibration(doPlaneCalib, doPoseEstimation, doCam2WorldLUT, 1);
-	}
-}
 
 

@@ -93,7 +93,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	if (allIds.size() < 1) {
 		std::cerr << "Not enough captures for calibration" << std::endl;
-		return 0;
+		return -1;
 	}
 
 	
@@ -146,7 +146,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 
 	if (allCharucoCorners.size() < 4) {
 		std::cerr << "Not enough corners for calibration" << std::endl;
-		return 0;
+		return -1;
 	}
 
 	// calibrate camera using charuco
@@ -159,7 +159,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 		cameraMatrix, distCoeffs,repError);
 	if (!saveOk) {
 		std::cerr << "Cannot save output file" << std::endl;
-		return 0;
+		return -1;
 	}
 	std::cout << "Camera Calibration saved to " << outputFile << std::endl;
 
@@ -170,7 +170,7 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	//fs["camera_matrix"] >> cameraMatrix;
 	//fs [ "distortion_coefficients" ]>> distCoeffs;
 
-	return 0;
+	return 1;
 }
 
 int  PoseEstimation::generateCam2WorldLUT() {
@@ -184,7 +184,7 @@ int  PoseEstimation::generateCam2WorldLUT() {
 
 	if(saveOk == 1)	return 1;
 	
-	return 0;
+	return -1;
 
 }
 void PoseEstimation::loadImagePlane()

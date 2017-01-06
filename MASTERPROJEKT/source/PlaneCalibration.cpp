@@ -33,7 +33,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("Please ensure that the marker of the controller is located in the image");
 		return -1;
 	}
-
+	bool foundID = false;
 	// draw results
 		if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
 	for (int i = 0; i < arucoIds.size(); i++) {
@@ -46,11 +46,12 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 			cv::Point2f c = (d1)/2+p[0];
 			circle(frame, c, 1, cv::Scalar(0, 225, 255));
 			markerPositions.push_back(c); 
+			foundID = true;
 			break;	// Corner 1 is upper right corner of marker, which
 		}
 	}
 
-	if (arucoIds.size() < 1) {
+	if (!foundID) {
 		printf("Please ensure that the marker of the controller is located in the image");
 		return -1;
 	}
@@ -93,9 +94,9 @@ int PlaneCalibration::computePlaneCalibration() {
 		}
 		else {
 			printf("Error writing calibration to file!");
-			return 0;
+			return -1;
 		}
 	}
-	else return 0;
+	else return -1;
 	return 1;
 }
