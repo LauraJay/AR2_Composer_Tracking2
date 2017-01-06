@@ -15,9 +15,9 @@ Calibration::Calibration()
 int Calibration::runCameraMatrix(uEye_input* uei)
 {
 	int ret =1;
-	/*int ret = pe->runPoseEstimation(uei);
+	int ret = pe->runPoseEstimation(uei);
 	if(ret != -1)
-	ret = pe->generateCam2WorldLUT();*/
+	ret = pe->generateCam2WorldLUT();
 	return ret;
 }
 
@@ -36,8 +36,8 @@ int Calibration::generatePlaneCalib()
 int Calibration::generateCam2WorldLUT()
 {
 	int rep =1;
-	//if(pe->loadCameraParameters())
-//	rep = pe->generateCam2WorldLUT();
+	if(pe->loadCameraParameters())
+	rep = pe->generateCam2WorldLUT();
 	return rep;
 }
 

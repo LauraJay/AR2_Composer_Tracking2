@@ -47,7 +47,7 @@ int main()
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
-	while (true) {
+	while (currentStatus != tcp->sceneStart) {
 		calibStatus = tcp->receiveTCPData();
 		printf("calibstatus: %d \n", calibStatus);
 		//SPIELFELDKALIBRIERUNG
@@ -87,8 +87,7 @@ int main()
 				}
 			}
 		}
-
-		if (currentStatus == tcp->sceneStart) 	break;
+		currentStatus = tcp->receiveTCPData();
 	}
 
 	uei1->exitCamera();
