@@ -54,7 +54,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("Please ensure that the marker of the controller is located in the image");
 		return -1;
 	}
-	return 1;
+	return markerPositions.size();
 }
 
  PlaneCalibration::planeCalibData PlaneCalibration::getPlaneCalibData()
