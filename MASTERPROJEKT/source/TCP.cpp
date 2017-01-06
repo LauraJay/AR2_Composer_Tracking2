@@ -81,6 +81,8 @@ int startWinsock(void)
 void TCP::sendStatus(int status) {
 	const char far* markerPointer = (const char*)&status;
 	send(connectedSocket, markerPointer, 4, 0);
+	printf("Send Status : %d \n", status);
+
 }
 
 void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
@@ -94,7 +96,7 @@ void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> take
 int TCP::receiveTCPData() {
 	char far* mPointer = (char*)&m;
 	recv(connectedSocket, mPointer, 4, 0 );	
-	printf("%i ", m[0].isCalibrated);
+	//printf("%i ", m[0].isCalibrated);
 	return m[0].isCalibrated;
 }
 

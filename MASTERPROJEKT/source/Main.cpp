@@ -9,8 +9,8 @@
 #define useNotTestClasses
 
 
-int currentStatus = 0;
-int calibStatus = 0;
+int currentStatus = -1;
+int calibStatus = -1;
 
 #ifdef logFile
 std::ofstream debugLogFile;
@@ -45,28 +45,32 @@ int main()
 	TCP* tcp = new TCP(frame.size());
 	tcp->startTCPServer();
 	Calibration* calib = new Calibration();
-	int numOfPlaneCorners=0;
-	PlaneCalibration::planeCalibData pcd;
+	int numOfPlaneCorners = 0;
+	bool PlaneCalibDone = false;
 	while (true) {
-
 		calibStatus = tcp->receiveTCPData();
+		printf("calibstatus: %d \n", calibStatus);
 		//SPIELFELDKALIBRIERUNG
 		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
-
-			currentStatus = tcp->receiveTCPData();
-			if (currentStatus == tcp->ControlerButtonPressed)
-				frame = uei1->getCapturedFrame();
-			numOfPlaneCorners = calib->catchPlaneMarker(frame);
-			switch (numOfPlaneCorners) {
-			case 1: tcp->sendStatus(tcp->ArucoFound1); break;
-			case 2: tcp->sendStatus(tcp->ArucoFound2);
-				int rep = calib->generatePlaneCalib();
-				if (rep > -1) pcd = calib->getPlaneCalibData();
-				else printf("Generation of Plane failed.");
-				break;
-			default:tcp->sendStatus(tcp->ArucoNotFound);
+			while (!PlaneCalibDone) {
+				currentStatus = tcp->receiveTCPData();
+				if (currentStatus == tcp->ControlerButtonPressed) {
+					printf("Controller Status : %d \n", currentStatus);
+					frame = uei1->getCapturedFrame();
+					numOfPlaneCorners = calib->catchPlaneMarker(frame);
+					switch (numOfPlaneCorners) {
+					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
+					case 2: {tcp->sendStatus(tcp->ArucoFound2);
+						int rep = calib->generatePlaneCalib();
+						if (rep > -1) pcd = calib->getPlaneCalibData();
+						else printf("Generation of Plane failed. \n");
+						PlaneCalibDone = true;
+					}
+							break;
+					default:tcp->sendStatus(tcp->ArucoNotFound);
+					}
+				}
 			}
-
 			//BEIDE KALIBRIERUNGEN
 			if (calibStatus == tcp->planeAndPoseCalib) {
 				int res = calib->runCameraMatrix(uei1);
@@ -85,12 +89,12 @@ int main()
 		}
 
 		if (currentStatus == tcp->sceneStart) 	break;
-		}
+	}
 
 	uei1->exitCamera();
 	delete uei1;
 	delete calib;
-	
+
 	tcp->setPCD(pcd);
 #endif 	// TCP
 
@@ -173,7 +177,7 @@ int main()
 				mm->trackMarker(rects, corners, arucoIds, frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
-			}
+	}
 			else {
 				marker = mm->getTrackedMarker();
 			}
@@ -195,7 +199,7 @@ int main()
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
 			printf("fps: %f\r", 1 / z);
-		}
+}
 		else break;
 	}
 	delete md;
