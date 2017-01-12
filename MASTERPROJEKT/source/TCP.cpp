@@ -89,6 +89,8 @@ void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> take
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2004, 0);
+	printf("Data sent...\n");
+
 	/*const char FAR* markerPointer = (const char*) &allMarkers;
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }

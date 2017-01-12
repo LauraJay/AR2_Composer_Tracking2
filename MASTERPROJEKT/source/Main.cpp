@@ -47,6 +47,7 @@ int main()
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
+	
 	while (currentStatus != tcp->sceneStart) {
 		calibStatus = tcp->receiveTCPData();
 		printf("calibstatus: %d \n", calibStatus);
@@ -79,6 +80,7 @@ int main()
 					printf("No Pose Calibration done!");
 				}
 			}
+			// Nur Spielfeld Kalibrierung
 			else {
 				int res = calib->generateCam2WorldLUT();
 				if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
