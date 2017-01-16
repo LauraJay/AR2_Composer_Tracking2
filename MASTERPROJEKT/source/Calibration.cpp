@@ -30,6 +30,7 @@ int Calibration::catchPlaneMarker(cv::Mat frame)
 int Calibration::generatePlaneCalib()
 {
 	int ret = pc->computePlaneCalibration();
+	pcd = pc->getPlaneCalibData();
 	return ret;
 }
 
