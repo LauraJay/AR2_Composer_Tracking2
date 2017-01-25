@@ -41,6 +41,5 @@ public:
 	void setPCD(PlaneCalibration::planeCalibData pcData);
 	TCP(cv::Size frameSize);
 	~TCP();
-
 	int loadLUT();
 };
