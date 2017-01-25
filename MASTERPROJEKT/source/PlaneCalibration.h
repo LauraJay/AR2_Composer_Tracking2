@@ -27,7 +27,7 @@ public:
 	int detectAruco(cv::Mat frame);
 	int PlaneCalibration::getSizeOfMarkerPos();
 private:
-	std::vector<cv::Point2f>markerPositions;
+	std::vector<cv::Point2f> markerPositions;
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;
 	cv::Point2f upperRight;

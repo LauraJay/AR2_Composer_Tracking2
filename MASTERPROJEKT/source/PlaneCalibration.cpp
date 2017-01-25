@@ -35,7 +35,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	}
 	bool foundID = false;
 	// draw results
-		if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
+		//if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
 	for (int i = 0; i < arucoIds.size(); i++) {
 
 		int ID = arucoIds.at(i);

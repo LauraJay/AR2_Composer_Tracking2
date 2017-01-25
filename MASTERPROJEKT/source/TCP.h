@@ -42,4 +42,5 @@ public:
 	TCP(cv::Size frameSize);
 	~TCP();
 
+	int loadLUT();
 };

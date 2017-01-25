@@ -89,7 +89,7 @@ void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> take
 	getPointerOfMarkerVec(allMarkers, takenIdVec);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2004, 0);
-	printf("Data sent...\n");
+	//printf("Data sent...\n");
 
 	/*const char FAR* markerPointer = (const char*) &allMarkers;
 	rc = send(connectedSocket, markerPointer, 4100, 0);*/
@@ -140,7 +140,7 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 
 TCP::TCP(cv::Size frameSize){
 	lut = cv::Mat3f(frameSize);
-	readCameraParameters("LUT.yml", lut);
+	//readCameraParameters("LUT.yml", lut);
 	myfile.open("logNorm.txt", std::ofstream::out | std::ofstream::trunc);
 	myfile.close();
 	myfile2.open("logWorld.txt", std::ofstream::out | std::ofstream::trunc);
@@ -148,6 +148,12 @@ TCP::TCP(cv::Size frameSize){
 }
 
 TCP::~TCP(){
+}
+
+int TCP::loadLUT()
+{
+	readCameraParameters("LUT.yml", lut);
+	return 0;
 }
 
 void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {

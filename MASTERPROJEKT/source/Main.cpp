@@ -47,7 +47,7 @@ int main()
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
-	
+
 	while (currentStatus != tcp->sceneStart) {
 		calibStatus = tcp->receiveTCPData();
 		printf("calibstatus: %d \n", calibStatus);
@@ -65,6 +65,7 @@ int main()
 						int rep = calib->generatePlaneCalib();
 						if (rep > -1) pcd = calib->getPlaneCalibData();
 						else printf("Generation of Plane failed. \n");
+						tcp->loadLUT();
 						PlaneCalibDone = true;
 					}
 							break;
@@ -89,6 +90,7 @@ int main()
 				}
 			}
 		}
+		tcp->loadLUT();
 		currentStatus = tcp->receiveTCPData();
 	}
 
@@ -164,30 +166,31 @@ int main()
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 
-			/*	for each (cv::RotatedRect r in rects)
+				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
 					r.points(vert);
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
-				}*/
+				}
 
 				//run MarkerManagement
 
 				mm->trackMarker(rects, corners, arucoIds, frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
-	}
+			}
 			else {
 				marker = mm->getTrackedMarker();
 			}
 
-			/*cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
+			cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
+
 			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
 			cv::imshow("edges", imgDebug);
-			cv::waitKey(1);*/
+			cv::waitKey(1);
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 
 #ifdef useTCP
@@ -199,7 +202,7 @@ int main()
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
 			printf("fps: %f\r", 1 / z);
-}
+		}
 		else break;
 	}
 	delete md;
@@ -267,7 +270,6 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 #endif //logFile
 	return frame;
 }
-
 
 
 
