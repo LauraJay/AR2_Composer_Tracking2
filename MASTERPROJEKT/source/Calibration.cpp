@@ -25,7 +25,7 @@ int Calibration::catchPlaneMarker(cv::Mat frame)
 {
 	int ret = pc->detectAruco(frame);
 	return ret;
-}
+} 
 
 int Calibration::generatePlaneCalib()
 {

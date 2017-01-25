@@ -164,14 +164,14 @@ int main()
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 
-				for each (cv::RotatedRect r in rects)
+			/*	for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
 					r.points(vert);
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
-				}
+				}*/
 
 				//run MarkerManagement
 
@@ -183,12 +183,11 @@ int main()
 				marker = mm->getTrackedMarker();
 			}
 
-			cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
-
+			/*cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
 			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
 			cv::imshow("edges", imgDebug);
-			cv::waitKey(1);
+			cv::waitKey(1);*/
 			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
 
 #ifdef useTCP
