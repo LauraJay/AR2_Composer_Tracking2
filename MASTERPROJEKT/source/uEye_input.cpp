@@ -128,6 +128,7 @@ int uEye_input::inituEyeCamForCalib()
 cv::Mat uEye_input::getCapturedFrame()
 {
 	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
+	printf("ret of capture: %d \n",ret);
 	if (ret==IS_SUCCESS) {
 		void *pMemVoid; //pointer to where the image is stored
 		is_GetImageMem(hCam, &pMemVoid);
