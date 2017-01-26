@@ -138,8 +138,7 @@ cv::Mat uEye_input::getCapturedFrame()
 		is_GetFramesPerSecond(hCam, &fps);
 		double parameter;
 		int error = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, (void*)&parameter, sizeof(parameter));
-
-		//printf("fps cAMERA: %f \n", fps);
+		printf("fps cAMERA: %f \n", fps);
 		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
 		img->widthStep = 3 * img_width;		
 		img->imageDataOrigin = (char*)pMemVoid; //and again
