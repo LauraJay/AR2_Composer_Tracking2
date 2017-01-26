@@ -134,10 +134,10 @@ cv::Mat uEye_input::getCapturedFrame()
 		UINT check;
 		is_PixelClock(hCam, IS_PIXELCLOCK_CMD_GET, &check, sizeof(check));
 		//printf("Pixelclock: %d \n", check);
-		double fps;
-		is_GetFramesPerSecond(hCam, &fps);
 		double parameter;
 		int error = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, (void*)&parameter, sizeof(parameter));
+		double fps;
+		is_GetFramesPerSecond(hCam, &fps);
 		printf("fps cAMERA: %f \n", fps);
 		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
 		img->widthStep = 3 * img_width;		

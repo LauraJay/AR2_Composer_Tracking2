@@ -3,10 +3,10 @@
 //#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define useTCP
+//#define useTCP
 //#define logFile
 #define uEYE
-#define useNotTestClasses
+//#define useNotTestClasses
 
 
 int currentStatus = -1;
@@ -24,6 +24,30 @@ Main::~Main() {
 
 Main::Main() {
 	//TODO
+}
+
+
+//TESTING
+int main()
+{
+	int counter=0;
+	uEye_input* uei1 = new uEye_input();
+	uei1->inituEyeCam();
+	cv::Mat frame = uei1->getCapturedFrame();
+	while (true) {
+		frame = uei1->getCapturedFrame();
+
+		counter++;
+		std::ostringstream os2;
+		os2 << counter;
+		cv::String s2 = os2.str();
+		putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
+		cv::imshow("test",frame);
+		cv::waitKey(1);
+
+	}
+
+
 }
 
 #ifdef useNotTestClasses
