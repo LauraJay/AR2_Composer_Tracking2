@@ -30,7 +30,7 @@ Main::Main() {
 //TESTING
 int main()
 {
-	int counter=0;
+	int counter = 0;
 	uEye_input* uei1 = new uEye_input();
 	uei1->inituEyeCam();
 	cv::Mat frame = uei1->getCapturedFrame();
@@ -42,12 +42,10 @@ int main()
 		os2 << counter;
 		cv::String s2 = os2.str();
 		putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-		cv::imshow("test",frame);
+		cv::imshow("test", frame);
 		cv::waitKey(1);
 
 	}
-
-
 }
 
 #ifdef useNotTestClasses
