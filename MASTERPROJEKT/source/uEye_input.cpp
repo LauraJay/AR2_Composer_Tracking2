@@ -108,7 +108,7 @@ cv::Mat uEye_input::getCapturedFrame()
 
 
 	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
-	printf("ret of capture: %d \n",ret);
+	//printf("ret of capture: %d \n",ret);
 	
 	if (ret==IS_SUCCESS) {
 		void *pMemVoid; //pointer to where the image is stored
@@ -135,7 +135,7 @@ cv::Mat uEye_input::getCapturedFrame()
 	
 	double fps;
 	is_GetFramesPerSecond(hCam, &fps);
-	printf("fps cAMERA: %f \n", fps);
+	//printf("fps cAMERA: %f \n", fps);
 	return frame;
 }
 

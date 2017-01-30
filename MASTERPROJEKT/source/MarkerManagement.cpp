@@ -32,18 +32,18 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 					deleteMarker(matchID);
 				}
 				else { 
-					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2)); 
+					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0)); 
 				}
 			}
 			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
+				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
 			}
 			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(2));
+				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
 			}
 			else {
 				if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
-					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(2));
+					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(0));
 				}
 			}
 		}

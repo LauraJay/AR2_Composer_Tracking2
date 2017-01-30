@@ -213,6 +213,7 @@ void PoseEstimation::computeCameraWorld(PlaneCalibration::planeCalibData pcd)
 	std::cout << rotationMatrix << std::endl;
 }
 
+
 std::vector<cv::Point2f> PoseEstimation::getImagePlane(PlaneCalibration::planeCalibData pcd)
 {
 	//oben rechts
