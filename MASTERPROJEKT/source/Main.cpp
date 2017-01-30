@@ -102,7 +102,7 @@ int main()
 						int rep = calib->generatePlaneCalib();
 						if (rep > -1) pcd = calib->getPlaneCalibData();
 						else printf("Generation of Plane failed. \n");
-						tcp->loadLUT();
+						//tcp->loadLUT();
 						PlaneCalibDone = true;
 					}
 							break;

@@ -19,7 +19,7 @@ PlaneCalibration::planeCalibData PlaneCalibration::readPlaneCalibrationFile() {
 		pcd.upperCorner = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
 		getline(calibFile, lineX);
 		getline(calibFile, lineY);
-	pcd.lowerCorner = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
+		pcd.lowerCorner = cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str()));
 	}
 	return pcd;
 }
