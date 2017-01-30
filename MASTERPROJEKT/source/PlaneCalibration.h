@@ -26,6 +26,7 @@ public:
 	int computePlaneCalibration();
 	int detectAruco(cv::Mat frame);
 	int PlaneCalibration::getSizeOfMarkerPos();
+	PlaneCalibration::planeCalibData loadImagePlane();
 private:
 	std::vector<cv::Point2f> markerPositions;
 	cv::Point2f upperLeft;

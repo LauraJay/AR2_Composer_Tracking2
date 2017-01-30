@@ -2,7 +2,6 @@
 
 PoseEstimation::PoseEstimation()
 {
-	loadImagePlane();
 }
 
 int PoseEstimation::runPoseEstimation(uEye_input* uei)
@@ -173,9 +172,9 @@ int PoseEstimation::runPoseEstimation(uEye_input* uei)
 	return 1;
 }
 
-int  PoseEstimation::generateCam2WorldLUT() {
+int  PoseEstimation::generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd) {
 	// compute CameraWorldMatrix
-	computeCameraWorld();
+	computeCameraWorld(pcd);
 
 	//compute LUT
 	cv::Mat3f lut = computeCamera2WorldLut();
@@ -187,31 +186,10 @@ int  PoseEstimation::generateCam2WorldLUT() {
 	return -1;
 
 }
-void PoseEstimation::loadImagePlane()
-{
-	std::fstream calibFile;
-	calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
-	if (calibFile.is_open()) {
-		std::string lineX;
-		std::string lineY;
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		imagePlane.push_back(cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		imagePlane.push_back(cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		imagePlane.push_back(cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
-		getline(calibFile, lineX);
-		getline(calibFile, lineY);
-		imagePlane.push_back(cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
-		calibFile.close();
-	}
 
-}
-void PoseEstimation::computeCameraWorld()
+void PoseEstimation::computeCameraWorld(PlaneCalibration::planeCalibData pcd)
 {
+	imagePlane = getImagePlane(pcd);
 	std::vector<cv::Point3f> worldPlane;
 	worldPlane.push_back(cv::Point3f(0.0, 0.0,0.));
 	worldPlane.push_back(cv::Point3f(1.0, 0.0, 0.));
@@ -233,6 +211,25 @@ void PoseEstimation::computeCameraWorld()
 	std::cout << tvec << std::endl;
 	std::cout << "rotationMatrix \n" << std::endl;
 	std::cout << rotationMatrix << std::endl;
+}
+
+std::vector<cv::Point2f> PoseEstimation::getImagePlane(PlaneCalibration::planeCalibData pcd)
+{
+	//oben rechts
+	//unten links
+	std::vector<cv::Point2f> imagePlane;
+	float x1, x2, y1, y2;
+	x1 = pcd.upperCorner.x;
+	x2 = pcd.lowerCorner.x;
+	y1 = pcd.upperCorner.y;
+	y2 = pcd.lowerCorner.y;
+
+	imagePlane.push_back(cv::Point(x2, y1));
+	imagePlane.push_back(cv::Point(x1, y1));
+	imagePlane.push_back(cv::Point(x2,y2));
+	imagePlane.push_back(cv::Point(x1, y2));
+	
+	return imagePlane;
 }
 
 cv::Mat3f PoseEstimation::computeCamera2WorldLut()

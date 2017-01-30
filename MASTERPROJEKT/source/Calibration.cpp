@@ -1,5 +1,7 @@
 #include "Calibration.h"
 
+
+
 Calibration::~Calibration()
 {
 	delete pc;
@@ -17,7 +19,7 @@ int Calibration::runCameraMatrix(uEye_input* uei)
 	//int ret =1;
 	int ret = pe->runPoseEstimation(uei);
 	if(ret != -1)
-	ret = pe->generateCam2WorldLUT();
+	ret = pe->generateCam2WorldLUT(pcd);
 	return ret;
 }
 
@@ -38,11 +40,13 @@ int Calibration::generateCam2WorldLUT()
 {
 	int rep =1;
 	if(pe->loadCameraParameters())
-	rep = pe->generateCam2WorldLUT();
+	rep = pe->generateCam2WorldLUT(pcd);
 	return rep;
 }
 
 PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
+	pcd = pc->getPlaneCalibData();
+	if (pcd.size.width == 0 && pcd.size.height==0)pcd = pc->loadImagePlane();
 	return pcd;
 }
 

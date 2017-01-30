@@ -6,6 +6,7 @@
 #define useTCP
 //#define logFile
 #define uEYE
+//#define DebugPoseEsti
 #define useNotTestClasses
 
 
@@ -102,9 +103,7 @@ int main()
 					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
 					case 2: {tcp->sendStatus(tcp->ArucoFound2);
 						int rep = calib->generatePlaneCalib();
-						if (rep > -1) pcd = calib->getPlaneCalibData();
-						else printf("Generation of Plane failed. \n");
-						tcp->loadLUT();
+						if (rep == -1) printf("Generation of Plane failed. \n");
 						PlaneCalibDone = true;
 					}
 							break;
@@ -133,10 +132,10 @@ int main()
 	}
 
 		tcp->loadLUT();
-	
+		pcd = calib->getPlaneCalibData();
+		tcp->setPCD(pcd);
 	delete calib;
 
-	tcp->setPCD(pcd);
 #endif 	// TCP
 
 
@@ -156,12 +155,22 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	cv::VideoCapture cap("F:/Master/Masterprojekt/Testvideos/02.avi");
+	cv::VideoCapture cap("C:/Users/Vera/Desktop/1.avi");
 	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 	cap >> frame;
 #endif // VIDEOVERA
+
+#ifdef DebugPoseEsti
+	Calibration* calib = new Calibration();
+	int numOfPlaneCorners = 0;
+	int res = calib->runCameraMatrix(uei1);
+
+#endif // DebugPoseEsti
+
+
+
 
 #ifdef uEYE
 	// uEye Caputure
@@ -170,92 +179,92 @@ int main()
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
-	MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
-	cv::namedWindow("edges", cv::WINDOW_NORMAL);
-	MarkerDetection* md = new MarkerDetection();
-
-	while (true) {
-		clock_t start, end;
-		counter++;
-		start = clock();
-
-#ifdef uEYE
-
-		frame = uei1->getCapturedFrame();
-		//frame = frameCap.clone();
-		cv::imshow("frame2", frame);
-		cv::waitKey(1);
-		/*cv::imshow("frameCap", frameCap);
-		cv::waitKey(1);*/
-#endif // uEYE
-
-#ifdef VIDEOLAURA
-		cap >> frame; // get a new frame from camera
-#endif // VIDEOLAURA
-
-#ifdef VIDEOLAURAALIEN
-		cap >> frame; // get a new frame from camera
-#endif // VIDEOLAURAALIEN
-
-#ifdef VIDEOVERA
-		cap >> frame; // get a new frame from camera
-#endif // VIDEOVERA
-		if (!frame.empty()) {
-			cv::Mat imgDebug=frame.clone();
-			//run Marker Detection			
-			int sucess = md->runMarkerDetection(frame);
-			if (sucess == 1) {
-				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-				std::vector<int> arucoIds = md->getArucoIds();
-				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-
-				for each (cv::RotatedRect r in rects)
-				{
-					cv::Point2f vert[4];
-					r.points(vert);
-					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
-					}
-				}
-
-				//run MarkerManagement
-
-				mm->trackMarker(rects, corners, arucoIds, frame.size());
-				marker = mm->getTrackedMarker();
-				takenIdVec = mm->getTakenIDVec();
-			}
-			else {
-				marker = mm->getTrackedMarker();
-			}
-
-		imgDebug = debug(imgDebug, marker, counter, takenIdVec);
-
-			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
-			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
-			cv::imshow("edges", imgDebug);
-			cv::waitKey(1);
-			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
-
-#ifdef useTCP
-			//Send Markerdata via TCP
-			tcp->sendTCPData(marker, takenIdVec)
-
-
-#endif // TCP_connection
-			end = clock();
-			float z = end - start;
-			z /= CLOCKS_PER_SEC;
-			printf("fps: %f\r", 1 / z);
-		}
-		else break;
-	}
-	delete md;
-#ifdef uEYE
-	uei1->exitCamera();
-	delete uei1;
-#endif // uEYE
-
-	delete mm;
+//	MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
+//	cv::namedWindow("edges", cv::WINDOW_NORMAL);
+//	MarkerDetection* md = new MarkerDetection();
+//
+//	while (true) {
+//		clock_t start, end;
+//		counter++;
+//		start = clock();
+//
+//#ifdef uEYE
+//
+//		frame = uei1->getCapturedFrame();
+//		//frame = frameCap.clone();
+//		cv::imshow("frame2", frame);
+//		cv::waitKey(1);
+//		/*cv::imshow("frameCap", frameCap);
+//		cv::waitKey(1);*/
+//#endif // uEYE
+//
+//#ifdef VIDEOLAURA
+//		cap >> frame; // get a new frame from camera
+//#endif // VIDEOLAURA
+//
+//#ifdef VIDEOLAURAALIEN
+//		cap >> frame; // get a new frame from camera
+//#endif // VIDEOLAURAALIEN
+//
+//#ifdef VIDEOVERA
+//		cap >> frame; // get a new frame from camera
+//#endif // VIDEOVERA
+//		if (!frame.empty()) {
+//			cv::Mat imgDebug=frame.clone();
+//			//run Marker Detection			
+//			int sucess = md->runMarkerDetection(frame);
+//			if (sucess == 1) {
+//				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+//				std::vector<int> arucoIds = md->getArucoIds();
+//				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+//
+//				for each (cv::RotatedRect r in rects)
+//				{
+//					cv::Point2f vert[4];
+//					r.points(vert);
+//					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+//						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+//					}
+//				}
+//
+//				//run MarkerManagement
+//
+//				mm->trackMarker(rects, corners, arucoIds, frame.size());
+//				marker = mm->getTrackedMarker();
+//				takenIdVec = mm->getTakenIDVec();
+//			}
+//			else {
+//				marker = mm->getTrackedMarker();
+//			}
+//
+//		imgDebug = debug(imgDebug, marker, counter, takenIdVec);
+//
+//			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
+//			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
+//			cv::imshow("edges", imgDebug);
+//			cv::waitKey(1);
+//			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
+//
+//#ifdef useTCP
+//			//Send Markerdata via TCP
+//			tcp->sendTCPData(marker, takenIdVec)
+//
+//
+//#endif // TCP_connection
+//			end = clock();
+//			float z = end - start;
+//			z /= CLOCKS_PER_SEC;
+//			printf("fps: %f\r", 1 / z);
+//		}
+//		else break;
+//	}
+//	delete md;
+//#ifdef uEYE
+//	uei1->exitCamera();
+//	delete uei1;
+//#endif // uEYE
+//
+//	delete mm;
 
 #ifdef useTCP
 	delete tcp;

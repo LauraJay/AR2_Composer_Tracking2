@@ -90,6 +90,8 @@ int PlaneCalibration::computePlaneCalibration() {
 			calibFile << pcd.upperCorner.y << "\n";
 			calibFile << pcd.lowerCorner.x << "\n";
 			calibFile << pcd.lowerCorner.y << "\n";
+			calibFile << pcd.size.width << "\n";
+			calibFile << pcd.size.height << "\n";
 			calibFile.close();
 		}
 		else {
@@ -99,4 +101,28 @@ int PlaneCalibration::computePlaneCalibration() {
 	}
 	else return -1;
 	return 1;
+}
+
+PlaneCalibration::planeCalibData PlaneCalibration::loadImagePlane()
+{
+	std::fstream calibFile;
+	PlaneCalibration::planeCalibData pcd;
+	calibFile.open("TrackingPlaneCalibration.txt", std::ios::in);
+	if (calibFile.is_open()) {
+		std::string lineX;
+		std::string lineY;
+		std::string width;
+		std::string height;
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		pcd.upperCorner = (cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
+		getline(calibFile, lineX);
+		getline(calibFile, lineY);
+		pcd.lowerCorner = (cv::Point2f(::atof(lineX.c_str()), ::atof(lineY.c_str())));
+		getline(calibFile, width);
+		getline(calibFile, height);
+		pcd.size = (cv::Size(::atof(width.c_str()), ::atof(height.c_str())));
+		calibFile.close();
+	}
+		return pcd;
 }

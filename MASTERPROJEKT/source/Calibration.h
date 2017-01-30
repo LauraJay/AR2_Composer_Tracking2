@@ -20,7 +20,7 @@ private:
 	uEye_input uei;
 	PlaneCalibration* pc;
 	PoseEstimation* pe;
-
+	
 public:
 	~Calibration();
 	Calibration();

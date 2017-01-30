@@ -14,6 +14,7 @@
 #include <ctime>
 
 #include <uEye_input.h>
+#include <PlaneCalibration.h>
 
 
 class PoseEstimation {
@@ -25,8 +26,8 @@ private:
 	cv::Mat rotationMatrix;
 	cv::Mat tvec;
 	cv::Size size;
-	void loadImagePlane();
-	void computeCameraWorld();
+	void computeCameraWorld(PlaneCalibration::planeCalibData pcd);
+	std::vector<cv::Point2f> getImagePlane(PlaneCalibration::planeCalibData pcd);
 	cv::Mat3f computeCamera2WorldLut();
 	bool saveLUT( const cv::Mat3f lut);
 	cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
@@ -35,7 +36,8 @@ public:
 	~PoseEstimation() {};
 	PoseEstimation();
 	bool loadCameraParameters();
-	int generateCam2WorldLUT();
+	int generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);
+	void computeCameraWorld(PlaneCalibration::planeCalibData);
 	int runPoseEstimation(uEye_input* uei);
 	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
 };

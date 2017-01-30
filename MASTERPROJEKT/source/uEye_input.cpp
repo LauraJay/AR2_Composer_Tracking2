@@ -84,27 +84,27 @@ cv::Mat uEye_input::getCapturedFrame()
   
 
 
-	INT nNumCam;
-	if (is_GetNumberOfCameras(&nNumCam) == IS_SUCCESS) {
-		
-		if (nNumCam >= 1) {
-			// Liste neu mit passender Größe anlegen
-			UEYE_CAMERA_LIST* pucl;
-			pucl = (UEYE_CAMERA_LIST*) new BYTE[sizeof(ULONG) + nNumCam * sizeof(UEYE_CAMERA_INFO)];
-			pucl->dwCount = nNumCam;
+	//INT nNumCam;
+	//if (is_GetNumberOfCameras(&nNumCam) == IS_SUCCESS) {
+	//	
+	//	if (nNumCam >= 1) {
+	//		// Liste neu mit passender Größe anlegen
+	//		UEYE_CAMERA_LIST* pucl;
+	//		pucl = (UEYE_CAMERA_LIST*) new BYTE[sizeof(ULONG) + nNumCam * sizeof(UEYE_CAMERA_INFO)];
+	//		pucl->dwCount = nNumCam;
 
-			//Kamerainformationen einlesen
-			if (is_GetCameraList(pucl) == IS_SUCCESS) {
-				int iCamera;
-				for (iCamera = 0; iCamera < (int)pucl->dwCount; iCamera++) {
-					//Kamerainformationenam am Bildschirm ausgeben
-					printf("Camera %i Id: %d \n", iCamera,
-						pucl->uci[iCamera].dwCameraID);
-				}
-			}
-			delete[] pucl;
-		}
-	}
+	//		//Kamerainformationen einlesen
+	//		if (is_GetCameraList(pucl) == IS_SUCCESS) {
+	//			int iCamera;
+	//			for (iCamera = 0; iCamera < (int)pucl->dwCount; iCamera++) {
+	//				//Kamerainformationenam am Bildschirm ausgeben
+	//				printf("Camera %i Id: %d \n", iCamera,
+	//					pucl->uci[iCamera].dwCameraID);
+	//			}
+	//		}
+	//		delete[] pucl;
+	//	}
+	//}
 
 
 	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
