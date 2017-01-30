@@ -13,14 +13,13 @@ class uEye_input {
 
 private:
 	IplImage * img;
-	HIDS hCam;
+	HIDS  hCam = 1;
 	int img_width;
 	int img_height;
 	cv::Mat frame;
 	
 public:
 	int inituEyeCam();
-	int inituEyeCamForCalib();
 	cv::Mat getCapturedFrame();
 	int exitCamera();
 
