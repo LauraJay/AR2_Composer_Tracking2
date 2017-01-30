@@ -28,6 +28,36 @@ Main::Main() {
 
 
 
+////TESTING
+//int main()
+//{
+//	int x = 0;
+//	int counter = 0;
+//	uEye_input* uei1 = new uEye_input();
+//	uei1->inituEyeCam();
+//	cv::Mat frame;
+//	cv::Mat frameCap = uei1->getCapturedFrame();
+//	while (true) {
+//	
+//			frameCap = uei1->getCapturedFrame();
+//			frame = frameCap.clone();
+//		counter++;
+//		std::ostringstream os2;
+//		os2 << counter;
+//		cv::String s2 = os2.str();
+//		putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
+//
+//		circle(frame, cv::Point(x,150), 7, cv::Scalar(0, 255, 0),2);
+//		
+//		x+=20;
+//		if (x > frame.size().width) x = 0;
+//
+//		cv::imshow("test", frame);
+//		cv::waitKey(1);
+//
+//	}
+//}
+
 
 #ifdef useNotTestClasses
 int main()
@@ -50,9 +80,13 @@ int main()
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
+	cv::imshow("test", frame);
+	cv::waitKey(1);
 
 	while (currentStatus != tcp->sceneStart) {
 		calibStatus = tcp->receiveTCPData();
+		if (calibStatus == tcp->sceneStart)  break; 
+
 		printf("calibstatus: %d \n", calibStatus);
 		//SPIELFELDKALIBRIERUNG
 		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -61,7 +95,9 @@ int main()
 				if (currentStatus == tcp->ControlerButtonPressed) {
 					printf("Controller Status : %d \n", currentStatus);
 					frame = uei1->getCapturedFrame();
-					numOfPlaneCorners = calib->catchPlaneMarker(frame);
+							cv::imshow("Calib frame", frame);
+							cv::waitKey(1);
+							numOfPlaneCorners = calib->catchPlaneMarker(frame);
 					switch (numOfPlaneCorners) {
 					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
 					case 2: {tcp->sendStatus(tcp->ArucoFound2);
@@ -93,12 +129,11 @@ int main()
 				}
 			}
 		}
-		tcp->loadLUT();
 		currentStatus = tcp->receiveTCPData();
 	}
 
-	uei1->exitCamera();
-	delete uei1;
+		tcp->loadLUT();
+	
 	delete calib;
 
 	tcp->setPCD(pcd);
@@ -130,9 +165,8 @@ int main()
 
 #ifdef uEYE
 	// uEye Caputure
-	uEye_input* uei = new uEye_input();
-	uei->inituEyeCam();
-	frame = uei->getCapturedFrame();
+	cv::Mat frameCap = uei1->getCapturedFrame();
+	frame = uei1->getCapturedFrame();
 
 #endif //uEYE
 	//first MarkerSize, second Threshold
@@ -146,7 +180,13 @@ int main()
 		start = clock();
 
 #ifdef uEYE
-		frame = uei->getCapturedFrame();
+
+		frame = uei1->getCapturedFrame();
+		//frame = frameCap.clone();
+		cv::imshow("frame2", frame);
+		cv::waitKey(1);
+		/*cv::imshow("frameCap", frameCap);
+		cv::waitKey(1);*/
 #endif // uEYE
 
 #ifdef VIDEOLAURA
@@ -161,7 +201,7 @@ int main()
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-
+			cv::Mat imgDebug=frame.clone();
 			//run Marker Detection			
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
@@ -174,7 +214,7 @@ int main()
 					cv::Point2f vert[4];
 					r.points(vert);
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-						line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}
 				}
 
@@ -188,7 +228,7 @@ int main()
 				marker = mm->getTrackedMarker();
 			}
 
-			cv::Mat imgDebug = debug(frame.clone(), marker, counter, takenIdVec);
+		imgDebug = debug(imgDebug, marker, counter, takenIdVec);
 
 			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
@@ -198,7 +238,8 @@ int main()
 
 #ifdef useTCP
 			//Send Markerdata via TCP
-			tcp->sendTCPData(marker, takenIdVec);
+			tcp->sendTCPData(marker, takenIdVec)
+
 
 #endif // TCP_connection
 			end = clock();
@@ -210,8 +251,8 @@ int main()
 	}
 	delete md;
 #ifdef uEYE
-	uei->exitCamera();
-	delete uei;
+	uei1->exitCamera();
+	delete uei1;
 #endif // uEYE
 
 	delete mm;
