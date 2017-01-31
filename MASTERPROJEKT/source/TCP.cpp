@@ -103,7 +103,7 @@ int TCP::receiveTCPData() {
 }
 
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
-	
+	printf("Num Marker %d \r", takenIdVec.size());
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
 	//myfile2.open("logWorld.txt", std::ios::out | std::ios::app);

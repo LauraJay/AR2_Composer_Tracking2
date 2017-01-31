@@ -39,7 +39,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	for (int i = 0; i < arucoIds.size(); i++) {
 
 		int ID = arucoIds.at(i);
-		if (ID == 6) {
+		if (ID == 10) {
 			std::vector<cv::Point2f> p = corners.at(i);
 			float centerX, centerY;
 			cv::Point2f d1 = (p[2] - p[0]);
