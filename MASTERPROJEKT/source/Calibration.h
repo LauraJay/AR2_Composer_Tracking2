@@ -25,6 +25,7 @@ public:
 	~Calibration();
 	Calibration();
 	int runCameraMatrix(uEye_input* uei);
+	int runCameraMatrix(cv::VideoCapture cap);
 	int catchPlaneMarker(cv::Mat frame);
 	int generatePlaneCalib();
 	int generateCam2WorldLUT();

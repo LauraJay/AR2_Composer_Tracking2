@@ -1,12 +1,12 @@
 #include <Main.h>
 
-//#define VIDEOVERA
+#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-#define useTCP
+//#define useTCP
 //#define logFile
-#define uEYE
-//#define DebugPoseEsti
+//#define uEYE
+#define DebugPoseEsti
 #define useNotTestClasses
 
 
@@ -29,35 +29,7 @@ Main::Main() {
 
 
 
-////TESTING
-//int main()
-//{
-//	int x = 0;
-//	int counter = 0;
-//	uEye_input* uei1 = new uEye_input();
-//	uei1->inituEyeCam();
-//	cv::Mat frame;
-//	cv::Mat frameCap = uei1->getCapturedFrame();
-//	while (true) {
-//	
-//			frameCap = uei1->getCapturedFrame();
-//			frame = frameCap.clone();
-//		counter++;
-//		std::ostringstream os2;
-//		os2 << counter;
-//		cv::String s2 = os2.str();
-//		putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-//
-//		circle(frame, cv::Point(x,150), 7, cv::Scalar(0, 255, 0),2);
-//		
-//		x+=20;
-//		if (x > frame.size().width) x = 0;
-//
-//		cv::imshow("test", frame);
-//		cv::waitKey(1);
-//
-//	}
-//}
+
 
 
 #ifdef useNotTestClasses
@@ -70,12 +42,12 @@ int main()
 	int counter = -1;
 	cv::Mat frame;
 	PlaneCalibration::planeCalibData pcd;
-#ifdef useTCP
-	//start 
-	// uEye Caputure
 	uEye_input* uei1 = new uEye_input();
 	uei1->inituEyeCam();
 	frame = uei1->getCapturedFrame();
+#ifdef useTCP
+	//start 
+	// uEye Caputure
 	TCP* tcp = new TCP(frame.size());
 	tcp->startTCPServer();
 	Calibration* calib = new Calibration();
@@ -155,7 +127,7 @@ int main()
 
 #ifdef VIDEOVERA
 	//Einbindung Video Vera 
-	cv::VideoCapture cap("C:/Users/Vera/Desktop/1.avi");
+	cv::VideoCapture cap("C:/Users/Vera/Desktop/3.avi");
 	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
@@ -166,6 +138,8 @@ int main()
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	int res = calib->runCameraMatrix(uei1);
+	uei1->exitCamera();
+	delete uei1;
 
 #endif // DebugPoseEsti
 
@@ -174,6 +148,7 @@ int main()
 
 #ifdef uEYE
 	// uEye Caputure
+	
 	cv::Mat frameCap = uei1->getCapturedFrame();
 	frame = uei1->getCapturedFrame();
 

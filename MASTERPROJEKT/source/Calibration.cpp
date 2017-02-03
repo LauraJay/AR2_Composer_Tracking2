@@ -18,10 +18,41 @@ int Calibration::runCameraMatrix(uEye_input* uei)
 {
 	//int ret =1;
 	int ret = pe->runPoseEstimation(uei);
-	if(ret != -1)
-	ret = pe->generateCam2WorldLUT(pcd);
+	cv::Mat dst, image;
+
+	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
+	cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
+
+	//cv::imwrite("UeyeDistCoeffs.jpg", image);
+
+	cv::imshow("undistortedImg", dst);
+	cv::waitKey(0);
 	return ret;
 }
+
+
+int Calibration::runCameraMatrix(cv::VideoCapture cap)
+{
+
+	cv::Mat frame;
+	pcd = getPlaneCalibData();
+	//int ret =1;
+	int ret = pe->runPoseEstimation(cap);
+	//if (ret != -1)
+		//ret = pe->generateCam2WorldLUT(pcd);
+
+	cv::Mat dst,image;
+
+	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
+	cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
+	
+	//cv::imwrite("UeyeDistCoeffs.jpg", image);
+	
+	cv::imshow("undistortedImg", dst);
+	cv::waitKey(0);
+	return ret;
+}
+
 
 int Calibration::catchPlaneMarker(cv::Mat frame)
 {
