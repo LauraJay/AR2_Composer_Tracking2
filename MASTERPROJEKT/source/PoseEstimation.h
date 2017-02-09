@@ -26,7 +26,7 @@ private:
 	cv::Mat rotationMatrix;
 	cv::Mat tvec;
 	cv::Size size;
-	void computeCameraWorld(PlaneCalibration::planeCalibData pcd);
+	void computeCamera2World(PlaneCalibration::planeCalibData pcd);
 	std::vector<cv::Point2f> getImagePlane(PlaneCalibration::planeCalibData pcd);
 	cv::Mat3f computeCamera2WorldLut();
 	bool saveLUT( const cv::Mat3f lut);
@@ -35,12 +35,12 @@ private:
 public:
 	~PoseEstimation() {};
 	PoseEstimation();
-	bool loadCameraParameters();
+	bool loadCameraMat();
 	int  generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);
-	int runPoseEstimation(uEye_input* uei);
+	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();
 	int runPoseEstimation(cv::VideoCapture cap);
-
+	bool loadSavedDistCoeff();
 	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
 };

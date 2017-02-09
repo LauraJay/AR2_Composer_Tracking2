@@ -1,12 +1,12 @@
 #include <Main.h>
 
-#define VIDEOVERA
+//#define VIDEOVERA
 //#define VIDEOLAURAALIEN
 //#define VIDEOLAURA
-//#define useTCP
+#define useTCP
 //#define logFile
-//#define uEYE
-#define DebugPoseEsti
+#define uEYE
+//#define DebugPoseEsti
 #define useNotTestClasses
 
 
@@ -68,8 +68,8 @@ int main()
 				if (currentStatus == tcp->ControlerButtonPressed) {
 					printf("Controller Status : %d \n", currentStatus);
 					frame = uei1->getCapturedFrame();
-							cv::imshow("Calib frame", frame);
-							cv::waitKey(1);
+							/*cv::imshow("Calib frame", frame);
+							cv::waitKey(1);*/
 							numOfPlaneCorners = calib->catchPlaneMarker(frame);
 					switch (numOfPlaneCorners) {
 					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
@@ -85,7 +85,7 @@ int main()
 			}
 			//BEIDE KALIBRIERUNGEN
 			if (calibStatus == tcp->planeAndPoseCalib) {
-				int res = calib->runCameraMatrix(uei1);
+				int res = calib->runPoseEstimation(uei1);
 				if (res > -1)	tcp->sendStatus(tcp->PoseCalibDone);
 				else {
 					printf("No Pose Calibration done!");
@@ -167,8 +167,8 @@ int main()
 
 		frame = uei1->getCapturedFrame();
 		//frame = frameCap.clone();
-		cv::imshow("frame2", frame);
-		cv::waitKey(1);
+		/*cv::imshow("frame2", frame);
+		cv::waitKey(1);*/
 		/*cv::imshow("frameCap", frameCap);
 		cv::waitKey(1);*/
 #endif // uEYE
@@ -196,7 +196,7 @@ int main()
 				for each (cv::RotatedRect r in rects)
 				{
 					cv::Point2f vert[4];
-					r.points(vert);
+					r.points(vert); 
 					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
 						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 					}

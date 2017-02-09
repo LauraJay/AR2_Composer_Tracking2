@@ -10,6 +10,16 @@ std::vector<int> MarkerManagement::getTakenIDVec()
 	return takenIDVec;
 }
 
+cv::RotatedRect reduceRectJitter(cv::RotatedRect r) {
+	cv::RotatedRect nr;
+	nr.center.x =(int)(r.center.x * 10 + 0.5) / 10.0;
+	nr.center.y = (int)(r.center.y * 10 + 0.5) / 10.0;
+	nr.size.width = (int)(r.size.width * 10 + 0.5) / 10.0;
+	nr.size.height = (int)(r.size.width * 10 + 0.5) / 10.0;
+	nr.angle = r.angle;
+	return nr;
+}
+
 void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size)
 {
 
@@ -18,6 +28,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 	for (int i = 0; i < rect.size(); i++)
 	{
 		cv::RotatedRect r = rect[i];
+		cv::RotatedRect nr = reduceRectJitter(r);
 
 		int matchID = 0;
 		int arucoID = 0;
@@ -32,29 +43,29 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 					deleteMarker(matchID);
 				}
 				else { 
-					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0)); 
+					CurrentMarkerWAruco(trackedMarker[matchID], nr, arucoIds[arucoID], corners[arucoID].at(0)); 
 				}
 			}
 			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
+				CurrentMarkerWAruco(trackedMarker[matchID], nr, arucoIds[arucoID], corners[arucoID].at(0));
 			}
 			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
+				CurrentMarkerWAruco(trackedMarker[matchID], nr, arucoIds[arucoID], corners[arucoID].at(0));
 			}
 			else {
 				if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
-					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(0));
+					registerNewMarker(nr, arucoIds[arucoID], corners[arucoID].at(0));
 				}
 			}
 		}
-		else if ((rep = im->isRectOutOfField(r, pcd)) > 0) {
+		else if ((rep = im->isRectOutOfField(nr, pcd)) > 0) {
 			
 		}
 		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
-			CurrentMarker(trackedMarker[matchID], r);
+			CurrentMarker(trackedMarker[matchID], nr);
 		}
 		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
-			CurrentMarker(trackedMarker[matchID], r);
+			CurrentMarker(trackedMarker[matchID], nr);
 		}
 
 	}

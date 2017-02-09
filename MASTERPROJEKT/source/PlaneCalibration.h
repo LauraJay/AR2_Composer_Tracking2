@@ -27,6 +27,7 @@ public:
 	int detectAruco(cv::Mat frame);
 	int PlaneCalibration::getSizeOfMarkerPos();
 	PlaneCalibration::planeCalibData loadImagePlane();
+	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 private:
 	std::vector<cv::Point2f> markerPositions;
 	cv::Point2f upperLeft;
@@ -39,7 +40,6 @@ private:
 	cv::Ptr<cv::aruco::Dictionary> dictionary;
 	void initAruco();
 	std::vector<int> arucoIds;
-	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::fstream calibFile;
 
 protected:

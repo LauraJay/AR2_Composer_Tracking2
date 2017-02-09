@@ -14,42 +14,28 @@ Calibration::Calibration()
 	pe = new PoseEstimation();
 }
 
-int Calibration::runCameraMatrix(uEye_input* uei)
+int Calibration::runPoseEstimation(uEye_input* uei)
 {
 	//int ret =1;
-	int ret = pe->runPoseEstimation(uei);
+	int ret = pe->generateCamMatAndDistMat(uei);
+	pe->loadSavedDistCoeff();
+	int rep = pe->generateCam2WorldLUT(pcd);
+	
+	// For Debug
+	cv::Mat  map1, map2;
+	initUndistortRectifyMap(pe->getCameraMat(), pe->getDistCoeffs(), cv::Mat(),
+		cv::getOptimalNewCameraMatrix(pe->getCameraMat(), pe->getDistCoeffs(), uei->getCapturedFrame().size(), 1, uei->getCapturedFrame().size(), 0),
+		uei->getCapturedFrame().size(), CV_16SC2, map1, map2);
+
 	cv::Mat dst, image;
-
 	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
-	cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
+	remap(image, dst, map1, map2, cv::INTER_LINEAR);
+	//cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
 
-	//cv::imwrite("UeyeDistCoeffs.jpg", image);
-
+	cv::imwrite("UeyeDistCoeffs.jpg", dst);
 	cv::imshow("undistortedImg", dst);
 	cv::waitKey(0);
-	return ret;
-}
 
-
-int Calibration::runCameraMatrix(cv::VideoCapture cap)
-{
-
-	cv::Mat frame;
-	pcd = getPlaneCalibData();
-	//int ret =1;
-	int ret = pe->runPoseEstimation(cap);
-	//if (ret != -1)
-		//ret = pe->generateCam2WorldLUT(pcd);
-
-	cv::Mat dst,image;
-
-	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
-	cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
-	
-	//cv::imwrite("UeyeDistCoeffs.jpg", image);
-	
-	cv::imshow("undistortedImg", dst);
-	cv::waitKey(0);
 	return ret;
 }
 
@@ -70,7 +56,7 @@ int Calibration::generatePlaneCalib()
 int Calibration::generateCam2WorldLUT()
 {
 	int rep =1;
-	if(pe->loadCameraParameters())
+	if(pe->loadCameraMat()&& pe->loadSavedDistCoeff())
 	rep = pe->generateCam2WorldLUT(pcd);
 	return rep;
 }
