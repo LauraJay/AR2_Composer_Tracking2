@@ -43,7 +43,7 @@ Marker::Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint)
 
 Marker::Marker()
 {
-	Marker::id = 0;
+	Marker::id = -1;
 }
 
 int Marker::isTracked()

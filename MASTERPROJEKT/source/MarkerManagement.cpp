@@ -154,6 +154,7 @@ MarkerManagement::MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCa
 		if (i > 0)	openIDQueue.push(i);
 		trackedMarker[i] = new Marker();
 	}
+	trackedMarker[0]->setId(0);
 	MarkerManagement::frameSize = frameSize;
 	MarkerManagement::pcd = pcd;
 }
