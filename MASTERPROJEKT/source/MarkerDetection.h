@@ -23,7 +23,6 @@ private:
 protected:
 
 	std::vector<std::vector<cv::Point2f>> corners;
-	std::vector<std::vector<cv::Point2f>> rejected;
 public:
 	MarkerDetection();
 	~MarkerDetection() {};

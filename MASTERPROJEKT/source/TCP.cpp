@@ -104,7 +104,7 @@ int TCP::receiveTCPData() {
 }
 
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
-	printf("Num Marker %d \r", takenIdVec.size());
+	//printf("Num Marker %d \r", takenIdVec.size());
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
 	myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
@@ -112,7 +112,7 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	c++;
 	myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 
-	for (int i = 0; i <= allMarkers.size(); i++) {
+	for (int i = 0; i < allMarkers.size(); i++) {
 		ms[i].id = allMarkers[i]->getId();
 		myfile << "\t tid " << ms[i].id << "\n";
 		myfile2 << "\t tid " << ms[i].id << "\n";
@@ -219,7 +219,7 @@ bool TCP::readCameraParameters(std::string filename, cv::Mat3f &lut) {
 cv::Vec3f TCP::computeCamera2World(cv::Point2f point)
 {
 	cv::Vec3f worldCenter = cv::Vec3f();
-	worldCenter = lut.at<cv::Vec3f>(std::round(point.x), std::round(point.y));
+	worldCenter = lut.at<cv::Vec3f>(point.x,point.y);
 	worldCenter[2] = 0.;
 	return worldCenter;
 }

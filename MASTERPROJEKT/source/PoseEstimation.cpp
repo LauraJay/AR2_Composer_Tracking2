@@ -459,9 +459,9 @@ cv::Mat3f PoseEstimation::computeCamera2WorldLut()
 {
 	std::cout << "Starting LUT computation. This takes some minutes." << std::endl;
 	cv::Mat3f lut = cv::Mat3f(size);
-	for (int x = 0; x < size.height; x++)
+	for (int x = 0; x < size.width; x++)
 	{
-		for (int y = 0; y < size.width; y++)
+		for (int y = 0; y < size.height; y++)
 		{
 			cv::Point3f p = PoseEstimation::computeWordCoordinates(cv::Point2f(x,y), rotationMatrix, cameraMatrix, tvec);
 			lut.at<cv::Vec3f>(x, y)[0] = p.x;

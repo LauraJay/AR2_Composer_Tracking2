@@ -1,65 +1,60 @@
 #include <Main.h>
 
 //#define VIDEOVERA
-//#define VIDEOLAURAALIEN
-//#define VIDEOLAURA
 #define useTCP
-//#define logFile
 #define uEYE
-//#define DebugPoseEsti
 #define useNotTestClasses
-
+#define runDebug
 
 int currentStatus = -1;
 int calibStatus = -1;
-
-#ifdef logFile
-std::ofstream debugLogFile;
-#endif //logFile
 
 Main::~Main() {
 	//TODO
 }
 
-
-
 Main::Main() {
 	//TODO
 }
-
-
-
-
-
 
 #ifdef useNotTestClasses
 int main()
 {
 	std::array<Marker*, 100> marker;
 	std::vector<int> takenIdVec;
-	//bool calibSuccess = true;
-
 	int counter = -1;
 	cv::Mat frame;
 	PlaneCalibration::planeCalibData pcd;
+#ifdef uEYE
 	uEye_input* uei1 = new uEye_input();
 	uei1->inituEyeCam();
 	frame = uei1->getCapturedFrame();
+	if (frame.empty()) {
+		printf("No uEye Camera found. Please check the connection. \n");
+		system("pause");
+		return EXIT_FAILURE;
+	}
+#endif // uEYE
+#ifdef VIDEOVERA
+	//Einbindung Video Vera 
+	cv::VideoCapture cap("C:/Users/Vera/Desktop/3.avi");
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+	cap >> frame;
+#endif // VIDEOVERA
 #ifdef useTCP
 	//start 
 	// uEye Caputure
 	TCP* tcp = new TCP(frame.size());
-	tcp->startTCPServer();
+	int tcpRep = tcp->startTCPServer();
+	if (tcpRep == 1) { system("pause"); return EXIT_FAILURE; }
 	Calibration* calib = new Calibration();
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
-	cv::imshow("test", frame);
-	cv::waitKey(1);
 
 	while (currentStatus != tcp->sceneStart) {
 		calibStatus = tcp->receiveTCPData();
-		if (calibStatus == tcp->sceneStart)  break; 
-
+		if (calibStatus == tcp->sceneStart)  break;
 		printf("calibstatus: %d \n", calibStatus);
 		//SPIELFELDKALIBRIERUNG
 		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -68,9 +63,7 @@ int main()
 				if (currentStatus == tcp->ControlerButtonPressed) {
 					printf("Controller Status : %d \n", currentStatus);
 					frame = uei1->getCapturedFrame();
-							/*cv::imshow("Calib frame", frame);
-							cv::waitKey(1);*/
-							numOfPlaneCorners = calib->catchPlaneMarker(frame);
+					numOfPlaneCorners = calib->catchPlaneMarker(frame);
 					switch (numOfPlaneCorners) {
 					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
 					case 2: {tcp->sendStatus(tcp->ArucoFound2);
@@ -97,113 +90,49 @@ int main()
 				if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
 				else {
 					printf("No Plane Calibration done!");
+					system("pause");
+					return EXIT_FAILURE;
 				}
 			}
 		}
 		currentStatus = tcp->receiveTCPData();
 	}
-
-		tcp->loadLUT();
-		pcd = calib->getPlaneCalibData();
-		tcp->setPCD(pcd);
+	printf("load LUT ...");
+	tcp->loadLUT();
+	printf("...finished LUT loading");
+	pcd = calib->getPlaneCalibData();
+	tcp->setPCD(pcd);
 	delete calib;
 
 #endif 	// TCP
 
-
-#ifdef VIDEOLAURA
-	cv::VideoCapture cap("C:/Users/AR/Desktop/Laura/05_Testmaterial/02.avi");
-	if (!cap.isOpened())  // check if we succeeded
-		return -1;
-	cap >> frame;
-#endif // VIDEOLAURA
-
-#ifdef VIDEOLAURAALIEN
-	VideoCapture cap("C:/Users/student/Desktop/Laura/Testmaterial/001_A_Ohne_Verdeckung.avi");
-	if (!cap.isOpened())  // check if we succeeded
-		return -1;
-	cap >> frame;
-#endif // VIDEOLAURAALIEN
-
-#ifdef VIDEOVERA
-	//Einbindung Video Vera 
-	cv::VideoCapture cap("C:/Users/Vera/Desktop/3.avi");
-	//cv::VideoCapture cap("C:/Users/Vera/Desktop/Aufnahme01.avi");
-	if (!cap.isOpened())  // check if we succeeded
-		return -1;
-	cap >> frame;
-#endif // VIDEOVERA
-
-#ifdef DebugPoseEsti
-	Calibration* calib = new Calibration();
-	int numOfPlaneCorners = 0;
-	int res = calib->runCameraMatrix(uei1);
-	uei1->exitCamera();
-	delete uei1;
-
-#endif // DebugPoseEsti
-
-
-
-
-#ifdef uEYE
-	// uEye Caputure
-	
-	cv::Mat frameCap = uei1->getCapturedFrame();
-	frame = uei1->getCapturedFrame();
-
-#endif //uEYE
 	//first MarkerSize, second Threshold
 	MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
-	cv::namedWindow("edges", cv::WINDOW_NORMAL);
+	cv::namedWindow("debug", cv::WINDOW_NORMAL);
 	MarkerDetection* md = new MarkerDetection();
 
 	while (true) {
+#ifdef runDebug
 		clock_t start, end;
 		counter++;
 		start = clock();
+#endif //runDebug
 
 #ifdef uEYE
-
 		frame = uei1->getCapturedFrame();
-		//frame = frameCap.clone();
-		/*cv::imshow("frame2", frame);
-		cv::waitKey(1);*/
-		/*cv::imshow("frameCap", frameCap);
-		cv::waitKey(1);*/
 #endif // uEYE
-
-#ifdef VIDEOLAURA
-		cap >> frame; // get a new frame from camera
-#endif // VIDEOLAURA
-
-#ifdef VIDEOLAURAALIEN
-		cap >> frame; // get a new frame from camera
-#endif // VIDEOLAURAALIEN
 
 #ifdef VIDEOVERA
 		cap >> frame; // get a new frame from camera
 #endif // VIDEOVERA
 		if (!frame.empty()) {
-			cv::Mat imgDebug=frame.clone();
+			cv::Mat imgDebug = frame.clone();
 			//run Marker Detection			
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-
-				for each (cv::RotatedRect r in rects)
-				{
-					cv::Point2f vert[4];
-					r.points(vert); 
-					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
-					}
-				}
-
-				//run MarkerManagement
-
 				mm->trackMarker(rects, corners, arucoIds, frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
@@ -211,25 +140,22 @@ int main()
 			else {
 				marker = mm->getTrackedMarker();
 			}
-
-		imgDebug = debug(imgDebug, marker, counter, takenIdVec);
-
-			cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
-			rectangle(imgDebug, r, cv::Scalar(0, 0, 255));
-			cv::imshow("edges", imgDebug);
+#ifdef runDebug
+			imgDebug = debug(imgDebug, marker, counter, takenIdVec, cv::Rect(pcd.upperCorner, pcd.lowerCorner));
+			cv::imshow("debug", imgDebug);
 			cv::waitKey(1);
-			//printf("frame sec: %f; nMarker: %d, PosX: %f, PosY: %f \n", 1. / z, takenIdVec.size(), marker[takenIdVec[0]]->getCenter().x, marker[takenIdVec[0]]->getCenter().y);
+#endif //runDebug
 
 #ifdef useTCP
 			//Send Markerdata via TCP
 			tcp->sendTCPData(marker, takenIdVec);
-
-
 #endif // TCP_connection
+#ifdef runDebug
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
-			//printf("fps: %f\r", 1 / z);
+			printf("fps: %f\r", 1 / z);
+#endif //runDebug
 		}
 		else break;
 	}
@@ -249,23 +175,23 @@ int main()
 }
 #endif //useTestClasses
 
-cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec)
+cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec, cv::Rect r)
 {
-#ifdef logFile
-	debugLogFile.open("debugOutput.txt", std::ios::out | std::ios::app);
-	debugLogFile << "Current Frame " << counter << "\n";
-#endif //logFile
 	// Print Frame Number
 	counter++;
 	std::ostringstream os2;
 	os2 << counter;
 	cv::String s2 = os2.str();
 	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-
+	rectangle(frame, r, cv::Scalar(0, 0, 255));
 
 	for each (int id in takenIDVec)
 	{
 		Marker* m = marker[id];
+			cv::Point2f vert[4];
+			m->getRect().points(vert);
+			for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+				line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 		if (m->isVisible() == 1) {
 			std::vector<cv::Point2f>vertices;
 			vertices = m->getPoints();
@@ -273,29 +199,19 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 			float angle = m->getAngle();
 			cv::Point2f c = m->getCenter();
 
-#ifdef logFile 
-			debugLogFile << "\t ID: " << id << "\n";
-			debugLogFile << "\t \t  ANGLE: " << angle << "\n";
-			debugLogFile << "\t \t  CENTER X: " << c.x << " CENTER Y: " << c.y << "\n";
-#endif //logFile
-
 			// Print ID to BoxCenter
 			std::ostringstream os;
 			os << id;
 			cv::String s = os.str();
 
 			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-
 			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
+
+			}
 		}
 
 
 	}
-
-
-#ifdef logFile
-	debugLogFile.close();
-#endif //logFile
 	return frame;
 }
 

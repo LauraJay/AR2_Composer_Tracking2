@@ -33,7 +33,7 @@ int uEye_input::inituEyeCam() {
 	double fps;
 	is_SetFrameRate(hCam, FPS, &NEWFPS);
 
-	double parameter = 35.;
+	double parameter = 40.;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
 	if (error != IS_SUCCESS) {
 		printf("failed Exposure");

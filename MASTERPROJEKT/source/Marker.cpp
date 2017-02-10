@@ -8,8 +8,6 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 	const double PI(3.14159265);
 	cv::Point2f temp = cv::Point(center.x-20, center.y);
 	cv::Point2f unitVector = temp - center;
-	//cv::Point2f unitVector(-100, 0);
-	
 	cv::Point2f orientationVector = angelPoint - center;
 	//Calculate the angle between the unit vector and the vector between the center and the green corner
 	float scalar = (unitVector.x * orientationVector.x) + (unitVector.y * orientationVector.y);
@@ -26,10 +24,7 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 
-   // angleGrad -= ((int)angleGrad % 2);
-//	angleGrad = angleRad * 180 / PI;
 	angleGrad -= 45;
-	printf("Marker Angle: %f  \r", roundf(angleGrad * 10) / 10);
 	return  roundf(angleGrad * 10) / 10;
 }
 
@@ -65,7 +60,7 @@ void Marker::clear() {
 	
 	isVis = 1;
 	arucoID = 0;
-	id=0;
+	id=-1;
 	angle = 0.;
 	rect = cv::RotatedRect();
 	motionCenterVec = cv::Point2f();

@@ -16,7 +16,6 @@ Calibration::Calibration()
 
 int Calibration::runPoseEstimation(uEye_input* uei)
 {
-	//int ret =1;
 	int ret = pe->generateCamMatAndDistMat(uei);
 	pe->loadSavedDistCoeff();
 	int rep = pe->generateCam2WorldLUT(pcd);
@@ -30,8 +29,6 @@ int Calibration::runPoseEstimation(uEye_input* uei)
 	cv::Mat dst, image;
 	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
 	remap(image, dst, map1, map2, cv::INTER_LINEAR);
-	//cv::undistort(image, dst, pe->getCameraMat(), pe->getDistCoeffs());
-
 	cv::imwrite("UeyeDistCoeffs.jpg", dst);
 	cv::imshow("undistortedImg", dst);
 	cv::waitKey(0);

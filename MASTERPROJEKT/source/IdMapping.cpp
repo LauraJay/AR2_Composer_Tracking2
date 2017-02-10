@@ -41,8 +41,6 @@ std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect 
 
 int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
-	/*myfile2.open("isConstant.txt", std::ios::out | std::ios::app);
-	myfile2 << "Next Frame " << "\n";*/
 	bool isConstant = false;
 	int  matchID = 0;
 	float tCenterConstant = 10;
@@ -54,12 +52,9 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 		cv::Point2f mvC = motionCenterVecs[i];
 		if (abs(mvC.x + mvC.y) <= tCenterConstant) {
 			isConstant = true;
-			/*myfile2 << "\t Schleifenabbruch bei " << c << "\n";
-			myfile2 << "\t isConstant auf true gesetzt \n";*/
-		}
+			}
 		else {
 			isConstant = false;
-			//myfile2 << "\t Schleifendurchlauf " << c << "\n";
 		}
 		if (isConstant && arucoID == -1) {
 			isConstant = true;

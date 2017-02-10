@@ -1,16 +1,13 @@
 #pragma once
 #include <opencv2/opencv.hpp>
-#include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <Marker.h>
 #include<PlaneCalibration.h>
 #include <MarkerManagement.h>
 
 class IdMapping{
 
 private:
-	std::ofstream myfile2;
 	bool computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f c, cv::Point2f p);
 	
 public:

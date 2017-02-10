@@ -41,7 +41,8 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 		cv::Point(erosion_size, erosion_size));
 
 	morphologyEx(output, output, cv::MORPH_OPEN, element, cv::Point(-1, -1));
-	//morphologyEx(output, output, cv::MORPH_CLOSE, element, cv::Point(-1, -1));
+	cv::imshow("Threshold", output);
+	cv::waitKey(1);
 	return output;
 }
 
@@ -73,37 +74,30 @@ void MarkerDetection::initArucoParams()
 	showRejected = false; // zeigt die fehlerhaften Marker
 	markerLength = 0.025; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
-	detectorParams->doCornerRefinement = true; // do corner refinement in markers
+	detectorParams->doCornerRefinement = false; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
 	}
 
 
 
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
-	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
-	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
+	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams);
+	//std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
 	/*if (arucoIds.size() > 0)
 	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);*/
 
+	//// draw results TODEBUG
+	//cv::Mat imageCopy;
+	//frame.copyTo(imageCopy);
+	//if (arucoIds.size() > 0) {
+	//	cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
+	//		for (unsigned int i = 0; i < arucoIds.size(); i++)
+	//			cv::circle(imageCopy, corners[i][0], 3, cv::Scalar(255, 0, 255));
+	//	
+	//}
 
-
-	// draw results TODEBUG
-	cv::Mat imageCopy;
-	frame.copyTo(imageCopy);
-	if (arucoIds.size() > 0) {
-		cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
-			for (unsigned int i = 0; i < arucoIds.size(); i++)
-				//cv::aruco::drawAxis(imageCopy, camMatrix, distCoeffs, rvecs[i], tvecs[i],
-					//markerLength * 0.5f);
-		cv::circle(imageCopy, corners[i][0], 3, cv::Scalar(255, 0, 255));
-		
-	}
-
-	if (showRejected && rejected.size() > 0)
-		cv::aruco::drawDetectedMarkers(imageCopy, rejected, cv::noArray(), cv::Scalar(100, 0, 255));
-
-	imshow("corners", imageCopy);
-	cv::waitKey(1);
+	/*imshow("corners", imageCopy);
+	cv::waitKey(1);*/
 
 }
 
