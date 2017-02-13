@@ -75,31 +75,40 @@ int main()
 					default:tcp->sendStatus(tcp->ArucoNotFound);
 					}
 				}
-			}
-			//BEIDE KALIBRIERUNGEN
-			if (calibStatus == tcp->planeAndPoseCalib) {
-				int res = calib->runPoseEstimation(uei1);
-				if (res > -1)	tcp->sendStatus(tcp->PoseCalibDone);
-				else {
-					printf("No Pose Calibration done!");
+				else if(currentStatus == tcp->BreakProcess){
+					int numOfPlaneCorners = 0;
+					bool PlaneCalibDone = false;
+					calibStatus = -1;
+					
+					break;
 				}
 			}
-			// Nur Spielfeld Kalibrierung
-			else {
-				int res = calib->generateCam2WorldLUT();
-				if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
+			//BEIDE KALIBRIERUNGEN
+			if (currentStatus != tcp->BreakProcess) {
+				if (calibStatus == tcp->planeAndPoseCalib) {
+					int res = calib->runPoseEstimation(uei1);
+					if (res > -1)	tcp->sendStatus(tcp->PoseCalibDone);
+					else {
+						printf("No Pose Calibration done!\n");
+					}
+				}
+				// Nur Spielfeld Kalibrierung
 				else {
-					printf("No Plane Calibration done!");
-					system("pause");
-					return EXIT_FAILURE;
+					int res = calib->generateCam2WorldLUT();
+					if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
+					else {
+						printf("No Plane Calibration done!\n");
+						system("pause");
+						return EXIT_FAILURE;
+					}
 				}
 			}
 		}
 		currentStatus = tcp->receiveTCPData();
 	}
-	printf("load LUT ...");
+	printf("load LUT ...\n");
 	tcp->loadLUT();
-	printf("...finished LUT loading");
+	printf("...finished LUT loading \n");
 	pcd = calib->getPlaneCalibData();
 	tcp->setPCD(pcd);
 	delete calib;
@@ -131,8 +140,19 @@ int main()
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+
+				for each (cv::RotatedRect r in rects)
+				{
+					cv::Point2f vert[4];
+					r.points(vert);
+					for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+						line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(0, 0, 255), 1, CV_AA);
+					}
+				}
+
 				mm->trackMarker(rects, corners, arucoIds, frame.size());
 				marker = mm->getTrackedMarker();
 				takenIdVec = mm->getTakenIDVec();
@@ -148,13 +168,13 @@ int main()
 
 #ifdef useTCP
 			//Send Markerdata via TCP
-			tcp->sendTCPData(marker, takenIdVec);
+			tcp->sendTCPData(marker, takenIdVec, frame);
 #endif // TCP_connection
 #ifdef runDebug
 			end = clock();
 			float z = end - start;
 			z /= CLOCKS_PER_SEC;
-			printf("fps: %f\r", 1 / z);
+			//printf("fps: %f\r", 1 / z);
 #endif //runDebug
 		}
 		else break;
@@ -183,7 +203,19 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	os2 << counter;
 	cv::String s2 = os2.str();
 	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-	rectangle(frame, r, cv::Scalar(0, 0, 255));
+	rectangle(frame, r, cv::Scalar(0, 0, 255),2);
+
+
+	
+	int x1 = frame.size().width*(1. / 6);
+	int y1 = frame.size().height*(1. / 6);
+	int x2 = frame.size().width*(2. / 6);
+	int y2 = frame.size().height*(2. / 6);
+	cv::Rect unsharp = cv::Rect(cv::Point(x2, y2), cv::Point(frame.size().width - x2, frame.size().height - y2));
+	rectangle(frame, unsharp, cv::Scalar(0, 255, 0),2);
+	cv:: Rect unsharp2 = cv::Rect(cv::Point(x1, y1), cv::Point(frame.size().width - x1, frame.size().height - y1));
+	rectangle(frame, unsharp2, cv::Scalar(0, 255, 0),2);
+
 
 	for each (int id in takenIDVec)
 	{

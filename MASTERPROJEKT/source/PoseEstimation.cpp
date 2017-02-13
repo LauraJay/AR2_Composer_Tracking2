@@ -103,9 +103,9 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 			size = frame.size();
 		}
 	}
-	printf("Starting CamParam computation.");
+	printf("Starting CamParam computation.\n");
 	if (allIds.size() < 1) {
-		std::cerr << "Not enough captures for calibration" << std::endl;
+		std::cerr << "Not enough captures for calibration\n" << std::endl;
 		return -1;
 	}
 
@@ -131,7 +131,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 		}
 	}
 
-	std::ofstream myfile;
+	/*std::ofstream myfile;
 	myfile.open("logPoseEstihgk.txt", std::ios::out | std::ios::app);
 	myfile << "\t size of allIdsConcatenated: " << allIdsConcatenated.size() << "\n";
 	myfile << "\t size of allCornersConcatenated: " << allCornersConcatenated.size() << "\n";
@@ -160,7 +160,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 	for (size_t i = 0; i < markerCounterPerFrame.size(); i++)
 	{
 		myfile << markerCounterPerFrame[i] << "\n";
-	}
+	}*/
 	// calibrate camera using cv::aruco markers
 	double arucoRepErr;
 	arucoRepErr = cv::aruco::calibrateCameraAruco(allCornersConcatenated, allIdsConcatenated,
@@ -459,17 +459,20 @@ cv::Mat3f PoseEstimation::computeCamera2WorldLut()
 {
 	std::cout << "Starting LUT computation. This takes some minutes." << std::endl;
 	cv::Mat3f lut = cv::Mat3f(size);
-	for (int x = 0; x < size.width; x++)
-	{
+	for (int x1 = 0; x1 < size.width; x1++)
+	{ 
+		if (x1 == 1024) {
+			printf("");
+		}
 		for (int y = 0; y < size.height; y++)
 		{
-			cv::Point3f p = PoseEstimation::computeWordCoordinates(cv::Point2f(x,y), rotationMatrix, cameraMatrix, tvec);
-			lut.at<cv::Vec3f>(x, y)[0] = p.x;
-			lut.at<cv::Vec3f>(x, y)[1] = p.y;
-			lut.at<cv::Vec3f>(x, y)[2] = p.z;
+			cv::Point3f p = PoseEstimation::computeWordCoordinates(cv::Point2f(x1,y), rotationMatrix, cameraMatrix, tvec);
+			lut.at<cv::Vec3f>(y,x1)[0] = (int)(p.x * 10000 + 0.5) / 10000.0;
+			lut.at<cv::Vec3f>(y,x1)[1] = (int)(p.y * 10000 + 0.5) / 10000.0;
+			lut.at<cv::Vec3f>(y,x1)[2] = 0.;
 		}
 	}
-	std::cout << "Finished LUT computation." << std::endl;
+	std::cout << "Finished LUT computation.\n" << std::endl;
 	return lut;
 }
 
@@ -536,7 +539,7 @@ bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imag
 	fs << "camera_matrix" << cameraMatrix;
 	//fs << "distortion_coefficients" << distCoeffs;
 	fs << "avg_reprojection_error" << totalAvgErr;
-	printf("CamParams Saved");
+	printf("CamParams Saved\n");
 	return true;
 }
 

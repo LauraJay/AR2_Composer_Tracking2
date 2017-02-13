@@ -6,6 +6,8 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 	float angleRad;
 	float angleGrad;
 	const double PI(3.14159265);
+	/*angelPoint.x = angelPoint.x - ((int)angelPoint.x % 2);
+	angelPoint.y = angelPoint.y - ((int)angelPoint.y % 2);*/
 	cv::Point2f temp = cv::Point(center.x-20, center.y);
 	cv::Point2f unitVector = temp - center;
 	cv::Point2f orientationVector = angelPoint - center;
@@ -24,8 +26,9 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 
-	angleGrad -= 45;
-	return  roundf(angleGrad * 10) / 10;
+	//angleGrad -= 45;
+	if (angleGrad < 0) angleGrad  = 360 + angleGrad;
+	return  (int) angleGrad;
 }
 
 Marker::Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint)

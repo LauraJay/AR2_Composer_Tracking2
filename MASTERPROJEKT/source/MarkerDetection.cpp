@@ -34,15 +34,14 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
-	inRange(output, cv::Scalar(60, 120, 10), cv::Scalar(85, 255, 255), output);
-	int erosion_size = 3;
+	inRange(output, cv::Scalar(60, 120, 15), cv::Scalar(85, 255, 255), output);
+	cv::medianBlur(output, output, 3);
+	/*int erosion_size = 3;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
 		cv::Point(erosion_size, erosion_size));
 
-	morphologyEx(output, output, cv::MORPH_OPEN, element, cv::Point(-1, -1));
-	cv::imshow("Threshold", output);
-	cv::waitKey(1);
+	morphologyEx(output, output, cv::MORPH_OPEN, element, cv::Point(-1, -1));*/
 	return output;
 }
 
@@ -52,17 +51,23 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	std::vector<cv::Point> points;
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
-	cv::Canny(colorThresImg, colorThresImg, 1000, 1500, 3);
+	cv::Canny(colorThresImg, colorThresImg, 1200, 2000, 5);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
+	cv::imshow("Canny", colorThresImg);
+	cv::waitKey(1);
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;
 	for (int i = 0; i < contours.size(); i++)
 	{
-		approxPolyDP(cv::Mat(contours[i]), contours_poly[i], 0.01, true);
+		approxPolyDP(cv::Mat(contours[i]), contours_poly[i], 0.1, true);
 		cv::RotatedRect r = minAreaRect(cv::Mat(contours_poly[i]));
 		r.center = cv::Point2i(r.center);
 		r.size = cv::Size2i(r.size);
-		if (r.size.height>10 && r.size.width>10) box.push_back(r);
+		if (r.size.height>30 && r.size.width>30) box.push_back(r);
+		/*if (r.size.width > 55 || r.size.width < 45 || r.size.height > 55 || r.size.height < 45) {
+			if (r.size.height>30 && r.size.width>30)
+			printf("");
+		}*/
 	}
 
 	return box;

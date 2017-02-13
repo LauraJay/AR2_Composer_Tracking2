@@ -33,9 +33,6 @@
     <ClInclude Include="..\..\source\PoseEstimation.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\MarkerSizeCalibration.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\TCP.h">
       <Filter>source</Filter>
     </ClInclude>
@@ -74,9 +71,6 @@
     <ClCompile Include="..\..\source\PoseEstimation.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\CreateCharucoBoard.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -84,8 +78,5 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\PoseEstimationExample.cpp" />
-    <ClCompile Include="..\..\source\PSEyeTest.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@ private:
 	void registerNewMarker(cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint);
 	int findMatchID(int arucoID);
 	PlaneCalibration::planeCalibData pcd;
+	int getAngleThreshold(cv::Point2f center);
 	
 	
 protected:

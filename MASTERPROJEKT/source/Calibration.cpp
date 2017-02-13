@@ -1,7 +1,5 @@
 #include "Calibration.h"
 
-
-
 Calibration::~Calibration()
 {
 	delete pc;
@@ -35,7 +33,6 @@ int Calibration::runPoseEstimation(uEye_input* uei)
 
 	return ret;
 }
-
 
 int Calibration::catchPlaneMarker(cv::Mat frame)
 {

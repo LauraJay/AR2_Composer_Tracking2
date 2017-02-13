@@ -86,8 +86,8 @@ void TCP::sendStatus(int status) {
 
 }
 
-void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec) {
-	getPointerOfMarkerVec(allMarkers, takenIdVec);
+void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
+	getPointerOfMarkerVec(allMarkers, takenIdVec, frame);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2004, 0);
 	//printf("Data sent...\n");
@@ -103,7 +103,13 @@ int TCP::receiveTCPData() {
 	return m[0].isCalibrated;
 }
 
-void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec) {
+void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
+
+	// TO DEBUG
+	cv::Mat debug = frame.clone();
+	debug.setTo(cv::Scalar(255, 255, 255));
+
+
 	//printf("Num Marker %d \r", takenIdVec.size());
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
@@ -114,28 +120,53 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 
 	for (int i = 0; i < allMarkers.size(); i++) {
 		ms[i].id = allMarkers[i]->getId();
-		myfile << "\t tid " << ms[i].id << "\n";
-		myfile2 << "\t tid " << ms[i].id << "\n";
+		if (allMarkers[i]->getId() > 0) 
+			cv::circle(debug,allMarkers[i]->getCenter(),9,cv::Scalar(255,0,0));
+
+		if (allMarkers[i]->getId() > 0)myfile << "\t tid " << ms[i].id << "\n";
+		if (allMarkers[i]->getId() > 0)myfile2 << "\t tid " << ms[i].id << "\n";
 		//// For Simple Normalisation
 		cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
-		//ms[i - 1].posX = r.center.x;
-		myfile << "\t posX " << ms[i].posX << "\n";
-		//ms[i - 1].posY = r.center.y;
-		myfile << "\t posY " << ms[i].posY << "\n";
-
+		if (allMarkers[i]->getId() > 0) { 
+			
+			//printf("Before coord: %f, %f; ", center.x, center.y);
+			r.center.x *=  pcd.size.width;
+			r.center.y *= pcd.size.height;
+			r.center.x += pcd.size.width;
+			r.center.y += pcd.size.height;
+			//printf("Normalized coord: %f, %f; ", center.x, center.y);
+			cv::circle(debug, r.center, 7, cv::Scalar(0, 255, 0)); 
+				
+		}
+			//ms[i - 1].posX = r.center.x;
+		if (allMarkers[i]->getId() > 0)	myfile << "\t posX " << r.center.x << "\n";
+			//ms[i - 1].posY = r.center.y;
+		if (allMarkers[i]->getId() > 0)	myfile << "\t posY " << r.center.y << "\n";
+		
 		cv::Vec3f center = computeCamera2World(allMarkers[i]->getRect().center);
 		ms[i].posX = center[0];
-		myfile2 << "\t posX " << ms[i].posX << "\n";
+		if (allMarkers[i]->getId() > 0)myfile2 << "\t posX " << ms[i].posX << "\n";
 		ms[i].posY = center[1];
-		myfile2 << "\t posY " << ms[i].posY << "\n";
+		if (allMarkers[i]->getId() > 0)myfile2 << "\t posY " << ms[i].posY << "\n";
+		
+		if (allMarkers[i]->getId() > 0) {
 
+			//printf("Before coord: %f, %f; ", center.x, center.y);
+			center[0] *= pcd.size.width;
+			center[1] *= pcd.size.height;
+			center[0] -= pcd.size.width;
+			center[1] -= pcd.size.height;
+			//printf("Normalized coord: %f, %f; ", center.x, center.y);
+			cv::circle(debug, cv::Point(center[0], center[1]), 5, cv::Scalar(0, 0, 255));
+
+		}
 
 		ms[i].angle = allMarkers[i]->getAngle();
-		myfile << "\t angle " << ms[i].angle << "\n";
-		myfile2 << "\t angle " << ms[i].angle << "\n";
+		if (allMarkers[i]->getId() > 0)myfile << "\t angle " << ms[i].angle << "\n";
+		if (allMarkers[i]->getId() > 0)myfile2 << "\t angle " << ms[i].angle << "\n";
 		ms[i].isVisible = allMarkers[i]->isVisible();
-		myfile << "\t isVisible " << ms[i].isVisible << "\n";
-		myfile2 << "\t isVisible " << ms[i].isVisible << "\n";
+		if (allMarkers[i]->getId() > 0)myfile << "\t isVisible " << ms[i].isVisible << "\n";
+		if (allMarkers[i]->getId() > 0)myfile2 << "\t isVisible " << ms[i].isVisible << "\n";
 
 	}
 
@@ -169,6 +200,9 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	//}
 	//Last id is -1 to show the end of information per frame
 	//ms[takenIdVec.size()].id = -2;
+
+	cv::imshow("normcoords", debug);
+	cv::waitKey(1);
 	myfile.close();
 	myfile2.close();
 }
@@ -219,7 +253,7 @@ bool TCP::readCameraParameters(std::string filename, cv::Mat3f &lut) {
 cv::Vec3f TCP::computeCamera2World(cv::Point2f point)
 {
 	cv::Vec3f worldCenter = cv::Vec3f();
-	worldCenter = lut.at<cv::Vec3f>(point.x,point.y);
+	worldCenter = lut.at<cv::Vec3f>(point.y,point.x);
 	worldCenter[2] = 0.;
 	return worldCenter;
 }

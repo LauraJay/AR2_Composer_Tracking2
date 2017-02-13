@@ -131,11 +131,9 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\Marker.cpp" />
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
-    <ClCompile Include="..\..\source\MarkerSizeCalibration.cpp" />
     <ClCompile Include="..\..\source\PlaneCalibration.cpp" />
     <ClCompile Include="..\..\source\PoseEstimation.cpp" />
     <ClCompile Include="..\..\source\PoseEstimationExample.cpp" />
-    <ClCompile Include="..\..\source\PSEyeTest.cpp" />
     <ClCompile Include="..\..\source\TCP.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
     <ClCompile Include="Aruco_Maker_Detection.cpp" />
@@ -147,7 +145,6 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClInclude Include="..\..\source\Marker.h" />
     <ClInclude Include="..\..\source\MarkerDetection.h" />
     <ClInclude Include="..\..\source\MarkerManagement.h" />
-    <ClInclude Include="..\..\source\MarkerSizeCalibration.h" />
     <ClInclude Include="..\..\source\PlaneCalibration.h" />
     <ClInclude Include="..\..\source\PoseEstimation.h" />
     <ClInclude Include="..\..\source\TCP.h" />

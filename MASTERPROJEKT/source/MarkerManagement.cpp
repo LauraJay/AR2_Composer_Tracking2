@@ -32,7 +32,10 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 		int matchID = 0;
 		int arucoID = 0;
 		int rep = 0;
-
+	/*	if (r.size.width > 55 || r.size.width < 45 || r.size.height > 55 || r.size.height < 45) {
+			continue;
+		}*/
+		
 		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(r, trackedMarker, takenIDVec);
 
 		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
@@ -128,10 +131,27 @@ int MarkerManagement::findMatchID(int arucoID)
 }
 
 void MarkerManagement::CurrentMarkerWAruco(Marker* tm, cv::RotatedRect rect, int arucoID, cv::Point2f anglePoint) {
+	float currentAngle = tm->getAngle();
 	tm->setRectWithAngle(rect, anglePoint);
+	if (std::abs(tm->getAngle() - currentAngle) < getAngleThreshold(rect.center)) 	tm->setAngle(currentAngle);
 	if (arucoID > 0)tm->setArucoID(arucoID);
 	tm->setTracked(1);
 	tm->setVisible(1);
+}
+
+int MarkerManagement::getAngleThreshold(cv::Point2f center) {
+
+	cv::Rect r;
+	int x1 = frameSize.width*(1. / 6);
+	int y1 = frameSize.height*(1. / 6);
+	int x2 = frameSize.width*(2. / 6);
+	int y2 = frameSize.height*(2. / 6);
+	r = cv::Rect(cv::Point(x2, y2), cv::Point(frameSize.width - x2, frameSize.height - y2));
+	if (r.contains(center)) { printf("treshold = 2 \r"); return 2; }
+	r = cv::Rect(cv::Point(x1, y1), cv::Point(frameSize.width - x1, frameSize.height - y1));
+	if (r.contains(center)) { printf("treshold = 4 \r"); return 4; }
+	printf("treshold = 5 \r");
+	return 5;
 }
 
 void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
