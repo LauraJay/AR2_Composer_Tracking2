@@ -29,4 +29,4 @@ public:
 	int generatePlaneCalib();
 	int generateCam2WorldLUT();
 	PlaneCalibration::planeCalibData getPlaneCalibData();
-};
+	};

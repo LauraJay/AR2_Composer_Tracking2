@@ -29,7 +29,7 @@ int Calibration::runPoseEstimation(uEye_input* uei)
 	remap(image, dst, map1, map2, cv::INTER_LINEAR);
 	cv::imwrite("UeyeDistCoeffs.jpg", dst);
 	cv::imshow("undistortedImg", dst);
-	cv::waitKey(0);
+	cv::waitKey(1);
 
 	return ret;
 }
@@ -60,5 +60,6 @@ PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
 	if (pcd.size.width == 0 && pcd.size.height==0)pcd = pc->loadImagePlane();
 	return pcd;
 }
+
 
 

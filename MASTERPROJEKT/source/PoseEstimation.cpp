@@ -91,7 +91,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 
 		putText(imageCopy, "Press 'c' to add current frame. 'ESC' to finish and calibrate",
 			cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 0), 2);
-
+		
 		imshow("out", imageCopy);
 		char key = (char)cv::waitKey(10);
 		if (key == 27) break;
@@ -103,6 +103,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 			size = frame.size();
 		}
 	}
+	//cv::destroyWindow("out");
 	printf("Starting CamParam computation.\n");
 	if (allIds.size() < 1) {
 		std::cerr << "Not enough captures for calibration\n" << std::endl;

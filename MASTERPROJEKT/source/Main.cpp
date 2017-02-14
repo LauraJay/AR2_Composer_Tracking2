@@ -4,7 +4,7 @@
 #define useTCP
 #define uEYE
 #define useNotTestClasses
-#define runDebug
+//#define runDebug
 
 int currentStatus = -1;
 int calibStatus = -1;
@@ -52,9 +52,10 @@ int main()
 	int numOfPlaneCorners = 0;
 	bool PlaneCalibDone = false;
 
-	while (currentStatus != tcp->sceneStart) {
-		calibStatus = tcp->receiveTCPData();
-		if (calibStatus == tcp->sceneStart)  break;
+	while (true) {
+		currentStatus = tcp->receiveTCPData();
+		if (currentStatus == tcp->sceneStart)  break;
+		calibStatus = currentStatus;
 		printf("calibstatus: %d \n", calibStatus);
 		//SPIELFELDKALIBRIERUNG
 		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -70,26 +71,24 @@ int main()
 						int rep = calib->generatePlaneCalib();
 						if (rep == -1) printf("Generation of Plane failed. \n");
 						PlaneCalibDone = true;
+						break;
 					}
-							break;
 					default:tcp->sendStatus(tcp->ArucoNotFound);
 					}
 				}
-				else if(currentStatus == tcp->BreakProcess){
-					int numOfPlaneCorners = 0;
-					bool PlaneCalibDone = false;
-					calibStatus = -1;
-					
-					break;
-				}
 			}
 			//BEIDE KALIBRIERUNGEN
-			if (currentStatus != tcp->BreakProcess) {
+			if (currentStatus != tcp->reCalib) {
 				if (calibStatus == tcp->planeAndPoseCalib) {
+					tcp->sendStatus(tcp->PlaneCalibDone);
 					int res = calib->runPoseEstimation(uei1);
-					if (res > -1)	tcp->sendStatus(tcp->PoseCalibDone);
+					if (res > -1)	
+						tcp->sendStatus(tcp->PoseCalibDone);
+						
 					else {
 						printf("No Pose Calibration done!\n");
+						system("pause");
+						return EXIT_FAILURE;
 					}
 				}
 				// Nur Spielfeld Kalibrierung
@@ -104,7 +103,15 @@ int main()
 				}
 			}
 		}
-		currentStatus = tcp->receiveTCPData();
+
+		else if (currentStatus == tcp->reCalib) {
+			numOfPlaneCorners = 0;
+			PlaneCalibDone = false;
+			calibStatus = -1;
+			delete calib;
+			calib = new Calibration();
+			cv::destroyWindow("undistortedImg");
+			}
 	}
 	printf("load LUT ...\n");
 	tcp->loadLUT();
@@ -114,7 +121,7 @@ int main()
 	delete calib;
 
 #endif 	// TCP
-
+	//cv::destroyWindow("undistortedImg");
 	//first MarkerSize, second Threshold
 	MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
 	cv::namedWindow("debug", cv::WINDOW_NORMAL);
@@ -203,41 +210,41 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	os2 << counter;
 	cv::String s2 = os2.str();
 	putText(frame, s2, cv::Point(100, 100), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-	rectangle(frame, r, cv::Scalar(0, 0, 255),2);
+	rectangle(frame, r, cv::Scalar(0, 0, 255), 2);
 
 
-	
+
 	int x1 = frame.size().width*(1. / 6);
 	int y1 = frame.size().height*(1. / 6);
 	int x2 = frame.size().width*(2. / 6);
 	int y2 = frame.size().height*(2. / 6);
 	cv::Rect unsharp = cv::Rect(cv::Point(x2, y2), cv::Point(frame.size().width - x2, frame.size().height - y2));
-	rectangle(frame, unsharp, cv::Scalar(0, 255, 0),2);
-	cv:: Rect unsharp2 = cv::Rect(cv::Point(x1, y1), cv::Point(frame.size().width - x1, frame.size().height - y1));
-	rectangle(frame, unsharp2, cv::Scalar(0, 255, 0),2);
+	rectangle(frame, unsharp, cv::Scalar(0, 255, 0), 2);
+	cv::Rect unsharp2 = cv::Rect(cv::Point(x1, y1), cv::Point(frame.size().width - x1, frame.size().height - y1));
+	rectangle(frame, unsharp2, cv::Scalar(0, 255, 0), 2);
 
 
 	for each (int id in takenIDVec)
 	{
 		Marker* m = marker[id];
-			cv::Point2f vert[4];
-			m->getRect().points(vert);
-			for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-				line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
-		if (m->isVisible() == 1) {
-			std::vector<cv::Point2f>vertices;
-			vertices = m->getPoints();
-			int id = m->getId();
-			float angle = m->getAngle();
-			cv::Point2f c = m->getCenter();
+		cv::Point2f vert[4];
+		m->getRect().points(vert);
+		for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+			line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+			if (m->isVisible() == 1) {
+				std::vector<cv::Point2f>vertices;
+				vertices = m->getPoints();
+				int id = m->getId();
+				float angle = m->getAngle();
+				cv::Point2f c = m->getCenter();
 
-			// Print ID to BoxCenter
-			std::ostringstream os;
-			os << id;
-			cv::String s = os.str();
+				// Print ID to BoxCenter
+				std::ostringstream os;
+				os << id;
+				cv::String s = os.str();
 
-			putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
-			circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
+				putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);
+				circle(frame, m->getCenter(), 4, cv::Scalar(0, 255, 0));
 
 			}
 		}

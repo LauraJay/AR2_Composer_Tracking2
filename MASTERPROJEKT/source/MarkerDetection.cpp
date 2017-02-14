@@ -53,8 +53,8 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	std::vector<cv::Vec4i> hierarchy;
 	cv::Canny(colorThresImg, colorThresImg, 1200, 2000, 5);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
-	cv::imshow("Canny", colorThresImg);
-	cv::waitKey(1);
+	/*cv::imshow("Canny", colorThresImg);
+	cv::waitKey(1);*/
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;
 	for (int i = 0; i < contours.size(); i++)

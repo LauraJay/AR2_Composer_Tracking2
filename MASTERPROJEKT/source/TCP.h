@@ -24,7 +24,7 @@ public:
 	};
 
 
-	enum TCPstatus { planeAndPoseCalib, planeOnlyCalib, sceneStart, PlaneCalibDone,PoseCalibDone, ControlerButtonPressed, ArucoFound1, ArucoFound2, ArucoNotFound, BreakProcess};
+	enum TCPstatus { planeAndPoseCalib, planeOnlyCalib, sceneStart, PlaneCalibDone,PoseCalibDone, ControlerButtonPressed, ArucoFound1, ArucoFound2, ArucoNotFound, reCalib};
 
 
 

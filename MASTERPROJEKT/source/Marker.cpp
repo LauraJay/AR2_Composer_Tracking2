@@ -26,7 +26,7 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 		angleGrad = 360 - (angleRad * 180 / PI);
 	}
 
-	//angleGrad -= 45;
+	angleGrad -= 45;
 	if (angleGrad < 0) angleGrad  = 360 + angleGrad;
 	return  (int) angleGrad;
 }
