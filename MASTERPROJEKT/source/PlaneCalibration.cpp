@@ -2,7 +2,7 @@
 
 void PlaneCalibration::initAruco() {
 	dictionaryId = cv::aruco::DICT_4X4_50;
-	markerLength = 0.019; // size of outprinted Marker
+	markerLength = 0.025; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
@@ -37,14 +37,19 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	// draw results
 		//if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
 	for (int i = 0; i < arucoIds.size(); i++) {
-
 		int ID = arucoIds.at(i);
 		if (ID == 10) {
+        cv::Point2f baricenter(0, 0);
 			std::vector<cv::Point2f> p = corners.at(i);
-			float centerX, centerY;
-			cv::Point2f d1 = (p[2] - p[0]);
-			cv::Point2f c = (d1)/2+p[0];
-			markerPositions.push_back(c); 
+        for (int i = 0; i < p.size(); i++)
+            baricenter += p[i];
+
+
+            baricenter.x /= p.size();
+            baricenter.y /= p.size();
+		/*	cv::Point2f d1 = (p[2] - p[0]);
+			cv::Point2f c = (d1)/2+p[0];*/
+			markerPositions.push_back(baricenter);
 			foundID = true;
 			break;	// Corner 1 is upper right corner of marker, which
 		}
@@ -82,7 +87,7 @@ int PlaneCalibration::computePlaneCalibration() {
 		pcd.upperCorner = markerPositions[1];
 		pcd.lowerCorner = markerPositions[0];
 	}
-	pcd.size = cv::Size(std::abs(pcd.upperCorner.x - pcd.lowerCorner.x), pcd.lowerCorner.y - pcd.upperCorner.y);
+	pcd.size = cv::Size(pcd.upperCorner.x - pcd.lowerCorner.x, pcd.lowerCorner.y - pcd.upperCorner.y);
 		calibFile.open("TrackingPlaneCalibration.txt", std::ios::out);
 		if (calibFile.is_open()) {
 			calibFile << pcd.upperCorner.x << "\n";

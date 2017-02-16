@@ -415,7 +415,7 @@ void PoseEstimation::computeCamera2World(PlaneCalibration::planeCalibData pcd)
 	imagePlane = getImagePlane(pcd);
 	std::vector<cv::Point3f> worldPlane;
 	worldPlane.push_back(cv::Point3f(0.0, 0.0,0.));
-	worldPlane.push_back(cv::Point3f(1.0, 0.0, 0.));
+	worldPlane.push_back(cv::Point3f(1.0, 0.0,0.));
 	worldPlane.push_back(cv::Point3f(0.0, 1.0,0.));
 	worldPlane.push_back(cv::Point3f(1.0, 1.0,0.));
 	cv::Mat1d rvec = cv::Mat1d(cv::Size(3,1));
@@ -448,10 +448,10 @@ std::vector<cv::Point2f> PoseEstimation::getImagePlane(PlaneCalibration::planeCa
 	y1 = pcd.upperCorner.y;
 	y2 = pcd.lowerCorner.y;
 
-	imagePlane.push_back(cv::Point(x2, y1));
-	imagePlane.push_back(cv::Point(x1, y1));
-	imagePlane.push_back(cv::Point(x2,y2));
-	imagePlane.push_back(cv::Point(x1, y2));
+	imagePlane.push_back(cv::Point(x2, y1)); // l o
+	imagePlane.push_back(cv::Point(x1, y1)); // r 0
+	imagePlane.push_back(cv::Point(x2,y2)); // l u
+	imagePlane.push_back(cv::Point(x1, y2)); // ru
 	
 	return imagePlane;
 }
@@ -468,8 +468,10 @@ cv::Mat3f PoseEstimation::computeCamera2WorldLut()
 		for (int y = 0; y < size.height; y++)
 		{
 			cv::Point3f p = PoseEstimation::computeWordCoordinates(cv::Point2f(x1,y), rotationMatrix, cameraMatrix, tvec);
-			lut.at<cv::Vec3f>(y,x1)[0] = (int)(p.x * 10000 + 0.5) / 10000.0;
-			lut.at<cv::Vec3f>(y,x1)[1] = (int)(p.y * 10000 + 0.5) / 10000.0;
+			/*lut.at<cv::Vec3f>(y,x1)[0] = (int)(p.x * 10000 + 0.5) / 10000.0;
+			lut.at<cv::Vec3f>(y,x1)[1] = (int)(p.y * 10000 + 0.5) / 10000.0;*/
+            lut.at<cv::Vec3f>(y, x1)[0] = p.x;
+            lut.at<cv::Vec3f>(y, x1)[1] = p.y;
 			lut.at<cv::Vec3f>(y,x1)[2] = 0.;
 		}
 	}

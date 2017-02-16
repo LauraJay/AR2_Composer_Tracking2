@@ -28,8 +28,8 @@ public:
 	int PlaneCalibration::getSizeOfMarkerPos();
 	PlaneCalibration::planeCalibData loadImagePlane();
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
-private:
 	std::vector<cv::Point2f> markerPositions;
+private:
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;
 	cv::Point2f upperRight;

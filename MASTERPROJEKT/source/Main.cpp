@@ -4,7 +4,7 @@
 #define useTCP
 #define uEYE
 #define useNotTestClasses
-//#define runDebug
+#define runDebug
 
 int currentStatus = -1;
 int calibStatus = -1;
@@ -230,7 +230,7 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 		cv::Point2f vert[4];
 		m->getRect().points(vert);
 		for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-			line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
+			//line(frame, vert[i], vert[(i + 1) % 4], cv::Scalar(255, 0, 255), 1, CV_AA);
 			if (m->isVisible() == 1) {
 				std::vector<cv::Point2f>vertices;
 				vertices = m->getPoints();
@@ -240,7 +240,7 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 
 				// Print ID to BoxCenter
 				std::ostringstream os;
-				os << id;
+				os << angle;
 				cv::String s = os.str();
 
 				putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);

@@ -18,10 +18,10 @@ class Calibration {
 private:
 	PlaneCalibration::planeCalibData pcd;
 	uEye_input uei;
-	PlaneCalibration* pc;
 	PoseEstimation* pe;
 	
 public:
+	PlaneCalibration* pc;
 	~Calibration();
 	Calibration();
 	int runPoseEstimation(uEye_input* uei);
