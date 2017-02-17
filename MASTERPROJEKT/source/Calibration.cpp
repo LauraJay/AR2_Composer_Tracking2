@@ -16,23 +16,13 @@ int Calibration::runPoseEstimation(uEye_input* uei)
 {
 	int ret = pe->generateCamMatAndDistMat(uei);
 	pe->loadSavedDistCoeff();
-	int rep = pe->generateCam2WorldLUT(pcd);
-	
+	//int rep = pe->generateCam2WorldLUT(pcd);
+	UndistortRectifyMaps = pe->generateUndistortRectifyMap();
 	// For Debug
-	cv::Mat  map1, map2;
-	initUndistortRectifyMap(pe->getCameraMat(), pe->getDistCoeffs(), cv::Mat(),
-		cv::getOptimalNewCameraMatrix(pe->getCameraMat(), pe->getDistCoeffs(), uei->getCapturedFrame().size(), 1, uei->getCapturedFrame().size(), 0),
-		uei->getCapturedFrame().size(), CV_16SC2, map1, map2);
-
-	cv::Mat dst, image;
-	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
-	remap(image, dst, map1, map2, cv::INTER_LINEAR);
-	cv::imwrite("UeyeDistCoeffs.jpg", dst);
-	cv::imshow("undistortedImg", dst);
-	cv::waitKey(1);
-
 	return ret;
 }
+
+
 
 int Calibration::catchPlaneMarker(cv::Mat frame)
 {
@@ -59,6 +49,17 @@ PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
 	pcd = pc->getPlaneCalibData();
 	if (pcd.size.width == 0 && pcd.size.height==0)pcd = pc->loadImagePlane();
 	return pcd;
+}
+
+std::vector<cv::Mat> Calibration::getUndistortRectifyMaps()
+{
+	return UndistortRectifyMaps;
+}
+
+std::vector<cv::Mat> Calibration::loadUndistortRectifyMaps()
+{
+
+	return pe->loadUndistortRectifyMaps();
 }
 
 

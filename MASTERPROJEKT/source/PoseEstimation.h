@@ -31,6 +31,7 @@ private:
 	cv::Mat3f computeCamera2WorldLut();
 	bool saveLUT( const cv::Mat3f lut);
 	cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
+	bool saveMaps(const std::vector<cv::Mat> maps);
 
 public:
 	~PoseEstimation() {};
@@ -40,7 +41,8 @@ public:
 	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();
-	int runPoseEstimation(cv::VideoCapture cap);
+	std::vector<cv::Mat> generateUndistortRectifyMap();
 	bool loadSavedDistCoeff();
+	std::vector<cv::Mat> loadUndistortRectifyMaps();
 	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
 };

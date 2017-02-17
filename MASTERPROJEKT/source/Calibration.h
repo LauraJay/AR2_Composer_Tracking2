@@ -19,6 +19,7 @@ private:
 	PlaneCalibration::planeCalibData pcd;
 	uEye_input uei;
 	PoseEstimation* pe;
+	std::vector<cv::Mat>UndistortRectifyMaps;
 	
 public:
 	PlaneCalibration* pc;
@@ -29,4 +30,6 @@ public:
 	int generatePlaneCalib();
 	int generateCam2WorldLUT();
 	PlaneCalibration::planeCalibData getPlaneCalibData();
+	std::vector<cv::Mat> getUndistortRectifyMaps();
+	std::vector<cv::Mat> loadUndistortRectifyMaps();
 	};

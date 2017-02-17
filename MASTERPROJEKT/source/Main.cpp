@@ -8,6 +8,7 @@
 
 int currentStatus = -1;
 int calibStatus = -1;
+std::vector<cv::Mat> maps;
 
 Main::~Main() {
 	//TODO
@@ -57,6 +58,10 @@ int main()
 		if (currentStatus == tcp->sceneStart)  break;
 		calibStatus = currentStatus;
 		printf("calibstatus: %d \n", calibStatus);
+
+
+
+
 		//SPIELFELDKALIBRIERUNG
 		if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
 			while (!PlaneCalibDone) {
@@ -69,7 +74,11 @@ int main()
 					case 1: tcp->sendStatus(tcp->ArucoFound1); break;
 					case 2: {tcp->sendStatus(tcp->ArucoFound2);
 						int rep = calib->generatePlaneCalib();
-						if (rep == -1) printf("Generation of Plane failed. \n");
+						if (rep == -1) {
+							printf("No Plane Calibration done!\n");
+							system("pause");
+							return EXIT_FAILURE;
+						}
 						PlaneCalibDone = true;
 						break;
 					}
@@ -82,7 +91,8 @@ int main()
 				if (calibStatus == tcp->planeAndPoseCalib) {
 					tcp->sendStatus(tcp->PlaneCalibDone);
 					int res = calib->runPoseEstimation(uei1);
-					if (res > -1)	
+					maps = calib->getUndistortRectifyMaps();
+					if (res > -1&&maps.size()==2)	
 						tcp->sendStatus(tcp->PoseCalibDone);
 						
 					else {
@@ -93,18 +103,24 @@ int main()
 				}
 				// Nur Spielfeld Kalibrierung
 				else {
-					int res = calib->generateCam2WorldLUT();
-					if (res != -1)	tcp->sendStatus(tcp->PlaneCalibDone);
+					//int res = calib->generateCam2WorldLUT();
+					//if (res != -1)
+					maps = calib->loadUndistortRectifyMaps();
+					if (maps.size() == 2) {
+						tcp->sendStatus(tcp->PlaneCalibDone);
+					}
 					else {
-						printf("No Plane Calibration done!\n");
+						printf("No Pose Calibration done!\n");
 						system("pause");
 						return EXIT_FAILURE;
 					}
+					
 				}
 			}
 		}
 
 		else if (currentStatus == tcp->reCalib) {
+			maps.clear();
 			numOfPlaneCorners = 0;
 			PlaneCalibDone = false;
 			calibStatus = -1;
@@ -113,9 +129,9 @@ int main()
 			cv::destroyWindow("undistortedImg");
 			}
 	}
-	printf("load LUT ...\n");
+	/*printf("load LUT ...\n");
 	tcp->loadLUT();
-	printf("...finished LUT loading \n");
+	printf("...finished LUT loading \n");*/
 	pcd = calib->getPlaneCalibData();
 	tcp->setPCD(pcd);
 	delete calib;
@@ -136,6 +152,7 @@ int main()
 
 #ifdef uEYE
 		frame = uei1->getCapturedFrame();
+		frame = getCalibratedFrame(frame);
 #endif // uEYE
 
 #ifdef VIDEOVERA
@@ -147,7 +164,6 @@ int main()
 			int sucess = md->runMarkerDetection(frame);
 			if (sucess == 1) {
 				std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-
 				std::vector<int> arucoIds = md->getArucoIds();
 				std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
 
@@ -254,5 +270,11 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 	return frame;
 }
 
+cv::Mat getCalibratedFrame(cv::Mat frame) {
+	cv::Mat calibFrame = frame.clone();
+	if(maps.size()==2)
+	remap(frame, calibFrame, maps[0], maps[1], cv::INTER_LINEAR);
+	return calibFrame;
 
+}
 

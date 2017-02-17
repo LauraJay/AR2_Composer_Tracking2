@@ -105,104 +105,40 @@ int TCP::receiveTCPData() {
 
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 
-	// TO DEBUG
-	cv::Mat debug = frame.clone();
-	debug.setTo(cv::Scalar(255, 255, 255));
-
-
 	//printf("Num Marker %d \r", takenIdVec.size());
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
-	myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
-	myfile2 << "Current Frame " << c << "\n";
+	/*myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
+	myfile2 << "Current Frame " << c << "\n";*/
 	c++;
 	myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 
 	for (int i = 0; i < allMarkers.size(); i++) {
 		ms[i].id = allMarkers[i]->getId();
-		if (allMarkers[i]->getId() > 0) 
-			cv::circle(debug,allMarkers[i]->getCenter(),9,cv::Scalar(255,0,0));
-
+	
 		if (allMarkers[i]->getId() > 0)myfile << "\t tid " << ms[i].id << "\n";
-		if (allMarkers[i]->getId() > 0)myfile2 << "\t tid " << ms[i].id << "\n";
+		//if (allMarkers[i]->getId() > 0)myfile2 << "\t tid " << ms[i].id << "\n";
 		//// For Simple Normalisation
 		cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
-		if (allMarkers[i]->getId() > 0) { 
-			
-			//printf("Before coord: %f, %f; ", center.x, center.y);
-			r.center.x *=  pcd.size.width;
-			r.center.y *= pcd.size.height;
-			r.center.x += pcd.size.width;
-			r.center.y += pcd.size.height;
-			//printf("Normalized coord: %f, %f; ", center.x, center.y);
-			cv::circle(debug, r.center, 7, cv::Scalar(0, 255, 0)); 
-				
-		}
-			//ms[i - 1].posX = r.center.x;
-		if (allMarkers[i]->getId() > 0)	myfile << "\t posX " << r.center.x << "\n";
-			//ms[i - 1].posY = r.center.y;
-		if (allMarkers[i]->getId() > 0)	myfile << "\t posY " << r.center.y << "\n";
-		
-		cv::Vec3f center = computeCamera2World(allMarkers[i]->getRect().center);
-		ms[i].posX = center[0];
-		if (allMarkers[i]->getId() > 0)myfile2 << "\t posX " << ms[i].posX << "\n";
-		ms[i].posY = center[1];
-		if (allMarkers[i]->getId() > 0)myfile2 << "\t posY " << ms[i].posY << "\n";
+		ms[i].posX = r.center.x;
+		ms[i].posY = r.center.y;
 		
 		if (allMarkers[i]->getId() > 0) {
-
-			//printf("Before coord: %f, %f; ", center.x, center.y);
-			center[0] *= pcd.size.width;
-			center[1] *= pcd.size.height;
-			center[0] -= pcd.size.width;
-			center[1] -= pcd.size.height;
-			//printf("Normalized coord: %f, %f; ", center.x, center.y);
-			cv::circle(debug, cv::Point(center[0], center[1]), 5, cv::Scalar(0, 0, 255));
-
+			myfile << "\t posX " << r.center.x << "\n";
+			myfile << "\t posY " << r.center.y << "\n";
 		}
-
+				
 		ms[i].angle = allMarkers[i]->getAngle();
 		if (allMarkers[i]->getId() > 0)myfile << "\t angle " << ms[i].angle << "\n";
-		if (allMarkers[i]->getId() > 0)myfile2 << "\t angle " << ms[i].angle << "\n";
+		//if (allMarkers[i]->getId() > 0)myfile2 << "\t angle " << ms[i].angle << "\n";
 		ms[i].isVisible = allMarkers[i]->isVisible();
 		if (allMarkers[i]->getId() > 0)myfile << "\t isVisible " << ms[i].isVisible << "\n";
-		if (allMarkers[i]->getId() > 0)myfile2 << "\t isVisible " << ms[i].isVisible << "\n";
+		//if (allMarkers[i]->getId() > 0)myfile2 << "\t isVisible " << ms[i].isVisible << "\n";
 
 	}
 
 	ms[allMarkers.size()].id = -2;
-	//for (int i = 1; i <= takenIdVec.size(); i++) {
-	//	int id = takenIdVec[i - 1];
-	//	ms[i - 1].id = allMarkers[id]->getId();
-	//	myfile << "\t tid " << ms[i - 1].id << "\n";
-	//	myfile2 << "\t tid " << ms[i - 1].id << "\n";
-	//	//// For Simple Normalisation
-	//	cv::RotatedRect r = normalizeCoord(allMarkers[id]->getRect());
-	//	//ms[i - 1].posX = r.center.x;
-	//	myfile << "\t posX " << ms[i - 1].posX << "\n";
-	//	//ms[i - 1].posY = r.center.y;
-	//	myfile << "\t posY " << ms[i - 1].posY << "\n";
 
-	//	cv::Vec3f center = computeCamera2World(allMarkers[id]->getRect().center);
-	//	ms[i - 1].posX = center[0];
-	//	myfile2 << "\t posX " << ms[i - 1].posX << "\n";
-	//	ms[i - 1].posY = center[1];
-	//	myfile2 << "\t posY " << ms[i - 1].posY << "\n";
-
-	//	
-	//	ms[i - 1].angle = allMarkers[id]->getAngle();
-	//	myfile << "\t angle " << ms[i - 1].angle << "\n";
-	//	myfile2 << "\t angle " << ms[i - 1].angle << "\n";
-	//	ms[i - 1].isVisible = allMarkers[id]->isVisible();
-	//	myfile << "\t isVisible " << ms[i - 1].isVisible << "\n";
-	//	myfile2 << "\t isVisible " << ms[i - 1].isVisible << "\n";
-
-	//}
-	//Last id is -1 to show the end of information per frame
-	//ms[takenIdVec.size()].id = -2;
-
-	/*cv::imshow("normcoords", debug);
-	cv::waitKey(1);*/
 	myfile.close();
 	myfile2.close();
 }
