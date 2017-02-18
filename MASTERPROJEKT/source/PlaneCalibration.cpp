@@ -38,17 +38,13 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		//if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
 	for (int i = 0; i < arucoIds.size(); i++) {
 		int ID = arucoIds.at(i);
-		if (ID == 10) {
+		if (ID == 49) {
         cv::Point2f baricenter(0, 0);
-			std::vector<cv::Point2f> p = corners.at(i);
+		std::vector<cv::Point2f> p = corners.at(i);
         for (int i = 0; i < p.size(); i++)
             baricenter += p[i];
-
-
             baricenter.x /= p.size();
             baricenter.y /= p.size();
-		/*	cv::Point2f d1 = (p[2] - p[0]);
-			cv::Point2f c = (d1)/2+p[0];*/
 			markerPositions.push_back(baricenter);
 			foundID = true;
 			break;	// Corner 1 is upper right corner of marker, which

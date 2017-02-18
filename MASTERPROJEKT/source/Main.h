@@ -34,3 +34,4 @@ public:
 
 int main();
 cv::Mat debug(cv::Mat &frame, std::array<Marker*, 100> marker, int counter, std::vector<int> takenIDVec, cv::Rect r);
+cv::Mat getCalibratedFrame(cv::Mat frame);

@@ -105,11 +105,8 @@ int TCP::receiveTCPData() {
 
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 
-	//printf("Num Marker %d \r", takenIdVec.size());
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
 	myfile << "Current Frame " << c << "\n";
-	/*myfile2.open("logWorld.txt", std::ios::out | std::ios::app);
-	myfile2 << "Current Frame " << c << "\n";*/
 	c++;
 	myfile << "\t allMarkersSize() " << allMarkers.size() << "\n";
 
@@ -117,7 +114,6 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 		ms[i].id = allMarkers[i]->getId();
 	
 		if (allMarkers[i]->getId() > 0)myfile << "\t tid " << ms[i].id << "\n";
-		//if (allMarkers[i]->getId() > 0)myfile2 << "\t tid " << ms[i].id << "\n";
 		//// For Simple Normalisation
 		cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
 		ms[i].posX = r.center.x;
@@ -130,11 +126,8 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 				
 		ms[i].angle = allMarkers[i]->getAngle();
 		if (allMarkers[i]->getId() > 0)myfile << "\t angle " << ms[i].angle << "\n";
-		//if (allMarkers[i]->getId() > 0)myfile2 << "\t angle " << ms[i].angle << "\n";
 		ms[i].isVisible = allMarkers[i]->isVisible();
 		if (allMarkers[i]->getId() > 0)myfile << "\t isVisible " << ms[i].isVisible << "\n";
-		//if (allMarkers[i]->getId() > 0)myfile2 << "\t isVisible " << ms[i].isVisible << "\n";
-
 	}
 
 	ms[allMarkers.size()].id = -2;
@@ -145,7 +138,7 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 
 
 TCP::TCP(cv::Size frameSize) {
-	lut = cv::Mat3f(frameSize);
+	//lut = cv::Mat3f(frameSize);
 	//readCameraParameters("LUT.yml", lut);
 	myfile.open("logNorm.txt", std::ofstream::out | std::ofstream::trunc);
 	myfile.close();
@@ -156,11 +149,11 @@ TCP::TCP(cv::Size frameSize) {
 TCP::~TCP() {
 }
 
-int TCP::loadLUT()
-{
-	readCameraParameters("LUT.yml", lut);
-	return 0;
-}
+//int TCP::loadLUT()
+//{
+//	readCameraParameters("LUT.yml", lut);
+//	return 0;
+//}
 
 void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 	pcd = pcData;
@@ -170,7 +163,7 @@ cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
 	//printf("Before coord: %f, %f; ", center.x, center.y);
 	center.x = abs((center.x - pcd.lowerCorner.x) / pcd.size.width);
-	center.y = abs((pcd.upperCorner.y - center.y)) / pcd.size.height;
+	center.y = abs((center.y- pcd.upperCorner.y) / pcd.size.height);
 	//printf("Normalized coord: %f, %f; ", center.x, center.y);
 	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width), (r.size.height / pcd.size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);

@@ -43,14 +43,14 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 {
 	bool isConstant = false;
 	int  matchID = 0;
-	float tCenterConstant = 10;
+	float tCenterConstant = 3;
 
 	for (int i = 0; i < takenIDVec.size(); i++)
 	{
 		int id = takenIDVec[i];
 		Marker* m = trackedMarker[id];
 		cv::Point2f mvC = motionCenterVecs[i];
-		if (abs(mvC.x + mvC.y) <= tCenterConstant) {
+		if (mvC.x* mvC.x + mvC.y*mvC.y <= tCenterConstant*tCenterConstant) {
 			isConstant = true;
 			}
 		else {
@@ -86,7 +86,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		cv::Point2f mvC = motionCenterVecs[i];
 		cv::Point2f mvCMarker=	m->getMotionCenterVec();
 		cv::Point2f centerMarker = m->getCenter();
-		float tTranslation =80;
+		float tTranslation = 80;
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}

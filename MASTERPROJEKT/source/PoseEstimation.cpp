@@ -112,7 +112,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 			cv::Point(10, 20), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 0, 0), 2);
 		
 		imshow("out", imageCopy);
-		char key = (char)cv::waitKey(10);
+		char key = (char)cv::waitKey(1);
 		if (key == 27) break;
 		if (key == 'c' && ids.size() > 0) {
 			std::cout << "Frame captured" << std::endl;
@@ -149,37 +149,6 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 			allIdsConcatenated.push_back(allIds[i][j]);
 		}
 	}
-
-	/*std::ofstream myfile;
-	myfile.open("logPoseEstihgk.txt", std::ios::out | std::ios::app);
-	myfile << "\t size of allIdsConcatenated: " << allIdsConcatenated.size() << "\n";
-	myfile << "\t size of allCornersConcatenated: " << allCornersConcatenated.size() << "\n";
-	myfile << "\t size of markerCounterPerFrame: " << markerCounterPerFrame.size() << "\n";
-	myfile << "\t cameraMatrix " << cameraMatrix << "\n";
-	myfile << "\t distCoeffs " << distCoeffs << "\n";
-	myfile << "\t board " << &board << "\n";
-	myfile << "\t size " << size << "\n";
-	myfile << "\t calibrationFlags " << calibrationFlags << "\n";
-
-
-	myfile << "\t Marker \n";
-	for (size_t i = 0; i < allIdsConcatenated.size(); i++)
-	{
-		myfile << "pos " << i << "\n";
-		myfile << allIdsConcatenated[i] << "\n";
-		std::vector<cv::Point2f> v = allCornersConcatenated[i];
-		for (size_t j = 0; j < v.size(); j++)
-		{
-			myfile << v[j] << "\n";
-		}
-		myfile << "\n";
-	}
-
-	myfile << "\t markerCounterPerFrame \n";
-	for (size_t i = 0; i < markerCounterPerFrame.size(); i++)
-	{
-		myfile << markerCounterPerFrame[i] << "\n";
-	}*/
 	// calibrate camera using cv::aruco markers
 	double arucoRepErr;
 	arucoRepErr = cv::aruco::calibrateCameraAruco(allCornersConcatenated, allIdsConcatenated,
@@ -225,14 +194,6 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei)
 	}
 	std::cout << "Camera Calibration saved to " << outputFile << std::endl;
 
-	// // FOR DEBUGGING
-	//cv::FileStorage fs("CameraMatrix.yml", cv::FileStorage::READ);
-	//if (!fs.isOpened())
-	//	return false;
-	//fs["camera_matrix"] >> cameraMatrix;
-	//fs [ "distortion_coefficients" ]>> distCoeffs;
-
-	
 
 	return 1;
 }

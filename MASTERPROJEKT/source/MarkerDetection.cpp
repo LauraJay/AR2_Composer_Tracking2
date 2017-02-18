@@ -36,8 +36,8 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
 	inRange(output, cv::Scalar(60, 120, 15), cv::Scalar(85, 255, 255), output);
 	cv::medianBlur(output, output, 3);
-    cv::imshow("Threshold", output);
-    cv::waitKey(1);
+  /*  cv::imshow("Threshold", output);
+    cv::waitKey(1);*/
 	/*int erosion_size = 3;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -54,8 +54,8 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
 	cv::Canny(colorThresImg, colorThresImg, 600, 1200, 5);
-	cv::imshow("Canny", colorThresImg);
-	cv::waitKey(1);
+	/*cv::imshow("Canny", colorThresImg);
+	cv::waitKey(1);*/
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;
