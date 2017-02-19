@@ -73,39 +73,6 @@ int uEye_input::inituEyeCam() {
 cv::Mat uEye_input::getCapturedFrame()
 {
 
-	/* cv::VideoCapture temp_camera;
-   int maxTested = 10;
-   for (int i = 0; i < maxTested; i++){
-     cv::VideoCapture temp_camera(i);
-     bool res = (!temp_camera.isOpened());
-     temp_camera.release();
-     
-   }*/
-  
-
-
-	//INT nNumCam;
-	//if (is_GetNumberOfCameras(&nNumCam) == IS_SUCCESS) {
-	//	
-	//	if (nNumCam >= 1) {
-	//		// Liste neu mit passender Größe anlegen
-	//		UEYE_CAMERA_LIST* pucl;
-	//		pucl = (UEYE_CAMERA_LIST*) new BYTE[sizeof(ULONG) + nNumCam * sizeof(UEYE_CAMERA_INFO)];
-	//		pucl->dwCount = nNumCam;
-
-	//		//Kamerainformationen einlesen
-	//		if (is_GetCameraList(pucl) == IS_SUCCESS) {
-	//			int iCamera;
-	//			for (iCamera = 0; iCamera < (int)pucl->dwCount; iCamera++) {
-	//				//Kamerainformationenam am Bildschirm ausgeben
-	//				printf("Camera %i Id: %d \n", iCamera,
-	//					pucl->uci[iCamera].dwCameraID);
-	//			}
-	//		}
-	//		delete[] pucl;
-	//	}
-	//}
-
 
 	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
 	//printf("ret of capture: %d \n",ret);
@@ -123,11 +90,7 @@ cv::Mat uEye_input::getCapturedFrame()
 		//printf("fps cAMERA: %f \n", fps);
 		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
 		img->widthStep = 3 * img_width;		
-		img->imageDataOrigin = (char*)pMemVoid; //and again
-												//										//now you can use your img just like a normal OpenCV image
-												//cvNamedWindow("A", 1);
-												//cvShowImage("A", img);
-												//cv::waitKey(1);
+		img->imageDataOrigin = (char*)pMemVoid; 
 
 		frame = cv::cvarrToMat(img);
 		

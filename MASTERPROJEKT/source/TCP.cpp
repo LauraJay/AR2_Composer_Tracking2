@@ -12,7 +12,7 @@ SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
 std::ofstream myfile;
-std::ofstream myfile2;
+//std::ofstream myfile2;
 struct TCP::MarkerStruct ms[101];
 struct TCP::Calibration m[1];
 
@@ -133,7 +133,7 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	ms[allMarkers.size()].id = -2;
 
 	myfile.close();
-	myfile2.close();
+	//myfile2.close();
 }
 
 
@@ -142,8 +142,8 @@ TCP::TCP(cv::Size frameSize) {
 	//readCameraParameters("LUT.yml", lut);
 	myfile.open("logNorm.txt", std::ofstream::out | std::ofstream::trunc);
 	myfile.close();
-	myfile2.open("logWorld.txt", std::ofstream::out | std::ofstream::trunc);
-	myfile2.close();
+	/*myfile2.open("logWorld.txt", std::ofstream::out | std::ofstream::trunc);
+	myfile2.close();*/
 }
 
 TCP::~TCP() {

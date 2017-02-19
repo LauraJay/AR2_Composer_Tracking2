@@ -81,7 +81,7 @@ int main()
                 if (currentStatus == tcp->ControlerButtonPressed) {
                     printf("Controller Status : %d \n", currentStatus);
                     frame = uei1->getCapturedFrame();
-                    frame = getCalibratedFrame(frame);
+                    //frame = getCalibratedFrame(frame);
                     numOfPlaneCorners = calib->catchPlaneMarker(frame);
                     switch (numOfPlaneCorners) {
                     case 1: tcp->sendStatus(tcp->ArucoFound1); 
@@ -126,8 +126,6 @@ int main()
     printf("...finished LUT loading \n");*/
     pcd = calib->getPlaneCalibData();
     printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
-
-
     tcp->setPCD(pcd);
     delete calib;
 
@@ -145,7 +143,7 @@ int main()
 
 #ifdef uEYE
         frame = uei1->getCapturedFrame();
-        frame = getCalibratedFrame(frame);
+        //frame = getCalibratedFrame(frame);
 #endif // uEYE
 
 #ifdef VIDEOVERA
