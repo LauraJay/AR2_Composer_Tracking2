@@ -1,11 +1,12 @@
 #include <Main.h>
 
 //#define VIDEOVERA
-#define useTCP
+//#define useTCP
 #define uEYE
 #define useNotTestClasses
-#define runDebug
+//#define runDebug
 
+//int statusWhileRun = -1;
 int currentStatus = -1;
 int calibStatus = -1;
 std::vector<cv::Mat> maps;
@@ -34,6 +35,13 @@ int main()
         printf("No uEye Camera found. Please check the connection. \n");
         system("pause");
         return EXIT_FAILURE;
+    }
+    int counter1 = 0;
+    while (counter1!=100) {
+        frame = uei1->getCapturedFrame();
+        cv::imshow("test", frame);
+        cv::waitKey(1);
+        counter++;
     }
 #endif // uEYE
 #ifdef VIDEOVERA
@@ -77,37 +85,40 @@ int main()
         //SPIELFELDKALIBRIERUNG
         if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
             while (!PlaneCalibDone) {
+                currentStatus = -1;
                 currentStatus = tcp->receiveTCPData();
                 if (currentStatus == tcp->ControlerButtonPressed) {
                     printf("Controller Status : %d \n", currentStatus);
-                    frame = uei1->getCapturedFrame();
+                   
+                    frame = uei1->getCapturedFrame();// ZEIGT DAS BILD AN, WAS FüR DIE POSITIONSBESTIMMUNG GENOMMEN WIRD. OFTMALS EIN ALTES BILD!!
+                   //FPS zahlen schwanken von 0.1 bis 23. Was ist da los?
+                    //Vorschlag: Schau dir die getCapturedFrame mal im Debug an. Konnte das nicht machen, weil die Jungs am anderen Rechner waren.
+                    cv::imshow("test", frame);
+                    cv::waitKey(1);
                     //frame = getCalibratedFrame(frame);
                     numOfPlaneCorners = calib->catchPlaneMarker(frame);
+                    printf("numOfPlaneCorners: %d \n", numOfPlaneCorners);
                     switch (numOfPlaneCorners) {
-                    case 1: tcp->sendStatus(tcp->ArucoFound1); 
-                        break;
+                    case 1: tcp->sendStatus(tcp->ArucoFound1); break;
                     case 2: {tcp->sendStatus(tcp->ArucoFound2);
                         int rep = calib->generatePlaneCalib();
-                        printf("PCD: up : %f, %f ; lp: %f,%f \n",calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
                         if (calibStatus == tcp->planeOnlyCalib)
                             maps = calib->loadUndistortRectifyMaps();
                         if (rep > -1 && maps.size() == 2) {
                             tcp->sendStatus(tcp->PlaneCalibDone);
+                            printf("PCD: UR : %f, %f ; LL: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
+                            PlaneCalibDone = true;
                         }
                         else {
                             printf("No Plane Calibration done!\n");
                             /*system("pause");
                             return EXIT_FAILURE;*/
-                        }
-                        PlaneCalibDone = true;
-                    }
-                        break;
-                    default:tcp->sendStatus(tcp->ArucoNotFound);
-                    }
+                        }                        
+                    }break;   
+                    default:tcp->sendStatus(tcp->ArucoNotFound); break;
+                    } 
                 }
             }
-
-
         }
 
 
@@ -125,81 +136,82 @@ int main()
     tcp->loadLUT();
     printf("...finished LUT loading \n");*/
     pcd = calib->getPlaneCalibData();
-    printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
+    //printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
     tcp->setPCD(pcd);
     delete calib;
 
 #endif 	// TCP
-    //first MarkerSize, second Threshold
-    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
-    MarkerDetection* md = new MarkerDetection();
-
-    while (true) {
-#ifdef runDebug
-        clock_t start, end;
-        counter++;
-        start = clock();
-#endif //runDebug
-
-#ifdef uEYE
-        frame = uei1->getCapturedFrame();
-        //frame = getCalibratedFrame(frame);
-#endif // uEYE
-
-#ifdef VIDEOVERA
-        cap >> frame; // get a new frame from camera
-#endif // VIDEOVERA
-        if (!frame.empty()) {
-          cv::Mat imgDebug = frame.clone();
-            //run Marker Detection			
-            int sucess = md->runMarkerDetection(frame);
-            if (sucess == 1) {
-                std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-                std::vector<int> arucoIds = md->getArucoIds();
-                std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-
-              /*  for each (cv::RotatedRect r in rects)
-                {
-                    cv::Point2f vert[4];
-                    r.points(vert);
-                    for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-                        line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(0, 0, 255), 1, CV_AA);
-                    }
-                }*/
-              
-                mm->trackMarker(rects, corners, arucoIds, frame.size());
-                marker = mm->getTrackedMarker();
-                takenIdVec = mm->getTakenIDVec();
-            }
-            else {
-                marker = mm->getTrackedMarker();
-            }
-#ifdef runDebug
-            imgDebug = debug(imgDebug, marker, counter, takenIdVec, cv::Rect(pcd.upperCorner, pcd.lowerCorner));
-            cv::imshow("debug", imgDebug);
-            cv::waitKey(1);
-#endif //runDebug
-
-#ifdef useTCP
-            //Send Markerdata via TCP
-            tcp->sendTCPData(marker, takenIdVec, frame);
-#endif // TCP_connection
-#ifdef runDebug
-            end = clock();
-            float z = end - start;
-            z /= CLOCKS_PER_SEC;
-            //printf("fps: %f\r", 1 / z);
-#endif //runDebug
-        }
-        else break;
-    }
-    delete md;
+//    //first MarkerSize, second Threshold
+//    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
+//    MarkerDetection* md = new MarkerDetection();
+//
+//    while (true) {
+//#ifdef runDebug
+//        clock_t start, end;
+//        counter++;
+//        start = clock();
+//#endif //runDebug
+//
+//#ifdef uEYE
+//        frame = uei1->getCapturedFrame();
+//        //frame = getCalibratedFrame(frame);
+//#endif // uEYE
+//
+//#ifdef VIDEOVERA
+//        cap >> frame; // get a new frame from camera
+//#endif // VIDEOVERA
+//        if (!frame.empty()) {
+//          cv::Mat imgDebug = frame.clone();
+//            //run Marker Detection			
+//            int sucess = md->runMarkerDetection(frame);
+//            if (sucess == 1) {
+//                std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+//                std::vector<int> arucoIds = md->getArucoIds();
+//                std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+//
+//              /*  for each (cv::RotatedRect r in rects)
+//                {
+//                    cv::Point2f vert[4];
+//                    r.points(vert);
+//                    for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+//                        line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(0, 0, 255), 1, CV_AA);
+//                    }
+//                }*/
+//              
+//                mm->trackMarker(rects, corners, arucoIds, frame.size());
+//                marker = mm->getTrackedMarker();
+//                takenIdVec = mm->getTakenIDVec();
+//            }
+//            else {
+//                marker = mm->getTrackedMarker();
+//            }
+//#ifdef runDebug
+//            imgDebug = debug(imgDebug, marker, counter, takenIdVec, cv::Rect(pcd.upperCorner, pcd.lowerCorner));
+//            cv::imshow("debug", imgDebug);
+//            cv::waitKey(1);
+//#endif //runDebug
+//
+//#ifdef useTCP
+//            //Send Markerdata via TCP
+//            tcp->sendTCPData(marker, takenIdVec, frame);
+//           // statusWhileRun= tcp->receiveTCPData();
+//#endif // TCP_connection
+//#ifdef runDebug
+//            end = clock();
+//            float z = end - start;
+//            z /= CLOCKS_PER_SEC;
+//            //printf("fps: %f\r", 1 / z);
+//#endif //runDebug
+//        }
+//        else break;
+//    }
+//    delete md;
 #ifdef uEYE
     uei1->exitCamera();
     delete uei1;
 #endif // uEYE
 
-    delete mm;
+  //  delete mm;
 
 #ifdef useTCP
     delete tcp;

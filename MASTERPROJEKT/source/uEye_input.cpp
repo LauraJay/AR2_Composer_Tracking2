@@ -7,8 +7,8 @@ int uEye_input::inituEyeCam() {
 
 
 	hCam = 1;
-	char* imgMem;
-	int memId;
+	
+	
 	if (is_InitCamera(&hCam, NULL) != IS_SUCCESS) {
 		return 0;
 	}
@@ -62,7 +62,9 @@ int uEye_input::inituEyeCam() {
 		img->height = img_height;
 		img->imageSize = 3 * img_width*img_height;
 		
-
+        UINT ret = is_CaptureVideo(hCam, IS_DONT_WAIT);
+        if (ret != IS_SUCCESS && ret != IS_CAPTURE_RUNNING)
+            printf("ret of capture: %d \r; ", ret);
 
 	return 1;
 
@@ -72,37 +74,38 @@ int uEye_input::inituEyeCam() {
 
 cv::Mat uEye_input::getCapturedFrame()
 {
-
-
-	UINT ret = is_CaptureVideo(hCam, IS_WAIT);
-	//printf("ret of capture: %d \n",ret);
+	UINT ret = is_CaptureVideo(hCam, IS_DONT_WAIT);
+    if (ret != IS_SUCCESS && ret != IS_CAPTURE_RUNNING)
+        printf("ret of capture: %d \r; ", ret);
 	
-	if (ret==IS_SUCCESS) {
+	if (ret==IS_SUCCESS || ret==IS_CAPTURE_RUNNING) {
 		void *pMemVoid; //pointer to where the image is stored
-		is_GetImageMem(hCam, &pMemVoid);
-		UINT check;
+		//is_GetImageMem(hCam, &pMemVoid);
+       is_GetImageMem(hCam, &pMemVoid);
+      
+		/*UINT check;
 		is_PixelClock(hCam, IS_PIXELCLOCK_CMD_GET, &check, sizeof(check));
-		//printf("Pixelclock: %d \n", check);
-		double parameter;
+		printf("Pixelclock: %d \n", check);*/
+		/*double parameter;
 		int error = is_Exposure(hCam, IS_EXPOSURE_CMD_GET_EXPOSURE, (void*)&parameter, sizeof(parameter));
-		double fps;
-		is_GetFramesPerSecond(hCam, &fps);
-		//printf("fps cAMERA: %f \n", fps);
-		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
+		double fps;*/
+		//is_GetFramesPerSecond(hCam, &fps);
+		//printf("fps camera IN DER SUCCESS: %f \n", fps);
+   		img->imageData = (char*)pMemVoid;  //the pointer to imagaData
 		img->widthStep = 3 * img_width;		
 		img->imageDataOrigin = (char*)pMemVoid; 
-
-		frame = cv::cvarrToMat(img);
-		
+        frame = cv::cvarrToMat(img);
+        
 	}
 	
 	double fps;
 	is_GetFramesPerSecond(hCam, &fps);
-	//printf("fps cAMERA: %f \n", fps);
+    printf("fps: %f \n", fps);
 	return frame;
 }
 
 int uEye_input::exitCamera() {
+    is_FreeImageMem(hCam, imgMem, memId);
 	return is_ExitCamera(hCam);
 }
 

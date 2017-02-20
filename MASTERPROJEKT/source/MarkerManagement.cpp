@@ -155,10 +155,10 @@ int MarkerManagement::getAngleThreshold(cv::Point2f center) {
 	int x2 = frameSize.width*(2. / 6);
 	int y2 = frameSize.height*(2. / 6);
 	r = cv::Rect(cv::Point(x2, y2), cv::Point(frameSize.width - x2, frameSize.height - y2));
-	if (r.contains(center)) { printf("treshold = 2 \r"); return 1; }
+	if (r.contains(center)) { /*printf("treshold = 2 \r");*/ return 1; }
 	r = cv::Rect(cv::Point(x1, y1), cv::Point(frameSize.width - x1, frameSize.height - y1));
-	if (r.contains(center)) { printf("treshold = 4 \r"); return 2; }
-	printf("treshold = 5 \r");
+	if (r.contains(center)) {/* printf("treshold = 4 \r");*/ return 2; }
+	//printf("treshold = 5 \r");
 	return 3;
 }
 

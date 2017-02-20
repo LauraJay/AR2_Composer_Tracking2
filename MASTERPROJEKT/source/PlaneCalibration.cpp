@@ -30,7 +30,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	std::vector<std::vector<cv::Point2f>> rejected;
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams, rejected);
 	if (arucoIds.size() < 1) {
-		printf("Please ensure that the marker of the controller is located in the image\n");
+		printf("No markers found. Please ensure that the marker of the controller is located in the image.\n");
 		return -1;
 	}
 	bool foundID = false;
@@ -39,20 +39,21 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	for (int i = 0; i < arucoIds.size(); i++) {
 		int ID = arucoIds.at(i);
 		if (ID == 49) {
-        cv::Point2f baricenter(0, 0);
-		std::vector<cv::Point2f> p = corners.at(i);
-        for (int i = 0; i < p.size(); i++)
-            baricenter += p[i];
+            foundID = true;
+            cv::Point2f baricenter(0, 0);
+		    std::vector<cv::Point2f> p = corners.at(i);
+            for (int i = 0; i < p.size(); i++) {
+                baricenter += p[i];
+            }
             baricenter.x /= p.size();
             baricenter.y /= p.size();
-			markerPositions.push_back(baricenter);
-			foundID = true;
-			break;	// Corner 1 is upper right corner of marker, which
+            markerPositions.push_back(baricenter);
 		}
+        break;	// Corner 1 is upper right corner of marker, which
 	}
 
 	if (!foundID) {
-		printf("Please ensure that the marker of the controller is located in the image. \n");
+		printf("Marker 49 not found. Please ensure that the marker of the controller is located in the image.\n");
 		return -1;
 	}
 	return markerPositions.size();

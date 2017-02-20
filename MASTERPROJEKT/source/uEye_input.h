@@ -12,7 +12,9 @@
 class uEye_input {
 
 private:
-	IplImage * img;
+    IplImage* img;
+    char* imgMem;
+    int memId;
 	HIDS  hCam = 1;
 	int img_width;
 	int img_height;
