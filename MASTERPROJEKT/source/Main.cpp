@@ -1,10 +1,10 @@
 #include <Main.h>
 
 //#define VIDEOVERA
-//#define useTCP
+#define useTCP
 #define uEYE
 #define useNotTestClasses
-//#define runDebug
+#define runDebug
 
 //int statusWhileRun = -1;
 int currentStatus = -1;
@@ -36,13 +36,13 @@ int main()
         system("pause");
         return EXIT_FAILURE;
     }
-    int counter1 = 0;
+   /* int counter1 = 0;
     while (counter1!=100) {
         frame = uei1->getCapturedFrame();
         cv::imshow("test", frame);
         cv::waitKey(1);
         counter++;
-    }
+    }*/
 #endif // uEYE
 #ifdef VIDEOVERA
     //Einbindung Video Vera 
@@ -81,25 +81,25 @@ int main()
         }
 
 
-
+		
         //SPIELFELDKALIBRIERUNG
         if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
             while (!PlaneCalibDone) {
                 currentStatus = -1;
                 currentStatus = tcp->receiveTCPData();
+                    frame = uei1->getCapturedFrame();
+                    //frame = getCalibratedFrame(frame);
                 if (currentStatus == tcp->ControlerButtonPressed) {
-                    printf("Controller Status : %d \n", currentStatus);
-                   
-                    frame = uei1->getCapturedFrame();// ZEIGT DAS BILD AN, WAS FüR DIE POSITIONSBESTIMMUNG GENOMMEN WIRD. OFTMALS EIN ALTES BILD!!
+                   // printf("Controller Status : %d \n", currentStatus);
+            
+					// ZEIGT DAS BILD AN, WAS FüR DIE POSITIONSBESTIMMUNG GENOMMEN WIRD. OFTMALS EIN ALTES BILD!!
                    //FPS zahlen schwanken von 0.1 bis 23. Was ist da los?
                     //Vorschlag: Schau dir die getCapturedFrame mal im Debug an. Konnte das nicht machen, weil die Jungs am anderen Rechner waren.
-                    cv::imshow("test", frame);
-                    cv::waitKey(1);
-                    //frame = getCalibratedFrame(frame);
                     numOfPlaneCorners = calib->catchPlaneMarker(frame);
                     printf("numOfPlaneCorners: %d \n", numOfPlaneCorners);
                     switch (numOfPlaneCorners) {
-                    case 1: tcp->sendStatus(tcp->ArucoFound1); break;
+                    case 1: 
+						tcp->sendStatus(tcp->ArucoFound1); break;
                     case 2: {tcp->sendStatus(tcp->ArucoFound2);
                         int rep = calib->generatePlaneCalib();
                         if (calibStatus == tcp->planeOnlyCalib)
@@ -141,77 +141,78 @@ int main()
     delete calib;
 
 #endif 	// TCP
-//    //first MarkerSize, second Threshold
-//    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
-//    MarkerDetection* md = new MarkerDetection();
-//
-//    while (true) {
-//#ifdef runDebug
-//        clock_t start, end;
-//        counter++;
-//        start = clock();
-//#endif //runDebug
-//
-//#ifdef uEYE
-//        frame = uei1->getCapturedFrame();
-//        //frame = getCalibratedFrame(frame);
-//#endif // uEYE
-//
-//#ifdef VIDEOVERA
-//        cap >> frame; // get a new frame from camera
-//#endif // VIDEOVERA
-//        if (!frame.empty()) {
-//          cv::Mat imgDebug = frame.clone();
-//            //run Marker Detection			
-//            int sucess = md->runMarkerDetection(frame);
-//            if (sucess == 1) {
-//                std::vector<cv::RotatedRect> rects = md->getDetectedRects();
-//                std::vector<int> arucoIds = md->getArucoIds();
-//                std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
-//
-//              /*  for each (cv::RotatedRect r in rects)
-//                {
-//                    cv::Point2f vert[4];
-//                    r.points(vert);
-//                    for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
-//                        line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(0, 0, 255), 1, CV_AA);
-//                    }
-//                }*/
-//              
-//                mm->trackMarker(rects, corners, arucoIds, frame.size());
-//                marker = mm->getTrackedMarker();
-//                takenIdVec = mm->getTakenIDVec();
-//            }
-//            else {
-//                marker = mm->getTrackedMarker();
-//            }
-//#ifdef runDebug
-//            imgDebug = debug(imgDebug, marker, counter, takenIdVec, cv::Rect(pcd.upperCorner, pcd.lowerCorner));
-//            cv::imshow("debug", imgDebug);
-//            cv::waitKey(1);
-//#endif //runDebug
-//
-//#ifdef useTCP
-//            //Send Markerdata via TCP
-//            tcp->sendTCPData(marker, takenIdVec, frame);
-//           // statusWhileRun= tcp->receiveTCPData();
-//#endif // TCP_connection
-//#ifdef runDebug
-//            end = clock();
-//            float z = end - start;
-//            z /= CLOCKS_PER_SEC;
-//            //printf("fps: %f\r", 1 / z);
-//#endif //runDebug
-//        }
-//        else break;
-//    }
-//    delete md;
+    //first MarkerSize, second Threshold
+    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
+    MarkerDetection* md = new MarkerDetection();
+
+    while (true) {
+#ifdef runDebug
+        clock_t start, end;
+        counter++;
+        start = clock();
+#endif //runDebug
+
+#ifdef uEYE
+        frame = uei1->getCapturedFrame();
+        //frame = getCalibratedFrame(frame);
+#endif // uEYE
+
+#ifdef VIDEOVERA
+        cap >> frame; // get a new frame from camera
+#endif // VIDEOVERA
+        if (!frame.empty()) {
+          cv::Mat imgDebug = frame.clone();
+            //run Marker Detection			
+            int sucess = md->runMarkerDetection(frame);
+            if (sucess == 1) {
+                std::vector<cv::RotatedRect> rects = md->getDetectedRects();
+                std::vector<int> arucoIds = md->getArucoIds();
+                std::vector<std::vector<cv::Point2f>> corners = md->getArucoCorners();
+
+                for each (cv::RotatedRect r in rects)
+                {
+                    cv::Point2f vert[4];
+                    r.points(vert);
+                    for (int i = 0; i < sizeof(vert) / sizeof(cv::Point2f); ++i) {
+                        line(imgDebug, vert[i], vert[(i + 1) % 4], cv::Scalar(0, 0, 255), 1, CV_AA);
+                    }
+                }
+              
+                mm->trackMarker(rects, corners, arucoIds, frame.size());
+                marker = mm->getTrackedMarker();
+                takenIdVec = mm->getTakenIDVec();
+            }
+            else {
+                marker = mm->getTrackedMarker();
+            }
+#ifdef runDebug
+           imgDebug = debug(imgDebug, marker, counter, takenIdVec, cv::Rect(pcd.upperCorner, pcd.lowerCorner));
+		   cv::namedWindow("debug", cv::WINDOW_KEEPRATIO);
+		   cv::imshow("debug", imgDebug);
+            cv::waitKey(1);
+#endif //runDebug
+
+#ifdef useTCP
+            //Send Markerdata via TCP
+            tcp->sendTCPData(marker, takenIdVec, frame);
+           // statusWhileRun= tcp->receiveTCPData();
+#endif // TCP_connection
+#ifdef runDebug
+            end = clock();
+            float z = end - start;
+            z /= CLOCKS_PER_SEC;
+           // printf("fps: %f\r", 1 / z);
+#endif //runDebug
+        }
+        else break;
+    }
+    delete md;
 #ifdef uEYE
     uei1->exitCamera();
     delete uei1;
 #endif // uEYE
 
-  //  delete mm;
+    delete mm;
 
 #ifdef useTCP
     delete tcp;
@@ -233,15 +234,15 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 
 
 
-    int x1 = frame.size().width*(1. / 6);
-    int y1 = frame.size().height*(1. / 6);
-    int x2 = frame.size().width*(2. / 6);
-    int y2 = frame.size().height*(2. / 6);
- /*   cv::Rect unsharp = cv::Rect(cv::Point(x2, y2), cv::Point(frame.size().width - x2, frame.size().height - y2));
-    rectangle(frame, unsharp, cv::Scalar(0, 255, 0), 2);
-    cv::Rect unsharp2 = cv::Rect(cv::Point(x1, y1), cv::Point(frame.size().width - x1, frame.size().height - y1));
-    rectangle(frame, unsharp2, cv::Scalar(0, 255, 0), 2);*/
-
+   /* int x1 = frame.size().width*(1. / 6);
+    int y1 = frame.size().height*(1. / 6);*/
+   /* int x2 = frame.size().width*(2. / 6);
+    int y2 = frame.size().height*(2. / 6);*/
+    /*cv::Rect unsharp = cv::Rect(cv::Point(x2, y2), cv::Point(frame.size().width - x2, frame.size().height - y2));
+    rectangle(frame, unsharp, cv::Scalar(0, 255, 0), 2);*/
+    /*cv::Rect unsharp2 = cv::Rect(cv::Point(x1, y1), cv::Point(frame.size().width - x1, frame.size().height - y1));
+    rectangle(frame, unsharp2, cv::Scalar(0, 255, 0), 2);
+*/
 
     for each (int id in takenIDVec)
     {
@@ -261,7 +262,7 @@ cv::Mat debug(cv::Mat & frame, std::array<Marker*, 100> marker, int counter, std
 
                 // Print ID to BoxCenter
                 std::ostringstream os;
-                os << angle;
+                os << id;
                 cv::String s = os.str();
 
                 putText(frame, s, c, cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(255, 255, 255), 1, 8, false);

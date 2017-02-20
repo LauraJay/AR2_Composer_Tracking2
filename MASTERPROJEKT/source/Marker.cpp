@@ -139,6 +139,7 @@ void Marker::setRectWithAngle(cv::RotatedRect rect, cv::Point2f anglePoint)
 {
 	Marker::rect = rect;
 	Marker::angle = computeAngle(anglePoint, rect.center);
+
 	}
 void Marker::setId(int id)
 {

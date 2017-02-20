@@ -86,7 +86,7 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 		cv::Point2f mvC = motionCenterVecs[i];
 		cv::Point2f mvCMarker=	m->getMotionCenterVec();
 		cv::Point2f centerMarker = m->getCenter();
-		float tTranslation = 80;
+		float tTranslation = 100;
 		if (abs(mvC.x) + abs(mvC.y) <= tTranslation) {
 			isTranslated = true;
 		}

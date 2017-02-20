@@ -37,47 +37,44 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
 			matchID = findMatchID(arucoIds[arucoID]);
-			if (matchID > 0) {
+			if (matchID > 0)
+			 {
 				if ((rep = im->isMarkerOutOfField(trackedMarker[matchID], pcd)) > 0) {
-					//deleteMarker(matchID);
-                    //printf("delete with ID \n");
+					deleteMarker(matchID);
 				}
-				else { 
-                    if ((im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-                        CurrentMarkerWAruco(trackedMarker[matchID], trackedMarker[matchID]->getRect(), arucoIds[arucoID], corners[arucoID].at(0));
-                        //printf("isConstantMarker with ID \n");
-                    }
-                    else
-					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0)); 
-                    //printf("not constant with ID \n");
+				else {
+					if ((im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0)
+						CurrentMarkerWAruco(trackedMarker[matchID], trackedMarker[matchID]->getRect(), arucoIds[arucoID], corners[arucoID].at(0), true);
+					else
+						CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0), false);
+					//printf("HAS id %d \n",matchID);
 				}
 			}
+			else if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
+					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(0));
+				}
+			
 			else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-              		CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
-                   // printf("isConstantMarker no ID \n");
-			}
-			else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
-                
-				CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0));
-               // printf("isTranslatedMarker no ID \n");
+					CurrentMarkerWAruco(trackedMarker[matchID], trackedMarker[matchID]->getRect(), arucoIds[arucoID], corners[arucoID].at(0),true);
 			}
 			else {
-				if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
-					registerNewMarker(r, arucoIds[arucoID], corners[arucoID].at(0));
-                   // printf("isRectOutOfField no ID \n");
+				if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0) {
+
+					CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0),false);
 				}
 			}
 		}
 		else if ((rep = im->isRectOutOfField(r, pcd)) > 0) {
-  //         // printf("isRectOutOfField no Aruco \n");
+			if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
+				deleteMarker(matchID);
+			}
 		}
 		else if ((matchID = im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
-			CurrentMarker(trackedMarker[matchID], r);
-            //printf("isConstantMarker no Aruco \n");
+			CurrentMarker(trackedMarker[matchID], trackedMarker[matchID]->getRect());
 		}
 		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
 			CurrentMarker(trackedMarker[matchID], r);
-            //printf("isTranslatedMarker no Aruco \n");
+			//printf("isTranslated \n");
 		}
 	}
 
@@ -139,13 +136,19 @@ int MarkerManagement::findMatchID(int arucoID)
 	return 0;
 }
 
-void MarkerManagement::CurrentMarkerWAruco(Marker* tm, cv::RotatedRect rect, int arucoID, cv::Point2f anglePoint) {
-        float currentAngle = tm->getAngle();
-         tm->setRectWithAngle(rect, anglePoint);
-        if (std::abs(tm->getAngle() - currentAngle) < getAngleThreshold(rect.center)) 	tm->setAngle(currentAngle);
- 	if (arucoID > 0)tm->setArucoID(arucoID);
-	tm->setTracked(1);
-	tm->setVisible(1);
+void MarkerManagement::CurrentMarkerWAruco(Marker* tm, cv::RotatedRect rect, int arucoID, cv::Point2f anglePoint, bool isConstant) {
+	if (tm->isTracked()==0) {
+		if (!isConstant)
+			tm->setRectWithAngle(rect, anglePoint);
+		else {
+			float currentAngle = tm->getAngle();
+			tm->setRectWithAngle(rect, anglePoint);
+			if (std::abs(tm->getAngle() - currentAngle) <= getAngleThreshold(rect.center)) 	tm->setAngle(currentAngle);
+		}
+		if (arucoID > 0)tm->setArucoID(arucoID);
+		tm->setTracked(1);
+		tm->setVisible(1);
+	}
 }
 
 int MarkerManagement::getAngleThreshold(cv::Point2f center) {
@@ -155,17 +158,19 @@ int MarkerManagement::getAngleThreshold(cv::Point2f center) {
 	int x2 = frameSize.width*(2. / 6);
 	int y2 = frameSize.height*(2. / 6);
 	r = cv::Rect(cv::Point(x2, y2), cv::Point(frameSize.width - x2, frameSize.height - y2));
-	if (r.contains(center)) { /*printf("treshold = 2 \r");*/ return 1; }
+	if (r.contains(center)) { /*printf("treshold = 2 \r");*/ return 2; }
 	r = cv::Rect(cv::Point(x1, y1), cv::Point(frameSize.width - x1, frameSize.height - y1));
-	if (r.contains(center)) {/* printf("treshold = 4 \r");*/ return 2; }
+	if (r.contains(center)) {/* printf("treshold = 4 \r");*/ return 3; }
 	//printf("treshold = 5 \r");
-	return 3;
+	return 4;
 }
 
 void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
-	tm->setRect(rect);
-	tm->setTracked(1);
-	tm->setVisible(1);
+	if (tm->isTracked()==0) {
+		tm->setRect(rect);
+		tm->setTracked(1);
+		tm->setVisible(1);
+	}
 }
 
 

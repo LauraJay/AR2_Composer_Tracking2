@@ -34,10 +34,15 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
-	inRange(output, cv::Scalar(60, 120, 15), cv::Scalar(85, 255, 255), output);
-	cv::medianBlur(output, output, 3);
-  /*  cv::imshow("Threshold", output);
-    cv::waitKey(1);*/
+	inRange(output, cv::Scalar(60, 120, 22), cv::Scalar(85, 255, 255), output);
+	
+	cv::namedWindow("inRange", cv::WINDOW_KEEPRATIO);	
+	cv::imshow("inRange", output);
+	cv::waitKey(1);
+	cv::medianBlur(output, output, 5);
+	cv::namedWindow("Threshold", cv::WINDOW_KEEPRATIO);    
+    cv::imshow("Threshold", output);
+	cv::waitKey(1);
 	/*int erosion_size = 3;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -53,9 +58,10 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	std::vector<cv::Point> points;
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
-	cv::Canny(colorThresImg, colorThresImg, 600, 1200, 5);
-	/*cv::imshow("Canny", colorThresImg);
-	cv::waitKey(1);*/
+	cv::Canny(colorThresImg, colorThresImg, 600, 1200, 3);
+	cv::namedWindow("Canny", cv::WINDOW_KEEPRATIO);
+	cv::imshow("Canny", colorThresImg);
+	cv::waitKey(1);
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;
@@ -65,13 +71,9 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 		cv::RotatedRect r = minAreaRect(cv::Mat(contours_poly[i]));
 		r.center = cv::Point2i(r.center);
 		r.size = cv::Size2i(r.size);
-		if (r.size.height>40||r.size.width>40) box.push_back(r);
-		/*if (r.size.width > 55 || r.size.width < 45 || r.size.height > 55 || r.size.height < 45) {
-			if (r.size.height>30 && r.size.width>30)
-			printf("");
-		}*/
-	}
+		if ((r.size.height < 70 && r.size.width < 70) && (r.size.height > 30 && r.size.width > 30)) box.push_back(r);
 
+	}
 	return box;
 }
 
@@ -81,7 +83,7 @@ void MarkerDetection::initArucoParams()
 	showRejected = false; // zeigt die fehlerhaften Marker
 	markerLength = 0.025; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
-	detectorParams->doCornerRefinement = false; // do corner refinement in markers
+	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
 	}
 

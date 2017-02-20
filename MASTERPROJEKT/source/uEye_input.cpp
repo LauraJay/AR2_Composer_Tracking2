@@ -80,7 +80,6 @@ cv::Mat uEye_input::getCapturedFrame()
 	
 	if (ret==IS_SUCCESS || ret==IS_CAPTURE_RUNNING) {
 		void *pMemVoid; //pointer to where the image is stored
-		//is_GetImageMem(hCam, &pMemVoid);
        is_GetImageMem(hCam, &pMemVoid);
       
 		/*UINT check;

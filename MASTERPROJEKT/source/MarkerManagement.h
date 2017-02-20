@@ -22,7 +22,7 @@ protected:
 	std::array<Marker*, 100> trackedMarker;
 
 public:
-	void CurrentMarkerWAruco(Marker* tm, cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint);
+	void CurrentMarkerWAruco(Marker* tm, cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint, bool isConstant);
 	void CurrentMarker(Marker* tm, cv::RotatedRect normRect);
 	std::array<Marker*, 100> getTrackedMarker();
 	std::vector<int> getTakenIDVec();

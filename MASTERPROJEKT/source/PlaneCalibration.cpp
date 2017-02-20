@@ -53,8 +53,8 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	}
 
 	if (!foundID) {
-		printf("Marker 49 not found. Please ensure that the marker of the controller is located in the image.\n");
-		return -1;
+		printf(" Calibration Marker not found. Please ensure that the marker of the controller is located in the image.\n");
+		
 	}
 	return markerPositions.size();
 }
