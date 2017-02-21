@@ -36,13 +36,13 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
 	inRange(output, cv::Scalar(60, 120, 22), cv::Scalar(85, 255, 255), output);
 	
-	cv::namedWindow("inRange", cv::WINDOW_KEEPRATIO);	
+	/*cv::namedWindow("inRange", cv::WINDOW_KEEPRATIO);	
 	cv::imshow("inRange", output);
-	cv::waitKey(1);
+	cv::waitKey(1);*/
 	cv::medianBlur(output, output, 5);
-	cv::namedWindow("Threshold", cv::WINDOW_KEEPRATIO);    
+	/*cv::namedWindow("Threshold", cv::WINDOW_KEEPRATIO);    
     cv::imshow("Threshold", output);
-	cv::waitKey(1);
+	cv::waitKey(1);*/
 	/*int erosion_size = 3;
 	cv::Mat element = getStructuringElement(cv::MORPH_ELLIPSE,
 		cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
@@ -59,9 +59,9 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
 	cv::Canny(colorThresImg, colorThresImg, 600, 1200, 3);
-	cv::namedWindow("Canny", cv::WINDOW_KEEPRATIO);
+	/*cv::namedWindow("Canny", cv::WINDOW_KEEPRATIO);
 	cv::imshow("Canny", colorThresImg);
-	cv::waitKey(1);
+	cv::waitKey(1);*/
 	findContours(colorThresImg, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE, cv::Point(0, 0));
 	std::vector<std::vector<cv::Point> > contours_poly(contours.size());
 	std::vector<cv::RotatedRect> box;

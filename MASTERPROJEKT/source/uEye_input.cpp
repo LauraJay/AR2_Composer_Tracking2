@@ -99,7 +99,7 @@ cv::Mat uEye_input::getCapturedFrame()
 	
 	double fps;
 	is_GetFramesPerSecond(hCam, &fps);
-    printf("fps: %f \n", fps);
+    //printf("fps: %f \n", fps);
 	return frame;
 }
 

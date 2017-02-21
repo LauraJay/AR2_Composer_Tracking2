@@ -1,5 +1,5 @@
 %YAML:1.0
-calibration_time: "Sat Feb 18 12:00:36 2017"
+calibration_time: "Tue Feb 21 12:05:40 2017"
 image_width: 1280
 image_height: 1024
 flags: 0
@@ -7,6 +7,6 @@ camera_matrix: !!opencv-matrix
    rows: 3
    cols: 3
    dt: d
-   data: [ 6.5128072902213480e+03, 0., 6.5633568345371452e+02, 0.,
-       6.4691316845788951e+03, 5.4572447652370852e+02, 0., 0., 1. ]
-avg_reprojection_error: 3.7392975624941776e+00
+   data: [ 5.4979501051502239e+03, 0., 7.4305465152042950e+02, 0.,
+       5.3795070070503480e+03, 4.0765029972163961e+02, 0., 0., 1. ]
+avg_reprojection_error: 3.7202959054206719e+00

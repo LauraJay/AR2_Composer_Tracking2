@@ -61,26 +61,28 @@ int main()
     int numOfPlaneCorners = 0;
     bool PlaneCalibDone = false;
 
-    while (true) {
-        currentStatus = tcp->receiveTCPData();
-        if (currentStatus == tcp->sceneStart)  break;
-        calibStatus = currentStatus;
-        printf("calibstatus: %d \n", calibStatus);
+	while (true) {
+		currentStatus = tcp->receiveTCPData();
+		if (currentStatus == tcp->sceneStart)  break;
+		calibStatus = currentStatus;
+		printf("calibstatus: %d \n", calibStatus);
 
-        if (calibStatus == tcp->planeAndPoseCalib) {
-            int res = calib->runPoseEstimation(uei1);
-            maps = calib->getUndistortRectifyMaps();
-            if (res > -1 && maps.size() == 2)
-                tcp->sendStatus(tcp->PoseCalibDone);
+		if (calibStatus == tcp->planeAndPoseCalib) {
+			int res = calib->runPoseEstimation(uei1);
+			maps = calib->getUndistortRectifyMaps();
+			if (res > -1 && maps.size() == 2)
+				tcp->sendStatus(tcp->PoseCalibDone);
 
-            else {
-                printf("No Pose Calibration done!\n");
-                /* system("pause");
-                 return EXIT_FAILURE;*/
-            }
-        }
+			else {
+				printf("No Pose Calibration done!\n");
+				/* system("pause");
+				 return EXIT_FAILURE;*/
+			}
+		}
 
-
+		/*if (calibStatus == tcp->planeOnlyCalib){
+			maps = calib->loadUndistortRectifyMaps();
+	}*/
 		
         //SPIELFELDKALIBRIERUNG
         if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -102,8 +104,7 @@ int main()
 						tcp->sendStatus(tcp->ArucoFound1); break;
                     case 2: {tcp->sendStatus(tcp->ArucoFound2);
                         int rep = calib->generatePlaneCalib();
-                        if (calibStatus == tcp->planeOnlyCalib)
-                            maps = calib->loadUndistortRectifyMaps();
+                        //if (calibStatus == tcp->planeOnlyCalib)
                         if (rep > -1 && maps.size() == 2) {
                             tcp->sendStatus(tcp->PlaneCalibDone);
                             printf("PCD: UR : %f, %f ; LL: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
@@ -129,7 +130,7 @@ int main()
             calibStatus = -1;
             delete calib;
             calib = new Calibration();
-            cv::destroyWindow("undistortedImg");
+            //cv::destroyWindow("undistortedImg");
         }
     }
     /*printf("load LUT ...\n");
@@ -154,7 +155,7 @@ int main()
 
 #ifdef uEYE
         frame = uei1->getCapturedFrame();
-        //frame = getCalibratedFrame(frame);
+       // frame = getCalibratedFrame(frame);
 #endif // uEYE
 
 #ifdef VIDEOVERA
