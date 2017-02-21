@@ -15,6 +15,7 @@ class PlaneCalibration {
 public:
 	~PlaneCalibration() {};
 	PlaneCalibration();
+	std::vector<float> markerSize;
 	struct planeCalibData {
 		bool success;
 		cv::Point2f upperCorner;
@@ -29,6 +30,7 @@ public:
 	PlaneCalibration::planeCalibData loadImagePlane();
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
+	float computeSizeDifferenceOfAruco(std::vector<cv::Point2f> corners);
 private:
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;

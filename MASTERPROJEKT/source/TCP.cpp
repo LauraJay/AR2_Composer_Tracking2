@@ -83,20 +83,24 @@ void TCP::sendStatus(int status) {
 	const char far* markerPointer = (const char*)&status;
 	send(connectedSocket, markerPointer, 4, 0);
 	printf("Sent Status: %d \n", status);
-
 }
 
-void TCP::sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
+void TCP::sendDistMarkerCamera(float marker1,float marker2,float marker3) {
+	float distances[3] = { marker1, marker2, marker3};
+	const char far* markerPointer = (const char*)&distances;
+	send(connectedSocket, markerPointer, 12, 0);
+	printf("Distance Marker to Camera of Marker 1: %d \n", distances[0]);
+	printf("Distance Marker to Camera of Marker 2: %d \n", distances[1]);
+	printf("Distance Marker to Camera of Marker 3: %d \n", distances[2]);
+}
+
+void TCP::sendMarkerData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec, frame);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2004, 0);
-	//printf("Data sent...\n");
-
-	/*const char FAR* markerPointer = (const char*) &allMarkers;
-	rc = send(connectedSocket, markerPointer, 4100, 0);*/
 }
 
-int TCP::receiveTCPData() {
+int TCP::receiveStatus() {
 	char far* mPointer = (char*)&m;
 	recv(connectedSocket, mPointer, 4, 0);
 	printf("Received Status: %i \n", m[0].isCalibrated);

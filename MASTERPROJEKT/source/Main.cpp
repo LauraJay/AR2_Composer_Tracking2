@@ -36,13 +36,15 @@ int main()
         system("pause");
         return EXIT_FAILURE;
     }
-   /* int counter1 = 0;
-    while (counter1!=100) {
-        frame = uei1->getCapturedFrame();
-        cv::imshow("test", frame);
-        cv::waitKey(1);
-        counter++;
-    }*/
+	//runSizeMeasure(uei1);
+	//system("pause");
+	//runSizeMeasure(uei1);
+	//system("pause");
+	//runSizeMeasure(uei1);
+	//system("pause");
+	//runSizeMeasure(uei1);
+	//system("pause");
+
 #endif // uEYE
 #ifdef VIDEOVERA
     //Einbindung Video Vera 
@@ -62,7 +64,7 @@ int main()
     bool PlaneCalibDone = false;
 
 	while (true) {
-		currentStatus = tcp->receiveTCPData();
+		currentStatus = tcp->receiveStatus();
 		if (currentStatus == tcp->sceneStart)  break;
 		calibStatus = currentStatus;
 		printf("calibstatus: %d \n", calibStatus);
@@ -88,26 +90,27 @@ int main()
         if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
             while (!PlaneCalibDone) {
                 currentStatus = -1;
-                currentStatus = tcp->receiveTCPData();
+                currentStatus = tcp->receiveStatus();
                     frame = uei1->getCapturedFrame();
                     //frame = getCalibratedFrame(frame);
                 if (currentStatus == tcp->ControlerButtonPressed) {
                    // printf("Controller Status : %d \n", currentStatus);
             
-					// ZEIGT DAS BILD AN, WAS FüR DIE POSITIONSBESTIMMUNG GENOMMEN WIRD. OFTMALS EIN ALTES BILD!!
-                   //FPS zahlen schwanken von 0.1 bis 23. Was ist da los?
-                    //Vorschlag: Schau dir die getCapturedFrame mal im Debug an. Konnte das nicht machen, weil die Jungs am anderen Rechner waren.
                     numOfPlaneCorners = calib->catchPlaneMarker(frame);
                     printf("numOfPlaneCorners: %d \n", numOfPlaneCorners);
                     switch (numOfPlaneCorners) {
                     case 1: 
 						tcp->sendStatus(tcp->ArucoFound1); break;
-                    case 2: {tcp->sendStatus(tcp->ArucoFound2);
+					case 2:
+						tcp->sendStatus(tcp->ArucoFound2); break;
+                    case 3: {tcp->sendStatus(tcp->ArucoFound3);
                         int rep = calib->generatePlaneCalib();
+						std::vector<float> sizes =calib->pc->markerSize;
                         //if (calibStatus == tcp->planeOnlyCalib)
-                        if (rep > -1 && maps.size() == 2) {
+                        if (rep > -1 && sizes.size() == 3) {
+							tcp->sendDistMarkerCamera(sizes[0],sizes[1],sizes[2]);//Entfernungen als float Werte einfügen!
                             tcp->sendStatus(tcp->PlaneCalibDone);
-                            printf("PCD: UR : %f, %f ; LL: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
+                            //printf("PCD: UR : %f, %f ; LL: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
                             PlaneCalibDone = true;
                         }
                         else {
@@ -128,6 +131,7 @@ int main()
             numOfPlaneCorners = 0;
             PlaneCalibDone = false;
             calibStatus = -1;
+
             delete calib;
             calib = new Calibration();
             //cv::destroyWindow("undistortedImg");
@@ -195,7 +199,7 @@ int main()
 
 #ifdef useTCP
             //Send Markerdata via TCP
-            tcp->sendTCPData(marker, takenIdVec, frame);
+            tcp->sendMarkerData(marker, takenIdVec, frame);
            // statusWhileRun= tcp->receiveTCPData();
 #endif // TCP_connection
 #ifdef runDebug
@@ -283,3 +287,43 @@ cv::Mat getCalibratedFrame(cv::Mat frame) {
 
 }
 
+void runSizeMeasure(uEye_input * uei1)
+{
+	int counter1 = 0;
+	int numOfPlaneCorners = 0;
+	cv::Mat frame;
+	Calibration* calib = new Calibration();
+	int samples = 20;
+	while (counter1 != samples) {
+		frame = uei1->getCapturedFrame();
+		cv::imshow("test", frame);
+		cv::waitKey(1);
+		numOfPlaneCorners = calib->catchPlaneMarker(frame);
+		counter1++;
+	}
+	counter1 = 0;
+	std::vector<float> sizes = calib->pc->markerSize;
+	float mw = 0.;
+	for (size_t i = 0; i < sizes.size(); i++)
+	{
+		mw += sizes[i];
+	}
+	mw /= samples;
+	printf("Mittelwert %f\n", mw);
+
+	//Varianz var
+	double var = 0;
+	for (int i = 0; i < sizes.size(); i++)
+	{
+		var += (sizes[i] - mw) * (sizes[i] - mw);
+	}
+	var /= (sizes.size() - 1);
+
+	//Standardabweichung sigma
+	double sigma = sqrt(var);
+
+	printf("Varianz: %f\n", var);
+	printf("Standardabweichung: %f\n", sigma);
+
+	delete calib;
+}

@@ -24,7 +24,7 @@ public:
 	};
 
 
-	enum TCPstatus { planeAndPoseCalib, planeOnlyCalib, sceneStart, PlaneCalibDone,PoseCalibDone, ControlerButtonPressed, ArucoFound1, ArucoFound2, ArucoNotFound, reCalib};
+	enum TCPstatus { planeAndPoseCalib, planeOnlyCalib, sceneStart, PlaneCalibDone,PoseCalibDone, ControlerButtonPressed, ArucoFound1, ArucoFound2, ArucoFound3, ArucoNotFound, reCalib};
 
 
 
@@ -34,9 +34,10 @@ public:
 	};
 
 	int startTCPServer();
-	void sendTCPData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec,cv::Mat frame);
+	void sendMarkerData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec,cv::Mat frame);
+	void sendDistMarkerCamera(float marker1, float marker2, float marker3);
 	void sendStatus(int status);
-	int receiveTCPData();
+	int receiveStatus();
 	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec,cv::Mat frame);
 	void setPCD(PlaneCalibration::planeCalibData pcData);
 	TCP(cv::Size frameSize);

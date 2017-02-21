@@ -108,6 +108,8 @@ void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	/*imshow("corners", imageCopy);
 	cv::waitKey(1);*/
 
+
+
 }
 
 

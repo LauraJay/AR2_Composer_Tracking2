@@ -2,7 +2,7 @@
 
 void PlaneCalibration::initAruco() {
 	dictionaryId = cv::aruco::DICT_4X4_50;
-	markerLength = 0.025; // size of outprinted Marker
+	markerLength = 0.133825; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
@@ -48,8 +48,10 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
             baricenter.x /= p.size();
             baricenter.y /= p.size();
             markerPositions.push_back(baricenter);
-		}
+			markerSize.push_back(computeSizeDifferenceOfAruco(corners.at(i)));
+
         break;	// Corner 1 is upper right corner of marker, which
+		}
 	}
 
 	if (!foundID) {
@@ -75,7 +77,7 @@ int PlaneCalibration::getSizeOfMarkerPos() {
 
 int PlaneCalibration::computePlaneCalibration() {
 	
-	if (markerPositions.size() == 2) {
+	if (markerPositions.size() == 3) {
 	if (markerPositions[0].y < markerPositions[1].y) {
 		pcd.upperCorner = markerPositions[0];
 		pcd.lowerCorner = markerPositions[1];
@@ -126,4 +128,29 @@ PlaneCalibration::planeCalibData PlaneCalibration::loadImagePlane()
 		calibFile.close();
 	}
 		return pcd;
+}
+float PlaneCalibration::computeSizeDifferenceOfAruco(std::vector<cv::Point2f> corners) {
+	cv::Point2f b1 = corners[1] - corners[0];
+	float b1float = std::sqrt(b1.x*b1.x + b1.y * b1.y);
+	cv::Point2f a1 = corners[2] - corners[1];
+	float a1float = std::sqrt(a1.x*a1.x + a1.y * a1.y);
+	cv::Point2f c1 = corners[0] - corners[2];
+	float c1float = std::sqrt(c1.x*c1.x + c1.y * c1.y);
+	float alpha1 = std::acos(((a1.dot(b1)))/ (std::sqrt(a1.x*a1.x + a1.y*a1.y)*std::sqrt(b1.x*b1.x + b1.y*b1.y)));
+	float h = c1float * std::sinf(alpha1);
+	float A = 0.5 * b1float*h;
+	
+	cv::Point2f b2 = corners[2] - corners[1];
+	float b2float = std::sqrt(b2.x*b2.x + b2.y * b2.y);
+	cv::Point2f a2 = corners[3] - corners[2];
+	float a2float = std::sqrt(a2.x*a2.x + a2.y * a2.y);
+	cv::Point2f c2 = corners[1] - corners[3];
+	float c2float = std::sqrt(c2.x*c2.x + c2.y * c2.y);
+	float alpha2 = std::acos(((a2.dot(b2))) / (std::sqrt(a2.x*a2.x + a2.y*a2.y)*std::sqrt(b2.x*b2.x + b2.y*b2.y)));
+	float h2 = c2float * std::sinf(alpha2);
+	 A += 0.5 * b2float*h2;
+
+
+	printf("Fläche: %f \n",A);
+	return A;
 }
