@@ -94,13 +94,17 @@ cv::Mat uEye_input::getCapturedFrame()
 		img->widthStep = 3 * img_width;		
 		img->imageDataOrigin = (char*)pMemVoid; 
         frame = cv::cvarrToMat(img);
-        
+      
 	}
 	
 	double fps;
 	is_GetFramesPerSecond(hCam, &fps);
-    //printf("fps: %f \n", fps);
+   // printf("fps: %f \n", fps);
 	return frame;
+}
+
+bool uEye_input::isActive() {
+	return  is_CaptureVideo(hCam, IS_DONT_WAIT) == IS_CAPTURE_RUNNING;
 }
 
 int uEye_input::exitCamera() {

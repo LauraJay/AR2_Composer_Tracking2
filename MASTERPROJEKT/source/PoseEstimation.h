@@ -15,6 +15,8 @@
 
 #include <uEye_input.h>
 #include <PlaneCalibration.h>
+#include <calibWithChessboard.h>
+
 
 
 class PoseEstimation {
@@ -24,25 +26,31 @@ private:
 	std::vector<cv::Point2f> imagePlane;
 	cv::Mat1d cameraMatrix, distCoeffs;
 	cv::Mat rotationMatrix;
-	cv::Mat tvec;
-	cv::Size size;
-	void computeCamera2World(PlaneCalibration::planeCalibData pcd);
+	std::vector<double>  tvec;
+	std::vector<cv::Mat> rvecs, tvecs;
+	
+	//void computeCamera2World(PlaneCalibration::planeCalibData pcd);
 	std::vector<cv::Point2f> getImagePlane(PlaneCalibration::planeCalibData pcd);
-	cv::Mat3f computeCamera2WorldLut();
-	bool saveLUT( const cv::Mat3f lut);
-	cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
+	//cv::Mat3f computeCamera2WorldLut();
+	//bool saveLUT( const cv::Mat3f lut);
+	//cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
 	bool saveMaps(const std::vector<cv::Mat> maps);
 
 public:
 	~PoseEstimation() {};
 	PoseEstimation();
-	bool loadCameraMat();
-	int  generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);
+	bool loadInstrincts();
+	cv::Size size;
+	cv::Mat R;
+	//std::vector<double>tvec;
+	//bool loadCameraMat();
+	//int  generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);
 	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();
 	std::vector<cv::Mat> generateUndistortRectifyMap();
-	bool loadSavedDistCoeff();
+	//bool loadSavedDistCoeff();
 	std::vector<cv::Mat> loadUndistortRectifyMaps();
-	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
+	bool saveCameraParams(const std::string &filename,
+		const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat>rvecs, const std::vector<cv::Mat> tvecs);
 };

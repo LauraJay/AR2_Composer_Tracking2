@@ -15,11 +15,18 @@ Calibration::Calibration()
 int Calibration::runPoseEstimation(uEye_input* uei)
 {
 	int ret = pe->generateCamMatAndDistMat(uei);
-	pe->loadSavedDistCoeff();
-	//int rep = pe->generateCam2WorldLUT(pcd);
+	//pe->loadSavedDistCoeff();
+	////int rep = pe->generateCam2WorldLUT(pcd);
+	cv::Mat frame = uei->getCapturedFrame();
+	pe->size = frame.size();
 	UndistortRectifyMaps = pe->generateUndistortRectifyMap();
-	pc->distCoeffs = pe->getDistCoeffs();
-	pc->camMatrix = pe->getCameraMat();
+	//pc->distCoeffs = pe->getDistCoeffs();
+	//pc->camMatrix = pe->getCameraMat();
+	/*frame = uei->getCapturedFrame();
+	cv::Mat dst=cv::Mat();
+	remap(frame, dst, UndistortRectifyMaps[1], UndistortRectifyMaps[2], cv::INTER_LINEAR);
+	cv::imshow("undistortedFrame", dst);
+	cv::waitKey(1);*/
 
 	return ret;
 }
@@ -39,13 +46,13 @@ int Calibration::generatePlaneCalib()
 	return ret;
 }
 
-int Calibration::generateCam2WorldLUT()
-{
-	int rep =1;
-	if(pe->loadCameraMat()&& pe->loadSavedDistCoeff())
-	rep = pe->generateCam2WorldLUT(pcd);
-	return rep;
-}
+//int Calibration::generateCam2WorldLUT()
+//{
+//	int rep =1;
+//	if(pe->loadCameraMat()&& pe->loadSavedDistCoeff())
+//	rep = pe->generateCam2WorldLUT(pcd);
+//	return rep;
+//}
 
 PlaneCalibration::planeCalibData Calibration::getPlaneCalibData() {
 	pcd = pc->getPlaneCalibData();
