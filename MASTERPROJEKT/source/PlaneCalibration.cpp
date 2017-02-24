@@ -33,6 +33,10 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("No markers found. Please ensure that the marker of the controller is located in the image.\n");
 		return -1;
 	}
+	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
+		if (arucoIds.size() > 0)
+			cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs, tvecs);
+
 	bool foundID = false;
 	// draw results
 		//if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);

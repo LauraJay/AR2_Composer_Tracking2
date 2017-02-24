@@ -16,6 +16,7 @@ public:
 	~PlaneCalibration() {};
 	PlaneCalibration();
 	std::vector<float> markerSize;
+	cv::Mat camMatrix, distCoeffs;
 	struct planeCalibData {
 		bool success;
 		cv::Point2f upperCorner;

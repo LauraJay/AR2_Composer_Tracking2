@@ -91,9 +91,9 @@ void MarkerDetection::initArucoParams()
 
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams);
-	//std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
-	/*if (arucoIds.size() > 0)
-	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);*/
+	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
+	if (arucoIds.size() > 0)
+	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);
 
 	//// draw results TODEBUG
 	//cv::Mat imageCopy;

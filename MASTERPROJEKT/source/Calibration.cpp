@@ -18,7 +18,9 @@ int Calibration::runPoseEstimation(uEye_input* uei)
 	pe->loadSavedDistCoeff();
 	//int rep = pe->generateCam2WorldLUT(pcd);
 	UndistortRectifyMaps = pe->generateUndistortRectifyMap();
-	// For Debug
+	pc->distCoeffs = pe->getDistCoeffs();
+	pc->camMatrix = pe->getCameraMat();
+
 	return ret;
 }
 
