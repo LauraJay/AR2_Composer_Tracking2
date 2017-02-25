@@ -24,9 +24,9 @@ std::vector<cv::Mat> PoseEstimation::generateUndistortRectifyMap()
 	cv::Mat dst, image;
 	image = cv::imread("Checkerboard.jpg", CV_LOAD_IMAGE_COLOR);
 	remap(image, dst, map1, map2, cv::INTER_LINEAR);
-	cv::imwrite("UeyeDistCoeffs.jpg", dst);
 	cv::imshow("undistortedImg", dst);
 	cv::waitKey(1);
+	cv::imwrite("UeyeDistCoeffs.jpg", dst);
 	std::vector<cv::Mat> maps;
 	maps.push_back(map1);
 	maps.push_back(map2);

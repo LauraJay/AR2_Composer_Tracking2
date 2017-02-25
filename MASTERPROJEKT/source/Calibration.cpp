@@ -15,7 +15,7 @@ Calibration::Calibration()
 int Calibration::runPoseEstimation(uEye_input* uei)
 {
 	int ret = pe->generateCamMatAndDistMat(uei);
-	pe->loadSavedDistCoeff();
+	//pe->loadSavedDistCoeff();
 	UndistortRectifyMaps = pe->generateUndistortRectifyMap();
 	pc->distCoeffs = pe->getDistCoeffs();
 	pc->camMatrix = pe->getCameraMat();
