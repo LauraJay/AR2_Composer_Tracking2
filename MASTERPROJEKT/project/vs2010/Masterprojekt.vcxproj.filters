@@ -59,9 +59,6 @@
     <ClCompile Include="..\..\source\ArucoCodeGenerator.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="Aruco_Maker_Detection.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\Calibration.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -77,6 +74,5 @@
     <ClCompile Include="..\..\source\TCP.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\PoseEstimationExample.cpp" />
   </ItemGroup>
 </Project>

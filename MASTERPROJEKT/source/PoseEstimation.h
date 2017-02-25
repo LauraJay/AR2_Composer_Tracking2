@@ -27,10 +27,6 @@ private:
 	cv::Mat tvec;
 	cv::Size size;
 	void computeCamera2World(PlaneCalibration::planeCalibData pcd);
-	std::vector<cv::Point2f> getImagePlane(PlaneCalibration::planeCalibData pcd);
-	cv::Mat3f computeCamera2WorldLut();
-	bool saveLUT( const cv::Mat3f lut);
-	cv::Point3f computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec);
 	bool saveMaps(const std::vector<cv::Mat> maps);
 
 public:

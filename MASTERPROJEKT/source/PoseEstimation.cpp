@@ -211,56 +211,6 @@ bool PoseEstimation::loadSavedDistCoeff()
 
 
 
-void PoseEstimation::computeCamera2World(PlaneCalibration::planeCalibData pcd)
-{
-	imagePlane = getImagePlane(pcd);
-	std::vector<cv::Point3f> worldPlane;
-	worldPlane.push_back(cv::Point3f(0.0, 0.0,0.));
-	worldPlane.push_back(cv::Point3f(1.0, 0.0,0.));
-	worldPlane.push_back(cv::Point3f(0.0, 1.0,0.));
-	worldPlane.push_back(cv::Point3f(1.0, 1.0,0.));
-	cv::Mat1d rvec = cv::Mat1d(cv::Size(3,1));
-	tvec = cv::Mat1d(cv::Size(3, 1));
-	rotationMatrix = cv::Mat1d(cv::Size(3, 3));
-	/*std::cout << "cameraMatrix \n" << std::endl;
-	std::cout << cameraMatrix << std::endl;
-	std::cout << "distCoeffs \n" << std::endl;
-	std::cout << distCoeffs << std::endl;*/
-
-	cv::solvePnP(worldPlane, imagePlane, cameraMatrix, distCoeffs, rvec, tvec);
-	cv::Rodrigues(rvec, rotationMatrix);
-	/*std::cout << "rvec \n" << std::endl;
-	std::cout << rvec << std::endl;
-	std::cout << "tvec \n" << std::endl;
-	std::cout << tvec << std::endl;
-	std::cout << "rotationMatrix \n" << std::endl;
-	std::cout << rotationMatrix << std::endl;*/
-}
-
-
-std::vector<cv::Point2f> PoseEstimation::getImagePlane(PlaneCalibration::planeCalibData pcd)
-{
-	//oben rechts
-	//unten links
-	std::vector<cv::Point2f> imagePlane;
-	float x1, x2, y1, y2;
-	x1 = pcd.upperCorner.x;
-	x2 = pcd.lowerCorner.x;
-	y1 = pcd.upperCorner.y;
-	y2 = pcd.lowerCorner.y;
-
-	imagePlane.push_back(cv::Point(x2, y1)); // l o
-	imagePlane.push_back(cv::Point(x1, y1)); // r 0
-	imagePlane.push_back(cv::Point(x2,y2)); // l u
-	imagePlane.push_back(cv::Point(x1, y2)); // ru
-	
-	return imagePlane;
-}
-
-
-
-
-
 bool PoseEstimation::saveMaps(const std::vector <cv::Mat> maps) {
 	cv::FileStorage fs("Maps.yml", cv::FileStorage::WRITE);
 	if (!fs.isOpened())
