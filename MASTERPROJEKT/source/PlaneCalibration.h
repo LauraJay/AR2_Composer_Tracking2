@@ -31,7 +31,6 @@ public:
 	PlaneCalibration::planeCalibData loadImagePlane();
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
-	float computeSizeDifferenceOfAruco(std::vector<cv::Point2f> corners);
 private:
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;

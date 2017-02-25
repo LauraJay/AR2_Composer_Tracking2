@@ -35,7 +35,6 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 	cv::Mat output;
 	cvtColor(frame, output, cv::COLOR_RGB2HSV);
 	inRange(output, cv::Scalar(60, 120, 22), cv::Scalar(85, 255, 255), output);
-	
 	/*cv::namedWindow("inRange", cv::WINDOW_KEEPRATIO);	
 	cv::imshow("inRange", output);
 	cv::waitKey(1);*/
@@ -92,8 +91,8 @@ void MarkerDetection::initArucoParams()
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams);
 	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
-	if (arucoIds.size() > 0)
-	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);
+	/*if (arucoIds.size() > 0)
+	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);*/
 
 	//// draw results TODEBUG
 	//cv::Mat imageCopy;

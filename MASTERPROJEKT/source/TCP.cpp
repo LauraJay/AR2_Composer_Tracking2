@@ -12,7 +12,6 @@ SOCKET serverSocket;
 SOCKET connectedSocket;
 int c;
 std::ofstream myfile;
-//std::ofstream myfile2;
 struct TCP::MarkerStruct ms[101];
 struct TCP::Calibration m[1];
 
@@ -85,14 +84,7 @@ void TCP::sendStatus(int status) {
 	printf("Sent Status: %d \n", status);
 }
 
-void TCP::sendDistMarkerCamera(float marker1,float marker2,float marker3) {
-	float distances[3] = { marker1, marker2, marker3};
-	const char far* markerPointer = (const char*)&distances;
-	send(connectedSocket, markerPointer, 12, 0);
-	printf("Distance Marker to Camera of Marker 1: %d \n", distances[0]);
-	printf("Distance Marker to Camera of Marker 2: %d \n", distances[1]);
-	printf("Distance Marker to Camera of Marker 3: %d \n", distances[2]);
-}
+
 
 void TCP::sendMarkerData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec, frame);
@@ -137,27 +129,18 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	ms[allMarkers.size()].id = -2;
 
 	myfile.close();
-	//myfile2.close();
+	
 }
 
 
 TCP::TCP(cv::Size frameSize) {
-	//lut = cv::Mat3f(frameSize);
-	//readCameraParameters("LUT.yml", lut);
 	myfile.open("logNorm.txt", std::ofstream::out | std::ofstream::trunc);
 	myfile.close();
-	/*myfile2.open("logWorld.txt", std::ofstream::out | std::ofstream::trunc);
-	myfile2.close();*/
 }
 
 TCP::~TCP() {
 }
 
-//int TCP::loadLUT()
-//{
-//	readCameraParameters("LUT.yml", lut);
-//	return 0;
-//}
 
 void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 	pcd = pcData;
@@ -165,28 +148,13 @@ void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
 
 cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
 	cv::Point2f center = r.center;
-	//printf("Before coord: %f, %f; ", center.x, center.y);
 	center.x = abs((center.x - pcd.lowerCorner.x) / pcd.size.width);
 	center.y = abs((center.y- pcd.upperCorner.y) / pcd.size.height);
-	//printf("Normalized coord: %f, %f; ", center.x, center.y);
 	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width), (r.size.height / pcd.size.height));
 	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
 	return rect;
 }
 
 
-bool TCP::readCameraParameters(std::string filename, cv::Mat3f &lut) {
-	cv::FileStorage fs(filename, cv::FileStorage::READ);
-	if (!fs.isOpened())
-		return false;
-	fs["LUT"] >> lut;
-	return true;
-}
 
-cv::Vec3f TCP::computeCamera2World(cv::Point2f point)
-{
-	cv::Vec3f worldCenter = cv::Vec3f();
-	worldCenter = lut.at<cv::Vec3f>(point.y,point.x);
-	worldCenter[2] = 0.;
-	return worldCenter;
-}
+

@@ -37,7 +37,6 @@ public:
 	~PoseEstimation() {};
 	PoseEstimation();
 	bool loadCameraMat();
-	int  generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);
 	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();

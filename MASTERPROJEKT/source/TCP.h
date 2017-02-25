@@ -10,8 +10,6 @@ class TCP {
 private:
 	cv::RotatedRect normalizeCoord(cv::RotatedRect r);
 	PlaneCalibration::planeCalibData pcd;
-	bool readCameraParameters(std::string filename, cv::Mat3f & lut);
-	cv::Mat3f lut;
 	cv::Vec3f computeCamera2World(cv::Point2f point);
 
 public:
@@ -42,5 +40,4 @@ public:
 	void setPCD(PlaneCalibration::planeCalibData pcData);
 	TCP(cv::Size frameSize);
 	~TCP();
-	int loadLUT();
 };

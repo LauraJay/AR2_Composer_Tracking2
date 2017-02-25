@@ -209,20 +209,7 @@ bool PoseEstimation::loadSavedDistCoeff()
 }
 
 
-int  PoseEstimation::generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd) {
-	// compute CameraWorldMatrix
-	computeCamera2World(pcd);
 
-	//compute LUT
-	cv::Mat3f lut = computeCamera2WorldLut();
-
-	int saveOk = saveLUT(lut);
-
-	if(saveOk == 1)	return 1;
-	
-	return -1;
-
-}
 
 void PoseEstimation::computeCamera2World(PlaneCalibration::planeCalibData pcd)
 {
@@ -270,46 +257,8 @@ std::vector<cv::Point2f> PoseEstimation::getImagePlane(PlaneCalibration::planeCa
 	return imagePlane;
 }
 
-cv::Mat3f PoseEstimation::computeCamera2WorldLut()
-{
-	std::cout << "Starting LUT computation. This takes some minutes." << std::endl;
-	cv::Mat3f lut = cv::Mat3f(size);
-	for (int x1 = 0; x1 < size.width; x1++)
-	{ 
-		if (x1 == 1024) {
-			printf("");
-		}
-		for (int y = 0; y < size.height; y++)
-		{
-			cv::Point3f p = PoseEstimation::computeWordCoordinates(cv::Point2f(x1,y), rotationMatrix, cameraMatrix, tvec);
-			/*lut.at<cv::Vec3f>(y,x1)[0] = (int)(p.x * 10000 + 0.5) / 10000.0;
-			lut.at<cv::Vec3f>(y,x1)[1] = (int)(p.y * 10000 + 0.5) / 10000.0;*/
-            lut.at<cv::Vec3f>(y, x1)[0] = p.x;
-            lut.at<cv::Vec3f>(y, x1)[1] = p.y;
-			lut.at<cv::Vec3f>(y,x1)[2] = 0.;
-		}
-	}
-	std::cout << "Finished LUT computation.\n" << std::endl;
-	return lut;
-}
 
-cv::Point3f PoseEstimation::computeWordCoordinates(cv::Point2f uv, cv::Mat rotationMatrix, cv::Mat cameraMatrix, cv::Mat tvec) {
-	
-	cv::Mat uvPoint = cv::Mat::ones(3, 1, cv::DataType<double>::type);
-	uvPoint.at<double>(0, 0) = uv.x;
-	uvPoint.at<double>(1, 0) = uv.y;
-	cv::Mat tempMat, tempMat2;
-	double s, zConst = 0;
-	// p -> world -> rotated to world
-	tempMat = rotationMatrix.inv() * cameraMatrix.inv() * uvPoint;
-	// t-vector rotiert
-	tempMat2 = rotationMatrix.inv() * tvec;
-	s = zConst + tempMat2.at<double>(2, 0);
-	s /= tempMat.at<double>(2, 0);
-	cv::Mat wcPoint = rotationMatrix.inv() * (s * cameraMatrix.inv() * uvPoint - tvec);
-	return cv::Point3f(wcPoint.at<double>(0, 0), wcPoint.at<double>(1, 0), wcPoint.at<double>(2, 0));
 
-}
 
 
 bool PoseEstimation::saveMaps(const std::vector <cv::Mat> maps) {
@@ -342,19 +291,7 @@ std::vector <cv::Mat> PoseEstimation::loadUndistortRectifyMaps() {
 }
 
 
-bool PoseEstimation::saveLUT(const cv::Mat3f lut) {
-	cv::FileStorage fs("LUT.yml", cv::FileStorage::WRITE);
-	if (!fs.isOpened())
-		return false;
-	time_t tt;
-	time(&tt);
-	struct tm *t2 = localtime(&tt);
-	char buf[1024];
-	strftime(buf, sizeof(buf) - 1, "%c", t2);
-	fs << "calibration_time" << buf;
-	fs << "LUT" << lut;
-	return true;
-}
+
 
 bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imageSize, float aspectRatio, int flags,
 	const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, double totalAvgErr) {

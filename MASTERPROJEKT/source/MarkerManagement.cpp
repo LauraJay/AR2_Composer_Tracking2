@@ -47,7 +47,6 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 						CurrentMarkerWAruco(trackedMarker[matchID], trackedMarker[matchID]->getRect(), arucoIds[arucoID], corners[arucoID].at(0), true);
 					else
 						CurrentMarkerWAruco(trackedMarker[matchID], r, arucoIds[arucoID], corners[arucoID].at(0), false);
-					//printf("HAS id %d \n",matchID);
 				}
 			}
 			else if ((rep = im->isRectOutOfField(r, pcd)) == 0) {
@@ -74,7 +73,6 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 		}
 		else if ((matchID = im->isTranslatedMarker(motionCenterVecs, trackedMarker, takenIDVec, -1)) > 0) {
 			CurrentMarker(trackedMarker[matchID], r);
-			//printf("isTranslated \n");
 		}
 	}
 

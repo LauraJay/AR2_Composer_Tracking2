@@ -2,10 +2,6 @@
 
 int uEye_input::inituEyeCam() {
 
-
-
-
-
 	hCam = 1;
 	
 	

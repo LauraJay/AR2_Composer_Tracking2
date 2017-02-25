@@ -36,14 +36,7 @@ int main()
         system("pause");
         return EXIT_FAILURE;
     }
-	//runSizeMeasure(uei1);
-	//system("pause");
-	//runSizeMeasure(uei1);
-	//system("pause");
-	//runSizeMeasure(uei1);
-	//system("pause");
-	//runSizeMeasure(uei1);
-	//system("pause");
+
 
 #endif // uEYE
 #ifdef VIDEOVERA
@@ -82,9 +75,9 @@ int main()
 			}
 		}
 
-		/*if (calibStatus == tcp->planeOnlyCalib){
+		if (calibStatus == tcp->planeOnlyCalib){
 			maps = calib->loadUndistortRectifyMaps();
-	}*/
+	}
 		
         //SPIELFELDKALIBRIERUNG
         if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -92,7 +85,7 @@ int main()
                 currentStatus = -1;
                 currentStatus = tcp->receiveStatus();
                     frame = uei1->getCapturedFrame();
-                    //frame = getCalibratedFrame(frame);
+                    frame = getCalibratedFrame(frame);
                 if (currentStatus == tcp->ControlerButtonPressed) {
                    // printf("Controller Status : %d \n", currentStatus);
             
@@ -101,14 +94,9 @@ int main()
                     switch (numOfPlaneCorners) {
                     case 1: 
 						tcp->sendStatus(tcp->ArucoFound1); break;
-					case 2:
-						tcp->sendStatus(tcp->ArucoFound2); break;
-                    case 3: {tcp->sendStatus(tcp->ArucoFound3);
+	             case 2: {tcp->sendStatus(tcp->ArucoFound2);
                         int rep = calib->generatePlaneCalib();
-						std::vector<float> sizes =calib->pc->markerSize;
-                        //if (calibStatus == tcp->planeOnlyCalib)
-                        if (rep > -1 && sizes.size() == 3) {
-							tcp->sendDistMarkerCamera(sizes[0],sizes[1],sizes[2]);//Entfernungen als float Werte einfügen!
+                        if (rep > -1) {
                             tcp->sendStatus(tcp->PlaneCalibDone);
                             //printf("PCD: UR : %f, %f ; LL: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
                             PlaneCalibDone = true;
@@ -134,12 +122,9 @@ int main()
 
             delete calib;
             calib = new Calibration();
-            //cv::destroyWindow("undistortedImg");
         }
     }
-    /*printf("load LUT ...\n");
-    tcp->loadLUT();
-    printf("...finished LUT loading \n");*/
+  
     pcd = calib->getPlaneCalibData();
     //printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
     tcp->setPCD(pcd);
@@ -159,7 +144,7 @@ int main()
 
 #ifdef uEYE
         frame = uei1->getCapturedFrame();
-       // frame = getCalibratedFrame(frame);
+       frame = getCalibratedFrame(frame);
 #endif // uEYE
 
 #ifdef VIDEOVERA
@@ -200,7 +185,6 @@ int main()
 #ifdef useTCP
             //Send Markerdata via TCP
             tcp->sendMarkerData(marker, takenIdVec, frame);
-           // statusWhileRun= tcp->receiveTCPData();
 #endif // TCP_connection
 #ifdef runDebug
             end = clock();

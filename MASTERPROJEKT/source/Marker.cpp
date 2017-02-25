@@ -6,8 +6,6 @@ float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 	float angleRad;
 	float angleGrad;
 	const double PI(3.14159265);
-	/*angelPoint.x = angelPoint.x - ((int)angelPoint.x % 2);
-	angelPoint.y = angelPoint.y - ((int)angelPoint.y % 2);*/
 	cv::Point2f temp = cv::Point(center.x-20, center.y);
 	cv::Point2f unitVector = temp - center;
 	cv::Point2f orientationVector = angelPoint - center;
