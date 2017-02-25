@@ -60,7 +60,7 @@ int uEye_input::inituEyeCam() {
 		
         UINT ret = is_CaptureVideo(hCam, IS_DONT_WAIT);
         if (ret != IS_SUCCESS && ret != IS_CAPTURE_RUNNING)
-            printf("ret of capture: %d \r; ", ret);
+           // printf("ret of capture: %d \r; ", ret);
 
 	return 1;
 

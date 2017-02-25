@@ -272,7 +272,7 @@ bool PoseEstimation::saveCameraParams(const std::string &filename, cv::Size imag
 
 	fs << "flags" << flags;
 	fs << "camera_matrix" << cameraMatrix;
-	//fs << "distortion_coefficients" << distCoeffs;
+	fs << "distortion_coefficients" << distCoeffs;
 	fs << "avg_reprojection_error" << totalAvgErr;
 	printf("CamParams Saved\n");
 	return true;

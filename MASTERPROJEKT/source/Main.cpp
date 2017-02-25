@@ -4,7 +4,7 @@
 #define useTCP
 #define uEYE
 #define useNotTestClasses
-#define runDebug
+//#define runDebug
 
 //int statusWhileRun = -1;
 int currentStatus = -1;
@@ -55,12 +55,12 @@ int main()
     Calibration* calib = new Calibration();
     int numOfPlaneCorners = 0;
     bool PlaneCalibDone = false;
-
+	
 	while (true) {
 		currentStatus = tcp->receiveStatus();
 		if (currentStatus == tcp->sceneStart)  break;
 		calibStatus = currentStatus;
-		printf("calibstatus: %d \n", calibStatus);
+		//printf("calibstatus: %d \n", calibStatus);
 
 		if (calibStatus == tcp->planeAndPoseCalib) {
 			int res = calib->runPoseEstimation(uei1);
@@ -90,7 +90,7 @@ int main()
                    // printf("Controller Status : %d \n", currentStatus);
             
                     numOfPlaneCorners = calib->catchPlaneMarker(frame);
-                    printf("numOfPlaneCorners: %d \n", numOfPlaneCorners);
+                    //printf("numOfPlaneCorners: %d \n", numOfPlaneCorners);
                     switch (numOfPlaneCorners) {
                     case 1: 
 						tcp->sendStatus(tcp->ArucoFound1); break;
@@ -134,14 +134,14 @@ int main()
     //first MarkerSize, second Threshold
     MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
     MarkerDetection* md = new MarkerDetection();
-
+	char key;
     while (true) {
 #ifdef runDebug
         clock_t start, end;
         counter++;
         start = clock();
 #endif //runDebug
-
+	
 #ifdef uEYE
         frame = uei1->getCapturedFrame();
        frame = getCalibratedFrame(frame);
@@ -271,43 +271,3 @@ cv::Mat getCalibratedFrame(cv::Mat frame) {
 
 }
 
-void runSizeMeasure(uEye_input * uei1)
-{
-	int counter1 = 0;
-	int numOfPlaneCorners = 0;
-	cv::Mat frame;
-	Calibration* calib = new Calibration();
-	int samples = 20;
-	while (counter1 != samples) {
-		frame = uei1->getCapturedFrame();
-		cv::imshow("test", frame);
-		cv::waitKey(1);
-		numOfPlaneCorners = calib->catchPlaneMarker(frame);
-		counter1++;
-	}
-	counter1 = 0;
-	std::vector<float> sizes = calib->pc->markerSize;
-	float mw = 0.;
-	for (size_t i = 0; i < sizes.size(); i++)
-	{
-		mw += sizes[i];
-	}
-	mw /= samples;
-	printf("Mittelwert %f\n", mw);
-
-	//Varianz var
-	double var = 0;
-	for (int i = 0; i < sizes.size(); i++)
-	{
-		var += (sizes[i] - mw) * (sizes[i] - mw);
-	}
-	var /= (sizes.size() - 1);
-
-	//Standardabweichung sigma
-	double sigma = sqrt(var);
-
-	printf("Varianz: %f\n", var);
-	printf("Standardabweichung: %f\n", sigma);
-
-	delete calib;
-}
