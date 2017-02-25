@@ -24,6 +24,7 @@ public:
 		cv::Size size;
 	};
 	planeCalibData pcd;
+	cv::Mat screen2Cam;
 	planeCalibData getPlaneCalibData();
 	int computePlaneCalibration();
 	int detectAruco(cv::Mat frame);
@@ -31,7 +32,10 @@ public:
 	PlaneCalibration::planeCalibData loadImagePlane();
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
+	std::vector<cv::Point2f> markerPosInCamSpace;
+	std::vector<cv::Point3f> controllerPositions;
 	float computeSizeDifferenceOfAruco(std::vector<cv::Point2f> corners);
+	void initDebugValues();
 private:
 	cv::Point2f upperLeft;
 	cv::Point2f lowerLeft;

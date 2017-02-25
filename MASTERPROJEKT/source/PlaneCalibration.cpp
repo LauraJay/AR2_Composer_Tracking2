@@ -33,6 +33,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("No markers found. Please ensure that the marker of the controller is located in the image.\n");
 		return -1;
 	}
+
 	
 
 	bool foundID = false;
@@ -76,6 +77,31 @@ PlaneCalibration::PlaneCalibration() {
 int PlaneCalibration::getSizeOfMarkerPos() {
 	return markerPositions.size();
 }
+
+void PlaneCalibration::initDebugValues() {
+
+	markerPositions.push_back(cv::Point2f(128.142578, 759.935303));
+	markerPositions.push_back(cv::Point2f(1226.188232, 69.112511));
+	markerPositions.push_back(cv::Point2f(1181.037354, 790.379150));
+
+	/*controllerPositions.push_back(cv::Point3f(-0.1192911, 0.6097684, -0.2195672));
+	controllerPositions.push_back(cv::Point3f(0.6733468, 0.6219791, 0.2867339));
+	controllerPositions.push_back(cv::Point3f(0.7260225, 0.6135228, -0.1738673));*/
+	controllerPositions.push_back(cv::Point3f(-0.1192911, -0.2195672, 0.6097684));
+	controllerPositions.push_back(cv::Point3f(0.6733468, 0.2867339, 0.6219791));
+	controllerPositions.push_back(cv::Point3f(0.7260225, -0.1738673, 0.6135228));
+}
+
+std::vector<cv::Point3f> transform(cv::Mat screen2Cam, std::vector<cv::Point2f> markerPos) {
+	std::vector<cv::Point3f> temp;
+	//temp.at(0) = screen2Cam.mul(marker)
+
+
+	return temp;
+}
+
+
+
 
 int PlaneCalibration::computePlaneCalibration() {
 	

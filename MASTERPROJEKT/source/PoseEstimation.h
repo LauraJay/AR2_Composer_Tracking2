@@ -28,7 +28,6 @@ private:
 	cv::Mat rotationMatrix;
 	std::vector<double>  tvec;
 	std::vector<cv::Mat> rvecs, tvecs;
-	
 	//void computeCamera2World(PlaneCalibration::planeCalibData pcd);
 	std::vector<cv::Point2f> getImagePlane(PlaneCalibration::planeCalibData pcd);
 	//cv::Mat3f computeCamera2WorldLut();
@@ -37,6 +36,7 @@ private:
 	bool saveMaps(const std::vector<cv::Mat> maps);
 
 public:
+	cv::Mat screen2Cam;
 	~PoseEstimation() {};
 	PoseEstimation();
 	bool loadInstrincts();

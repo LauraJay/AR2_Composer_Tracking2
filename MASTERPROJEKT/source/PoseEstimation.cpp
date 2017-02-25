@@ -71,6 +71,8 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei) {
 	tvecs = cOCV->tvecs;
 	R = cOCV->R;
 	tvec = cOCV->tvec;
+	cv::Mat t = cv::Mat(tvec);
+	cv::hconcat(R, t, screen2Cam);
 	saveCameraParams("instrinctCameraParams.xml",cameraMatrix,distCoeffs,rvecs, tvecs);
 	//loadInstrincts();
 	return 1;
