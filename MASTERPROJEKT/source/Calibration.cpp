@@ -66,6 +66,7 @@ int Calibration::runPlaneCalib()
 	//first.push_back(cv::Point3f(0.1251432, 0.8065106, -0.1780782));
 
 
+
 	//TVEC
 	tvecs.push_back(cv::Point3d(-0.431922, 0.206468, 7.928111));
 	tvecs.push_back(cv::Point3d(0.320648, -0.242227, 7.568028));
@@ -73,6 +74,9 @@ int Calibration::runPlaneCalib()
 	tvecs.push_back(cv::Point3d(-0.39238, 0.158182, 8.066885));
 	second.push_back(cv::Point3d(0.169287, -0.095240, 7.930131));
 	second.push_back(cv::Point3d(0.384523, 0.189636, 7.511865));
+
+
+
 	//RVEC
 	rvecs.push_back(cv::Point3d(2.058372, -2.007122, 0.284319));
 	rvecs.push_back(cv::Point3d(-2.818774, -0.028501, -0.268524));
@@ -82,15 +86,16 @@ int Calibration::runPlaneCalib()
 	//second.push_back(cv::Point3d(-2.003321, -1.943969, -0.275266));
 
 
-	std::vector< cv::Point3d> cP;
 	
 
-	cP.push_back(cv::Point3d(-0.001835227, -0.3682832, 0.776637));
-	cP.push_back(cv::Point3d(0.7285104, 0.1965812, 0.8005528));
-	cP.push_back(cv::Point3d(0.7645366, -0.2706032, 0.8258376));
-	cP.push_back(cv::Point3d(0.0856148, -0.1982772, 0.6568241));
-	first.push_back(cv::Point3d(0.488138, 0.09607637, 0.6641259));
-	first.push_back(cv::Point3d(0.7502835, -0.1891577, 0.6582546));
+	std::vector< cv::Point3f> cP;
+	cP.push_back(cv::Point3f(-0.001835227, 0.776637, -0.3682832));
+	cP.push_back(cv::Point3f(0.7285104, 0.8005528, 0.1965812));
+	cP.push_back(cv::Point3f(0.7645366, 0.8258376, -0.2706032));
+	cP.push_back(cv::Point3f(0.0856148, 0.6568241, -0.1982772));
+	first.push_back(cv::Point3f(0.488138, 0.6641259, 0.09607637));
+	first.push_back(cv::Point3f(0.7502835, 0.6582546, -0.1891577));
+	
 	
 	cv::Mat invYM = cv::Mat::eye(4, 4, CV_64F);
 	cv::Mat invZM = cv::Mat::eye(4, 4, CV_64F);
@@ -98,9 +103,9 @@ int Calibration::runPlaneCalib()
 	invZM.at<double>(2,2) = -1.;
 	cv::Mat rotMat=cv::Mat(3, 3, CV_64F);
 	cv::Mat vecR = cv::Mat(3, 1, CV_64F);
-	vecR.at<double>(0,0) = 3.335211;
-	vecR.at<double>(1, 0) = 0.172952;
-	vecR.at<double>(2, 0) = 0.180908;
+	vecR.at<double>(0, 0) = 2.058372;
+	vecR.at<double>(1, 0) = -2.007122;
+	vecR.at<double>(2, 0) = 0.284319;
 	cv::Rodrigues(vecR, rotMat);
 	cv::Mat transformationM;
 	cv::Mat temp = cv::Mat(3,4,CV_64F);
@@ -132,12 +137,12 @@ int Calibration::runPlaneCalib()
 	
 	/*for (int i = 0; i < first.size(); i++)
 	{*/
-		cv::Point3d testVec = second[0];
+		cv::Point3d testVec = cv::Point3d(0.0,0.0,0.0);
 		
 		cv::Point3d resVec;
 
-		cv::Mat allTransform = /*invZM**/transformationM.inv()/**invYM*/;
-		allTransform *= affTransform;
+		cv::Mat allTransform = invZM*transformationM.inv()*invYM * affTransform.inv();
+		
 		
 		resVec.x= allTransform.at<double>(0,0) * testVec.x + allTransform.at<double>(0, 1) * testVec.y + allTransform.at<double>(0, 2)*testVec.z+ allTransform.at<double>(0,3)*1;
 		resVec.y= allTransform.at<double>(1, 0) * testVec.x + allTransform.at<double>(1, 1) * testVec.y + allTransform.at<double>(1, 2)*testVec.z + allTransform.at<double>(1, 3) * 1;
@@ -145,9 +150,9 @@ int Calibration::runPlaneCalib()
 
 
 	
-		printf("Groundtruth:  (%f, %f, %f) \n", first[0].x, first[0].y, first[0].z);
+		printf("Groundtruth:  (%f, %f, %f) \n", cP[0].x, cP[0].y, cP[0].z);
 		printf("Transformed Vector: (%f, %f, %f) \n", resVec.x, resVec.y, resVec.z);
-		printf("EROOR: %f, %f, %f \n \n", std::abs(resVec.x) - std::abs(first[0].x), std::abs(resVec.x) - std::abs(first[0].y), std::abs(resVec.z) - std::abs(first[0].z));
+		printf("EROOR: %f, %f, %f \n \n", std::abs(resVec.x) - std::abs(cP[0].x), std::abs(resVec.x) - std::abs(cP[0].y), std::abs(resVec.z) - std::abs(cP[0].z));
 
 	//}
 	return 1;
