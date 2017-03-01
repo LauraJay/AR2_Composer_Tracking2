@@ -69,7 +69,7 @@ int main()
 	    Calibration* calib = new Calibration();
 	    int correspondingPoints = 0;
 	    bool PlaneCalibDone = false;
-		std::vector<cv::Point3f> AllControllerPositions; 
+		
 	
 		while (true) {
 			currentStatus = tcp->receiveStatus();
@@ -90,9 +90,12 @@ int main()
 				}
 			}
 	
-			/*if (calibStatus == tcp->planeOnlyCalib){
+			if (calibStatus == tcp->planeOnlyCalib){
+				calib->pe->loadCameraMat();
+				calib->pc->camMatrix = calib->pe->cameraMatrix;
+				calib->pc->distCoeffs = calib->pe->distCoeffs;
 				maps = calib->loadUndistortRectifyMaps();
-		}*/
+		}
 			
 	        //SPIELFELDKALIBRIERUNG
 			if (calibStatus == tcp->planeOnlyCalib || calibStatus == tcp->planeAndPoseCalib) {
@@ -112,7 +115,7 @@ int main()
 							else{
 							tcp->sendStatus(tcp->ArucoFound);
 							printf("Count of corresponding Points %i:\n",correspondingPoints);
-							AllControllerPositions.push_back(tcp->receiveControllerPositions());
+							calib->pc->AllControllerPositions.push_back(tcp->receiveControllerPositions());
 							}
 						}
 						 if (correspondingPoints == 20) {
@@ -140,12 +143,16 @@ int main()
 	    pcd = calib->getPlaneCalibData();
 	    //printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
 	    //tcp->setPCD(pcd);
-	    delete calib;
 	
 	#endif 	// TCP
 	    //first MarkerSize, second Threshold
+		CoordsTransformtion2Untiy* ct2u = new CoordsTransformtion2Untiy();
+		ct2u->affineTransform = calib->pc->affTransform;
 	    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
+		mm->camMat = calib->pe->cameraMatrix;
+		mm->distMat = calib->pe->distCoeffs;
 	    MarkerDetection* md = new MarkerDetection();
+	    delete calib;
 	//
 	    while (true) {
 	#ifdef runDebug
@@ -193,7 +200,8 @@ int main()
 			   cv::imshow("debug", imgDebug);
 	            cv::waitKey(1);
 	#endif //runDebug
-	
+				ct2u->computeTransformation2Unity(marker,takenIdVec);
+
 	#ifdef useTCP
 	            //Send Markerdata via TCP
 	            tcp->sendMarkerData(marker, takenIdVec, frame);
@@ -213,7 +221,7 @@ int main()
 	    uei1->exitCamera();
 	    delete uei1;
 	#endif // uEYE
-	
+		delete ct2u;
 	    delete mm;
 	
 	#ifdef useTCP

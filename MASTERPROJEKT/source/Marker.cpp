@@ -110,6 +110,27 @@ float Marker::getAngle()
 	return angle;
 }
 
+std::vector<cv::Point3d> Marker::getTvecs()
+{
+	return tvecs;
+}
+
+cv::Point3d Marker::getEstimatedCenter()
+{
+	return estimatedCenter;
+}
+
+void Marker::setEstimatedCenter(cv::Point3d estiCenter)
+{
+	Marker::estimatedCenter = estiCenter;
+
+}
+
+void Marker::setTvecs(std::vector<cv::Point3d> tvecs)
+{
+	Marker::tvecs = tvecs;
+}
+
 void Marker::setAngle(float angle) {
 	Marker::angle = angle;
 }

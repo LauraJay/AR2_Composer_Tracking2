@@ -10,6 +10,8 @@ private:
 		float angle;
 		cv::Point2f motionCenterVec;
 		int isTrack=0;
+		std::vector< cv::Point3d > tvecs;
+		cv::Point3d estimatedCenter;
 		
 public:
 	Marker(int id, cv::RotatedRect rect, cv::Point2f anglePoint);
@@ -28,9 +30,12 @@ public:
 	std::vector<cv::Point2f> getPoints();
 	cv::Point2f getCenter();
 	float getAngle();
-
+	std::vector< cv::Point3d > getTvecs();
+	cv::Point3d getEstimatedCenter();
 
 	//setter
+	void setEstimatedCenter(cv::Point3d estiCenter);
+	void setTvecs(std::vector< cv::Point3d > tvecs);
 	void setAngle(float angle);
 	void setTracked(int isTracked);
 	void setVisible(int isVisible);

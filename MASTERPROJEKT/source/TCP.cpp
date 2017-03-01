@@ -101,12 +101,12 @@ int TCP::receiveStatus() {
 }
 
 cv::Point3f TCP::receiveControllerPositions() {
-	cv::Point3f cP;
+	cv::Point3d cP;
 	char far* cPPointer = (char*)&cPArray;
 	recv(connectedSocket, cPPointer, 12, 0);
-	cP.x = cPArray[0];
-	cP.y = cPArray[1];
-	cP.z = cPArray[2];
+	cP.x = (double)cPArray[0];
+	cP.y = (double)cPArray[1];
+	cP.z = (double)cPArray[2];
 	printf("Received Controler Points: (%f, %f, %f) \n", cP.x, cP.y, cP.z);
 	return cP;
 }
@@ -123,13 +123,16 @@ void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vecto
 	
 		if (allMarkers[i]->getId() > 0)myfile << "\t tid " << ms[i].id << "\n";
 		//// For Simple Normalisation
-		cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
-		ms[i].posX = r.center.x;
-		ms[i].posY = r.center.y;
+		//cv::RotatedRect r = normalizeCoord(allMarkers[i]->getRect());
+		ms[i].posX = allMarkers[i]->getEstimatedCenter().x;
+		ms[i].posY = allMarkers[i]->getEstimatedCenter().y;
+		ms[i].posZ = allMarkers[i]->getEstimatedCenter().z;
 		
 		if (allMarkers[i]->getId() > 0) {
-			myfile << "\t posX " << r.center.x << "\n";
-			myfile << "\t posY " << r.center.y << "\n";
+			myfile << "\t posX " << allMarkers[i]->getEstimatedCenter().x << "\n";
+			myfile << "\t posY " << allMarkers[i]->getEstimatedCenter().y << "\n";
+			myfile << "\t posZ " << allMarkers[i]->getEstimatedCenter().z << "\n";
+
 		}
 				
 		ms[i].angle = allMarkers[i]->getAngle();

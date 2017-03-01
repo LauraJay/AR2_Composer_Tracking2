@@ -37,9 +37,10 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 		printf("No markers found. Please ensure that the marker of the controller is located in the image.\n");
 		return -1;
 	}
-	//std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
-	//	if (arucoIds.size() > 0)
-	//		cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs, tvecs);
+	// detect markers and estimate pose
+	if (arucoIds.size() > 0)
+		cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs, tvecs);
+	AllTVecs.push_back(tvecs[0]);
 
 	bool foundID = false;
 	// draw results
@@ -64,6 +65,36 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 
         break;	// Corner 1 is upper right corner of marker, which
 		}
+
+		cv::Mat testImg = cv::Mat::zeros(1280, 1024, CV_8UC3);
+		
+			for (int i = 0; i < tvecs.size(); i++)
+			{
+				std::vector< cv::Point3f > axisPoints;
+				axisPoints.push_back(cv::Point3f(0, 0, 0));
+				std::vector< cv::Point2f > imagePoints;
+				std::vector<cv::Vec3d> Vec3rves, Vec3tves;
+				for (int i = 0; i < rvecs.size(); i++)
+				{
+					cv::Vec3d tempr = rvecs[i];
+					cv::Vec3d tempt = tvecs[i];
+					Vec3rves.push_back(tempr);
+					Vec3tves.push_back(tempt);
+
+				}
+
+
+				
+				projectPoints(axisPoints, Vec3rves[i], Vec3tves[i], camMatrix, distCoeffs, imagePoints);
+				cv::circle(testImg, imagePoints[0], 5, cv::Scalar(0, 255, 0));
+				cv::circle(testImg, markerPositions[i], 3, cv::Scalar(255, 0, 0));
+		
+			}
+		
+			cv::namedWindow("debug2", cv::WINDOW_KEEPRATIO);
+			cv::imshow("debug2", testImg);
+			cv::waitKey(0);
+
 	}
 
 	if (!foundID) {
@@ -140,4 +171,13 @@ PlaneCalibration::planeCalibData PlaneCalibration::loadImagePlane()
 		calibFile.close();
 	}
 		return pcd;
+}
+
+int PlaneCalibration::computeAffineTransformation() {
+
+
+	std::vector< uchar >  inliers;
+	cv::estimateAffine3D(AllTVecs, AllControllerPositions, affTransform, inliers);
+
+	return 1;
 }

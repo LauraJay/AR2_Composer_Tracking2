@@ -18,11 +18,11 @@ class Calibration {
 private:
 	PlaneCalibration::planeCalibData pcd;
 	uEye_input uei;
-	PoseEstimation* pe;
 	std::vector<cv::Mat>UndistortRectifyMaps;
 	
 public:
 	void testNewCalib(uEye_input* uei);
+	PoseEstimation* pe;
 	PlaneCalibration* pc;
 	~Calibration();
 	Calibration();

@@ -39,6 +39,9 @@
     <ClInclude Include="..\..\source\calibWithChessboard.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\CoordsTransformation2Unity.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp">
@@ -78,6 +81,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\calibWithChessboard.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\CoordsTransformation2Unity.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
