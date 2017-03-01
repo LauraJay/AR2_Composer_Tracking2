@@ -22,6 +22,7 @@ private:
 	std::vector<cv::Mat>UndistortRectifyMaps;
 	
 public:
+	void testNewCalib(uEye_input* uei);
 	PlaneCalibration* pc;
 	~Calibration();
 	Calibration();
@@ -31,4 +32,5 @@ public:
 	PlaneCalibration::planeCalibData getPlaneCalibData();
 	std::vector<cv::Mat> getUndistortRectifyMaps();
 	std::vector<cv::Mat> loadUndistortRectifyMaps();
+	void testNewCalibWithPositions();
 	};

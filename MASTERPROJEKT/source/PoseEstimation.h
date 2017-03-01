@@ -15,21 +15,21 @@
 
 #include <uEye_input.h>
 #include <PlaneCalibration.h>
-
+#include <calibWithChessboard.h>
 
 class PoseEstimation {
 
 
 private:
-	std::vector<cv::Point2f> imagePlane;
-	cv::Mat1d cameraMatrix, distCoeffs;
-	cv::Mat rotationMatrix;
-	cv::Mat tvec;
+	std::vector<cv::Mat> rvecs, tvecs;
 	cv::Size size;
-	void computeCamera2World(PlaneCalibration::planeCalibData pcd);
 	bool saveMaps(const std::vector<cv::Mat> maps);
 
 public:
+	std::vector<cv::Point2f> imagePlane;
+	cv::Mat1d cameraMatrix, distCoeffs;
+	cv::Mat rotationMatrix;
+	cv::Mat P;
 	~PoseEstimation() {};
 	PoseEstimation();
 	bool loadCameraMat();
@@ -39,5 +39,5 @@ public:
 	std::vector<cv::Mat> generateUndistortRectifyMap();
 	bool loadSavedDistCoeff();
 	std::vector<cv::Mat> loadUndistortRectifyMaps();
-	bool saveCameraParams(const std::string & filename, cv::Size imageSize, float aspectRatio, int flags, const cv::Mat & cameraMatrix, const cv::Mat & distCoeffs, double totalAvgErr);
+	bool saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat>rvecs, const std::vector<cv::Mat> tvecs);
 };

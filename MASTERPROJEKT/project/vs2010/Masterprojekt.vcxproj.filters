@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\source\TCP.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\calibWithChessboard.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\source\Main.cpp">
@@ -72,6 +75,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\TCP.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\calibWithChessboard.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

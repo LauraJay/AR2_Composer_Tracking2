@@ -125,6 +125,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
   <ItemGroup>
     <ClCompile Include="..\..\source\ArucoCodeGenerator.cpp" />
     <ClCompile Include="..\..\source\Calibration.cpp" />
+    <ClCompile Include="..\..\source\calibWithChessboard.cpp" />
     <ClCompile Include="..\..\source\CreateCharucoBoard.cpp" />
     <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
@@ -138,6 +139,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\Calibration.h" />
+    <ClInclude Include="..\..\source\calibWithChessboard.h" />
     <ClInclude Include="..\..\source\IdMapping.h" />
     <ClInclude Include="..\..\source\Main.h" />
     <ClInclude Include="..\..\source\Marker.h" />

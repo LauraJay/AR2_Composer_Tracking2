@@ -24,7 +24,7 @@ public:
 	int inituEyeCam();
 	cv::Mat getCapturedFrame();
 	int exitCamera();
-
+	bool uEye_input::isActive();
 	~uEye_input();
 	uEye_input();
 

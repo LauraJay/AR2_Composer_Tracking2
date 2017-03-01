@@ -103,6 +103,9 @@ int uEye_input::exitCamera() {
     is_FreeImageMem(hCam, imgMem, memId);
 	return is_ExitCamera(hCam);
 }
+bool uEye_input::isActive() {
+	return  is_CaptureVideo(hCam, IS_DONT_WAIT) == IS_CAPTURE_RUNNING;
+}
 
 uEye_input::uEye_input()
 {
