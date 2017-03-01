@@ -25,6 +25,10 @@ PlaneCalibration::planeCalibData PlaneCalibration::readPlaneCalibrationFile() {
 }
 
 int PlaneCalibration::detectAruco(cv::Mat frame) {
+	//cv::FileStorage fs("CorrespondingPoints.yml", cv::FileStorage::WRITE);
+	//if (!fs.isOpened())
+	//	return false;
+
 	std::vector<int> arucoIds;
 	std::vector<std::vector<cv::Point2f>> corners;
 	std::vector<std::vector<cv::Point2f>> rejected;
@@ -52,6 +56,11 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
             baricenter.x /= p.size();
             baricenter.y /= p.size();
             markerPositions.push_back(baricenter);
+
+			/*fs << "Marker center" << markerPositions;
+			fs << "Marker corner" << corners;
+			fs << "Tvecs" << tvecs;
+			fs << "Rvecs" << rvecs;*/
 
         break;	// Corner 1 is upper right corner of marker, which
 		}

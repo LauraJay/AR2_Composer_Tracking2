@@ -14,6 +14,7 @@ int c;
 std::ofstream myfile;
 struct TCP::MarkerStruct ms[101];
 struct TCP::Calibration m[1];
+float cPArray [3] = { 0.0f, 0.0f , 0.0f};
 
 int TCP::startTCPServer()
 {
@@ -97,6 +98,17 @@ int TCP::receiveStatus() {
 	recv(connectedSocket, mPointer, 4, 0);
 	printf("Received Status: %i \n", m[0].isCalibrated);
 	return m[0].isCalibrated;
+}
+
+cv::Point3f TCP::receiveControllerPositions() {
+	cv::Point3f cP;
+	char far* cPPointer = (char*)&cPArray;
+	recv(connectedSocket, cPPointer, 12, 0);
+	cP.x = cPArray[0];
+	cP.y = cPArray[1];
+	cP.z = cPArray[2];
+	printf("Received Controler Points: (%f, %f, %f) \n", cP.x, cP.y, cP.z);
+	return cP;
 }
 
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
