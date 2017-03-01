@@ -22,7 +22,7 @@ Main::Main() {
 #ifdef useNotTestClasses
 int main()
 {
-   /* std::array<Marker*, 100> marker;
+   std::array<Marker*, 100> marker;
     std::vector<int> takenIdVec;
     int counter = -1;
     cv::Mat frame;
@@ -35,7 +35,7 @@ int main()
         printf("No uEye Camera found. Please check the connection. \n");
         system("pause");
         return EXIT_FAILURE;
-    }*/
+    }
 	//runSizeMeasure(uei1);
 	//system("pause");
 	//runSizeMeasure(uei1);
@@ -48,7 +48,7 @@ int main()
 #endif // uEYE
 	Calibration* calib = new Calibration();
 	//calib->runPoseEstimation(uei1);
-	calib->runPlaneCalib();
+	calib->testNewCalib(uei1);
 	system("pause");
 
 

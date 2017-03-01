@@ -69,7 +69,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei) {
 	distCoeffs = cOCV->distCoeffs;
 	rvecs = cOCV->rvecs;
 	tvecs = cOCV->tvecs;
-	R = cOCV->R;
+	P = cOCV->P;
 	tvec = cOCV->tvec;
 	cv::Mat t = cv::Mat(tvec);
 	cv::hconcat(R, t, screen2Cam);

@@ -27,7 +27,7 @@ public:
 	Calibration();
 	int runPoseEstimation(uEye_input* uei);
 	int runPlaneCalib();
-
+	void testNewCalib(uEye_input* uei);
 	int catchPlaneMarker(cv::Mat frame);
 	int generatePlaneCalib();
 	//int generateCam2WorldLUT();

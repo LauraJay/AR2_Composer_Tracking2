@@ -41,7 +41,7 @@ public:
 	PoseEstimation();
 	bool loadInstrincts();
 	cv::Size size;
-	cv::Mat R;
+	cv::Mat P;
 	//std::vector<double>tvec;
 	//bool loadCameraMat();
 	//int  generateCam2WorldLUT(PlaneCalibration::planeCalibData pcd);

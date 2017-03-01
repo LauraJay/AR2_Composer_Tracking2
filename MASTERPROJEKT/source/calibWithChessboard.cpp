@@ -133,7 +133,7 @@ static void calcChessboardCorners(Size boardSize, float squareSize, vector<Point
 static bool runCalibration(vector<vector<Point2f> > imagePoints,
 	Size imageSize, Size boardSize, Pattern patternType,
 	float squareSize, float aspectRatio,
-	int flags, Mat& cameraMatrix, Mat& distCoeffs, Mat& R, std::vector<double>& tvec,
+	int flags, Mat& cameraMatrix, Mat& distCoeffs, Mat& P, std::vector<double>& tvec,
 	vector<Mat>& rvecs, vector<Mat>& tvecs,
 	vector<float>& reprojErrs,
 	double& totalAvgErr)
@@ -155,19 +155,13 @@ static bool runCalibration(vector<vector<Point2f> > imagePoints,
 	cv::Mat rVec(3, 1, cv::DataType<double>::type);
 	tvec= cv::Mat(3, 1, cv::DataType<double>::type);
 	solvePnP(objectPoints[0], imagePoints[0], cameraMatrix, distCoeffs, rVec, tvec);
-	/*Point3f	new_translation = cv::Point3f();
-	Point3f new_rotation = cv::Point3f();
-	float t = tVec.at<double>(0);
-	new_translation.x = (float)tVec.at<double>(0);
-	new_translation.y = (float)-tVec.at<double>(1);
-	new_translation.z = (float)-tVec.at<float>(2);
+	cv::Mat rotMat = cv::Mat(3, 3, CV_64F);
+	Rodrigues(rVec, rotMat);
+	rotMat.at<double>(2, 0) = tvec[0];
+	rotMat.at<double>(2, 1) = tvec[1];
+	rotMat.at<double>(2, 2) = tvec[2];
+	P = cameraMatrix*rotMat;
 
-	new_rotation.x = (float)rVec.at<double>(0);
-	new_rotation.y = (float)-rVec.at<double>(1);
-	new_rotation.z = (float)-rVec.at<float>(2);*/
-	
-	
-	Rodrigues(rVec,R);
 
 	///*|CALIB_FIX_K3*/|CALIB_FIX_K4|CALIB_FIX_K5);
 	printf("RMS error reported by calibrateCamera: %g\n", rms);
