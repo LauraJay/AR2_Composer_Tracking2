@@ -45,7 +45,7 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei) {
 	tvecs = cOCV->tvecs;
 	rvecs = cOCV->rvecs;
 	distCoeffs = cv::Mat::zeros(1,5,CV_64F);
-	saveCameraParams("CameraMatrix.xml", cameraMatrix, distCoeffs, rvecs, tvecs);
+	saveCameraParams("CameraMatrix.yml", cameraMatrix, distCoeffs, rvecs, tvecs);
 	//loadInstrincts();
 	return 1;
 }
@@ -153,6 +153,7 @@ bool PoseEstimation::loadCameraMat() {
 	if (!fs.isOpened())
 		return false;
 	fs["camera_matrix"] >> cameraMatrix;
+	fs["distortion_coefficients"] >> distCoeffs;
 	fs ["image_width"] >> size.width;
 	fs [ "image_height" ]>> size.height;
 	return true;
