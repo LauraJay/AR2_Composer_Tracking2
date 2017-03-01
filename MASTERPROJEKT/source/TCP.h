@@ -10,13 +10,13 @@ class TCP {
 private:
 	cv::RotatedRect normalizeCoord(cv::RotatedRect r);
 	PlaneCalibration::planeCalibData pcd;
-	cv::Vec3f computeCamera2World(cv::Point2f point);
 
 public:
 	struct MarkerStruct {
 		int id;
 		float posX;
 		float posY;
+		float posZ;
 		float angle;
 		int isVisible;
 	};

@@ -90,7 +90,7 @@ void TCP::sendStatus(int status) {
 void TCP::sendMarkerData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec, frame);
 	const char far* markerPointer = (const char*)&ms;
-	send(connectedSocket, markerPointer, 2004, 0);
+	send(connectedSocket, markerPointer, 2444, 0);
 }
 
 int TCP::receiveStatus() {

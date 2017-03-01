@@ -89,7 +89,7 @@ int PlaneCalibration::getSizeOfMarkerPos() {
 
 int PlaneCalibration::computePlaneCalibration() {
 	
-	if (markerPositions.size() == 2) {
+	if (markerPositions.size() >= 2) {
 	if (markerPositions[0].y < markerPositions[1].y) {
 		pcd.upperCorner = markerPositions[0];
 		pcd.lowerCorner = markerPositions[1];
