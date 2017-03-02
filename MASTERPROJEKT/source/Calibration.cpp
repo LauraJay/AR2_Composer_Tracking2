@@ -187,8 +187,10 @@ int Calibration::catchPlaneMarker(cv::Mat frame)
 int Calibration::generatePlaneCalib()
 {
 	int ret = pc->computePlaneCalibration();
+	pc->debugCamMatImg();
 	int rep = pc->computeAffineTransformation();
 	bool saved = pc->saveAffineTransform();
+	pc->printControllerPosError();
 	pcd = pc->getPlaneCalibData();
 	return ret;
 }

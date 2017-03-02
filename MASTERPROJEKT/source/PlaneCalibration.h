@@ -37,7 +37,9 @@ public:
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
 	cv::Mat affTransform=cv::Mat::zeros(3,4,CV_64F);
-	void PlaneCalibration::debugImg();
+	void PlaneCalibration::debugCamMatImg();
+	void PlaneCalibration::printControllerPosError();
+
 private:
 	std::vector< cv::Point3d > rvecs, tvecs;
 	cv::Point2f upperLeft;

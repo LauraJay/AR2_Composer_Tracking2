@@ -88,7 +88,7 @@ PlaneCalibration::PlaneCalibration() {
 
 }
 
-void PlaneCalibration::debugImg() {
+void PlaneCalibration::debugCamMatImg() {
 
 	cv::Mat testImg = cv::Mat::zeros(1280, 1024, CV_8UC3);
 
@@ -116,6 +116,28 @@ void PlaneCalibration::debugImg() {
 	cv::namedWindow("debug2", cv::WINDOW_KEEPRATIO);
 	cv::imshow("debug2", testImg);
 	cv::waitKey(0);
+}
+
+void PlaneCalibration::printControllerPosError()
+{
+	printf("ControllerPos Error after Plane Calibration: \n");
+	for (int i = 0; i < AllTVecs.size(); i++)
+			{
+				cv::Point3d tVec = AllTVecs[i];
+				cv::Point3d resVec;
+		
+				resVec.x = affTransform.at<double>(0, 0) * tVec.x + affTransform.at<double>(0, 1) * tVec.y + affTransform.at<double>(0, 2)*tVec.z + affTransform.at<double>(0, 3) * 1;
+				resVec.y = affTransform.at<double>(1, 0) * tVec.x + affTransform.at<double>(1, 1) * tVec.y + affTransform.at<double>(1, 2)*tVec.z + affTransform.at<double>(1, 3) * 1;
+				resVec.z = affTransform.at<double>(2, 0) * tVec.x + affTransform.at<double>(2, 1) * tVec.y + affTransform.at<double>(2, 2)*tVec.z + affTransform.at<double>(2, 3) * 1;
+				
+				printf("Groundtruth of No %i:  (%f, %f, %f) \n", i,AllControllerPositions[i].x, AllControllerPositions[i].y, AllControllerPositions[i].z);
+				printf("Transformed Vectorof No %i:  (%f, %f, %f) \n",i, resVec.x, resVec.y, resVec.z);
+				printf("EROOR of No %i: : %f, %f, %f \n \n",i, std::abs(resVec.x - AllControllerPositions[i].x), std::abs(resVec.y - AllControllerPositions[i].y), std::abs(resVec.z - AllControllerPositions[i].z));
+		
+			}
+
+
+
 }
 
 int PlaneCalibration::getSizeOfMarkerPos() {
