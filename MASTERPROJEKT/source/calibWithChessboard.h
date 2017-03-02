@@ -11,7 +11,7 @@ class calibWithChessboard {
 private:
 
 public:
-	cv::Mat cameraMatrix, distCoeffs, P;
+	cv::Mat cameraMatrix, distCoeffs;
 	std::vector<cv::Mat> rvecs, tvecs;
 	~calibWithChessboard() {};
 	calibWithChessboard() {};

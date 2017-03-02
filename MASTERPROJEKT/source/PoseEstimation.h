@@ -29,15 +29,11 @@ public:
 	std::vector<cv::Point2f> imagePlane;
 	cv::Mat1d cameraMatrix, distCoeffs;
 	cv::Mat rotationMatrix;
-	cv::Mat P;
 	~PoseEstimation() {};
 	PoseEstimation();
 	bool loadCameraMat();
 	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();
-	std::vector<cv::Mat> generateUndistortRectifyMap();
-	bool loadSavedDistCoeff();
-	std::vector<cv::Mat> loadUndistortRectifyMaps();
 	bool saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat>rvecs, const std::vector<cv::Mat> tvecs);
 };

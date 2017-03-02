@@ -11,8 +11,6 @@ private:
 		cv::Point2f motionCenterVec;
 		int isTrack=0;
 		std::vector< cv::Point3d > tvecs;
-		std::vector< cv::Point3d > rvecs;
-
 		cv::Point3d estimatedCenter;
 		
 public:
@@ -33,13 +31,11 @@ public:
 	cv::Point2f getCenter();
 	float getAngle();
 	std::vector< cv::Point3d > getTvecs();
-	std::vector< cv::Point3d > getRvecs();
 	cv::Point3d getEstimatedCenter();
 
 	//setter
 	void setEstimatedCenter(cv::Point3d estiCenter);
 	void setTvecs(std::vector< cv::Point3d > tvecs);
-	void setRvecs(std::vector< cv::Point3d > rvecs);
 
 	void setAngle(float angle);
 	void setTracked(int isTracked);

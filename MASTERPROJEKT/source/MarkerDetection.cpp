@@ -71,7 +71,6 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 		r.center = cv::Point2i(r.center);
 		r.size = cv::Size2i(r.size);
 		if ((r.size.height < 70 && r.size.width < 70) && (r.size.height > 30 && r.size.width > 30)) box.push_back(r);
-
 	}
 	return box;
 }
@@ -91,24 +90,6 @@ void MarkerDetection::initArucoParams()
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams);
 	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose
-	/*if (arucoIds.size() > 0)
-	cv::aruco::estimatePoseSingleMarkers(corners, markerLength, camMatrix, distCoeffs, rvecs,tvecs);*/
-
-	//// draw results TODEBUG
-	//cv::Mat imageCopy;
-	//frame.copyTo(imageCopy);
-	//if (arucoIds.size() > 0) {
-	//	cv::aruco::drawDetectedMarkers(imageCopy, corners, arucoIds);
-	//		for (unsigned int i = 0; i < arucoIds.size(); i++)
-	//			cv::circle(imageCopy, corners[i][0], 3, cv::Scalar(255, 0, 255));
-	//	
-	//}
-
-	/*imshow("corners", imageCopy);
-	cv::waitKey(1);*/
-
-
-
-}
+	}
 
 

@@ -18,10 +18,8 @@ class Calibration {
 private:
 	PlaneCalibration::planeCalibData pcd;
 	uEye_input uei;
-	std::vector<cv::Mat>UndistortRectifyMaps;
 	
 public:
-	void testNewCalib(uEye_input* uei);
 	PoseEstimation* pe;
 	PlaneCalibration* pc;
 	~Calibration();
@@ -30,7 +28,4 @@ public:
 	int catchPlaneMarker(cv::Mat frame);
 	int generatePlaneCalib();
 	PlaneCalibration::planeCalibData getPlaneCalibData();
-	std::vector<cv::Mat> getUndistortRectifyMaps();
-	std::vector<cv::Mat> loadUndistortRectifyMaps();
-	void testNewCalibWithPositions();
 	};

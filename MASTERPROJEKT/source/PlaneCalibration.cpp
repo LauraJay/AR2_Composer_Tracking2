@@ -25,10 +25,6 @@ PlaneCalibration::planeCalibData PlaneCalibration::readPlaneCalibrationFile() {
 }
 
 int PlaneCalibration::detectAruco(cv::Mat frame) {
-	//cv::FileStorage fs("CorrespondingPoints.yml", cv::FileStorage::WRITE);
-	//if (!fs.isOpened())
-	//	return false;
-
 	std::vector<int> arucoIds;
 	std::vector<std::vector<cv::Point2f>> corners;
 	std::vector<std::vector<cv::Point2f>> rejected;
@@ -44,8 +40,7 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
 	AllRVecs.push_back(rvecs[0]);
 
 	bool foundID = false;
-	// draw results
-		//if (arucoIds.size() > 0) cv::aruco::drawDetectedMarkers(frame, corners);
+	
 	for (int i = 0; i < arucoIds.size(); i++) {
 		int ID = arucoIds.at(i);
 		if (ID == 49) {
@@ -58,11 +53,6 @@ int PlaneCalibration::detectAruco(cv::Mat frame) {
             baricenter.x /= p.size();
             baricenter.y /= p.size();
             markerPositions.push_back(baricenter);
-
-			/*fs << "Marker center" << markerPositions;
-			fs << "Marker corner" << corners;
-			fs << "Tvecs" << tvecs;
-			fs << "Rvecs" << rvecs;*/
 
         break;	// Corner 1 is upper right corner of marker, which
 		}
@@ -145,12 +135,12 @@ int PlaneCalibration::getSizeOfMarkerPos() {
 int PlaneCalibration::computePlaneCalibration() {
 	
 	if (markerPositions.size() >= 2) {
-	if (markerPositions[0].y < markerPositions[1].y) {
+	if (markerPositions[0].y < markerPositions[2].y) {
 		pcd.upperCorner = markerPositions[0];
-		pcd.lowerCorner = markerPositions[1];
+		pcd.lowerCorner = markerPositions[2];
 	}
 	else {
-		pcd.upperCorner = markerPositions[1];
+		pcd.upperCorner = markerPositions[2];
 		pcd.lowerCorner = markerPositions[0];
 	}
 	pcd.size = cv::Size(pcd.upperCorner.x - pcd.lowerCorner.x, pcd.lowerCorner.y - pcd.upperCorner.y);
@@ -202,8 +192,9 @@ int PlaneCalibration::computeAffineTransformation() {
 
 	std::vector< uchar >  inliers;
 	cv::estimateAffine3D(AllTVecs, AllControllerPositions, affTransform, inliers);
-	std::vector< uchar >  inliers2;
-	cv::estimateAffine3D(AllControllerPositions, AllTVecs, invAffTransform, inliers2);
+	/*std::vector< uchar >  inliers2;
+	cv::estimateAffine3D(AllControllerPositions, AllTVecs, invAffTransform, inliers2);*/
+	printf("Numer of Inliers: %i \n", inliers.size());
 
 	return 1;
 }

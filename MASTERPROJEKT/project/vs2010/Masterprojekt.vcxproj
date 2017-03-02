@@ -127,7 +127,6 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\Calibration.cpp" />
     <ClCompile Include="..\..\source\calibWithChessboard.cpp" />
     <ClCompile Include="..\..\source\CoordsTransformation2Unity.cpp" />
-    <ClCompile Include="..\..\source\CreateCharucoBoard.cpp" />
     <ClCompile Include="..\..\source\IdMapping.cpp" />
     <ClCompile Include="..\..\source\Main.cpp" />
     <ClCompile Include="..\..\source\Marker.cpp" />

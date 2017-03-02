@@ -74,9 +74,6 @@
     <ClCompile Include="..\..\source\PoseEstimation.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\CreateCharucoBoard.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\TCP.cpp">
       <Filter>source</Filter>
     </ClCompile>

@@ -13,9 +13,7 @@ private:
 public:
 	cv::Mat camMatrix, distCoeffs;
 	cv::Mat affineTransform= cv::Mat::zeros(3, 4, CV_64F);
-	cv::Mat invAffTransform;
 	int computeTransformation2Unity(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
 	CoordsTransformtion2Untiy() {};
 	~CoordsTransformtion2Untiy() {};
-	void debugEstiCenterImg(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec);
 };

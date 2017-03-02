@@ -31,16 +31,8 @@ int uEye_input::inituEyeCam() {
 
 	double parameter = 40.;
 	int error = is_Exposure(hCam, IS_EXPOSURE_CMD_SET_EXPOSURE, (void*)&parameter, sizeof(parameter));
-	if (error != IS_SUCCESS) {
-		printf("failed Exposure");
-
-		is_SetHWGainFactor(hCam,IS_SET_RED_GAIN_FACTOR , 0);
-		is_SetHWGainFactor(hCam, IS_SET_GREEN_GAIN_FACTOR, 0);
-		is_SetHWGainFactor(hCam, IS_SET_BLUE_GAIN_FACTOR, 0);
-		is_SetGainBoost(hCam, IS_SET_GAINBOOST_OFF);
-
-	}
-
+	is_SetHWGainFactor(hCam, IS_SET_MASTER_GAIN_FACTOR, 200);
+	is_SetGainBoost(hCam, IS_SET_GAINBOOST_OFF);
 
 	double factor = 0.5;
 	INT Color = is_SetColorCorrection(hCam, IS_CCOR_ENABLE_NORMAL, &factor);
