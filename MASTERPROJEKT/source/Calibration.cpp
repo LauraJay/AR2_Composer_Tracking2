@@ -188,6 +188,7 @@ int Calibration::generatePlaneCalib()
 {
 	int ret = pc->computePlaneCalibration();
 	int rep = pc->computeAffineTransformation();
+	bool saved = pc->saveAffineTransform();
 	pcd = pc->getPlaneCalibData();
 	return ret;
 }

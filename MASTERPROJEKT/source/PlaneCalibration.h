@@ -24,8 +24,9 @@ public:
 		cv::Size size;
 	};
 	std::vector<cv::Point3d> AllControllerPositions;
-	std::vector<cv::Point3d> AllTVecs;
-
+	std::vector<cv::Point3d> AllTVecs, AllRVecs;
+	bool saveAffineTransform();
+	bool loadAffineTransform();
 	int computeAffineTransformation();
 	planeCalibData pcd;
 	planeCalibData getPlaneCalibData();
@@ -36,6 +37,7 @@ public:
 	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
 	cv::Mat affTransform=cv::Mat::zeros(3,4,CV_64F);
+	void PlaneCalibration::debugImg();
 private:
 	std::vector< cv::Point3d > rvecs, tvecs;
 	cv::Point2f upperLeft;

@@ -75,7 +75,7 @@ int main()
 			currentStatus = tcp->receiveStatus();
 			if (currentStatus == tcp->sceneStart)  break;
 			calibStatus = currentStatus;
-			printf("calibstatus: %d \n", calibStatus);
+			//printf("calibstatus: %d \n", calibStatus);
 	
 			if (calibStatus == tcp->planeAndPoseCalib) {
 				int res = calib->runPoseEstimation(uei1);
@@ -143,6 +143,14 @@ int main()
 	    pcd = calib->getPlaneCalibData();
 	    //printf("PCD: up : %f, %f ; lp: %f,%f \n", calib->getPlaneCalibData().upperCorner.x, calib->getPlaneCalibData().upperCorner.y, calib->getPlaneCalibData().lowerCorner.x, calib->getPlaneCalibData().lowerCorner.y);
 	    //tcp->setPCD(pcd);
+		if (correspondingPoints == 0) {
+			calib->pe->loadCameraMat();
+			calib->pc->camMatrix = calib->pe->cameraMatrix;
+			calib->pc->distCoeffs = calib->pe->distCoeffs;
+			maps = calib->loadUndistortRectifyMaps();
+			calib->pc->loadAffineTransform();
+		}
+
 	
 	#endif 	// TCP
 	    //first MarkerSize, second Threshold
