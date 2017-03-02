@@ -123,6 +123,8 @@ void MarkerManagement::registerNewMarker(cv::RotatedRect rect, int arucoID, cv::
 	takenIDVec.push_back(id);
 	std::vector< cv::Point3d > tvecs=estimateGreenRects(rect);
 	m->setTvecs(tvecs);
+	std::vector< cv::Point3d > rvecs = estimateGreenRectsForRvec(rect);
+	m->setRvecs(rvecs);
 
 }
 
@@ -140,6 +142,22 @@ std::vector< cv::Point3d > MarkerManagement::estimateGreenRects(cv::RotatedRect 
 	std::vector< cv::Point3d > rvecs, tvecs;
 	cv::aruco::estimatePoseSingleMarkers(corners,0.04, camMat, distMat,rvecs,tvecs);
 	return tvecs;
+}
+
+std::vector< cv::Point3d > MarkerManagement::estimateGreenRectsForRvec(cv::RotatedRect r) {
+	cv::Point2f vert[4];
+	r.points(vert);
+	std::vector<std::vector<cv::Point2f>> corners;
+	std::vector<cv::Point2f> temp;
+	for (int i = 0; i < 4; i++)
+	{
+		temp.push_back(vert[i]);
+
+	}
+	corners.push_back(temp);
+	std::vector< cv::Point3d > rvecs, tvecs;
+	cv::aruco::estimatePoseSingleMarkers(corners, 0.04, camMat, distMat, rvecs, tvecs);
+	return rvecs;
 }
 
 int MarkerManagement::findMatchID(int arucoID)
@@ -166,6 +184,8 @@ void MarkerManagement::CurrentMarkerWAruco(Marker* tm, cv::RotatedRect rect, int
 		tm->setVisible(1);
 		std::vector< cv::Point3d > tvecs = estimateGreenRects(rect);
 		tm->setTvecs(tvecs);
+		std::vector< cv::Point3d > rvecs = estimateGreenRectsForRvec(rect);
+		tm->setRvecs(rvecs);
 	}
 }
 
@@ -191,6 +211,8 @@ void MarkerManagement::CurrentMarker(Marker* tm, cv::RotatedRect rect) {
 	}
 	std::vector< cv::Point3d > tvecs = estimateGreenRects(rect);
 	tm->setTvecs(tvecs);
+	std::vector< cv::Point3d > rvecs = estimateGreenRectsForRvec(rect);
+	tm->setRvecs(rvecs);
 }
 
 

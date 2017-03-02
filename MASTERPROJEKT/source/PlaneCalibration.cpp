@@ -92,21 +92,16 @@ void PlaneCalibration::debugCamMatImg() {
 
 	cv::Mat testImg = cv::Mat::zeros(1280, 1024, CV_8UC3);
 
-	for (int i = 0; i < tvecs.size(); i++)
-	{
 		std::vector< cv::Point3f > axisPoints;
 		axisPoints.push_back(cv::Point3f(0, 0, 0));
+	for (int i = 0; i < AllTVecs.size(); i++)
+	{
 		std::vector< cv::Point2f > imagePoints;
 		std::vector<cv::Vec3d> Vec3rves, Vec3tves;
-		for (int i = 0; i < AllTVecs.size(); i++)
-		{
-			cv::Vec3d tempr = AllRVecs[i];
-			cv::Vec3d tempt = AllTVecs[i];
-			Vec3rves.push_back(tempr);
-			Vec3tves.push_back(tempt);
-
-		}
-
+		cv::Vec3d tempr = AllRVecs[i];
+		cv::Vec3d tempt = AllTVecs[i];
+		Vec3rves.push_back(tempr);
+		Vec3tves.push_back(tempt);
 		projectPoints(axisPoints, Vec3rves[i], Vec3tves[i], camMatrix, distCoeffs, imagePoints);
 		cv::circle(testImg, imagePoints[0], 5, cv::Scalar(0, 255, 0));
 		cv::circle(testImg, markerPositions[i], 3, cv::Scalar(255, 0, 0));
@@ -115,7 +110,7 @@ void PlaneCalibration::debugCamMatImg() {
 
 	cv::namedWindow("debug2", cv::WINDOW_KEEPRATIO);
 	cv::imshow("debug2", testImg);
-	cv::waitKey(0);
+	cv::waitKey(1);
 }
 
 void PlaneCalibration::printControllerPosError()
@@ -204,6 +199,8 @@ int PlaneCalibration::computeAffineTransformation() {
 
 	std::vector< uchar >  inliers;
 	cv::estimateAffine3D(AllTVecs, AllControllerPositions, affTransform, inliers);
+	std::vector< uchar >  inliers2;
+	cv::estimateAffine3D(AllControllerPositions, AllTVecs, invAffTransform, inliers2);
 
 	return 1;
 }

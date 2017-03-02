@@ -156,6 +156,10 @@ int main()
 	    //first MarkerSize, second Threshold
 		CoordsTransformtion2Untiy* ct2u = new CoordsTransformtion2Untiy();
 		ct2u->affineTransform = calib->pc->affTransform;
+		ct2u->invAffTransform = calib->pc->invAffTransform;
+		ct2u->camMatrix= calib->pe->cameraMatrix;
+		ct2u->distCoeffs = calib->pe->distCoeffs;
+
 	    MarkerManagement* mm = new MarkerManagement(frame.size(), pcd);
 		mm->camMat = calib->pe->cameraMatrix;
 		mm->distMat = calib->pe->distCoeffs;
