@@ -2,7 +2,7 @@
 
 void PlaneCalibration::initAruco() {
 	dictionaryId = cv::aruco::DICT_4X4_50;
-	markerLength = 0.133825; // size of outprinted Marker
+	markerLength = 0.025; // size of outprinted Marker
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
@@ -94,17 +94,20 @@ void PlaneCalibration::debugCamMatImg() {
 
 		std::vector< cv::Point3f > axisPoints;
 		axisPoints.push_back(cv::Point3f(0, 0, 0));
-	for (int i = 0; i < AllTVecs.size(); i++)
-	{
-		std::vector< cv::Point2f > imagePoints;
-		std::vector<cv::Vec3d> Vec3rves, Vec3tves;
-		cv::Vec3d tempr = AllRVecs[i];
-		cv::Vec3d tempt = AllTVecs[i];
-		Vec3rves.push_back(tempr);
-		Vec3tves.push_back(tempt);
+			std::vector< cv::Point2f > imagePoints;
+			std::vector<cv::Vec3d> Vec3rves, Vec3tves;
+		for (int i = 0; i < AllTVecs.size(); i++)
+		{
+			cv::Vec3d tempr = AllRVecs[i];
+			cv::Vec3d tempt = AllTVecs[i];
+			Vec3rves.push_back(tempr);
+			Vec3tves.push_back(tempt);
+		}
+		for (int i = 0; i < Vec3rves.size(); i++)
+		{
 		projectPoints(axisPoints, Vec3rves[i], Vec3tves[i], camMatrix, distCoeffs, imagePoints);
 		cv::circle(testImg, imagePoints[0], 5, cv::Scalar(0, 255, 0));
-		cv::circle(testImg, markerPositions[i], 3, cv::Scalar(255, 0, 0));
+		cv::circle(testImg, markerPositions[i], 3, cv::Scalar(0, 0, 255));
 
 	}
 

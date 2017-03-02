@@ -10,6 +10,7 @@
 int currentStatus = -1;
 int calibStatus = -1;
 std::vector<cv::Mat> maps;
+int calibSamples = 25;
 
 Main::~Main() {
 	//TODO
@@ -108,7 +109,7 @@ int main()
 						// printf("Controller Status : %d \n", currentStatus);
 
 						correspondingPoints = calib->catchPlaneMarker(frame);
-						if (correspondingPoints <= 20) {
+						if (correspondingPoints <= calibSamples) {
 							if (correspondingPoints == -1) {
 								tcp->sendStatus(tcp->ArucoNotFound);
 							}
@@ -118,7 +119,7 @@ int main()
 							calib->pc->AllControllerPositions.push_back(tcp->receiveControllerPositions());
 							}
 						}
-						 if (correspondingPoints == 20) {
+						 if (correspondingPoints == calibSamples) {
 							printf("Limit of corresponding Points is reached.");
 							int rep = calib->generatePlaneCalib();
 							tcp->sendStatus(tcp->PlaneCalibDone);
@@ -213,6 +214,7 @@ int main()
 	            cv::waitKey(1);
 	#endif //runDebug
 				ct2u->computeTransformation2Unity(marker,takenIdVec);
+				//ct2u->debugEstiCenterImg(marker, takenIdVec);
 
 	#ifdef useTCP
 	            //Send Markerdata via TCP
