@@ -9,6 +9,7 @@ int MarkerDetection::runMarkerDetection(cv::Mat frame)
 {
 	detectedRects.clear();
 	arucoIds.clear();
+	// green threshold
 	cv::Mat colorThresImg = colorThreshold(frame);
 	detectedRects = detectMarkerRectangles(colorThresImg);
 	detectArucoMarker(frame);
@@ -52,6 +53,7 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 }
 
 
+// Detects the green rectangles on the markers.
 std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &colorThresImg)
 {
 	std::vector<cv::Point> points;
@@ -77,9 +79,9 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 
 void MarkerDetection::initArucoParams()
 {
-	dictionaryId = cv::aruco::DICT_4X4_50;
-	showRejected = false; // zeigt die fehlerhaften Marker
-	markerLength = 0.025; // size of outprinted Marker
+	dictionaryId = cv::aruco::DICT_4X4_50; //choose the dictonary you want to use.
+	showRejected = false; // displays the rejected markers
+	markerLength = 0.025; // size of outprinted Aruco Markers in meters
 	detectorParams = cv::aruco::DetectorParameters::create();
 	detectorParams->doCornerRefinement = true; // do corner refinement in markers
 	dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));

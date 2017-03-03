@@ -10,6 +10,8 @@ std::vector<int> MarkerManagement::getTakenIDVec()
 	return takenIDVec;
 }
 
+// In order to reduce the jitter of the rendered marker caused
+//by small changes in the rotation angle this function can be used.
 cv::RotatedRect reduceRectJitter(cv::RotatedRect r) {
 	cv::RotatedRect nr;
 	nr.center.x = (int)(r.center.x * 10 + 0.5) / 10.0;
@@ -36,11 +38,11 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 		std::vector<cv::Point2f> motionCenterVecs = im->CalculateMotionVectorCenter(r, trackedMarker, takenIDVec);
 
 		if ((arucoID = im->hasArucoID(r, corners, arucoIds)) >= 0) {
-			matchID = findMatchID(arucoIds[arucoID]);
+			matchID = findMatchID(arucoIds[arucoID]); //is the marker id already known?
 			if (matchID > 0)
 			 {
 				if ((rep = im->isMarkerOutOfField(trackedMarker[matchID], pcd)) > 0) {
-					deleteMarker(matchID);
+					deleteMarker(matchID); //delete marker when leaving the workspace
 				}
 				else {
 					if ((im->isConstantMarker(motionCenterVecs, trackedMarker, takenIDVec, arucoIds[arucoID])) > 0)
@@ -95,7 +97,7 @@ void MarkerManagement::trackMarker(std::vector<cv::RotatedRect> rect, std::vecto
 
 
 
-// Delete Function of Marker
+// Delete all properties of a Marker identified by its id 
 void MarkerManagement::deleteMarker(int id)
 {
 	Marker* m = trackedMarker[id];
@@ -112,7 +114,6 @@ void MarkerManagement::deleteMarker(int id)
 
 
 // inits a new trackedMarker
-
 void MarkerManagement::registerNewMarker(cv::RotatedRect rect, int arucoID, cv::Point2f anglePoint) {
 	int id = openIDQueue.front();
 	openIDQueue.pop();
@@ -128,6 +129,7 @@ void MarkerManagement::registerNewMarker(cv::RotatedRect rect, int arucoID, cv::
 
 }
 
+
 std::vector< cv::Point3d > MarkerManagement::estimateGreenRects(cv::RotatedRect r) {
 	cv::Point2f vert[4];
 	r.points(vert);
@@ -136,7 +138,6 @@ std::vector< cv::Point3d > MarkerManagement::estimateGreenRects(cv::RotatedRect 
 	for (int i = 0; i < 4; i++)
 	{
 		temp.push_back(vert[i]);
-
 	}
 	corners.push_back(temp);
 	std::vector< cv::Point3d > rvecs, tvecs;

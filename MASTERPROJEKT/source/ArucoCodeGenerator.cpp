@@ -4,6 +4,7 @@
 #include <opencv2/aruco.hpp>
 //#define inUse
 using namespace cv;
+// This class can be used to generate new Aruco Markers in order to print them.
 // ATTENTION!!!! Comment main() in Main before compiling
 #ifdef inUse
 int main() {

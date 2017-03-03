@@ -1,5 +1,8 @@
 #include "CoordsTransformation2Unity.h"
 
+// Uses the affine transformation matrix in order to transform all 
+// tracked marker positions into the Unity Space
+
 int CoordsTransformtion2Untiy::computeTransformation2Unity(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec)
 {
 	for (int i = 0; i < takenIdVec.size(); i++)

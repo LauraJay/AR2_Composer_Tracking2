@@ -25,6 +25,7 @@ bool IdMapping::computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f
 
 }
 
+// Calculates the motion vector of a tracked marker between frame n and n-1
 std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
 {
 	std::vector<cv::Point2f> motionVectors;
@@ -39,6 +40,9 @@ std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect 
 	return motionVectors;
 }
 
+
+// Proofs whether the tracked marker is a known marker, whos positions has rarely changed. 
+// A marker is a constant marker even its angle has changed. This allows to rotate the marker on the same position
 int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	bool isConstant = false;
@@ -70,11 +74,15 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 	return matchID;
 }
 
+
+
 int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
 {
 	return 0;
 }
 
+// If the Aruco marker can't be recognized because of occlusion or motion blur, only the green rectangle is detected.
+// This function return the estimated marker id. 
 int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	bool isTranslated = false;
