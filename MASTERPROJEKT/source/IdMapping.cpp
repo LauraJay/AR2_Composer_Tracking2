@@ -1,6 +1,14 @@
 #include "IdMapping.h"
 
 
+
+
+// tests if a point p is inside the triangle of a, b and c by a BarycentricTest
+//@param cv::Point2f a: triangle Point
+//@param cv::Point2f b: triangle Point
+//@param cv::Point2f c: triangle Point
+//@param cv::Point2f p: point to test
+//@return bool: Point is inside
 bool IdMapping::computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f c, cv::Point2f p)
 {
 	// Compute vectors        
@@ -25,7 +33,28 @@ bool IdMapping::computeBarycentricTest(cv::Point2f a, cv::Point2f b, cv::Point2f
 
 }
 
-// Calculates the motion vector of a tracked marker between frame n and n-1
+// tests if marker is inside game plane
+// @param cv::RotatedRect r: rect of current Marker
+// @param PlaneAndAffineCalibration::planeCalibData pcd: game plane data
+// @return: 1 if out of field and 0 if not
+int IdMapping::isMarkerOutOfField(Marker * m, PlaneAndAffineCalibration::planeCalibData pcd) {
+	std::vector<cv::Point2f> ps = m->getPoints();
+	cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
+
+	for each (cv::Point2f p in ps)
+	{
+		cv::Point2i pi = cv::Point2i(p.x, p.y);
+		if (!r.contains(pi))
+			return 1;
+	}
+	return 0;
+}
+
+// Calculates the motion vectors between the current green rectangle of frame n and all tracked markers of frame n-1
+// @param cv::RotatedRect normRect: rect of marker in frame n
+// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<int> takenIdVec: vector of all valid marker positions in allMarkers array
+// @return std::vector<cv::Point2f> all caluculated motion vectors
 std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect normRect, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
 {
 	std::vector<cv::Point2f> motionVectors;
@@ -43,6 +72,12 @@ std::vector<cv::Point2f> IdMapping::CalculateMotionVectorCenter(cv::RotatedRect 
 
 // Proofs whether the tracked marker is a known marker, whos positions has rarely changed. 
 // A marker is a constant marker even its angle has changed. This allows to rotate the marker on the same position
+// @param std::vector<cv::Point2f> motionCenterVecs: motionsVector of 
+// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<int> takenIdVec: vector of all valid marker positions in allMarkers array
+// @param int arucoId: id of current marker
+// @return: id of matched marker (not aruco id)
+
 int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	bool isConstant = false;
@@ -75,14 +110,13 @@ int IdMapping::isConstantMarker(std::vector<cv::Point2f> motionCenterVecs, std::
 }
 
 
-
-int IdMapping::isRotatedMarker(cv::RotatedRect normRect, std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec)
-{
-	return 0;
-}
-
 // If the Aruco marker can't be recognized because of occlusion or motion blur, only the green rectangle is detected.
 // This function return the estimated marker id. 
+// @param std::vector<cv::Point2f> motionCenterVecs: motionsVector of 
+// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<int> takenIdVec: vector of all valid marker positions in allMarkers array
+// @param int arucoId: id of current marker
+// @return: id of matched marker (not aruco id)
 int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std::array<Marker*, 100> trackedMarker, std::vector<int> takenIDVec, int arucoID)
 {
 	bool isTranslated = false;
@@ -115,22 +149,15 @@ int IdMapping::isTranslatedMarker(std::vector<cv::Point2f> motionCenterVecs, std
 	return matchID;
 }
 
-int IdMapping::isMarkerOutOfField(Marker* m, PlaneCalibration::planeCalibData pcd) {
-	std::vector<cv::Point2f> ps = m->getPoints();
-	cv::Rect r = cv::Rect(pcd.upperCorner, pcd.lowerCorner);
 
-	for each (cv::Point2f p in ps)
-	{
-		cv::Point2i pi = cv::Point2i(p.x,p.y);
-		if (!r.contains(pi))
-			return 1;
-	}
-	return 0;
-}
-
-int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds)
+// If the Aruco marker can't be recognized because of occlusion or motion blur, only the green rectangle is detected.
+// This function return the estimated marker id. 
+// @param cv::RotatedRect normRect: rect of marker in frame n// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<std::vector<cv::Point2f>> corners: four corners of each detected aruco marker 
+// @return: 1 if has arcuo id and -1 if not
+int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::Point2f>> corners)
 {
-	for (int i = 0; i < arucoIds.size(); i++)
+	for (int i = 0; i < corners.size(); i++)
 	{
 		std::vector<cv::Point2f> rectPoints = corners[i];
 		bool isInsideOfRect = true;
@@ -149,8 +176,11 @@ int IdMapping::hasArucoID(cv::RotatedRect normRect, std::vector<std::vector<cv::
 	}
 	return -1;
 }
-
-int IdMapping::isRectOutOfField(cv::RotatedRect r, PlaneCalibration::planeCalibData pcd)
+// tests if marker is inside game plane
+// @param cv::RotatedRect r: rect of current Marker
+// @param PlaneAndAffineCalibration::planeCalibData pcd: game plane data
+// @return: 1 if out of field and 0 if not
+int IdMapping::isRectOutOfField(cv::RotatedRect r, PlaneAndAffineCalibration::planeCalibData pcd)
 {
 	cv::Point2f ps[4];
 	r.points(ps);

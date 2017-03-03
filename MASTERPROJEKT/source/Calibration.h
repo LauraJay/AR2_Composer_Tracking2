@@ -7,7 +7,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <PlaneCalibration.h>
+#include <PlaneAndAffineCalibration.h>
 #include <PoseEstimation.h>
 #include <MarkerSizeCalibration.h>
 #include <uEye_input.h>
@@ -16,16 +16,16 @@
 class Calibration {
 
 private:
-	PlaneCalibration::planeCalibData pcd;
+	PlaneAndAffineCalibration::planeCalibData pcd;
 	uEye_input uei;
 	
 public:
 	PoseEstimation* pe;
-	PlaneCalibration* pc;
+	PlaneAndAffineCalibration* pc;
 	~Calibration();
 	Calibration();
 	int runPoseEstimation(uEye_input* uei);
 	int catchPlaneMarker(cv::Mat frame);
-	int generatePlaneCalib();
-	PlaneCalibration::planeCalibData getPlaneCalibData();
+	int generateAffineAndPlaneCalib();
+	PlaneAndAffineCalibration::planeCalibData getPlaneCalibData();
 	};

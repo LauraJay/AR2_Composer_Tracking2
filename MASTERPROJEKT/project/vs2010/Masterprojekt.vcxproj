@@ -132,7 +132,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClCompile Include="..\..\source\Marker.cpp" />
     <ClCompile Include="..\..\source\MarkerDetection.cpp" />
     <ClCompile Include="..\..\source\MarkerManagement.cpp" />
-    <ClCompile Include="..\..\source\PlaneCalibration.cpp" />
+    <ClCompile Include="..\..\source\PlaneAndAffineCalibration.cpp" />
     <ClCompile Include="..\..\source\PoseEstimation.cpp" />
     <ClCompile Include="..\..\source\TCP.cpp" />
     <ClCompile Include="..\..\source\uEye_input.cpp" />
@@ -146,7 +146,7 @@ copy /y "..\..\thirdparty\opencv\x64\opencv_ffmpeg310_64.dll" "..\..\bin\release
     <ClInclude Include="..\..\source\Marker.h" />
     <ClInclude Include="..\..\source\MarkerDetection.h" />
     <ClInclude Include="..\..\source\MarkerManagement.h" />
-    <ClInclude Include="..\..\source\PlaneCalibration.h" />
+    <ClInclude Include="..\..\source\PlaneAndAffineCalibration.h" />
     <ClInclude Include="..\..\source\PoseEstimation.h" />
     <ClInclude Include="..\..\source\TCP.h" />
     <ClInclude Include="..\..\source\uEye_input.h" />

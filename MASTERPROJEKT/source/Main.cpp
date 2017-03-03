@@ -1,6 +1,5 @@
 #include <Main.h>
 
-//#define VIDEOVERA
 #define useTCP
 #define useNotTestClasses
 #define runDebug
@@ -23,7 +22,7 @@ int main()
 	std::vector<int> takenIdVec;
 	int counter = -1;
 	cv::Mat frame;
-	PlaneCalibration::planeCalibData pcd;
+	PlaneAndAffineCalibration::planeCalibData pcd;
 
 	uEye_input* uei1 = new uEye_input();
 	uei1->inituEyeCam();
@@ -86,7 +85,7 @@ int main()
 						}
 						 if (correspondingPoints == calibSamples) {
 							printf("Limit of corresponding Points is reached.");
-							int rep = calib->generatePlaneCalib();
+							int rep = calib->generateAffineAndPlaneCalib();
 							tcp->sendStatus(tcp->PlaneCalibDone);
 							PlaneCalibDone = true;
 						}

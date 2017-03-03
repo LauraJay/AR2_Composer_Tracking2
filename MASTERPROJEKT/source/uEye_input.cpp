@@ -1,5 +1,5 @@
 #include "uEye_input.h"
-
+// init uEye parameters and allocate memory for live caputring
 int uEye_input::inituEyeCam() {
 
 	hCam = 1;
@@ -59,7 +59,8 @@ int uEye_input::inituEyeCam() {
 }
 
 
-
+// returns current live frame of uEye
+//@param cv::Mat: frame 
 cv::Mat uEye_input::getCapturedFrame()
 {
 	UINT ret = is_CaptureVideo(hCam, IS_DONT_WAIT);
@@ -91,10 +92,13 @@ cv::Mat uEye_input::getCapturedFrame()
 	return frame;
 }
 
+// free memory of image memtory and exit camera
+
 int uEye_input::exitCamera() {
     is_FreeImageMem(hCam, imgMem, memId);
 	return is_ExitCamera(hCam);
 }
+// tests if camera is capturing
 bool uEye_input::isActive() {
 	return  is_CaptureVideo(hCam, IS_DONT_WAIT) == IS_CAPTURE_RUNNING;
 }

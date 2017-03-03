@@ -16,6 +16,9 @@ struct TCP::MarkerStruct ms[101];
 struct TCP::Calibration m[1];
 float cPArray [3] = { 0.0f, 0.0f , 0.0f};
 
+
+// Builds up a socket with portnr. 10000 and waits for a new connection and accepts it
+//@return int: 1 if failed 
 int TCP::startTCPServer()
 {
 	SOCKADDR_IN addr;
@@ -79,6 +82,9 @@ int startWinsock(void)
 	return WSAStartup(MAKEWORD(2, 0), &wsa);
 }
 
+// send a status 
+//@param int status: planeAndPoseCalib, planeOnlyCalib, sceneStart, 
+//PlaneCalibDone,PoseCalibDone, ControlerButtonPressed, ArucoFound, ArucoNotFound, reCalib
 void TCP::sendStatus(int status) {
 	const char far* markerPointer = (const char*)&status;
 	send(connectedSocket, markerPointer, 4, 0);
@@ -86,13 +92,18 @@ void TCP::sendStatus(int status) {
 }
 
 
-
+// send marker data
+// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<int> takenIdVec: vector of all valid marker positions in allMarkers array
+//@param cv::Mat frame: frame from uEye
 void TCP::sendMarkerData(std::array<Marker*, 100> allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 	getPointerOfMarkerVec(allMarkers, takenIdVec, frame);
 	const char far* markerPointer = (const char*)&ms;
 	send(connectedSocket, markerPointer, 2404, 0);
 }
 
+//receive status (pendant to sendStatus())
+// @return int status
 int TCP::receiveStatus() {
 	char far* mPointer = (char*)&m;
 	recv(connectedSocket, mPointer, 4, 0);
@@ -100,6 +111,8 @@ int TCP::receiveStatus() {
 	return m[0].isCalibrated;
 }
 
+//receive controller positions in unity coords
+// @return cv::Point3f controller position
 cv::Point3f TCP::receiveControllerPositions() {
 	cv::Point3d cP;
 	char far* cPPointer = (char*)&cPArray;
@@ -111,6 +124,10 @@ cv::Point3f TCP::receiveControllerPositions() {
 	return cP;
 }
 
+// put the marker data in the "right" order to send them via tcp to computer [B]
+// @param std::array<Marker*, 100>  allMarkers: array of size 100 with all current markers
+// @param std::vector<int> takenIdVec: vector of all valid marker positions in allMarkers array
+//@param cv::Mat frame: frame from uEye
 void TCP::getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec, cv::Mat frame) {
 
 	myfile.open("logNorm.txt", std::ios::out | std::ios::app);
@@ -157,18 +174,6 @@ TCP::~TCP() {
 }
 
 
-void TCP::setPCD(PlaneCalibration::planeCalibData pcData) {
-	pcd = pcData;
-}
-
-cv::RotatedRect TCP::normalizeCoord(cv::RotatedRect r) {
-	cv::Point2f center = r.center;
-	center.x = abs((center.x - pcd.lowerCorner.x) / pcd.size.width);
-	center.y = abs((center.y- pcd.upperCorner.y) / pcd.size.height);
-	cv::Size2f normSize = cv::Size2f((r.size.width / pcd.size.width), (r.size.height / pcd.size.height));
-	cv::RotatedRect rect = cv::RotatedRect(center, normSize, r.angle);
-	return rect;
-}
 
 
 

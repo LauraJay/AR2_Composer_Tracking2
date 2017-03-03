@@ -20,6 +20,7 @@
 #include <TCP.h>
 #include <Calibration.h>
 #include <CoordsTransformation2Unity.h>
+#include <PlaneAndAffineCalibration.h>
 
 class Main
 {

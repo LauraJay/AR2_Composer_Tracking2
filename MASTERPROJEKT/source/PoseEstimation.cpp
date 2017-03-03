@@ -18,7 +18,9 @@ cv::Mat PoseEstimation::getDistCoeffs()
 
 
 
-
+//calls and saves all relevent methods and attributes for intrinsic camera parameters
+//@param uEye_input * uei: uEye object
+//@return int: 1 if sucess 
 int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei) {
 	calibWithChessboard* cOCV = new calibWithChessboard();
 	cOCV->runCalibWithChessboard(uei);
@@ -27,32 +29,17 @@ int PoseEstimation::generateCamMatAndDistMat(uEye_input * uei) {
 	tvecs = cOCV->tvecs;
 	rvecs = cOCV->rvecs;
 	distCoeffs = cv::Mat::zeros(1,5,CV_64F);
-	saveCameraParams("CameraMatrix.yml", cameraMatrix, distCoeffs, rvecs, tvecs);
+	saveCameraParams("CameraMatrix.yml", cameraMatrix, distCoeffs);
 	return 1;
 }
 
 
-
-bool PoseEstimation::saveMaps(const std::vector <cv::Mat> maps) {
-	cv::FileStorage fs("Maps.yml", cv::FileStorage::WRITE);
-	if (!fs.isOpened())
-		return false;
-	time_t tt;
-	time(&tt);
-	struct tm *t2 = localtime(&tt);
-	char buf[1024];
-	strftime(buf, sizeof(buf) - 1, "%c", t2);
-	fs << "calibration_time" << buf;
-	fs << "Map1" << maps[0];
-	fs << "Map2" << maps[1];
-	return true;
-}
-
-
-
-
-
-bool PoseEstimation::saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat>rvecs, const std::vector<cv::Mat> tvecs) {
+//saves intrinsic camera parameters
+//@param const std::string &filename: filename 
+//@param cv::Mat &cameraMatrix: camera matrix 
+//@param cv::Mat &distCoeffs: distortion coefficients
+//@return bool: true if sucessful
+bool PoseEstimation::saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs) {
 	cv::FileStorage fs(filename, cv::FileStorage::WRITE);
 	if (!fs.isOpened())
 		return false;
@@ -67,29 +54,13 @@ bool PoseEstimation::saveCameraParams(const std::string &filename, const cv::Mat
 
 	fs << "camera_matrix" << cameraMatrix;
 	fs << "distortion_coefficients" << distCoeffs;
-	//if (!rvecs.empty() && !tvecs.empty())
-	//{
-	//	CV_Assert(rvecs[0].type() == tvecs[0].type());
-	//	cv::Mat bigmat((int)rvecs.size(), 6, rvecs[0].type());
-	//	for (int i = 0; i < (int)rvecs.size(); i++)
-	//	{
-	//		cv::Mat r = bigmat(cv::Range(i, i + 1), cv::Range(0, 3));
-	//		cv::Mat t = bigmat(cv::Range(i, i + 1), cv::Range(3, 6));
-
-	//		CV_Assert(rvecs[i].rows == 3 && rvecs[i].cols == 1);
-	//		CV_Assert(tvecs[i].rows == 3 && tvecs[i].cols == 1);
-	//		//*.t() is MatExpr (not Mat) so we can use assignment operator
-	//		r = rvecs[i].t();
-	//		t = tvecs[i].t();
-	//	}
-	//	//cvWriteComment( *fs, "a set of 6-tuples (rotation vector + translation vector) for each view", 0 );
-	//	fs << "extrinsic_parameters" << bigmat;
-	//}
-
 	printf("CamParams Saved\n");
 	return true;
 }
 
+
+//loads intrinsic camera parameters from file
+//@return bool: true if sucessful
 bool PoseEstimation::loadCameraMat() {
 	cv::FileStorage fs("CameraMatrix.yml", cv::FileStorage::READ);
 	if (!fs.isOpened())

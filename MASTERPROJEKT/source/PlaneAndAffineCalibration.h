@@ -11,10 +11,10 @@
 #include <string>
 
 
-class PlaneCalibration {
+class PlaneAndAffineCalibration {
 public:
-	~PlaneCalibration() {};
-	PlaneCalibration();
+	~PlaneAndAffineCalibration() {};
+	PlaneAndAffineCalibration();
 	std::vector<float> markerSize;
 	cv::Mat camMatrix, distCoeffs;
 	struct planeCalibData {
@@ -32,14 +32,14 @@ public:
 	planeCalibData getPlaneCalibData();
 	int computePlaneCalibration();
 	int detectAruco(cv::Mat frame);
-	int PlaneCalibration::getSizeOfMarkerPos();
-	PlaneCalibration::planeCalibData loadImagePlane();
-	planeCalibData PlaneCalibration::readPlaneCalibrationFile();
+	int PlaneAndAffineCalibration::getSizeOfMarkerPos();
+	PlaneAndAffineCalibration::planeCalibData loadImagePlane();
+	planeCalibData PlaneAndAffineCalibration::readPlaneCalibrationFile();
 	std::vector<cv::Point2f> markerPositions;
 	cv::Mat affTransform=cv::Mat::zeros(3,4,CV_64F);
 	cv::Mat invAffTransform;
-	void PlaneCalibration::debugCamMatImg();
-	void PlaneCalibration::printControllerPosError();
+	void PlaneAndAffineCalibration::debugCamMatImg();
+	void PlaneAndAffineCalibration::printControllerPosError();
 
 private:
 	std::vector< cv::Point3d > rvecs, tvecs;

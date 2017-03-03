@@ -3,14 +3,14 @@
 #include <array>
 #include <Marker.h>
 #include <IdMapping.h>
-#include <PlaneCalibration.h>
+#include <PlaneAndAffineCalibration.h>
 class MarkerManagement
 {
 private:
 	void deleteMarker(int id);
 	void registerNewMarker(cv::RotatedRect normRect, int arucoID, cv::Point2f anglePoint);
 	int findMatchID(int arucoID);
-	PlaneCalibration::planeCalibData pcd;
+	PlaneAndAffineCalibration::planeCalibData pcd;
 	int getAngleThreshold(cv::Point2f center);
 	
 	
@@ -29,7 +29,7 @@ public:
 	std::array<Marker*, 100> getTrackedMarker();
 	std::vector<int> getTakenIDVec();
 	void trackMarker(std::vector<cv::RotatedRect> rect, std::vector<std::vector<cv::Point2f>> corners, std::vector<int> arucoIds, cv::Size size);
-	MarkerManagement(cv::Size frameSize, PlaneCalibration::planeCalibData pcd);
+	MarkerManagement(cv::Size frameSize, PlaneAndAffineCalibration::planeCalibData pcd);
 	~MarkerManagement();
 	std::vector< cv::Point3d > estimateGreenRects(cv::RotatedRect r);
 };

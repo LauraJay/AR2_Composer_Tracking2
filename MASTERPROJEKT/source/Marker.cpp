@@ -1,6 +1,8 @@
 #include "Marker.h"
 
 // computes the rotation angle of the marker from 0 to 359. 
+// @param cv::Point2f angelPoint: first corner of aruco marker corners
+// @param cv::Point2f center: center of green rect
 float Marker::computeAngle(cv::Point2f angelPoint, cv::Point2f center)
 {
 	float angleRad;

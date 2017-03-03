@@ -27,9 +27,6 @@
     <ClInclude Include="..\..\source\Calibration.h">
       <Filter>source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\PlaneCalibration.h">
-      <Filter>source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\PoseEstimation.h">
       <Filter>source</Filter>
     </ClInclude>
@@ -40,6 +37,9 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\CoordsTransformation2Unity.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\PlaneAndAffineCalibration.h">
       <Filter>source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,9 +68,6 @@
     <ClCompile Include="..\..\source\Calibration.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\PlaneCalibration.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\PoseEstimation.cpp">
       <Filter>source</Filter>
     </ClCompile>
@@ -81,6 +78,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\CoordsTransformation2Unity.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\PlaneAndAffineCalibration.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

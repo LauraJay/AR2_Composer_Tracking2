@@ -5,6 +5,9 @@ MarkerDetection::MarkerDetection()
 	initArucoParams();
 }
 
+// calls the green rectangle detection and the aruco marker detection
+// @param cv::Mat frame: the current frame 
+// @return int: 1 if sucessful
 int MarkerDetection::runMarkerDetection(cv::Mat frame)
 {
 	detectedRects.clear();
@@ -31,6 +34,9 @@ std::vector<std::vector<cv::Point2f>> MarkerDetection::getArucoCorners()
 	return corners;
 }
 
+// green keying of current frame
+// @param cv::Mat frame: the current frame 
+// @return cv::Mat: green keyed image
 cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 
 	cv::Mat output;
@@ -53,7 +59,9 @@ cv::Mat MarkerDetection::colorThreshold(cv::Mat &frame) {
 }
 
 
-// Detects the green rectangles on the markers.
+// generates MarkerRectangles in form of object alligned bounding boxes
+// @param cv::Mat colorThresImg: green keyed image
+// @return std::vector<cv::RotatedRect>: vector of object alligned bounding boxes
 std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &colorThresImg)
 {
 	std::vector<cv::Point> points;
@@ -77,6 +85,7 @@ std::vector<cv::RotatedRect> MarkerDetection::detectMarkerRectangles(cv::Mat &co
 	return box;
 }
 
+// initalisation of aruco marker detection
 void MarkerDetection::initArucoParams()
 {
 	dictionaryId = cv::aruco::DICT_4X4_50; //choose the dictonary you want to use.
@@ -88,7 +97,8 @@ void MarkerDetection::initArucoParams()
 	}
 
 
-
+// aruco marker detection
+// @param cv::Mat frame: the current frame 
 void MarkerDetection::detectArucoMarker(cv::Mat & frame) {
 	cv::aruco::detectMarkers(frame, dictionary, corners, arucoIds, detectorParams);
 	std::vector< cv::Vec3d > rvecs, tvecs;	// detect markers and estimate pose

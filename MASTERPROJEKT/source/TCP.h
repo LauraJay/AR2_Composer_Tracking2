@@ -2,14 +2,12 @@
 #include <opencv2/opencv.hpp>
 #include <array>
 #include <Marker.h>
-#include <PlaneCalibration.h>
+#include <PlaneAndAffineCalibration.h>
 
 
 class TCP {
 
 private:
-	cv::RotatedRect normalizeCoord(cv::RotatedRect r);
-	PlaneCalibration::planeCalibData pcd;
 
 public:
 	struct MarkerStruct {
@@ -37,7 +35,6 @@ public:
 	int receiveStatus();
 	cv::Point3f receiveControllerPositions();
 	void getPointerOfMarkerVec(std::array<Marker*, 100>  allMarkers, std::vector<int> takenIdVec,cv::Mat frame);
-	void setPCD(PlaneCalibration::planeCalibData pcData);
 	TCP(cv::Size frameSize);
 	~TCP();
 };

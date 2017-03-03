@@ -14,7 +14,7 @@
 #include <ctime>
 
 #include <uEye_input.h>
-#include <PlaneCalibration.h>
+#include <PlaneAndAffineCalibration.h>
 #include <calibWithChessboard.h>
 
 class PoseEstimation {
@@ -35,5 +35,5 @@ public:
 	int generateCamMatAndDistMat(uEye_input* uei);
 	cv::Mat getCameraMat();
 	cv::Mat getDistCoeffs();
-	bool saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs, const std::vector<cv::Mat>rvecs, const std::vector<cv::Mat> tvecs);
+	bool saveCameraParams(const std::string &filename, const cv::Mat &cameraMatrix, const cv::Mat &distCoeffs);
 };
