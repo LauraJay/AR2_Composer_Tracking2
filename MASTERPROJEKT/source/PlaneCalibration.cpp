@@ -135,12 +135,12 @@ int PlaneCalibration::getSizeOfMarkerPos() {
 int PlaneCalibration::computePlaneCalibration() {
 	
 	if (markerPositions.size() >= 2) {
-	if (markerPositions[0].y < markerPositions[2].y) {
+	if (markerPositions[0].y < markerPositions[1].y) {
 		pcd.upperCorner = markerPositions[0];
-		pcd.lowerCorner = markerPositions[2];
+		pcd.lowerCorner = markerPositions[1];
 	}
 	else {
-		pcd.upperCorner = markerPositions[2];
+		pcd.upperCorner = markerPositions[1];
 		pcd.lowerCorner = markerPositions[0];
 	}
 	pcd.size = cv::Size(pcd.upperCorner.x - pcd.lowerCorner.x, pcd.lowerCorner.y - pcd.upperCorner.y);
